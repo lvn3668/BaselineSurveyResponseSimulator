@@ -1,0 +1,720 @@
+HTN
+Strk
+TIA
+HrtAtk
+CAD
+PVD
+Chol
+Clot
+CHF
+Oth
+SkMsOA
+SkMsRA
+SkMsOthArth
+SkMsGout
+SkMsOP
+SkMsOth
+MHAnxPan
+MHADHD
+MHBPD
+MPHPTSD
+MHDep
+MHEatDo
+MHPersDo
+MHSCZ
+MHSocPh
+MHOth
+HVCat
+HVGlauc
+HVMD
+HVBlind
+HVTin
+HVHear
+IDTB
+IDHepC
+IDHIV
+IDOth
+KDNoDial
+KDDial
+KDAcute
+GIReflux
+GIUlcer
+GIObst
+GIPolyp
+GIIBS
+GIUC
+GICrohn
+GICeliac
+GIOth
+CaBrst
+CaColon
+CaLung
+CaPros
+CaSkin
+CaOth
+NsMigrn
+NsOthHd
+NSMemLoss
+NSDem
+NSLOC
+NSTBI
+NSSCI
+NsEpil
+NSPD
+NSALS
+NSMS
+NSOth
+DoAsth
+DoLung
+DoDM
+DoBPH
+DoLiver
+DoSkin
+DoApnea
+DoThy
+DoOth
+MultiBirth
+Mom
+Dad
+BioDaughter
+BDQty
+BioSon
+BSQty
+BBQty
+BSQty
+Sib1
+Sib2
+Sib3
+Sib4
+Sib5
+Sib6
+Sib7
+Sib8
+
+
+
+
+
+
+
+	/**
+	 * @param birthDt
+	 * @param sex
+	 * @param ethnicity
+	 * 
+	 * @param raceWhite
+	 * @param raceAfricanAmerican
+	 * @param raceAmericanIndian
+	 * @param raceAsianChinese
+	 * @param raceAsianJapan
+	 * @param raceAsianIndian
+	 * @param raceAsianOther
+	 * @param raceAsianFilipino
+	 * @param racePI
+	 * @param raceOther
+	 * @param ancestryEastAsian
+	 * @param ancestryAfrican
+	 * @param ancestryMiddleEastern
+	 * @param ancestryNothAmerican
+	 * @param ancestrySouthEurasian
+	 * @param ancestryNothEuropean
+	 * @param ancestrySamoaAmerican
+	 * @param ancestrySouthWestAsian
+	 * @param education
+	 * @param marital
+	 * @param qtyHouse
+	 * @param income
+	 * @param vR12Q1
+	 * @param vR12Q2
+	 * @param vR12Q3
+	 * @param vR12Q4
+	 * @param vR12Q5
+	 * @param vR12Q6
+	 * @param vR12Q7
+	 * @param vR12Q8
+	 * @param vR12Q9
+	 * @param vR12Q11
+	 * @param vR12Q10
+	 * @param vR12Q12
+	 * @param vR12Q13
+	 * @param vR12Q14
+	 * @param vR12Q15
+	 * @param pain
+	 * @param activeWork
+	 * @param activeStatus
+	 * @param activeExercise
+	 * @param alcoholFrequency
+	 * @param alcoholoQuantity
+	 * @param alcoholBinge
+	 * @param smoke100cigarettes
+	 * @param smokeDaily
+	 * @param smokeNow
+	 * @param militaryBrArmy
+	 * @param militaryBrNavy
+	 * @param mltyBrAirForce
+	 * @param mltyBrMC
+	 * @param mltyBrCG
+	 * @param mltyBrMM
+	 * @param mltyBrNG
+	 * @param mltyBrNOAA
+	 * @param mltyBrPHS
+	 * @param militaryServiceType
+	 * @param militaryService1
+	 * @param militaryService2
+	 * @param militaryService4
+	 * @param militaryService3
+	 * @param militaryService5
+	 * @param militaryService6
+	 * @param militaryService8
+	 * @param militaryService7
+	 * @param serviceOutsideUS
+	 * @param stationAirforce
+	 * @param militaryService9
+	 * @param stationCarribean
+	 * @param stnEastEuropean
+	 * @param stnAsiaSouthPacific
+	 * @param stnMiddleEast
+	 * @param stnNorthCentralEuropean
+	 * @param stnMex
+	 * @param stnSouthEuropeanMediterranean
+	 * @param stnSouthCentralAmerican
+	 * @param stnOther
+	 * @param stnUSCanada
+	 * @param deployGulf
+	 * @param deployOEFOIF
+	 * @param exposureToAgtO
+	 * @param exposureToChemBioAgents
+	 * @param exposureToAnthrax
+	 * @param exposurePyrBr
+	 * @param handedness
+	 * @param heightSRFt
+	 * @param heightSRInches
+	 * @param weightSRLbs
+	 * @param skinClr
+	 * @param hairClr
+	 * @param eyeClr
+	 * @param htn
+	 * @param stroke
+	 * @param tia
+	 * @param heartAttack
+	 * @param mentalhealthanxietypanic
+	 * @param mentalhealthADHD
+	 * @param mentalhealthbipolardisorder
+	 * @param mentalhealthptsd
+	 * @param mentalhealthdepression
+	 * @param mentalhealtheatingdisorder
+	 * @param mentalhealthpersonalitydisorder
+	 * @param mentalhealthschizophrenia
+	 * @param mentalhealthsocph
+	 * @param mentalhealthother
+	 * @param cataract
+	 * @param glaucoma
+	 * @param maculardegeneration
+	 * @param blindness
+	 * @param tinitus
+	 * @param hearingloss
+	 * @param tuberculosis
+	 * @param hepatisisC
+	 * @param hiv
+	 * @param iDOther
+	 * @param kidneynodialysis
+	 * @param kidneydialysis
+	 * @param kidneydiseaseacute
+	 * @param giacidreflux
+	 * @param giulcer
+	 * @param giobstruction
+	 * @param gipolyp
+	 * @param giibs
+	 * @param giuc
+	 * @param giCrohnsDisease
+	 * @param giCeliacDisease
+	 * @param giOtherDisease
+	 * @param breastCancer
+	 * @param colonCancer
+	 * @param lungCancer
+	 * @param prostateCancer
+	 * @param skinCancer
+	 * @param otherCancer
+	 * @param migrane
+	 * @param pulmonaryvasculardisease
+	 * @param cholesterol
+	 * @param bloodclots
+	 * @param skinMSOA
+	 * @param memoryLoss
+	 * @param dementia
+	 * @param lossofconsciousness
+	 * @param skinMSGout
+	 * @param sknMSOthr
+	 * @param epilepsy
+	 * @param als
+	 * @param nSDOth
+	 * @param vAUse
+	 * @param vAHospResponseDropoffSite
+	 * @param nonVAHospResponseDropffSite
+	 * @param nonVARx
+	 * @param vARx
+	 * @param vANonRx
+	 * @param nonVANonRx
+	 * @param skinMsRA
+	 * @param nSTBI
+	 * @param thyroid
+	 * @param liverDisease
+	 * @param sleepApnea
+	 * @param lungDisease
+	 * @param asthma
+	 * @param bPH
+	 * @param nSSci
+	 * @param cad
+	 * @param chf
+	 * @param circOth
+	 * @param arthritis
+	 * @param parkinsons
+	 * @param diabetes
+	 * @param osteopathicdiseaseother
+	 * @param osteopathicdiseaseskin
+	 * @param adopted
+	 * @param multiBirth
+	 * @param skMsOPMed
+	 * @param nSOthHdMed
+	 * @param momLive
+	 * @param dadBrthYr
+	 * @param year
+	 * @param bioDaugh
+	 * @param daughterQty
+	 * @param bioSon
+	 * @param sonQty
+	 * @param bioBro
+	 * @param bioBroQty
+	 * @param bioSis
+	 * @param bioSisQty
+	 * @param sibling1
+	 * @param sibling2
+	 * @param sibling3
+	 * @param sibling4
+	 * @param sibling5
+	 * @param sibling6
+	 * @param sibling7
+	 * @param sibling8
+	 * @param mother
+	 * @param father
+	 * @param maternalGP
+	 * @param paternalGP
+	 * @param helpCompleting
+	 * @param output_Filename
+	 * @param time_Stamp
+	 * @param imageFile
+	 * @param cSID
+	 * @param scanDate
+	 * @param form_Id
+	 * @param form
+	 * @param mailCode
+	 * @param num_Complete
+	 * @param dupStatus
+	 * @param editStatus
+	 * @param num_Complete_A
+	 * @param num_Complete_B
+	 * @param num_Complete_C
+	 * @param num_Complete_D
+	 * @param num_Complete_E
+	 * @param num_Complete_F
+	 * @param num_Complete_G
+	 * @param _VersionNumber_
+	 * @param _RecordStatus_
+	 * @param _LoadDate_
+	 */
+	/** public Simulatedepicresponse(java.time.Year birthDt, ValueRange sex, ValueRange ethnicity, ValueRange raceWhite,
+			ValueRange raceAfricanAmerican, ValueRange raceAmericanIndian, ValueRange raceAsianChinese,
+			ValueRange raceAsianJapan, ValueRange raceAsianIndian, ValueRange raceAsianOther,
+			ValueRange raceAsianFilipino, ValueRange racePI, ValueRange raceOther, ValueRange ancestryEastAsian,
+			ValueRange ancestryAfrican, ValueRange ancestryMiddleEastern, ValueRange ancestryNothAmerican,
+			ValueRange ancestrySouthEurasian, ValueRange ancestryNothEuropean, ValueRange ancestrySamoaAmerican,
+			ValueRange ancestrySouthWestAsian, ValueRange education, ValueRange marital, int qtyHouse,
+			ValueRange income, ValueRange vR12Q1, ValueRange vR12Q2, ValueRange vR12Q3, ValueRange vR12Q4,
+			ValueRange vR12Q5, ValueRange vR12Q6, ValueRange vR12Q7, ValueRange vR12Q8, ValueRange vR12Q9,
+			ValueRange vR12Q11, ValueRange vR12Q10, ValueRange vR12Q12, ValueRange vR12Q13, ValueRange vR12Q14,
+			ValueRange vR12Q15, boolean pain, ValueRange activeWork, ValueRange activeStatus, ValueRange activeExercise,
+			ValueRange alcoholFrequency, ValueRange alcoholoQuantity, ValueRange alcoholBinge,
+			ValueRange smoke100cigarettes, ValueRange smokeDaily, ValueRange smokeNow, ValueRange militaryBrArmy,
+			ValueRange militaryBrNavy, ValueRange mltyBrAirForce, ValueRange mltyBrMC, ValueRange mltyBrCG,
+			ValueRange mltyBrMM, ValueRange mltyBrNG, ValueRange mltyBrNOAA, ValueRange mltyBrPHS,
+			ValueRange militaryServiceType, ValueRange militaryService1, ValueRange militaryService2,
+			ValueRange militaryService4, ValueRange militaryService3, ValueRange militaryService5,
+			ValueRange militaryService6, ValueRange militaryService8, ValueRange militaryService7,
+			ValueRange serviceOutsideUS, ValueRange stationAirforce, ValueRange militaryService9,
+			ValueRange stationCarribean, ValueRange stnEastEuropean, ValueRange stnAsiaSouthPacific,
+			ValueRange stnMiddleEast, ValueRange stnNorthCentralEuropean, ValueRange stnMex,
+			ValueRange stnSouthEuropeanMediterranean, ValueRange stnSouthCentralAmerican, ValueRange stnOther,
+			ValueRange stnUSCanada, ValueRange deployGulf, ValueRange deployOEFOIF, ValueRange exposureToAgtO,
+			ValueRange exposureToChemBioAgents, ValueRange exposureToAnthrax, ValueRange exposurePyrBr,
+			ValueRange handedness, float heightSRFt, float heightSRInches, float weightSRLbs, ValueRange skinClr,
+			ValueRange hairClr, ValueRange eyeClr, HTN htn, Stroke stroke, TransientIschemicAttack tia,
+			HeartAttack heartAttack, MentalHealthAnxietyPanic mentalhealthanxietypanic,
+			MentalHealthADHD mentalhealthADHD, MentalHealthBipolarDisorder mentalhealthbipolardisorder,
+			MentalHealthPostTraumaticStressDisorder mentalhealthptsd, MentalHealthDepression mentalhealthdepression,
+			MentalHealthEatingDisorder mentalhealtheatingdisorder,
+			MentalHealthPersonalityDisorder mentalhealthpersonalitydisorder,
+			MentalHealthSchizophrenia mentalhealthschizophrenia, MentalHealthSocPh mentalhealthsocph,
+			MentalHealthOther mentalhealthother, Cataract cataract, Glaucoma glaucoma,
+			MacularDegeneration maculardegeneration, Blindness blindness, Tinitus tinitus, HearingLoss hearingloss,
+			Tuberculosis tuberculosis, HepatitisC hepatisisC, HIV hiv, InfectiousDiseaseOther iDOther,
+			KidneyNoDialysis kidneynodialysis, KidneyDialysis kidneydialysis, KidneyDiseaseAcute kidneydiseaseacute,
+			GIAcidReflux giacidreflux, GIUlcer giulcer, GIObstruction giobstruction, GIPolyp gipolyp,
+			GIIrritableBowelSyndrome giibs, GIUC giuc, GICrohnsDisease giCrohnsDisease, GICeliacDisease giCeliacDisease,
+			GIDiseaseOther giOtherDisease, BreastCancer breastCancer, ColonCancer colonCancer, LungCancer lungCancer,
+			ProstateCancer prostateCancer, SkinCancer skinCancer, OtherCancer otherCancer, Migrane migrane,
+			PulmonaryVascularDisease pulmonaryvasculardisease, Cholesterol cholesterol, BloodClots bloodclots,
+			SknMSOA skinMSOA, MemoryLoss memoryLoss, Dementia dementia, LossOfConsciousness lossofconsciousness,
+			SknMSGout skinMSGout, SknMSOthr sknMSOthr, Epilepsy epilepsy, AmytrophicLateralSclerosis als,
+			NeuroStimulatoryDiseaseOther nSDOth, ValueRange vAUse, ValueRange vAHospResponseDropoffSite,
+			ValueRange nonVAHospResponseDropffSite, ValueRange nonVARx, ValueRange vARx, ValueRange vANonRx,
+			ValueRange nonVANonRx, SknMsRA skinMsRA, NeuroStimulatoryDiseaseTBI nSTBI, Thyroid thyroid,
+			LiverDisease liverDisease, SleepApnea sleepApnea, LungDisease lungDisease, Asthma asthma,
+			BenignProstaticHyperplasia bPH, AcuteSpinalCordInjury nSSci, CoronaryArteryDisease cad,
+			CongestiveHeartFailure chf, CirculatoryDiseaseOther circOth, SkinMsArthritis arthritis,
+			ParkinsonsDisease parkinsons, Diabetes diabetes, OsteopathicDiseaseOther osteopathicdiseaseother,
+			OsteopathicDiseaseSkin osteopathicdiseaseskin, ValueRange adopted, ValueRange multiBirth,
+			datasimulator.Year skMsOPMed, datasimulator.Year nSOthHdMed, datasimulator.Year momLive,
+			datasimulator.Year dadBrthYr, datasimulator.Year year, datasimulator.Year bioDaugh, int daughterQty,
+			ValueRange bioSon, int sonQty, ValueRange bioBro, int bioBroQty, ValueRange bioSis, int bioSisQty,
+			Sibling1 sibling1, Sibling2 sibling2, Sibling3 sibling3, Sibling4 sibling4, Sibling5 sibling5,
+			Sibling6 sibling6, Sibling7 sibling7, Sibling8 sibling8, Mother mother, Father father,
+			MaternalGrandParent maternalGP, PaternalGrandParent paternalGP, ValueRange helpCompleting,
+			File output_Filename, Timestamp time_Stamp, Image imageFile, String cSID, Date scanDate, String form_Id,
+			BLOB form, String mailCode, String num_Complete, String dupStatus, String editStatus, String num_Complete_A,
+			String num_Complete_B, String num_Complete_C, String num_Complete_D, String num_Complete_E,
+			String num_Complete_F, String num_Complete_G, long _VersionNumber_, String _RecordStatus_,
+			Date _LoadDate_) {
+		super();
+		BirthDt = birthDt;
+		this.sex = sex;
+		this.ethnicity = ethnicity;
+		simulatedresponserace.setRaceWhite(raceWhite);
+		simulatedresponserace.setRaceAfricanAmerican(raceAfricanAmerican);
+		RaceAmericanIndian = raceAmericanIndian;
+		RaceAsianChinese = raceAsianChinese;
+		RaceAsianJapan = raceAsianJapan;
+		RaceAsianIndian = raceAsianIndian;
+		RaceAsianOther = raceAsianOther;
+		RaceAsianFilipino = raceAsianFilipino;
+		RacePI = racePI;
+		RaceOther = raceOther;
+		AncestryEastAsian = ancestryEastAsian;
+		AncestryAfrican = ancestryAfrican;
+		AncestryMiddleEastern = ancestryMiddleEastern;
+		AncestryNothAmerican = ancestryNothAmerican;
+		AncestrySouthEurasian = ancestrySouthEurasian;
+		AncestryNothEuropean = ancestryNothEuropean;
+		AncestrySamoaAmerican = ancestrySamoaAmerican;
+		AncestrySouthWestAsian = ancestrySouthWestAsian;
+		this.education = education;
+		this.marital = marital;
+		QtyHouse = qtyHouse;
+		this.income = income;
+		VR12Q1 = vR12Q1;
+		VR12Q2 = vR12Q2;
+		VR12Q3 = vR12Q3;
+		VR12Q4 = vR12Q4;
+		VR12Q5 = vR12Q5;
+		VR12Q6 = vR12Q6;
+		VR12Q7 = vR12Q7;
+		VR12Q8 = vR12Q8;
+		VR12Q9 = vR12Q9;
+		VR12Q11 = vR12Q11;
+		VR12Q10 = vR12Q10;
+		VR12Q12 = vR12Q12;
+		VR12Q13 = vR12Q13;
+		VR12Q14 = vR12Q14;
+		VR12Q15 = vR12Q15;
+		Pain = pain;
+		ActiveWork = activeWork;
+		ActiveStatus = activeStatus;
+		ActiveExercise = activeExercise;
+		AlcoholFrequency = alcoholFrequency;
+		AlcoholoQuantity = alcoholoQuantity;
+		AlcoholBinge = alcoholBinge;
+		Smoke100cigarettes = smoke100cigarettes;
+		SmokeDaily = smokeDaily;
+		SmokeNow = smokeNow;
+		MilitaryBrArmy = militaryBrArmy;
+		MilitaryBrNavy = militaryBrNavy;
+		MltyBrAirForce = mltyBrAirForce;
+		MltyBrMC = mltyBrMC;
+		MltyBrCG = mltyBrCG;
+		MltyBrMM = mltyBrMM;
+		MltyBrNG = mltyBrNG;
+		MltyBrNOAA = mltyBrNOAA;
+		MltyBrPHS = mltyBrPHS;
+		MilitaryServiceType = militaryServiceType;
+		MilitaryService1 = militaryService1;
+		MilitaryService2 = militaryService2;
+		MilitaryService4 = militaryService4;
+		MilitaryService3 = militaryService3;
+		MilitaryService5 = militaryService5;
+		MilitaryService6 = militaryService6;
+		MilitaryService8 = militaryService8;
+		MilitaryService7 = militaryService7;
+		ServiceOutsideUS = serviceOutsideUS;
+		StationAirforce = stationAirforce;
+		MilitaryService9 = militaryService9;
+		StationCarribean = stationCarribean;
+		StnEastEuropean = stnEastEuropean;
+		StnAsiaSouthPacific = stnAsiaSouthPacific;
+		StnMiddleEast = stnMiddleEast;
+		StnNorthCentralEuropean = stnNorthCentralEuropean;
+		StnMex = stnMex;
+		StnSouthEuropeanMediterranean = stnSouthEuropeanMediterranean;
+		StnSouthCentralAmerican = stnSouthCentralAmerican;
+		StnOther = stnOther;
+		StnUSCanada = stnUSCanada;
+		DeployGulf = deployGulf;
+		DeployOEFOIF = deployOEFOIF;
+		ExposureToAgenttO = exposureToAgtO;
+		ExposureToChemBioAgents = exposureToChemBioAgents;
+		ExposureToAnthrax = exposureToAnthrax;
+		ExposurePyrBr = exposurePyrBr;
+		Handedness = handedness;
+		HeightSRFt = heightSRFt;
+		HeightSRInches = heightSRInches;
+		WeightSRLbs = weightSRLbs;
+		SkinClr = skinClr;
+		HairClr = hairClr;
+		EyeClr = eyeClr;
+		this.htn = htn;
+		this.stroke = stroke;
+		this.tia = tia;
+		this.heartAttack = heartAttack;
+		this.mentalhealthanxietypanic = mentalhealthanxietypanic;
+		this.mentalhealthADHD = mentalhealthADHD;
+		this.mentalhealthbipolardisorder = mentalhealthbipolardisorder;
+		this.mentalhealthptsd = mentalhealthptsd;
+		this.mentalhealthdepression = mentalhealthdepression;
+		this.mentalhealtheatingdisorder = mentalhealtheatingdisorder;
+		this.mentalhealthpersonalitydisorder = mentalhealthpersonalitydisorder;
+		this.mentalhealthschizophrenia = mentalhealthschizophrenia;
+		this.mentalhealthsocph = mentalhealthsocph;
+		this.mentalhealthother = mentalhealthother;
+		this.cataract = cataract;
+		this.glaucoma = glaucoma;
+		this.maculardegeneration = maculardegeneration;
+		this.blindness = blindness;
+		this.tinitus = tinitus;
+		this.hearingloss = hearingloss;
+		this.tuberculosis = tuberculosis;
+		this.hepatisisC = hepatisisC;
+		this.hiv = hiv;
+		IDOther = iDOther;
+		this.kidneynodialysis = kidneynodialysis;
+		this.kidneydialysis = kidneydialysis;
+		this.kidneydiseaseacute = kidneydiseaseacute;
+		this.giacidreflux = giacidreflux;
+		this.giulcer = giulcer;
+		this.giobstruction = giobstruction;
+		this.gipolyp = gipolyp;
+		this.giibs = giibs;
+		this.giuc = giuc;
+		this.giCrohnsDisease = giCrohnsDisease;
+		this.giCeliacDisease = giCeliacDisease;
+		this.giOtherDisease = giOtherDisease;
+		this.breastCancer = breastCancer;
+		this.colonCancer = colonCancer;
+		this.lungCancer = lungCancer;
+		this.prostateCancer = prostateCancer;
+		this.skinCancer = skinCancer;
+		this.otherCancer = otherCancer;
+		this.migrane = migrane;
+		this.pulmonaryvasculardisease = pulmonaryvasculardisease;
+		this.cholesterol = cholesterol;
+		this.bloodclots = bloodclots;
+		this.skinMSOA = skinMSOA;
+		this.memoryLoss = memoryLoss;
+		this.dementia = dementia;
+		this.lossofconsciousness = lossofconsciousness;
+		this.skinMSGout = skinMSGout;
+		this.sknMSOthr = sknMSOthr;
+		this.epilepsy = epilepsy;
+		this.als = als;
+		NSDOth = nSDOth;
+
+		this.skinMsRA = skinMsRA;
+		NSTBI = nSTBI;
+		this.thyroid = thyroid;
+		this.liverDisease = liverDisease;
+		this.sleepApnea = sleepApnea;
+		this.lungDisease = lungDisease;
+		this.asthma = asthma;
+		BPH = bPH;
+		NSSci = nSSci;
+		this.cad = cad;
+		this.chf = chf;
+		CircOth = circOth;
+		this.arthritis = arthritis;
+		this.parkinsons = parkinsons;
+		this.diabetes = diabetes;
+		this.osteopathicdiseaseother = osteopathicdiseaseother;
+		this.osteopathicdiseaseskin = osteopathicdiseaseskin;
+		Adopted = adopted;
+		MultiBirth = multiBirth;
+		SkMsOPMed = skMsOPMed;
+		NSOthHdMed = nSOthHdMed;
+		MomLive = momLive;
+		DadBrthYr = dadBrthYr;
+		Year = year;
+		BioDaugh = bioDaugh;
+		DaughterQty = daughterQty;
+		BioSon = bioSon;
+		SonQty = sonQty;
+		BioBro = bioBro;
+		BioBroQty = bioBroQty;
+		BioSis = bioSis;
+		BioSisQty = bioSisQty;
+		this.sibling1 = sibling1;
+		this.sibling2 = sibling2;
+		this.sibling3 = sibling3;
+		this.sibling4 = sibling4;
+		this.sibling5 = sibling5;
+		this.sibling6 = sibling6;
+		this.sibling7 = sibling7;
+		this.sibling8 = sibling8;
+		this.mother = mother;
+		this.father = father;
+		this.maternalGP = maternalGP;
+		this.paternalGP = paternalGP;
+		HelpCompleting = helpCompleting;
+		Output_Filename = output_Filename;
+		Time_Stamp = time_Stamp;
+		ImageFile = imageFile;
+		CSID = cSID;
+		ScanDate = scanDate;
+		Form_Id = form_Id;
+		Form = form;
+		MailCode = mailCode;
+		Num_Complete = num_Complete;
+		DupStatus = dupStatus;
+		EditStatus = editStatus;
+		Num_Complete_A = num_Complete_A;
+		Num_Complete_B = num_Complete_B;
+		Num_Complete_C = num_Complete_C;
+		Num_Complete_D = num_Complete_D;
+		Num_Complete_E = num_Complete_E;
+		Num_Complete_F = num_Complete_F;
+		Num_Complete_G = num_Complete_G;
+		this._VersionNumber_ = _VersionNumber_;
+		this._RecordStatus_ = _RecordStatus_;
+		this._LoadDate_ = _LoadDate_;
+	}
+		 
+	 SimulatedResponseRace simulatedresponserace;
+	 // call each simulatedresponse individually
+	 
+	 SimulatedResponseQ1_15 simulatedresponeq1_15;
+	 SimulatedResponseForLifestyleQ simulatedresponselifestyle;
+	 ChemicalExposure chemicalexposure;
+	 SimulatedResponseMilitaryDuty simulatedresponsemilitaryduty;
+	 SimulatedResponseAncestry simulatedresponseancestry;
+	 ChemicalExposure simulatedresponsechemicalexposure;
+	 
+	 Hypertension htn;
+	 Stroke stroke;
+	 TransientIschemicAttack tia;
+	 HeartAttack heartAttack;
+	 MentalHealthAnxietyPanic mentalhealthanxietypanic;
+	 MentalHealthADHD mentalhealthADHD;
+	 MentalHealthBipolarDisorder mentalhealthbipolardisorder;
+	 MentalHealthPostTraumaticStressDisorder mentalhealthptsd;
+	 MentalHealthDepression mentalhealthdepression;
+	 MentalHealthEatingDisorder mentalhealtheatingdisorder;
+	 MentalHealthPersonalityDisorder mentalhealthpersonalitydisorder;
+	 MentalHealthSchizophrenia mentalhealthschizophrenia;
+	 MentalHealthSocPh mentalhealthsocph;
+	 MentalHealthOther mentalhealthother;
+	 Cataract cataract;
+	 Glaucoma glaucoma;
+	 MacularDegeneration maculardegeneration;
+	 Blindness blindness;
+	 Tinitus tinitus;
+	 HearingLoss hearingloss;
+	 Tuberculosis tuberculosis;
+	 HepatitisC hepatisisC;
+	 HIV hiv;
+	 InfectiousDiseaseOther IDOther;
+	 KidneyNoDialysis kidneynodialysis;
+	 KidneyDialysis kidneydialysis; 
+	 KidneyDiseaseAcute kidneydiseaseacute;
+	 GIAcidReflux  giacidreflux;
+	 GIUlcer giulcer;
+	 GIObstruction giobstruction;
+	 GIPolyp gipolyp;
+	 GIIrritableBowelSyndrome giibs;
+	 GIUlceritiveColitis giuc;
+	 GICrohnsDisease giCrohnsDisease;
+	 GICeliacDisease giCeliacDisease;
+	 GIDiseaseOther giOtherDisease;
+	 BreastCancer breastCancer;
+	 ColonCancer colonCancer;
+	 LungCancer lungCancer;
+	 ProstateCancer prostateCancer;
+	 SkinCancer skinCancer;
+	 OtherCancer otherCancer;
+	 Migrane migrane;
+	 PulmonaryVascularDisease pulmonaryvasculardisease;
+	 Cholesterol cholesterol;
+	 BloodClots bloodclots;
+	 SknMSOA skinMSOA;
+	 MemoryLoss memoryLoss;
+	 Dementia dementia;
+	 LossOfConsciousness lossofconsciousness;
+	 SknMSGout skinMSGout;	 
+	 SknMSOthr sknMSOthr;
+	 Epilepsy epilepsy;
+	 AmytrophicLateralSclerosis als;
+	 NeuroStimulatoryDiseaseOther NSDOth;
+	 SknMsRA skinMsRA;
+	 NeuroStimulatoryDiseaseTBI NSTBI;
+	 Thyroid thyroid;
+	 LiverDisease liverDisease;
+	 SleepApnea sleepApnea;
+	 LungDisease lungDisease;
+	 Asthma asthma;
+	 BenignProstaticHyperplasia BPH;
+	 AcuteSpinalCordInjury NSSci;
+	 CoronaryArteryDisease cad;
+	 CongestiveHeartFailure chf;
+	 CirculatoryDiseaseOther CircOth;
+	 SkinMsArthritis arthritis;
+	 ParkinsonsDisease parkinsons;
+	 Diabetes diabetes;
+	 OsteopathicDiseaseOther osteopathicdiseaseother;
+	 OsteopathicDiseaseSkin osteopathicdiseaseskin;
+	 
+	 int QtyHouse;
+	 ValueRange Pain=ValueRange.of(0,1);
+
+
+
+
+	 
+	 //SkMsOP,"{0,1}"
+	 //SkMsOPYrDx,Year
+	 //SkMsOPMed,"{0,1}"
+	 //NSOthHd,"{0,1}"
+	 //NSOthHdYrDx,Year
+	 //NSOthHdMed,"{0,1}" 
+
+
+	 // For cohort, response variables are
+	 // alzheimers, Asthma, Bipolar, brst cancer, 
+	 // colon cancer
+	 // lung cancer, prostate, skin, other 
+	 // depression, dementia, schizophrenia,
+	 //MomDoKid,"{0,1}"
+	 //MomMHSCZ,"{0,1}"
+	 //D/adMHSCZ,"{0,1}"
+	 //SibMHSCZ,"{0,1}"
+	 //PGpMHSCZ,"{0,1}"
+	 //MGpMHSCZ,"{0,1}"
+
+
+
+	
+
+ **/
