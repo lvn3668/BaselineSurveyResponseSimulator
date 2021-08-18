@@ -154,7 +154,7 @@ public class ProstateCancer extends CancerResponse {
 	/**
 	 * @return the prostatecancermedicinesadministeredepicresponse
 	 */
-	public int getProstatecancermedicinesadministeredepicresponse() {
+	public int getProstateCancermedicinesadministeredepicresponse() {
 		try {
 			return this.prostatecancermedicinesadministeredepicresponse;
 		} catch (Exception e) {

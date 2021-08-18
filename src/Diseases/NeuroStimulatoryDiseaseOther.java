@@ -140,7 +140,7 @@ public class NeuroStimulatoryDiseaseOther extends NeuroStimulatoryDiseaseRespons
 	/**
 	 * @return the neuroStimulatoryOtherMedsAdministeredEpicResponse
 	 */
-	public int getNeuroStimulatoryOtherMedsAdministeredEpicResponse() throws Exception {
+	public int getNeuroStimulatoryDiseaseOthermedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.NeuroStimulatoryOtherMedsAdministeredEpicResponse;
 		} catch (Exception e) {

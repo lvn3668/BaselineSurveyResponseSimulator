@@ -180,7 +180,7 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return
 	 */
-	public int getNS_ASCI_medicinesadministered_epicresponse() {
+	public int getAcuteSpinalCordInjurymedicinesadministeredepicresponse() {
 		return this.NS_ASCI_medicinesadministered_epicresponse;
 	}
 
@@ -234,7 +234,7 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 	public int hashCode() {
 		try {
 			return  (
-					Integer.toString(this.getNS_ASCI_medicinesadministered_epicresponse()).hashCode() +
+					Integer.toString(this.getAcuteSpinalCordInjurymedicinesadministeredepicresponse()).hashCode() +
 					Integer.toString((int)this.getAcuteSpinalCordInjuryMedicines().getMinimum()).hashCode() +
 					Integer.toString((int)this.getAcuteSpinalCordInjuryMedicines().getMaximum()).hashCode()
 					);

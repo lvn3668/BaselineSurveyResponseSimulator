@@ -1,7 +1,12 @@
 package cohort;
 
+import java.text.DateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.Year;
+import java.time.ZoneId;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,7 +29,7 @@ import simulatedResponseVAUseVars.SimulatedResponseVAUseVars;
  *
  */
 
-public abstract class Cohort implements Birthdeathinterfacemethods {
+public class Cohort implements Birthdeathinterfacemethods {
 
 	/**
 	 *
@@ -319,7 +324,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 			this.getMilitarydutysimulatedresponse().simulateMilitaryDutyResponseVariables();
 
 			this.setVAUseVarsSimulatedResponse(new SimulatedResponseVAUseVars());
-			this.getVAUseVarssimulatedResponse().getVausevars();
+			this.getVAUseVarssimulatedResponse().getVauseresponses();
 
 			this.setAdoptedValueRange(ValueRange.of(0, 1));
 			this.setAliveValueRange(ValueRange.of(0, 1));
@@ -440,7 +445,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	private SimulatedResponseAncestry getAncestrysimulatedresponse() {
+	public SimulatedResponseAncestry getAncestrysimulatedresponse() {
 		try {
 			return this.ancestrysimulatedresponse;
 		} catch (Exception e) {
@@ -576,7 +581,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	protected Date getBirthDateSimulated() {
+	public Date getBirthDateSimulated() {
 		try {
 			return this.birthDtSimulatedResponse;
 		} catch (Exception e) {
@@ -607,7 +612,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return the simulatedresponsechemicalexposure
 	 */
-	private SimulatedResponseChemicalExposure getChemicalexposuresimulatedresponse() {
+	public SimulatedResponseChemicalExposure getChemicalexposuresimulatedresponse() {
 		return this.chemicalexposuresimulatedresponse;
 	}
 
@@ -617,7 +622,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	protected SimulatedDiseaseResponse getDiseassessimulatedresponse() {
+	public SimulatedDiseaseResponse getDiseasesSimulatedResponse() {
 		return this.diseassessimulatedresponse;
 	}
 
@@ -877,7 +882,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	private SimulatedResponseForLifestyleQ getLifestyleQsimulatedresponse() {
+	public SimulatedResponseForLifestyleQ getLifestyleQsimulatedresponse() {
 		try {
 			return this.lifestyleQsimulatedresponse;
 		} catch (Exception e) {
@@ -945,7 +950,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	private SimulatedResponseMilitaryDuty getMilitarydutysimulatedresponse() {
+	public SimulatedResponseMilitaryDuty getMilitarydutysimulatedresponse() {
 		try {
 			return this.militarydutysimulatedresponse;
 		} catch (Exception e) {
@@ -1082,7 +1087,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	private SimulatedResponseQ1_15 getQ1_15Simulatedresponse() {
+	public SimulatedResponseQ1_15 getQ1_15Simulatedresponse() {
 		try {
 			return this.q1_15simulatedresponse;
 		} catch (Exception e) {
@@ -1116,7 +1121,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	private SimulatedResponseRace getRacesimulatedresponse() {
+	public SimulatedResponseRace getRacesimulatedresponse() {
 		try {
 			return this.racesimulatedresponse;
 		} catch (Exception e) {
@@ -1296,7 +1301,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return the skinColorSimulatedResponse
 	 */
-	private int getSkinColorSimulatedResponse() {
+	public int getSkinColorSimulatedResponse() {
 		return this.skinColorSimulatedResponse;
 	}
 
@@ -1340,7 +1345,7 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	private SimulatedResponseVAUseVars getVAUseVarssimulatedResponse() {
+	public SimulatedResponseVAUseVars getVAUseVarssimulatedResponse() {
 		try {
 			return this.VAUseVarssimulatedResponse;
 		} catch (Exception e) {
@@ -2379,13 +2384,15 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	 */
 	protected Date simulateDateOfBirth() {
 		try {
-
-			Date simulatedDOB = Date.from(Instant.ofEpochSecond(ThreadLocalRandom.current()
-					.nextLong(new Date("1-1-1940").getTime(), new Date("12-31-1970").getTime())));
+			Date simulatedDOB = new Date(ThreadLocalRandom.current()
+					.nextLong(Date.from(LocalDate.of(1940,1,1).atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime(), 
+							Date.from(LocalDate.of(1970,12,31).atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()));
 			this.setBirthDateSimulated(simulatedDOB);
+			System.out.println("Simulated DOB" + simulatedDOB);
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(simulatedDOB);
-			this.setBirthyear(Year.parse(new StringBuilder(calendar.get(Calendar.YEAR))));
+			//System.out.println(calendar.get(Calendar.YEAR));
+			this.setBirthyear(Year.of(calendar.get(Calendar.YEAR) ));
 			return this.getBirthDateSimulated();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -2726,6 +2733,24 @@ public abstract class Cohort implements Birthdeathinterfacemethods {
 	 */
 	public void setUniformdistribution(UniformDistribution uniformdistribution) {
 		this.uniformdistribution = uniformdistribution;
+	}
+
+	@Override
+	public Year simulateYearOfBirth() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int simulateAliveOrDead() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Year simulateYearOfDeath() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

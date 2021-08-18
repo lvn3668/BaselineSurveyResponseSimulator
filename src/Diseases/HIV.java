@@ -148,7 +148,7 @@ public class HIV extends InfectiousDiseaseResponse {
 	/**
 	 * @return the hIVMedsAdministeredEpicResponse
 	 */
-	public int getHIVMedsAdministeredEpicResponse() throws Exception {
+	public int getHivmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.HIVMedsAdministeredEpicResponse;
 		} catch (Exception e) {

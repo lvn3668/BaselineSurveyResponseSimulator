@@ -96,7 +96,7 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
 							.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval())))) {
 				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getGIPolypMeds().getMinimum(), (int) this.getGIPolypMeds().getMaximum()));
+						(int) this.getGiPolypmedicinesValueRange().getMinimum(), (int) this.getGiPolypmedicinesValueRange().getMaximum()));
 			} else {
 				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities()
 						.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval()));
@@ -122,7 +122,7 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
 							.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval())))) {
 				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getGIPolypMeds().getMinimum(), (int) this.getGIPolypMeds().getMaximum()));
+						(int) this.getGiPolypmedicinesValueRange().getMinimum(), (int) this.getGiPolypmedicinesValueRange().getMaximum()));
 			} else {
 				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities()
 						.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval()));
@@ -137,7 +137,7 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the gIPolypMeds
 	 */
-	private ValueRange getGIPolypMeds() throws Exception {
+	private ValueRange getGiPolypmedicinesValueRange() throws Exception {
 		try {
 			return this.GIPolypMeds;
 		} finally {
@@ -147,7 +147,7 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the gIPolypMedsAdministeredEpicResponse
 	 */
-	public int getGIPolypMedsAdministeredEpicResponse() throws Exception {
+	public int getGiPolypmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.GIPolypMedsAdministeredEpicResponse;
 		} finally {

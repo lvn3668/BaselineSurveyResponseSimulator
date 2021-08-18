@@ -172,7 +172,7 @@ public class CoronaryArteryDisease extends CirculatoryDiseaseResponse {
 	/**
 	 * @return the cadmedicinesadministeredepicresponse
 	 */
-	public int getCadmedicinesadministeredepicresponse() {
+	public int getCoronaryarterydiseasemedicinesadministeredepicresponse() {
 		try {
 			return this.cadmedicinesadministeredepicresponse;
 		} catch (Exception e) {

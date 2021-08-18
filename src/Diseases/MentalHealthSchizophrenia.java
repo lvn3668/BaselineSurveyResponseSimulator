@@ -164,7 +164,7 @@ public class MentalHealthSchizophrenia extends MentalHealthResponse {
 	/**
 	 * @return the mHSchizophreniaMedsAdministeredEpicResponse
 	 */
-	public int getMHSchizophreniaMedsAdministeredEpicResponse() throws Exception {
+	public int getMentalhealthschizophreniamedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.MHSchizophreniaMedsAdministeredEpicResponse;
 		} catch (Exception e) {

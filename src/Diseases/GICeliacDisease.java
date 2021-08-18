@@ -104,7 +104,7 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the celiacDiseaseMedAdministeredEpicResponse
 	 */
-	public int getCeliacDiseaseMedAdministeredEpicResponse() throws Exception {
+	public int getGiCeliacDiseasemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.celiacDiseaseMedAdministeredEpicResponse;
 		} catch (Exception e) {

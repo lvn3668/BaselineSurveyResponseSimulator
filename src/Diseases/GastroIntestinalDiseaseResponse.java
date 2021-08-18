@@ -118,7 +118,7 @@ public class GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the diseasepresenceorabsencesimulatedepicresponse
 	 */
-	protected int getDiseasepresenceorabsencesimulatedepicresponse() {
+	public int getDiseasepresenceorabsencesimulatedepicresponse() {
 		return this.diseasepresenceorabsencesimulatedepicresponse;
 	}
 
@@ -141,7 +141,7 @@ public class GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the diagnosed
 	 */
-	protected Year getYearDiagnosedSimulatedResponse() throws Exception {
+	public Year getYearDiagnosedSimulatedResponse() throws Exception {
 		try {
 			return this.yearDiagnosedSimulatedResponse;
 		} catch (Exception e) {
@@ -223,12 +223,12 @@ public class GastroIntestinalDiseaseResponse {
 				// this changes
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
+						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
+				this.setYearDiagnosedSimulatedResponse(Year.of(
 						this.getUtilities().randBetween(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
-								GastroIntestinalDiseaseResponse.getMaxtogenerateerrorval()))));
+								GastroIntestinalDiseaseResponse.getMaxtogenerateerrorval())));
 			}
 
 		} catch (Exception e) {

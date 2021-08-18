@@ -147,7 +147,7 @@ public class LungDisease extends OsteopathicDiseaseResponse {
 		return this.LungDiseaseMedicines;
 	}
 
-	public int getLungdiseasemedicinesadministeredepicresponse() throws Exception {
+	public int getLungDiseasemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.lungdiseasemedicinesadministeredepicresponse;
 		} catch (Exception e) {

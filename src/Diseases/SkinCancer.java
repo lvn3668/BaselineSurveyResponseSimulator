@@ -160,7 +160,7 @@ public class SkinCancer extends CancerResponse {
 	/**
 	 * @return the skincancermedicinesadministeredepicresponse
 	 */
-	public int getSkincancermedicinesadministeredepicresponse() {
+	public int getSkinCancermedicinesadministeredepicresponse() {
 		try {
 			return this.skincancermedicinesadministeredepicresponse;
 		} catch (Exception e) {

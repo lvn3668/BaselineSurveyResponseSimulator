@@ -150,7 +150,7 @@ public class GIObstruction extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the gIObstructionMedsAdministeredEpicResponse
 	 */
-	public int getGIObstructionMedsAdministeredEpicResponse() throws Exception {
+	public int getGIObstructionmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.GIObstructionMedsAdministeredEpicResponse;
 		} finally {

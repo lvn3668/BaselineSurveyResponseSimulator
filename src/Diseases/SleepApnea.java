@@ -148,7 +148,7 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 	/**
 	 * @return the sleepapneamedicinesadministeredepicresponse
 	 */
-	public int getSleepapneamedicinesadministeredepicresponse() {
+	public int getSleepApneamedicinesadministeredepicresponse() {
 		try {
 			return this.sleepapneamedicinesadministeredepicresponse;
 		} catch (Exception e) {

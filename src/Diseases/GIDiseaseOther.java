@@ -145,7 +145,7 @@ public class GIDiseaseOther extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the gIOtherMedAdministeredEpicResponse
 	 */
-	public int getGIOtherMedAdministeredEpicResponse() throws Exception {
+	public int getGiOtherDiseasemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.GIOtherMedAdministeredEpicResponse;
 		} finally {

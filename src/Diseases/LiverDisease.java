@@ -149,7 +149,7 @@ public class LiverDisease extends OsteopathicDiseaseResponse {
 	/**
 	 * @return the livermedicinesadministeredepicresponse
 	 */
-	public int getLivermedicinesadministeredepicresponse() throws Exception {
+	public int getLiverDiseasemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.livermedicinesadministeredepicresponse;
 		} catch (Exception e) {

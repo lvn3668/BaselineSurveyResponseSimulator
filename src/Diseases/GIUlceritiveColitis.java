@@ -147,7 +147,7 @@ public class GIUlceritiveColitis extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the gIUCMedsAdministeredEpicResponse
 	 */
-	public int getGIUCMedsAdministeredEpicResponse() {
+	public int getGiUlceritiveColitismedicinesadministeredepicresponse() {
 		return this.GIUCMedsAdministeredEpicResponse;
 	}
 

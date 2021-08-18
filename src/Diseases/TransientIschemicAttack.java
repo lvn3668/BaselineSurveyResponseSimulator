@@ -162,7 +162,7 @@ public class TransientIschemicAttack extends MiscDiseaseResponse {
 	/**
 	 * @return the tIAMedsAdministeredEpicResponse
 	 */
-	public int getTIAMedsAdministeredEpicResponse() {
+	public int getTiamedicinesadministeredepicresponse() {
 		try {
 			return this.TIAMedsAdministeredEpicResponse;
 		} catch (Exception e) {

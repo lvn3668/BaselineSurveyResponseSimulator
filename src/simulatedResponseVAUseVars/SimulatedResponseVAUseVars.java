@@ -2,20 +2,14 @@ package simulatedResponseVAUseVars;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.security.Timestamp;
-import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Random;
-
 import javax.sql.rowset.serial.SerialBlob;
-import javax.sql.rowset.serial.SerialException;
-
 import Utilities.Utilities;
 import randomizer.UniformDistribution;
-import simulatedResponseRace.SimulatedResponseRace;
 
 /**
  * @author visu4
@@ -30,7 +24,7 @@ public class SimulatedResponseVAUseVars {
 	 * @author visu4
 	 *
 	 */
-	public class VAUseVars {
+	public class VAUseResponses {
 
 		/**
 		*
@@ -197,13 +191,15 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 *
 		 */
-		private ValueRange VAUse;
+		private ValueRange VAUseValueRange;
+		
+		private int VAUseSimulatedResponse;
 
 		/**
 		 *
 		 */
 
-		protected VAUseVars() {
+		protected VAUseResponses() {
 
 			this.setUtilities(new Utilities());
 			this.setHelpCompletingFormValueRange(SimulatedResponseVAUseVars.getHelpcompletionvaluerange());
@@ -271,7 +267,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected Date get_LoadDate_DefaultSimulatedValue() {
+		public Date get_LoadDate_DefaultSimulatedValue() {
 			try {
 				return this._LoadDate_DefaultSimulatedValue;
 			} catch (Exception e) {
@@ -287,7 +283,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected boolean get_RecordStatus_DefaultSimulatedValue() {
+		public boolean get_RecordStatus_DefaultSimulatedValue() {
 			try {
 				return this._RecordStatus_DefaultSimulatedValue;
 			} catch (Exception e) {
@@ -303,7 +299,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected long get_VersionNumber_DefaultSimulatedValue() {
+		public long get_VersionNumber_DefaultSimulatedValue() {
 			try {
 				return this._VersionNumber_DefaultSimulatedValue;
 			} catch (Exception e) {
@@ -337,7 +333,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected String getCSIDDefaultSimulatedResponse() {
+		public String getCSIDDefaultSimulatedResponse() {
 			try {
 				return this.CSIDDefaultSimulatedResponse;
 			} catch (Exception e) {
@@ -354,7 +350,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected boolean getEditStatusDefaultSimulatedValue() {
+		public boolean getEditStatusDefaultSimulatedValue() {
 			try {
 				return this.editStatusDefaultSimulatedValue;
 			} catch (Exception e) {
@@ -371,7 +367,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected File getForm_IdDefaultSimulatedValue() {
+		public File getForm_IdDefaultSimulatedValue() {
 			try {
 				return this.form_IdDefaultSimulatedValue;
 			} catch (Exception e) {
@@ -388,7 +384,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected boolean getFormDuplicationStatusDefaultSimulatedValue() {
+		public boolean getFormDuplicationStatusDefaultSimulatedValue() {
 			try {
 				return this.formDuplicationStatusDefaultSimulatedValue;
 			} catch (Exception e) {
@@ -405,7 +401,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected Date getFormScanDateDefaultSimulatedValue() {
+		public Date getFormScanDateDefaultSimulatedValue() {
 			try {
 				return this.formScanDateDefaultSimulatedValue;
 			} catch (Exception e) {
@@ -456,7 +452,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected BufferedImage getImageFileDefaultSimulatedValue() {
+		public BufferedImage getImageFileDefaultSimulatedValue() {
 			try {
 				return this.imageFileDefaultSimulatedValue;
 			} catch (Exception e) {
@@ -473,7 +469,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getMailCodeDefaultSimulatedValue() {
+		public int getMailCodeDefaultSimulatedValue() {
 			try {
 				return this.mailCodeDefaultSimulatedValue;
 			} catch (Exception e) {
@@ -507,7 +503,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNonVAHospResponseDropOffSitesimulatedresponse() {
+		public int getNonVAHospResponseDropOffSitesimulatedresponse() {
 			try {
 				return this.nonVAHospResponseDropOffSitesimulatedresponse;
 			} catch (Exception e) {
@@ -524,7 +520,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNonVANonRxsimulatedresponse() {
+		public int getNonVANonRxsimulatedresponse() {
 			try {
 				return this.nonVANonRxsimulatedresponse;
 			} catch (Exception e) {
@@ -558,7 +554,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNonVARxsimulatedresponse() {
+		public int getNonVARxsimulatedresponse() {
 			try {
 				return this.nonVARxsimulatedresponse;
 			} catch (Exception e) {
@@ -592,7 +588,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNum_Complete_SecFDefaultSimulatedResponse() {
+		public int getNum_Complete_SecFDefaultSimulatedResponse() {
 			try {
 				return this.num_Complete_SecFDefaultSimulatedResponse;
 			} catch (Exception e) {
@@ -626,7 +622,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNumQ_Complete_SecADefaultSimulatedResponse() {
+		public int getNumQ_Complete_SecADefaultSimulatedResponse() {
 			try {
 				return this.numQ_Complete_SecADefaultSimulatedResponse;
 			} catch (Exception e) {
@@ -643,7 +639,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNumQ_Complete_SecBDefaultSimulatedResponse() {
+		public int getNumQ_Complete_SecBDefaultSimulatedResponse() {
 			try {
 				return this.numQ_Complete_SecBDefaultSimulatedResponse;
 			} catch (Exception e) {
@@ -660,7 +656,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNumQ_Complete_SecCDefaultSimulatedResponse() {
+		public int getNumQ_Complete_SecCDefaultSimulatedResponse() {
 			try {
 				return this.numQ_Complete_SecCDefaultSimulatedResponse;
 			} catch (Exception e) {
@@ -677,7 +673,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNumQ_Complete_SecDDefaultSimulatedResponse() {
+		public int getNumQ_Complete_SecDDefaultSimulatedResponse() {
 			return this.numQ_Complete_SecDDefaultSimulatedResponse;
 		}
 
@@ -687,7 +683,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNumQ_Complete_SecEDefaultSimulatedResponse() {
+		public int getNumQ_Complete_SecEDefaultSimulatedResponse() {
 			try {
 				return this.numQ_Complete_SecEDefaultSimulatedResponse;
 			} catch (Exception e) {
@@ -704,7 +700,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getNumQ_CompleteDefaultSimulatedResponse() {
+		public int getNumQ_CompleteDefaultSimulatedResponse() {
 			try {
 				return this.numQ_CompleteDefaultSimulatedResponse;
 			} catch (Exception e) {
@@ -721,7 +717,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected File getOutput_FilenameDefaultSimulatedValue() {
+		public File getOutput_FilenameDefaultSimulatedValue() {
 			try {
 				return this.output_FilenameDefaultSimulatedValue;
 			} catch (Exception e) {
@@ -772,7 +768,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getVAHospResponseDropoffSitesimulatedresponse() {
+		public int getVAHospResponseDropoffSitesimulatedresponse() {
 			try {
 				return this.VAHospResponseDropoffSitesimulatedresponse;
 			} catch (Exception e) {
@@ -840,7 +836,7 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected int getVARxsimulatedresponse() {
+		public int getVARxsimulatedresponse() {
 			try {
 				return this.VARxsimulatedresponse;
 			} catch (Exception e) {
@@ -874,14 +870,14 @@ public class SimulatedResponseVAUseVars {
 		/**
 		 * @return
 		 */
-		protected ValueRange getVAUse() {
+		protected ValueRange getVAUseValueRange() {
 			try {
-				return this.VAUse;
+				return this.VAUseValueRange;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return this.VAUse;
+			return this.VAUseValueRange;
 
 		}
 
@@ -1445,7 +1441,7 @@ public class SimulatedResponseVAUseVars {
 		 */
 		private void setVAUseValueRange(ValueRange vAUse) {
 			try {
-				this.VAUse = vAUse;
+				this.VAUseValueRange = vAUse;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -1562,6 +1558,25 @@ public class SimulatedResponseVAUseVars {
 			return errorresponse;
 		}
 
+		public int simulateVAUsesimulatedresponse(ValueRange valuerange, int errorresponse) throws Exception {
+			try {
+				this.setVAUseValueRange(valuerange);
+				this.setVAUseSimulatedResponse(errorresponse);
+				if (
+				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
+				(!this.getUniformDistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), 
+								SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
+					this.setVAUseSimulatedResponse(this.getUtilities().randBetween(
+							(int) this.getVAUseValueRange().getMinimum(), (int) this.getVAUseValueRange().getMaximum()));
+					return this.getVAUseSimulatedResponse();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return errorresponse;
+		}
 		/**
 		 * @param valuerange
 		 * @param errorresponse
@@ -1659,6 +1674,30 @@ public class SimulatedResponseVAUseVars {
 		 */
 		private void setFormcompletionstatusDefaultSimulatedValue(boolean formcompletionstatusDefaultSimulatedValue) {
 			this.formcompletionstatusDefaultSimulatedValue = formcompletionstatusDefaultSimulatedValue;
+		}
+
+		/**
+		 * @param vAUseSimulatedResponse the vAUseSimulatedResponse to set
+		 */
+		private void setVAUseSimulatedResponse(int vAUseSimulatedResponse) {
+			this.VAUseSimulatedResponse = vAUseSimulatedResponse;
+		}
+
+		/**
+		 * @return the vAUseSimulatedResponse
+		 */
+		public int getVAUseSimulatedResponse() {
+			return this.VAUseSimulatedResponse;
+		}
+
+		public String getTimestampFormCompletiongDefaultSimulatedValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public String getNumQ_Complete_SecGDefaultSimulatedResponse() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 	}
@@ -2976,7 +3015,7 @@ public class SimulatedResponseVAUseVars {
 	/**
 	 *
 	 */
-	private VAUseVars vausevars;
+	private VAUseResponses vauseresponses;
 
 	/**
 	 *
@@ -2993,7 +3032,7 @@ public class SimulatedResponseVAUseVars {
 			setVARxValueRangeDefaultValue(ValueRange.of(1, 6));
 			setVaUseValsValueRange(ValueRange.of(1, 6));
 			setDefaultmailCode(0);
-			setDefaulttimestampformcompletion(new Timestamp(calendar.getTime(), null));
+			setDefaulttimestampformcompletion(new Timestamp(calendar.getTime().getTime()));
 			setDefaultFormScanDate(calendar.getTime());
 			setDefaultNumQuestionsComplete(getUtilitiesstaticinstance().randBetween(0,
 					SimulatedResponseVAUseVars.getMaximumtogeneraterandomvalsfornumcompleted()));
@@ -3018,33 +3057,33 @@ public class SimulatedResponseVAUseVars {
 			setDefaultformcompletionstatus(false);
 
 			setDefaultformobject(new SerialBlob(new byte[1]));
-			setImageFile(new BufferedImage(0, 0, 0));
+			setImageFile(new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB));
 			setDefaultFormId(new File("null.txt"));
 			setDefaultFormLoadDate(SimulatedResponseVAUseVars.getCalendar().getTime());
 			setDefaultRecordStatus(false);
 			setDefaultOutputFile(new File("null.txt"));
-			this.setVausevars(new VAUseVars());
+			this.setVauseresponses(new VAUseResponses());
 			
-				this.getVausevars().simulateHelpCompletingFormsimulatedresponse(this.getVausevars().getHelpCompletingFormValueRange(),
+				this.getVauseresponses().simulateHelpCompletingFormsimulatedresponse(this.getVauseresponses().getHelpCompletingFormValueRange(),
 						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
 								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogenerateerrorvalforhelpcompleting()));
-				this.getVausevars().simulateNonVAHospResponseDropOffSitesimulatedresponse(this.getVausevars().getNonVAHospResponseDropffSiteValueRange(), 
+				this.getVauseresponses().simulateNonVAHospResponseDropOffSitesimulatedresponse(this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(), 
 						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
 								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVausevars().simulateNonVANonRxsimulatedresponse(this.getVausevars().getNonVAHospResponseDropffSiteValueRange(), 
+				this.getVauseresponses().simulateNonVANonRxsimulatedresponse(this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(), 
 						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
 								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVausevars().simulateNonVARxsimulatedresponse(this.getVausevars().getNonVAHospResponseDropffSiteValueRange(), 
+				this.getVauseresponses().simulateNonVARxsimulatedresponse(this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(), 
 						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
 								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVausevars().simulateVAHospResponseDropoffSitesimulatedresponse(this.getVausevars().getVAHospResponseDropoffSiteValueRange(), 
+				this.getVauseresponses().simulateVAHospResponseDropoffSitesimulatedresponse(this.getVauseresponses().getVAHospResponseDropoffSiteValueRange(), 
 						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
 								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratevahospresponsedropoffsiteerrorval()));
 
-				this.getVausevars().simulateVANonRxsimulatedresponse(this.getVausevars().getVANonRxValueRange(), 
+				this.getVauseresponses().simulateVANonRxsimulatedresponse(this.getVauseresponses().getVANonRxValueRange(), 
 						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
 								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVausevars().simulateVARxsimulatedresponse(this.getVausevars().getVARxValueRange(), 
+				this.getVauseresponses().simulateVARxsimulatedresponse(this.getVauseresponses().getVARxValueRange(), 
 						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
 								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
 				
@@ -3066,14 +3105,14 @@ public class SimulatedResponseVAUseVars {
 	/**
 	 * @return
 	 */
-	public VAUseVars getVausevars() {
+	public VAUseResponses getVauseresponses() {
 		try {
-			return this.vausevars;
+			return this.vauseresponses;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return this.vausevars;
+		return this.vauseresponses;
 	}
 
 	/**
@@ -3082,9 +3121,9 @@ public class SimulatedResponseVAUseVars {
 	/**
 	 * @param vausevars
 	 */
-	protected void setVausevars(VAUseVars vausevars) {
+	private void setVauseresponses(VAUseResponses vausevars) {
 		try {
-			this.vausevars = vausevars;
+			this.vauseresponses = vausevars;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

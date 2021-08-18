@@ -137,7 +137,7 @@ public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the crohnsDiseaseMedsAdministeredEpicResponse
 	 */
-	public int getCrohnsDiseaseMedsAdministeredEpicResponse() throws Exception {
+	public int getGiCrohnsDiseasemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.CrohnsDiseaseMedsAdministeredEpicResponse;
 		} catch (Exception e) {

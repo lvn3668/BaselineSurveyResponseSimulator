@@ -142,7 +142,7 @@ public class LossOfConsciousness extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the lossofconsciousnesmedsadministeredepicresponse
 	 */
-	public int getLossofconsciousnesmedsadministeredepicresponse() throws Exception {
+	public int getLossofconsciousnessmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.lossofconsciousnesmedsadministeredepicresponse;
 		} catch (Exception e) {

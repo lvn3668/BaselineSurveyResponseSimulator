@@ -144,7 +144,7 @@ public class HearingLoss extends HearingVisionDiseaseResponse {
 	/**
 	 * @return the hearinglossMedicinesAdministeredEpicResponse
 	 */
-	public int getHearinglossMedicinesAdministeredEpicResponse() {
+	public int getHearingLossmedicinesadministeredepicresponse() {
 		return this.hearinglossMedicinesAdministeredEpicResponse;
 	}
 

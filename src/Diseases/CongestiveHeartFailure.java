@@ -185,7 +185,7 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 	 * @return
 	 * @throws Exception
 	 */
-	public int getChfmedicinesadministeredepicresponse() {
+	public int getCongestiveheartfailuremedicinesadministeredepicresponse() {
 		try {
 			return this.chfmedicinesadministeredepicresponse;
 		} catch (Exception e) {

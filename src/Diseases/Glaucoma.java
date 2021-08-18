@@ -154,7 +154,7 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 	/**
 	 * @return the glaucomaMedsAdministeredEpicResponse
 	 */
-	public int getGlaucomaMedsAdministeredEpicResponse() {
+	public int getGlaucomamedicinesadministeredepicresponse() {
 		return this.GlaucomaMedsAdministeredEpicResponse;
 	}
 

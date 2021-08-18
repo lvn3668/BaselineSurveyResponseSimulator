@@ -157,7 +157,7 @@ public class SknMSOA extends SkinDiseaseResponse {
 	/**
 	 * @return the sknMSOAMedicinesAdministeredEpicResponse
 	 */
-	public int getSknMSOAMedicinesAdministeredEpicResponse() {
+	public int getSkinMSOAmedicinesadministeredepicresponse() {
 		try {
 			return this.SknMSOAMedicinesAdministeredEpicResponse;
 		} catch (Exception e) {

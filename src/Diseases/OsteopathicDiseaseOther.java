@@ -158,7 +158,7 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 	/**
 	 * @return the osteopathicDiseasesOtherMedsAdministeredEpicResponse
 	 */
-	public int getOsteopathicDiseasesOtherMedsAdministeredEpicResponse() {
+	public int getOsteopathicdiseaseothermedicinesadministeredepicresponse() {
 		return this.OsteopathicDiseasesOtherMedsAdministeredEpicResponse;
 	}
 

@@ -106,7 +106,7 @@ public class Epilepsy extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the epilepsymedsadministeredepicresponse
 	 */
-	protected int getEpilepsymedsadministeredepicresponse() throws Exception {
+	public int getEpilepsymedicinesadministeredepicresponse() throws Exception {
 		try {
 			return epilepsymedsadministeredepicresponse;
 		} finally {

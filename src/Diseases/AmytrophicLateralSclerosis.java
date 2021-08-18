@@ -153,7 +153,7 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 	 * @return
 	 * @throws Exception
 	 */
-	public int getAlsmedsadministeredepicresponse() throws Exception {
+	public int getAmytrophiclateralsclerosismedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.alsmedsadministeredepicresponse;
 		} catch (Exception e) {
@@ -210,7 +210,7 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 			if (this.getALSMedicines() != null)
 
 				return (this.getALSMedicines().hashCode()
-						+ Integer.toString(this.getAlsmedsadministeredepicresponse()).hashCode());
+						+ Integer.toString(this.getAmytrophiclateralsclerosismedicinesadministeredepicresponse()).hashCode());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -225,8 +225,8 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 		}
 		try {
 			return Objects.equals(this.getALSMedicines(), ((AmytrophicLateralSclerosis) obj).getALSMedicines())
-					&& this.getAlsmedsadministeredepicresponse() == ((AmytrophicLateralSclerosis) obj)
-							.getAlsmedsadministeredepicresponse();
+					&& this.getAmytrophiclateralsclerosismedicinesadministeredepicresponse() == ((AmytrophicLateralSclerosis) obj)
+							.getAmytrophiclateralsclerosismedicinesadministeredepicresponse();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -139,10 +139,12 @@ public class SimulatedResponseRace {
 	*
 	*/
 	private ValueRange raceAsianOtherValueRange;
+	private ValueRange raceAsianChineseValueRange;
 	/**
 	*
 	*/
 	private int raceAsianPacificIslandersimulatedresponse;
+	private int raceAsianChinesesimulatedresponse;
 	/**
 	*
 	*/
@@ -186,6 +188,9 @@ public class SimulatedResponseRace {
 	 */
 	public SimulatedResponseRace() {
 		try {
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new UniformDistribution(SimulatedResponseRace.minToGenerateErrorResponse,
+					SimulatedResponseRace.maxToGenerateErrorResponse));
 			// set error response
 			setErrorresponse(this.getUtilities().randBetween(SimulatedResponseRace.getMinimumtogenerateerrorresponse(),
 					SimulatedResponseRace.getMaximumtogenerateerrorresponse()));
@@ -209,10 +214,10 @@ public class SimulatedResponseRace {
 			this.setRacePacificIslandersimulatedresponse(SimulatedResponseRace.getErrorResponse());
 			this.setRaceOtherValueRange(ValueRange.of(0, 1));
 			this.setRaceOthersimulatedresponse(SimulatedResponseRace.getErrorResponse());
+			this.setRaceAsianChineseValueRange(ValueRange.of(0,1));
+			this.setRaceAsianChinesesimulatedresponse(SimulatedResponseRace.getErrorResponse());
 
-			this.setUniformdistribution(new UniformDistribution(SimulatedResponseRace.minToGenerateErrorResponse,
-					SimulatedResponseRace.maxToGenerateErrorResponse));
-			this.setUtilities(new Utilities());
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -252,6 +257,10 @@ public class SimulatedResponseRace {
 			int racepacificislandersimulatedepicresponse, ValueRange RaceOther, int raceothersimulatedepicresponse) {
 		// TODO Auto-generated constructor stub
 		try {
+			// To be reworked
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new UniformDistribution());
+
 			this.setRaceWhiteValueRange(raceWhite);
 			this.setRaceWhitesimulatedresponse(racewhitesimulatedepicresponse);
 			this.setRaceAfricanAmericanValueRange(raceAfricanAmerican);
@@ -272,9 +281,7 @@ public class SimulatedResponseRace {
 			this.setRacePacificIslandersimulatedresponse(racepacificislandersimulatedepicresponse);
 			this.setRaceOtherValueRange(RaceOther);
 			this.setRaceOthersimulatedresponse(raceothersimulatedepicresponse);
-			// To be reworked
-			this.setUniformdistribution(new UniformDistribution());
-			this.setUtilities(new Utilities());
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1029,7 +1036,7 @@ public class SimulatedResponseRace {
 			}
 			{
 				this.setRaceAsianIndiansimulatedresponse(
-						this.utilities.randBetween((int) this.getRaceAsianIndianValueRange().getMinimum(),
+						this.getUtilities().randBetween((int) this.getRaceAsianIndianValueRange().getMinimum(),
 								(int) this.getRaceAsianIndianValueRange().getMaximum()));
 				return this.getRaceAsianFilipinosimulatedresponse();
 			}
@@ -1054,7 +1061,7 @@ public class SimulatedResponseRace {
 					this.getUtilities().randBetween(SimulatedResponseRace.getMinimumtogenerateerrorresponse(),
 							SimulatedResponseRace.getMaximumtogenerateerrorresponse())))) {
 				this.setRaceAsianJapansimulatedresponse(
-						this.utilities.randBetween((int) this.getRaceAsianJapanValueRange().getMinimum(),
+						this.getUtilities().randBetween((int) this.getRaceAsianJapanValueRange().getMinimum(),
 								(int) this.getRaceAsianJapanValueRange().getMaximum()));
 				return this.getRaceAsianJapansimulatedresponse();
 			}
@@ -1066,6 +1073,25 @@ public class SimulatedResponseRace {
 		return raceasianJapanerrorresponse;
 	}
 
+	public int simulateRaceAsianChineseResponse(ValueRange valuerange, int raceasianChineseerrorresponse) {
+		try {
+			this.setRaceAsianChineseValueRange(valuerange);
+			this.setRaceAsianChinesesimulatedresponse(raceasianChineseerrorresponse);
+			if ((!this.getUniformdistribution().generatenoiseinresponsevariables(
+					this.getUtilities().randBetween(SimulatedResponseRace.getMinimumtogenerateerrorresponse(),
+							SimulatedResponseRace.getMaximumtogenerateerrorresponse())))) {
+				this.setRaceAsianJapansimulatedresponse(
+						this.getUtilities().randBetween((int) this.getRaceAsianChineseValueRange().getMinimum(),
+								(int) this.getRaceAsianChineseValueRange().getMaximum()));
+				return this.getRaceAsianChinesesimulatedresponse();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// return error response (default)
+		return raceasianChineseerrorresponse;
+	}
 	/**
 	 * @param valuerange
 	 * @param raceasianOthererrorresponse
@@ -1152,6 +1178,7 @@ public class SimulatedResponseRace {
 			this.simulateRaceOtherResponse(this.getRaceOtherValueRange(), this.getRaceOthersimulatedresponse());
 			this.simulateRacePacificIslanderResponse(this.getRacePacificIslanderValueRange(),
 					this.getRacePacificIslandersimulatedresponse());
+			this.simulateRaceAsianChineseResponse(this.getRaceAsianChineseValueRange(), this.getRaceAsianChinesesimulatedresponse());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -1227,6 +1254,34 @@ public class SimulatedResponseRace {
 				+ ", raceWhitesimulatedresponse=" + this.raceWhitesimulatedresponse + ", uniformdistribution="
 				+ this.uniformdistribution + ", utilities=" + this.utilities + "]";
 
+	}
+
+	/**
+	 * @return the raceAsianChineseValueRange
+	 */
+	private ValueRange getRaceAsianChineseValueRange() {
+		return this.raceAsianChineseValueRange;
+	}
+
+	/**
+	 * @param raceAsianChineseValueRange the raceAsianChineseValueRange to set
+	 */
+	private void setRaceAsianChineseValueRange(ValueRange raceAsianChineseValueRange) {
+		this.raceAsianChineseValueRange = raceAsianChineseValueRange;
+	}
+
+	/**
+	 * @return the raceAsianChinesesimulatedresponse
+	 */
+	public int getRaceAsianChinesesimulatedresponse() {
+		return this.raceAsianChinesesimulatedresponse;
+	}
+
+	/**
+	 * @param raceAsianChinesesimulatedresponse the raceAsianChinesesimulatedresponse to set
+	 */
+	private void setRaceAsianChinesesimulatedresponse(int raceAsianChinesesimulatedresponse) {
+		this.raceAsianChinesesimulatedresponse = raceAsianChinesesimulatedresponse;
 	}
 
 }

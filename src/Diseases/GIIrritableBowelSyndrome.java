@@ -149,7 +149,7 @@ public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the gIIBSMedsAdministeredEpicResponse
 	 */
-	public int getGIIBSMedsAdministeredEpicResponse() throws Exception {
+	public int getGiIrritableBowelSyndromemedicinesadministeredepicresponse() throws Exception {
 		return this.GIIBSMedsAdministeredEpicResponse;
 	}
 

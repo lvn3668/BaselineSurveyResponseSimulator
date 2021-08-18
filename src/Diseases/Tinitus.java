@@ -166,7 +166,7 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 	/**
 	 * @return the tinitusMedsAdministeredEpicResponse
 	 */
-	public int getTinitusMedsAdministeredEpicResponse() {
+	public int getTinitusmedicinesadministeredepicresponse() {
 		try {
 			return this.TinitusMedsAdministeredEpicResponse;
 		} catch (Exception e) {

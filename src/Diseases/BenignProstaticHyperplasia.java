@@ -199,7 +199,7 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 	 * @return
 	 * @throws Exception
 	 */
-	public int getBphmedicinesadministeredepicresponse() throws Exception {
+	public int getBPHmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.bphmedicinesadministeredepicresponse;
 		} catch (Exception e) {

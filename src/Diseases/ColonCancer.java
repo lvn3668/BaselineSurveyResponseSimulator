@@ -129,7 +129,7 @@ public class ColonCancer extends CancerResponse {
 	/**
 	 * @return the coloncancermedicinesadministeredepicresponse
 	 */
-	public int getColoncancermedicinesadministeredepicresponse() {
+	public int getColonCancermedicinesadministeredepicresponse() {
 		try {
 			return this.coloncancermedicinesadministeredepicresponse;
 		} catch (Exception e) {

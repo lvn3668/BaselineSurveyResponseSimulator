@@ -153,7 +153,7 @@ public class KidneyDiseaseAcute extends NephrologyResponse {
 	/**
 	 * @return the kDAcuteMedsAdministeredEpicResponse
 	 */
-	public int getKDAcuteMedsAdministeredEpicResponse() throws Exception {
+	public int getKidneyDiseaseAcutemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.KDAcuteMedsAdministeredEpicResponse;
 		} catch (Exception e) {

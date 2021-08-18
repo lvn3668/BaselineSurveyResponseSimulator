@@ -150,7 +150,7 @@ public class Migrane extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the migraneMedsEpicResponse
 	 */
-	public int getMigraneMedsEpicResponse() throws Exception {
+	public int getMigranemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.MigraneMedsEpicResponse;
 		} catch (Exception e) {

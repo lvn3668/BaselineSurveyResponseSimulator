@@ -149,7 +149,7 @@ public class Hypertension extends MiscDiseaseResponse {
 	/**
 	 * @return the hTNMedsAdministeredEpicResponse
 	 */
-	public int getHTNMedsAdministeredEpicResponse() throws Exception {
+	public int getHypertensionmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.HTNMedsAdministeredEpicResponse;
 		} catch (Exception e) {

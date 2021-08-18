@@ -169,7 +169,7 @@ public class BloodClots extends MiscDiseaseResponse {
 	/**
 	 * @return the BloodClotsMedsAdministeredEpicResponse
 	 */
-	public int getBloodClotsMedsAdministeredEpicResponse() {
+	public int getBloodclotsmedicinesadministeredepicresponse() {
 		try {
 			return this.BloodClotsMedsAdministeredEpicResponse;
 		} catch (Exception e) {
@@ -208,7 +208,7 @@ public class BloodClots extends MiscDiseaseResponse {
 	@Override
 	public int hashCode() {
 		try {
-			return Objects.hash(this.getBloodClotsMedicines(), this.getBloodClotsMedsAdministeredEpicResponse());
+			return Objects.hash(this.getBloodClotsMedicines(), this.getBloodclotsmedicinesadministeredepicresponse());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

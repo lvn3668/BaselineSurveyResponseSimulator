@@ -194,7 +194,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestryafricansimulatedepicresponse
 	 */
-	private int getAncestryafricansimulatedepicresponse() {
+	public int getAncestryafricansimulatedepicresponse() {
 		try {
 			return this.ancestryafricansimulatedepicresponse;
 		} catch (Exception e) {
@@ -222,7 +222,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestryeastasiansimulatedepicresponse
 	 */
-	private int getAncestryeastasiansimulatedepicresponse() {
+	public int getAncestryeastasiansimulatedepicresponse() {
 		try {
 			return this.ancestryeastasiansimulatedepicresponse;
 		} catch (Exception e) {
@@ -250,7 +250,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestrymiddleeasternsimulatedepicresponse
 	 */
-	private int getAncestrymiddleeasternsimulatedepicresponse() {
+	public int getAncestrymiddleeasternsimulatedepicresponse() {
 		try {
 			return this.ancestrymiddleeasternsimulatedepicresponse;
 		} catch (Exception e) {
@@ -278,7 +278,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestrynorthamericansimulatedepicresponse
 	 */
-	private int getAncestrynorthamericansimulatedepicresponse() {
+	public int getAncestrynorthamericansimulatedepicresponse() {
 		try {
 			return this.ancestrynorthamericansimulatedepicresponse;
 		} catch (Exception e) {
@@ -306,7 +306,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestrynortheuropeansimulatedepicresponse
 	 */
-	private int getAncestrynortheuropeansimulatedepicresponse() {
+	public int getAncestrynortheuropeansimulatedepicresponse() {
 		try {
 			return this.ancestrynortheuropeansimulatedepicresponse;
 		} catch (Exception e) {
@@ -334,7 +334,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestrysamoaamericansimulatedepicresponse
 	 */
-	private int getAncestrysamoaamericansimulatedepicresponse() {
+	public int getAncestrysamoaamericansimulatedepicresponse() {
 		try {
 			return this.ancestrysamoaamericansimulatedepicresponse;
 		} catch (Exception e) {
@@ -362,7 +362,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestrysoutheurasiansimulatedepicresponse
 	 */
-	private int getAncestrysoutheurasiansimulatedepicresponse() {
+	public int getAncestrysoutheurasiansimulatedepicresponse() {
 		try {
 			return this.ancestrysoutheurasiansimulatedepicresponse;
 		} catch (Exception e) {
@@ -390,7 +390,7 @@ public class SimulatedResponseAncestry {
 	/**
 	 * @return the ancestrysouthwestasiansimulatedepicresponse
 	 */
-	private int getAncestrysouthwestasiansimulatedepicresponse() {
+	public int getAncestrysouthwestasiansimulatedepicresponse() {
 		try {
 			return this.ancestrysouthwestasiansimulatedepicresponse;
 		} catch (Exception e) {

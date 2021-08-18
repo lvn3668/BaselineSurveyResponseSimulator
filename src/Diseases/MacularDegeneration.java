@@ -155,7 +155,7 @@ public class MacularDegeneration extends HearingVisionDiseaseResponse {
 	/**
 	 * @return the maculardegenerationmedsadministeredepicresponse
 	 */
-	public int getMaculardegenerationmedsadministeredepicresponse() throws Exception {
+	public int getMaculardegenerationmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.maculardegenerationmedsadministeredepicresponse;
 		} catch (Exception e) {

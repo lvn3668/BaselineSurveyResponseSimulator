@@ -142,7 +142,7 @@ public class NeuroStimulatoryDiseaseTBI extends NeuroStimulatoryDiseaseResponse 
 	/**
 	 * @return the neuroStimulatoryTBIMedsAdministeredEpicResponse
 	 */
-	public int getNeuroStimulatoryTBIMedsAdministeredEpicResponse() {
+	public int getNeuroStimulatoryDiseaseTBImedicinesadministeredepicresponse() {
 		try {
 			return this.NeuroStimulatoryTBIMedsAdministeredEpicResponse;
 		} catch (Exception e) {

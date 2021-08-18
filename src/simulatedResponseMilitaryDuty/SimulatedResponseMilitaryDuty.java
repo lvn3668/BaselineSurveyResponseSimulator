@@ -409,13 +409,15 @@ public class SimulatedResponseMilitaryDuty {
 		// TODO Auto-generated constructor stub
 
 		try {
-			SimulatedResponseMilitaryDuty.setErrorResponse(
-					this.getUtilities().randBetween(SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
-							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse()));
 			this.setUtilities(new Utilities());
 			this.setUniformdist(
 					new UniformDistribution(SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
 							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse()));
+			SimulatedResponseMilitaryDuty.setErrorResponse(
+					this.getUtilities().randBetween(SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
+							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse()));
+
+
 			this.setMilitaryBranchArmyValueRange(ValueRange.of(0, 1));
 			this.setMilitaryBranchArmysimulatedresponse(SimulatedResponseMilitaryDuty.getErrorResponse());
 			this.setMilitaryBranchNavyValueRange(ValueRange.of(0, 1));

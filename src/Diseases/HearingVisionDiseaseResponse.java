@@ -120,14 +120,14 @@ public class HearingVisionDiseaseResponse {
 				// this changes
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
+						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			}
 
 			else
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
+				this.setYearDiagnosedSimulatedResponse(Year.of(
 						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-								HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))));
+								HearingVisionDiseaseResponse.getMaxtogenerateerrorval())));
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -278,7 +278,7 @@ public class HearingVisionDiseaseResponse {
 	/**
 	 * @return the yearDiagnosed
 	 */
-	public Year getYearDiagnosedSimulatedValue() {
+	public Year getYearDiagnosedSimulatedResponse() {
 		return this.yearDiagnosed;
 	}
 
@@ -307,7 +307,7 @@ public class HearingVisionDiseaseResponse {
 	public int hashCode() {
 		try {
 			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(),
-					this.getYearDiagnosedSimulatedValue());
+					this.getYearDiagnosedSimulatedResponse());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

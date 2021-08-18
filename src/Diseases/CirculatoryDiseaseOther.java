@@ -175,7 +175,7 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 	/**
 	 * @return the circulatoryDiseasesOtherMedsAdministeredEpicResponse
 	 */
-	public int getCirculatoryDiseasesOtherMedsAdministeredEpicResponse() {
+	public int getCirculatorydiseaseothermedicinesadministeredepicresponse() {
 		try {
 			return this.CirculatoryDiseasesOtherMedsAdministeredEpicResponse;
 		} catch (Exception e) {
@@ -223,7 +223,7 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 	@Override
 	public int hashCode() {
 		return Objects.hash(super.hashCode(), this.getCircDOtherMed(),
-				this.getCirculatoryDiseasesOtherMedsAdministeredEpicResponse());
+				this.getCirculatorydiseaseothermedicinesadministeredepicresponse());
 	}
 
 	@Override

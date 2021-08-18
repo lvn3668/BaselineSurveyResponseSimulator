@@ -118,12 +118,12 @@ public class MentalHealthResponse {
 				// this changes
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
+						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
+				this.setYearDiagnosedSimulatedResponse(Year.of(
 						this.getUtilities().randBetween(MentalHealthResponse.getMintogenerateerrorval(),
-								MentalHealthResponse.getMaxtogenerateerrorval()))));
+								MentalHealthResponse.getMaxtogenerateerrorval())));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -240,7 +240,7 @@ public class MentalHealthResponse {
 	/**
 	 * @return the yearDiagnosed
 	 */
-	protected Year getYearDiagnosed() throws Exception {
+	public Year getYearDiagnosedSimulatedResponse() throws Exception {
 		try {
 			return this.yearDiagnosed;
 		} catch (Exception e) {

@@ -152,7 +152,7 @@ public class InfectiousDiseaseOther extends InfectiousDiseaseResponse {
 	/**
 	 * @return the infectiousDiseasesOtherMedsAdministeredEpicResponse
 	 */
-	public int getInfectiousDiseasesOtherMedsAdministeredEpicResponse() throws Exception {
+	public int getIDOthermedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.InfectiousDiseasesOtherMedsAdministeredEpicResponse;
 		} catch (Exception e) {

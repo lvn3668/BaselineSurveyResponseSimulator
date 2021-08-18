@@ -129,7 +129,7 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	 * @return
 	 * @throws Exception
 	 */
-	public int getAlzheimersmedsadministeredepicresponse() throws Exception {
+	public int getAlzheimersmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.alzheimersmedsadministeredepicresponse;
 		} catch (Exception e) {
@@ -199,7 +199,7 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	public int hashCode() {
 
 		try {
-			return (Integer.toString(this.getAlzheimersmedsadministeredepicresponse()).hashCode()
+			return (Integer.toString(this.getAlzheimersmedicinesadministeredepicresponse()).hashCode()
 					+ Integer.toString((int) this.getAlzheimersMedicines().getMinimum()).hashCode()
 					+ Integer.toString((int) this.getAlzheimersMedicines().getMaximum()).hashCode());
 		} catch (Exception e) {

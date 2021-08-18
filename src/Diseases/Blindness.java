@@ -204,7 +204,7 @@ public class Blindness extends HearingVisionDiseaseResponse {
 	public int hashCode() {
 		try {
 			return Objects.hash(this.getBlindnessMedicines(), this.getBlindnessmedicinesadministeredepicresponse(),
-					super.getYearDiagnosedSimulatedValue());
+					super.getYearDiagnosedSimulatedResponse());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

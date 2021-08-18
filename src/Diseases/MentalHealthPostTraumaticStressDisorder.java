@@ -158,7 +158,7 @@ public class MentalHealthPostTraumaticStressDisorder extends MentalHealthRespons
 	/**
 	 * @return the mHPTSDMedsEpicResponse
 	 */
-	public int getMHPTSDMedsEpicResponse() throws Exception {
+	public int getMentalhealthptsdmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.MHPTSDMedsEpicResponse;
 		} catch (Exception e) {

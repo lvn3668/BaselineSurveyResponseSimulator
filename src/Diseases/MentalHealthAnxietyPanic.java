@@ -158,7 +158,7 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 	/**
 	 * @return the mHAnxPanicMedsAdministeredEpicResponse
 	 */
-	public int getMHAnxPanicMedsAdministeredEpicResponse() throws Exception {
+	public int getMentalhealthAnxietyPanicmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.MHAnxPanicMedsAdministeredEpicResponse;
 		} catch (Exception e) {
@@ -168,8 +168,14 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 		return this.MHAnxPanicMedsAdministeredEpicResponse;
 	}
 
-	private void setMHAnxietyPanicMeds(ValueRange of) {
-		// TODO Auto-generated method stub
+	private void setMHAnxietyPanicMeds(ValueRange valuerange) {
+		try {
+			// TODO Auto-generated method stub
+			this.MHAnxPancMedicines = valuerange;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

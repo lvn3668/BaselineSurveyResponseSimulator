@@ -235,10 +235,11 @@ public class SimulatedResponseQ1_15 {
 	*/
 	public SimulatedResponseQ1_15() {
 		try {
+			this.setUtilities(new Utilities());
 			this.setErrorResponse(
 					this.getUtilities().randBetween(SimulatedResponseQ1_15.getMinValToGenerateErrorResponse(),
 							SimulatedResponseQ1_15.getMaxValToGenerateErrorResponse()));
-			this.setUtilities(new Utilities());
+
 			this.setUniformdistribution(
 					new UniformDistribution(SimulatedResponseQ1_15.getMinValToGenerateErrorResponse(),
 							SimulatedResponseQ1_15.getMaxValToGenerateErrorResponse()));

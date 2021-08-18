@@ -113,7 +113,7 @@ public class BreastCancer extends CancerResponse {
 	/**
 	 * @return the breastcancermedicinesadministeredepicresponse
 	 */
-	public int getBreastcancermedicinesadministeredepicresponse() throws Exception {
+	public int getBreastCancermedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.breastcancermedicinesadministeredepicresponse;
 		} catch (Exception e) {
@@ -185,7 +185,7 @@ public class BreastCancer extends CancerResponse {
 	@Override
 	public int hashCode() {
 		try {
-			return Objects.hash(this.getBrstCancerMedicines(), this.getBreastcancermedicinesadministeredepicresponse());
+			return Objects.hash(this.getBrstCancerMedicines(), this.getBreastCancermedicinesadministeredepicresponse());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

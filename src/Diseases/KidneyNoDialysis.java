@@ -152,7 +152,7 @@ public class KidneyNoDialysis extends NephrologyResponse {
 	/**
 	 * @return the kdNoDialysisMedsAdministeredEpicResponse
 	 */
-	public int getKdNoDialysisMedsAdministeredEpicResponse() throws Exception {
+	public int getKidneyNoDialysismedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.KdNoDialysisMedsAdministeredEpicResponse;
 		} catch (Exception e) {

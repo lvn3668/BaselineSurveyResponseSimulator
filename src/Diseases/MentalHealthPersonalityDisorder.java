@@ -159,7 +159,7 @@ public class MentalHealthPersonalityDisorder extends MentalHealthResponse {
 	/**
 	 * @return the mHPersonalityDisorderMedsAdministeredEpicResponse
 	 */
-	public int getMHPersonalityDisorderMedsAdministeredEpicResponse() throws Exception {
+	public int getMentalhealthpersonalitydisordermedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.MHPersonalityDisorderMedsAdministeredEpicResponse;
 		} catch (Exception e) {

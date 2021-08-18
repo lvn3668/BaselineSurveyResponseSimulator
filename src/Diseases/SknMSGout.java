@@ -161,7 +161,7 @@ public class SknMSGout extends SkinDiseaseResponse {
 	/**
 	 * @return the sknMSGoutMedsAdministeredEpicResponse
 	 */
-	public int getSknMSGoutMedsAdministeredEpicResponse() {
+	public int getSkinMSGoutmedicinesadministeredepicresponse() {
 		try {
 			return this.SknMSGoutMedsAdministeredEpicResponse;
 		} catch (Exception e) {

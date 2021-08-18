@@ -82,7 +82,7 @@ public class UniformDistribution {
 
 	// To be generated Randomly from caller
 	public double returnprobabilitytointroducenoiseinyearresponses(int number) {
-		return this.getUidyear().probability(number);
+		return this.getUiderrorresponsedist().probability(number);
 	}
 
 	/**

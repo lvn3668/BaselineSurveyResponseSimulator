@@ -187,10 +187,10 @@ public class SimulatedDiseaseResponse {
 			this.setGIAcidReflux(new GIAcidReflux(cohort));
 			this.setGICeliacDisease(new GICeliacDisease(cohort));
 			this.setGICrohnsDisease(new GICrohnsDisease(cohort));
-			this.setGIOtherDisease(new GIDiseaseOther(cohort));
+			this.setGiOtherDisease(new GIDiseaseOther(cohort));
 			this.setGiIrritableBowelSyndrome(new GIIrritableBowelSyndrome(cohort));
 			this.setGIObstruction(new GIObstruction(cohort));
-			this.setGIPolyp(new GIPolyp(cohort));
+			this.setGiPolyp(new GIPolyp(cohort));
 			this.setGiUlceritiveColitis(new GIUlceritiveColitis(cohort));
 			this.setGiUlcer(new GIUlcer(cohort));
 			this.setGlaucoma(new Glaucoma(cohort));
@@ -221,12 +221,12 @@ public class SimulatedDiseaseResponse {
 			this.setMentalhealthschizophrenia(new MentalHealthSchizophrenia(cohort));
 			this.setMentalhealthsocph(new MentalHealthSocPh(cohort));
 			this.setMigrane(new Migrane(cohort));
-			this.setNeuroStimulatoryDiseaseOther(new NeuroStimulatoryDiseaseOther(cohort));
+			this.setNeurostimulatorydiseaseother(new NeuroStimulatoryDiseaseOther(cohort));
 			this.setAcuteSpinalCordInjury(new AcuteSpinalCordInjury(cohort));
 			this.setNSTBI(new NeuroStimulatoryDiseaseTBI(cohort));
 			this.setOsteopathicdiseaseother(new OsteopathicDiseaseOther(cohort));
 			this.setOsteopathicdiseaseskin(new OsteopathicDiseaseSkin(cohort));
-			this.setOtherCancer(new OtherCancer(cohort));
+			this.setCancerOther(new OtherCancer(cohort));
 			this.setParkinsons(new ParkinsonsDisease(cohort));
 			this.setProstateCancer(new ProstateCancer(cohort));
 			this.setPulmonaryvasculardisease(new PulmonaryVascularDisease(cohort));
@@ -242,6 +242,7 @@ public class SimulatedDiseaseResponse {
 			this.setTinitus(new Tinitus(cohort));
 			this.setTuberculosis(new Tuberculosis(cohort));
 			this.setMultiplesclerosis(new MultipleSclerosis(cohort));
+			this.setDiabetes(new Diabetes(cohort));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -390,7 +391,7 @@ public class SimulatedDiseaseResponse {
 	/**
 	 * @return the cancerOther
 	 */
-	public OtherCancer getCancerOther() throws Exception {
+	public OtherCancer getOtherCancer() throws Exception {
 		try {
 			return this.cancerOther;
 		} catch (Exception e) {
@@ -593,20 +594,6 @@ public class SimulatedDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.giIrritableBowelSyndrome;
-
-	}
-
-	/**
-	 * @return the giobstruction
-	 */
-	public GIObstruction getGIObstruction() {
-		try {
-			return this.giobstruction;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.giobstruction;
 
 	}
 
@@ -1064,7 +1051,7 @@ public class SimulatedDiseaseResponse {
 	/**
 	 * @return the nSDOth
 	 */
-	public NeuroStimulatoryDiseaseOther getNeuroStimulatoryDiseaseOther() {
+	public NeuroStimulatoryDiseaseOther getNeurostimulatorydiseaseother() {
 		try {
 			return this.neurostimulatorydiseaseother;
 		} catch (Exception e) {
@@ -1072,20 +1059,6 @@ public class SimulatedDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.neurostimulatorydiseaseother;
-
-	}
-
-	/**
-	 * @return the nSTBI
-	 */
-	public NeuroStimulatoryDiseaseTBI getNeuroStimulatoryDiseaseTBI() {
-		try {
-			return this.neurostimulatorydiseasetbi;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.neurostimulatorydiseasetbi;
 
 	}
 
@@ -1114,20 +1087,6 @@ public class SimulatedDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.osteopathicdiseaseskin;
-
-	}
-
-	/**
-	 * @return the otherCancer
-	 */
-	public OtherCancer getOtherCancer() {
-		try {
-			return this.otherCancer;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.otherCancer;
 
 	}
 
@@ -1600,30 +1559,6 @@ public class SimulatedDiseaseResponse {
 	}
 
 	/**
-	 * @param giOtherDisease the giOtherDisease to set
-	 */
-	private void setGIOtherDisease(GIDiseaseOther giOtherDisease) {
-		try {
-			this.giOtherDisease = giOtherDisease;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param giPolyp the giPolyp to set
-	 */
-	private void setGIPolyp(GIPolyp gipolyp) {
-		try {
-			this.giPolyp = gipolyp;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * @param giUlcer the giUlcer to set
 	 */
 	private void setGiUlcer(GIUlcer giulcer) {
@@ -2006,18 +1941,6 @@ public class SimulatedDiseaseResponse {
 	}
 
 	/**
-	 * @param nSDOth the nSDOth to set
-	 */
-	private void setNeuroStimulatoryDiseaseOther(NeuroStimulatoryDiseaseOther neurostimulatorydisease) {
-		try {
-			this.neurostimulatorydiseaseother = neurostimulatorydisease;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * @param nSTBI the nSTBI to set
 	 */
 	private void setNSTBI(NeuroStimulatoryDiseaseTBI neurostimulatorydiseasetbi) {
@@ -2047,18 +1970,6 @@ public class SimulatedDiseaseResponse {
 	private void setOsteopathicdiseaseskin(OsteopathicDiseaseSkin osteopathicdiseaseskin) {
 		try {
 			this.osteopathicdiseaseskin = osteopathicdiseaseskin;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param otherCancer the otherCancer to set
-	 */
-	private void setOtherCancer(OtherCancer otherCancer) {
-		try {
-			this.otherCancer = otherCancer;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -2232,6 +2143,83 @@ public class SimulatedDiseaseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @param acutespinalcordinjury the acutespinalcordinjury to set
+	 */
+	private void setAcutespinalcordinjury(AcuteSpinalCordInjury acutespinalcordinjury) {
+		this.acutespinalcordinjury = acutespinalcordinjury;
+	}
+
+	/**
+	 * @return the giobstruction
+	 */
+	public GIObstruction getGiobstruction() {
+		return this.giobstruction;
+	}
+
+	/**
+	 * @param neurostimulatorydiseaseother the neurostimulatorydiseaseother to set
+	 */
+	private void setNeurostimulatorydiseaseother(NeuroStimulatoryDiseaseOther neurostimulatorydiseaseother) {
+		this.neurostimulatorydiseaseother = neurostimulatorydiseaseother;
+	}
+
+	/**
+	 * @return the neurostimulatorydiseasetbi
+	 */
+	public NeuroStimulatoryDiseaseTBI getNeurostimulatorydiseasetbi() {
+		return this.neurostimulatorydiseasetbi;
+	}
+
+	/**
+	 * @param neurostimulatorydiseasetbi the neurostimulatorydiseasetbi to set
+	 */
+	private void setNeurostimulatorydiseasetbi(NeuroStimulatoryDiseaseTBI neurostimulatorydiseasetbi) {
+		this.neurostimulatorydiseasetbi = neurostimulatorydiseasetbi;
+	}
+
+	/**
+	 * @return the sknMSArthritis
+	 */
+	private SkinMsArthritis getSknMSArthritis() {
+		return this.sknMSArthritis;
+	}
+
+	/**
+	 * @param sknMSArthritis the sknMSArthritis to set
+	 */
+	private void setSknMSArthritis(SkinMsArthritis sknMSArthritis) {
+		this.sknMSArthritis = sknMSArthritis;
+	}
+
+	/**
+	 * @param cancerOther the cancerOther to set
+	 */
+	private void setCancerOther(OtherCancer cancerOther) {
+		this.cancerOther = cancerOther;
+	}
+
+	/**
+	 * @param diabetes the diabetes to set
+	 */
+	private void setDiabetes(Diabetes diabetes) {
+		this.diabetes = diabetes;
+	}
+
+	/**
+	 * @param giOtherDisease the giOtherDisease to set
+	 */
+	private void setGiOtherDisease(GIDiseaseOther giOtherDisease) {
+		this.giOtherDisease = giOtherDisease;
+	}
+
+	/**
+	 * @param giPolyp the giPolyp to set
+	 */
+	private void setGiPolyp(GIPolyp giPolyp) {
+		this.giPolyp = giPolyp;
 	}
 
 }

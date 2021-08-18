@@ -153,7 +153,7 @@ public class ParkinsonsDisease extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the mSMedsadministeredepicresponse
 	 */
-	public int getParkinsonsDiseaseMedsadministeredepicresponse() {
+	public int getParkinsonsmedicinesadministeredepicresponse() {
 		try {
 			return this.ParkinsonsDiseaseMedsadministeredepicresponse;
 		} catch (Exception e) {

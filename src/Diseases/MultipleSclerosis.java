@@ -140,7 +140,7 @@ public class MultipleSclerosis extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the mSMedsadministeredepicresponse
 	 */
-	public int getMSMedsadministeredepicresponse() throws Exception {
+	public int getMultiplesclerosismedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.MSMedsadministeredepicresponse;
 		} catch (Exception e) {

@@ -127,7 +127,7 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the acidRefluxmedicinesadministeredepicresponse
 	 */
-	public int getAcidRefluxmedicinesadministeredepicresponse() throws Exception {
+	public int getGiAcidRefluxmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.acidRefluxmedicinesadministeredepicresponse;
 		} catch (Exception e) {

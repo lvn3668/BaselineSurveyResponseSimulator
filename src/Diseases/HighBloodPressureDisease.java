@@ -149,7 +149,7 @@ public class HighBloodPressureDisease extends InfectiousDiseaseResponse {
 	/**
 	 * @return the hBPDMedsAdministeredEpicResponse
 	 */
-	public int getHBPDMedsAdministeredEpicResponse() throws Exception {
+	public int getHighBloodPressureDiseasemedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.HBPDMedsAdministeredEpicResponse;
 		} finally {

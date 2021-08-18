@@ -91,16 +91,16 @@ public class KidneyDialysis extends NephrologyResponse {
 					KidneyDialysis.getMaxtogenerateerrorval()));
 
 			this.setKidneyDialysisMeds(ValueRange.of(0, 1));
-			this.setKDDialysisMedsAdministeredEpicResponse(2);
+			this.setKidneyDialysismedicinesadministeredepicresponse(2);
 			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
 			// add getters for uniform dist and random epic vars
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
 							KidneyDialysis.getMintogenerateerrorval(), KidneyDialysis.getMaxtogenerateerrorval())))) {
-				this.setKDDialysisMedsAdministeredEpicResponse(
+				this.setKidneyDialysismedicinesadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getKidneyDialysisMeds().getMinimum(),
 								(int) this.getKidneyDialysisMeds().getMaximum()));
 			} else {
-				this.setKDDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+				this.setKidneyDialysismedicinesadministeredepicresponse(this.getUtilities().randBetween(
 						KidneyDialysis.getMintogenerateerrorval(), KidneyDialysis.getMaxtogenerateerrorval()));
 			}
 		} catch (Exception e) {
@@ -119,16 +119,16 @@ public class KidneyDialysis extends NephrologyResponse {
 					KidneyDialysis.getMaxtogenerateerrorval()));
 
 			this.setKidneyDialysisMeds(valuerange);
-			this.setKDDialysisMedsAdministeredEpicResponse(simulatedresponse);
+			this.setKidneyDialysismedicinesadministeredepicresponse(simulatedresponse);
 			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
 			// add getters for uniform dist and random epic vars
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
 							KidneyDialysis.getMintogenerateerrorval(), KidneyDialysis.getMaxtogenerateerrorval())))) {
-				this.setKDDialysisMedsAdministeredEpicResponse(
+				this.setKidneyDialysismedicinesadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getKidneyDialysisMeds().getMinimum(),
 								(int) this.getKidneyDialysisMeds().getMaximum()));
 			} else {
-				this.setKDDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+				this.setKidneyDialysismedicinesadministeredepicresponse(this.getUtilities().randBetween(
 						KidneyDialysis.getMintogenerateerrorval(), KidneyDialysis.getMaxtogenerateerrorval()));
 			}
 		} catch (Exception e) {
@@ -159,7 +159,7 @@ public class KidneyDialysis extends NephrologyResponse {
 	/**
 	 * @return the kDDialysisMedsAdministeredEpicResponse
 	 */
-	public int getKDDialysisMedsAdministeredEpicResponse() throws Exception {
+	public int getKidneyDialysismedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.KDDialysisMedsAdministeredEpicResponse;
 		} catch (Exception e) {
@@ -186,7 +186,7 @@ public class KidneyDialysis extends NephrologyResponse {
 	 *                                               kDDialysisMedsAdministeredEpicResponse
 	 *                                               to set
 	 */
-	private void setKDDialysisMedsAdministeredEpicResponse(int kDDialysisMedsAdministeredEpicResponse)
+	private void setKidneyDialysismedicinesadministeredepicresponse(int kDDialysisMedsAdministeredEpicResponse)
 			throws Exception {
 		try {
 			this.KDDialysisMedsAdministeredEpicResponse = kDDialysisMedsAdministeredEpicResponse;

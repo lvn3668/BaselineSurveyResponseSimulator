@@ -160,7 +160,7 @@ public class Tuberculosis extends InfectiousDiseaseResponse {
 	/**
 	 * @return the tuberculosisMedsAdministeredEpicResponse
 	 */
-	public int getTuberculosisMedsAdministeredEpicResponse() {
+	public int getTuberculosismedicinesadministeredepicresponse() {
 		try {
 			return this.TuberculosisMedsAdministeredEpicResponse;
 		} catch (Exception e) {

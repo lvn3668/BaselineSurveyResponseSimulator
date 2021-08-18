@@ -138,7 +138,7 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the memorylossmedicinesadministeredepicresponse
 	 */
-	public int getMemorylossmedicinesadministeredepicresponse() {
+	public int getMemoryLossmedicinesadministeredepicresponse() {
 		try {
 			return this.memorylossmedicinesadministeredepicresponse;
 		} catch (Exception e) {

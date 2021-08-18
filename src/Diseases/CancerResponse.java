@@ -239,13 +239,13 @@ public class CancerResponse {
 				// this changes
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
+						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			}
 
 			else
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities().randBetween(
-						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))));
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(
+						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval())));
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

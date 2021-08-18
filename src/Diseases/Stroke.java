@@ -158,7 +158,7 @@ public class Stroke extends MiscDiseaseResponse {
 	/**
 	 * @return the strokeMedsAdministeredEpicResponse
 	 */
-	public int getStrokeMedsAdministeredEpicResponse() {
+	public int getStrokemedicinesadministeredepicresponse() {
 		try {
 			return this.StrokeMedsAdministeredEpicResponse;
 		} catch (Exception e) {

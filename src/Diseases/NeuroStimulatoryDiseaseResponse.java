@@ -1,9 +1,13 @@
 package Diseases;
 
+import java.time.LocalDate;
 import java.time.Year;
+import java.time.ZoneId;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 import Utilities.Utilities;
 import cohort.Cohort;
@@ -120,12 +124,13 @@ public class NeuroStimulatoryDiseaseResponse {
 				// this changes
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
+						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
+				this.setYearDiagnosedSimulatedResponse(Year.of(
 						this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
-								NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()))));
+								NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval())));
 			}
 
 		} catch (Exception e) {
@@ -236,7 +241,7 @@ public class NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the yearDiagnosed
 	 */
-	protected Year getYearDiagnosed() {
+	public Year getYearDiagnosedSimulatedResponse() {
 		return this.yearDiagnosed;
 	}
 
@@ -303,7 +308,7 @@ public class NeuroStimulatoryDiseaseResponse {
 	@Override
 	public int hashCode() {
 		try {
-			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(), this.getYearDiagnosed());
+			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(), this.getYearDiagnosedSimulatedResponse());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

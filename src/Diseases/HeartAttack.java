@@ -148,7 +148,7 @@ public class HeartAttack extends MiscDiseaseResponse {
 	/**
 	 * @return the heartAttackMedicinesAdministeredEpicResponse
 	 */
-	public int getHeartAttackMedicinesAdministeredEpicResponse() throws Exception {
+	public int getHeartAttackmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.HeartAttackMedicinesAdministeredEpicResponse;
 		} finally {

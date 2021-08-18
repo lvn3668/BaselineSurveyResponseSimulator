@@ -146,7 +146,7 @@ public class HepatitisC extends InfectiousDiseaseResponse {
 	/**
 	 * @return the hepCMedsAdministeredEpicResponse
 	 */
-	public int getHepCMedsAdministeredEpicResponse() throws Exception {
+	public int getHepatitisCmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.HepCMedsAdministeredEpicResponse;
 		} finally {

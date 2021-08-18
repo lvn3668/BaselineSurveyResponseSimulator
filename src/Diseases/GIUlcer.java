@@ -148,7 +148,7 @@ public class GIUlcer extends GastroIntestinalDiseaseResponse {
 	/**
 	 * @return the gIUlcerMedsAdministeredEpicResponse
 	 */
-	public int getGIUlcerMedsAdministeredEpicResponse() throws Exception {
+	public int getGiUlcermedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.GIUlcerMedsAdministeredEpicResponse;
 		} catch (Exception e) {

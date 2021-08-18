@@ -120,14 +120,14 @@ public class InfectiousDiseaseResponse {
 				// this changes
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
+						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			}
 
 			else
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
+				this.setYearDiagnosedSimulatedResponse(Year.of(
 						this.getUtilities().randBetween(InfectiousDiseaseResponse.getMintogenerateerrorval(),
-								InfectiousDiseaseResponse.getMaxtogenerateerrorval()))));
+								InfectiousDiseaseResponse.getMaxtogenerateerrorval())));
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -243,7 +243,7 @@ public class InfectiousDiseaseResponse {
 	/**
 	 * @return the yearDiagnosed
 	 */
-	protected Year getYearDiagnosed() throws Exception {
+	public Year getYearDiagnosedSimulatedResponse() throws Exception {
 		try {
 			return this.yearDiagnosed;
 		} catch (Exception e) {
@@ -326,7 +326,7 @@ public class InfectiousDiseaseResponse {
 	@Override
 	public int hashCode() {
 		try {
-			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(), this.getYearDiagnosed());
+			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(), this.getYearDiagnosedSimulatedResponse());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

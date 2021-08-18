@@ -155,7 +155,7 @@ public class PulmonaryVascularDisease extends MiscDiseaseResponse {
 	/**
 	 * @return the pulmonaryVascularDiseaseMedsEpicResponse
 	 */
-	public int getPulmonaryVascularDiseaseMedsEpicResponse() {
+	public int getPulmonaryvasculardiseasemedicinesadministeredepicresponse() {
 		try {
 			return this.PulmonaryVascularDiseaseMedsEpicResponse;
 		} catch (Exception e) {

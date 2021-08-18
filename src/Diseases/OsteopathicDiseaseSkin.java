@@ -140,7 +140,7 @@ public class OsteopathicDiseaseSkin extends OsteopathicDiseaseResponse {
 	/**
 	 * @return the osteopathicDiseasesSkinMedsAdministeredEpicResponse
 	 */
-	public int getOsteopathicDiseasesSkinMedsAdministeredEpicResponse() throws Exception {
+	public int getOsteopathicdiseaseskinmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.OsteopathicDiseasesSkinMedsAdministeredEpicResponse;
 		} catch (Exception e) {

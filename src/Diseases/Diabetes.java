@@ -166,7 +166,7 @@ public class Diabetes extends OsteopathicDiseaseResponse {
 	/**
 	 * @return the diabetesmedicinesadministeredepicresponse
 	 */
-	protected int getDiabetesmedicinesadministeredepicresponse() throws Exception {
+	public int getDiabetesmedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.diabetesmedicinesadministeredepicresponse;
 		} catch (Exception e) {

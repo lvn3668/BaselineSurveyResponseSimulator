@@ -162,7 +162,7 @@ public class LungCancer extends CancerResponse {
 	/**
 	 * @return the lungcancermedicinesadministeredepicresponse
 	 */
-	public int getLungcancermedicinesadministeredepicresponse() throws Exception {
+	public int getLungCancermedicinesadministeredepicresponse() throws Exception {
 		try {
 			return this.lungcancermedicinesadministeredepicresponse;
 		} catch (Exception e) {
