@@ -7,7 +7,9 @@ import java.time.temporal.ValueRange;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
 import javax.sql.rowset.serial.SerialBlob;
+
 import Utilities.Utilities;
 import randomizer.UniformDistribution;
 
@@ -52,8 +54,7 @@ public class SimulatedResponseVAUseVars {
 		 *
 		 */
 		private boolean editStatusDefaultSimulatedValue;
-		
-		private boolean formcompletionstatusDefaultSimulatedValue;
+
 		/**
 		 *
 		 */
@@ -188,12 +189,12 @@ public class SimulatedResponseVAUseVars {
 		 *
 		 */
 		private ValueRange VARxValueRange;
+		private int VAUseSimulatedResponse;
+
 		/**
 		 *
 		 */
 		private ValueRange VAUseValueRange;
-		
-		private int VAUseSimulatedResponse;
 
 		/**
 		 *
@@ -205,9 +206,11 @@ public class SimulatedResponseVAUseVars {
 			this.setHelpCompletingFormValueRange(SimulatedResponseVAUseVars.getHelpcompletionvaluerange());
 			this.setHelpCompletingFormsimulatedresponse(-10);
 			this.setImageFileDefaultSimulatedValue(SimulatedResponseVAUseVars.getImagefile());
-			this.setFormcompletionstatusDefaultSimulatedValue(SimulatedResponseVAUseVars.isDefaultformcompletionstatus());
-			this.setUniformDistribution(new UniformDistribution(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
-					SimulatedResponseVAUseVars.getMaxtogenerateerrorval()));
+			this.setFormcompletionstatusDefaultSimulatedValue(
+					SimulatedResponseVAUseVars.isDefaultformcompletionstatus());
+			this.setUniformDistribution(
+					new UniformDistribution(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaxtogenerateerrorval()));
 			this.setVAUseValueRange(SimulatedResponseVAUseVars.getVausevalsvaluerange());
 			// 5 VA drop off sites
 			this.setVAHospResponseDropoffSite(SimulatedResponseVAUseVars.getVahospdropoffsitevaluerange());
@@ -215,15 +218,15 @@ public class SimulatedResponseVAUseVars {
 			this.setNonVAHospResponseDropOffSiteValueRange(
 					SimulatedResponseVAUseVars.getNonvahospdropoffsitevaluerange());
 			this.setNonVARx(SimulatedResponseVAUseVars.getNonVARxValueRangeDefaultVals());
-			this.setNonVARxsimulatedresponse(SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween
-					((int)SimulatedResponseVAUseVars.getNonVARxValueRangeDefaultVals().getMinimum(), 
-							(int)SimulatedResponseVAUseVars.getNonVARxValueRangeDefaultVals().getMaximum()));
+			this.setNonVARxsimulatedresponse(SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+					(int) SimulatedResponseVAUseVars.getNonVARxValueRangeDefaultVals().getMinimum(),
+					(int) SimulatedResponseVAUseVars.getNonVARxValueRangeDefaultVals().getMaximum()));
 			this.setVARx(SimulatedResponseVAUseVars.getVarxvaluerange());
 			// Interventions other than prescriptions at the VA
 			this.setVANonRx(SimulatedResponseVAUseVars.getNonVARxValueRangeDefaultVals());
 			// Interventions other than Rx at non-VA sites
 			this.setNonVANonRx(SimulatedResponseVAUseVars.getNonvanonrxvaluerange());
-			//this.setNonVANonRxsimulatedresponse();
+			// this.setNonVANonRxsimulatedresponse();
 			// default empty
 			// to be changed
 			// Properties file / class
@@ -244,7 +247,6 @@ public class SimulatedResponseVAUseVars {
 			//
 			this.setMailCodeDefaultSimulatedValue(SimulatedResponseVAUseVars.getDefaultmailcode());
 			this.setNum_Complete(SimulatedResponseVAUseVars.getDefaultnumcomplete());
-			String Num_Complete = null;
 			// set to random value (whether duplicate form submission or not)
 			this.setFormDuplicationStatusDefaultSimulatedValue(
 					SimulatedResponseVAUseVars.getDefaultformduplicationstatus());
@@ -694,6 +696,11 @@ public class SimulatedResponseVAUseVars {
 
 		}
 
+		public String getNumQ_Complete_SecGDefaultSimulatedResponse() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 		/**
 		 * @return the num_Complete
 		 */
@@ -745,6 +752,11 @@ public class SimulatedResponseVAUseVars {
 
 		}
 
+		public String getTimestampFormCompletiongDefaultSimulatedValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 		/**
 		 * @return the uniformDistribution
 		 */
@@ -760,6 +772,13 @@ public class SimulatedResponseVAUseVars {
 			}
 			return this.uniformDistribution;
 
+		}
+
+		/**
+		 * @return the utilities
+		 */
+		private Utilities getUtilities() {
+			return this.utilities;
 		}
 
 		/**
@@ -862,6 +881,13 @@ public class SimulatedResponseVAUseVars {
 			}
 			return this.VARxValueRange;
 
+		}
+
+		/**
+		 * @return the vAUseSimulatedResponse
+		 */
+		public int getVAUseSimulatedResponse() {
+			return this.VAUseSimulatedResponse;
 		}
 
 		/**
@@ -986,6 +1012,14 @@ public class SimulatedResponseVAUseVars {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+
+		/**
+		 * @param formcompletionstatusDefaultSimulatedValue the
+		 *                                                  formcompletionstatusDefaultSimulatedValue
+		 *                                                  to set
+		 */
+		private void setFormcompletionstatusDefaultSimulatedValue(boolean formcompletionstatusDefaultSimulatedValue) {
 		}
 
 		/**
@@ -1341,6 +1375,13 @@ public class SimulatedResponseVAUseVars {
 		}
 
 		/**
+		 * @param utilities the utilities to set
+		 */
+		private void setUtilities(Utilities utilities) {
+			this.utilities = utilities;
+		}
+
+		/**
 		 * @param vAHospResponseDropoffSiteValueRange the vAHospResponseDropoffSite to
 		 *                                            set
 		 */
@@ -1434,6 +1475,13 @@ public class SimulatedResponseVAUseVars {
 		}
 
 		/**
+		 * @param vAUseSimulatedResponse the vAUseSimulatedResponse to set
+		 */
+		private void setVAUseSimulatedResponse(int vAUseSimulatedResponse) {
+			this.VAUseSimulatedResponse = vAUseSimulatedResponse;
+		}
+
+		/**
 		 * @param vAUse the vAUse to set
 		 */
 		/**
@@ -1461,10 +1509,10 @@ public class SimulatedResponseVAUseVars {
 				this.setHelpCompletingFormsimulatedresponse(errorresponse);
 				if (
 				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
-						((!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogenerateerrorvalforhelpcompleting()))))
-						)
-						{
+				((!this.getUniformDistribution()
+						.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+								SimulatedResponseVAUseVars.getMaximumtogenerateerrorvalforhelpcompleting()))))) {
 					this.setHelpCompletingFormsimulatedresponse(
 							this.getUtilities().randBetween((int) this.getHelpCompletingFormValueRange().getMinimum(),
 									(int) this.getHelpCompletingFormValueRange().getMaximum()));
@@ -1490,12 +1538,13 @@ public class SimulatedResponseVAUseVars {
 				this.setNonVAHospResponseDropOffSitesimulatedresponse(errorresponse);
 				if (
 				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
-				(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-						SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
-						SimulatedResponseVAUseVars.getMaximumtogeneratevahospresponsedropoffsiteerrorval())))) {
-					this.setNonVAHospResponseDropOffSitesimulatedresponse(
-							this.getUtilities().randBetween((int) this.getNonVAHospResponseDropffSiteValueRange().getMinimum(),
-									(int) this.getNonVAHospResponseDropffSiteValueRange().getMaximum()));
+				(!this.getUniformDistribution()
+						.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+								SimulatedResponseVAUseVars.getMaximumtogeneratevahospresponsedropoffsiteerrorval())))) {
+					this.setNonVAHospResponseDropOffSitesimulatedresponse(this.getUtilities().randBetween(
+							(int) this.getNonVAHospResponseDropffSiteValueRange().getMinimum(),
+							(int) this.getNonVAHospResponseDropffSiteValueRange().getMaximum()));
 					return this.getNonVAHospResponseDropOffSitesimulatedresponse();
 				}
 
@@ -1517,8 +1566,9 @@ public class SimulatedResponseVAUseVars {
 				this.setNonVANonRxsimulatedresponse(errorresponse);
 				if (
 				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
-				(!this.getUniformDistribution().generatenoiseinresponsevariables(
-						this.getUtilities().randBetween(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), 
+				(!this.getUniformDistribution()
+						.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
 								SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
 					this.setNonVANonRxsimulatedresponse(
 							this.getUtilities().randBetween((int) this.getNonVANonRxValueRange().getMinimum(),
@@ -1544,11 +1594,13 @@ public class SimulatedResponseVAUseVars {
 				this.setNonVARxsimulatedresponse(errorresponse);
 				if (
 				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
-				(!this.getUniformDistribution().generatenoiseinresponsevariables(
-						this.getUtilities().randBetween(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), 
+				(!this.getUniformDistribution()
+						.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
 								SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
-					this.setNonVARxsimulatedresponse(this.getUtilities().randBetween(
-							(int) this.getNonVARxValueRange().getMinimum(), (int) this.getNonVARxValueRange().getMaximum()));
+					this.setNonVARxsimulatedresponse(
+							this.getUtilities().randBetween((int) this.getNonVARxValueRange().getMinimum(),
+									(int) this.getNonVARxValueRange().getMaximum()));
 					return this.getNonVARxsimulatedresponse();
 				}
 
@@ -1558,25 +1610,6 @@ public class SimulatedResponseVAUseVars {
 			return errorresponse;
 		}
 
-		public int simulateVAUsesimulatedresponse(ValueRange valuerange, int errorresponse) throws Exception {
-			try {
-				this.setVAUseValueRange(valuerange);
-				this.setVAUseSimulatedResponse(errorresponse);
-				if (
-				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
-				(!this.getUniformDistribution().generatenoiseinresponsevariables(
-						this.getUtilities().randBetween(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), 
-								SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
-					this.setVAUseSimulatedResponse(this.getUtilities().randBetween(
-							(int) this.getVAUseValueRange().getMinimum(), (int) this.getVAUseValueRange().getMaximum()));
-					return this.getVAUseSimulatedResponse();
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return errorresponse;
-		}
 		/**
 		 * @param valuerange
 		 * @param errorresponse
@@ -1592,9 +1625,9 @@ public class SimulatedResponseVAUseVars {
 				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
 				(!this.getUniformDistribution().generatenoiseinresponsevariables(
 						this.getUtilities().randBetween(0, SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
-					this.setVANonRxsimulatedresponse(
-							this.getUtilities().randBetween((int) this.getVAHospResponseDropoffSiteValueRange().getMinimum(),
-									(int) this.getVAHospResponseDropoffSiteValueRange().getMaximum()));
+					this.setVANonRxsimulatedresponse(this.getUtilities().randBetween(
+							(int) this.getVAHospResponseDropoffSiteValueRange().getMinimum(),
+							(int) this.getVAHospResponseDropoffSiteValueRange().getMaximum()));
 					return this.getVAHospResponseDropoffSitesimulatedresponse();
 				}
 
@@ -1616,10 +1649,13 @@ public class SimulatedResponseVAUseVars {
 				this.setVANonRxsimulatedresponse(errorresponse);
 				if (
 				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
-				(!this.getUniformDistribution().generatenoiseinresponsevariables(
-						this.getUtilities().randBetween(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
-					this.setVANonRxsimulatedresponse(this.getUtilities().randBetween(
-							(int) this.getVANonRxValueRange().getMinimum(), (int) this.getVANonRxValueRange().getMaximum()));
+				(!this.getUniformDistribution()
+						.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+								SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
+					this.setVANonRxsimulatedresponse(
+							this.getUtilities().randBetween((int) this.getVANonRxValueRange().getMinimum(),
+									(int) this.getVANonRxValueRange().getMaximum()));
 					return this.getVANonRxsimulatedresponse();
 				}
 
@@ -1641,11 +1677,12 @@ public class SimulatedResponseVAUseVars {
 				this.setVARxsimulatedresponse(errorresponse);
 				if (
 				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
-				(!this.getUniformDistribution().generatenoiseinresponsevariables(
-						this.getUtilities().randBetween(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), 
+				(!this.getUniformDistribution()
+						.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
 								SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
-					this.setVARxsimulatedresponse(this.getUtilities().randBetween((int) this.getVARxValueRange().getMinimum(),
-							(int) this.getVARxValueRange().getMaximum()));
+					this.setVARxsimulatedresponse(this.getUtilities().randBetween(
+							(int) this.getVARxValueRange().getMinimum(), (int) this.getVARxValueRange().getMaximum()));
 					return this.getVARxsimulatedresponse();
 				}
 
@@ -1655,49 +1692,26 @@ public class SimulatedResponseVAUseVars {
 			return errorresponse;
 		}
 
-		/**
-		 * @return the utilities
-		 */
-		private Utilities getUtilities() {
-			return this.utilities;
-		}
+		public int simulateVAUsesimulatedresponse(ValueRange valuerange, int errorresponse) throws Exception {
+			try {
+				this.setVAUseValueRange(valuerange);
+				this.setVAUseSimulatedResponse(errorresponse);
+				if (
+				// SimulatedResponseVAUse errorResponse to be initialized in its constructor
+				(!this.getUniformDistribution()
+						.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+								SimulatedResponseVAUseVars.getMaxtogenerateerrorval())))) {
+					this.setVAUseSimulatedResponse(
+							this.getUtilities().randBetween((int) this.getVAUseValueRange().getMinimum(),
+									(int) this.getVAUseValueRange().getMaximum()));
+					return this.getVAUseSimulatedResponse();
+				}
 
-		/**
-		 * @param utilities the utilities to set
-		 */
-		private void setUtilities(Utilities utilities) {
-			this.utilities = utilities;
-		}
-
-		/**
-		 * @param formcompletionstatusDefaultSimulatedValue the formcompletionstatusDefaultSimulatedValue to set
-		 */
-		private void setFormcompletionstatusDefaultSimulatedValue(boolean formcompletionstatusDefaultSimulatedValue) {
-			this.formcompletionstatusDefaultSimulatedValue = formcompletionstatusDefaultSimulatedValue;
-		}
-
-		/**
-		 * @param vAUseSimulatedResponse the vAUseSimulatedResponse to set
-		 */
-		private void setVAUseSimulatedResponse(int vAUseSimulatedResponse) {
-			this.VAUseSimulatedResponse = vAUseSimulatedResponse;
-		}
-
-		/**
-		 * @return the vAUseSimulatedResponse
-		 */
-		public int getVAUseSimulatedResponse() {
-			return this.VAUseSimulatedResponse;
-		}
-
-		public String getTimestampFormCompletiongDefaultSimulatedValue() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public String getNumQ_Complete_SecGDefaultSimulatedResponse() {
-			// TODO Auto-generated method stub
-			return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return errorresponse;
 		}
 
 	}
@@ -1706,11 +1720,6 @@ public class SimulatedResponseVAUseVars {
 	*
 	*/
 	private static Calendar calendar = new GregorianCalendar();
-	/**
-	*
-	*/
-	
-	private static int errorResponse;
 	private static String CSIDDefaultResponse;
 	/**
 	*
@@ -1793,10 +1802,6 @@ public class SimulatedResponseVAUseVars {
 	 *
 	 */
 	private static int defaultVersionNumber;
-	/**
-	 *
-	 */
-	private static int errorValToIntroduceNoise;
 	/**
 	 *
 	 */
@@ -2177,6 +2182,10 @@ public class SimulatedResponseVAUseVars {
 
 	}
 
+	public static int getErrorvaltointroducenoise() {
+		// TODO Auto-generated method stub
+		return maximumtogeneratererrorvalForVAUseResponseVars;
+	}
 
 	/**
 	 * @return the helpcompletionvaluerange
@@ -2211,7 +2220,6 @@ public class SimulatedResponseVAUseVars {
 		return ImageFile;
 
 	}
-
 
 	/**
 	 * @return the maximumtogenerateerrorvalforhelpcompleting
@@ -2388,8 +2396,6 @@ public class SimulatedResponseVAUseVars {
 
 	}
 
-
-
 	/**
 	 * @return the timestamp
 	 */
@@ -2438,26 +2444,6 @@ public class SimulatedResponseVAUseVars {
 			e.printStackTrace();
 		}
 		return vaHospDropOffSiteValueRange;
-
-	}
-
-	/**
-	 * @return the errorresponse
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	private static int getValForNoiseInSimulatedResponse() {
-		try {
-			return errorValToIntroduceNoise;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return errorValToIntroduceNoise;
 
 	}
 
@@ -2861,22 +2847,6 @@ public class SimulatedResponseVAUseVars {
 	}
 
 	/**
-	 *
-	 */
-	/**
-	 *
-	 */
-	private static void setErrorresponse() {
-		try {
-			errorValToIntroduceNoise = utilitiesstaticinstance.randBetween(getMinimumtogenerateerrorval(),
-					getMaxtogenerateerrorval());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * @param helpCompletionValueRange the helpCompletionValueRange to set
 	 */
 	/**
@@ -3017,6 +2987,13 @@ public class SimulatedResponseVAUseVars {
 	 */
 	private VAUseResponses vauseresponses;
 
+	// access getters from inner class for load date, record status, version
+	// number,completed form, csid, edit status,
+	// form id, form duplication status, form scan date, help completing form,
+	// image, mail code, non va hosp drop off site,
+	// non va non rx, non va rx, num completed, num completed a-f, output filename,
+	// form completion time
+
 	/**
 	 *
 	 */
@@ -3063,41 +3040,48 @@ public class SimulatedResponseVAUseVars {
 			setDefaultRecordStatus(false);
 			setDefaultOutputFile(new File("null.txt"));
 			this.setVauseresponses(new VAUseResponses());
-			
-				this.getVauseresponses().simulateHelpCompletingFormsimulatedresponse(this.getVauseresponses().getHelpCompletingFormValueRange(),
-						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogenerateerrorvalforhelpcompleting()));
-				this.getVauseresponses().simulateNonVAHospResponseDropOffSitesimulatedresponse(this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(), 
-						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVauseresponses().simulateNonVANonRxsimulatedresponse(this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(), 
-						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVauseresponses().simulateNonVARxsimulatedresponse(this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(), 
-						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVauseresponses().simulateVAHospResponseDropoffSitesimulatedresponse(this.getVauseresponses().getVAHospResponseDropoffSiteValueRange(), 
-						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratevahospresponsedropoffsiteerrorval()));
 
-				this.getVauseresponses().simulateVANonRxsimulatedresponse(this.getVauseresponses().getVANonRxValueRange(), 
-						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				this.getVauseresponses().simulateVARxsimulatedresponse(this.getVauseresponses().getVARxValueRange(), 
-						SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
-								SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(), SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
-				
-				
+			this.getVauseresponses().simulateHelpCompletingFormsimulatedresponse(
+					this.getVauseresponses().getHelpCompletingFormValueRange(),
+					SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+							SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaximumtogenerateerrorvalforhelpcompleting()));
+			this.getVauseresponses().simulateNonVAHospResponseDropOffSitesimulatedresponse(
+					this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(),
+					SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+							SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
+			this.getVauseresponses().simulateNonVANonRxsimulatedresponse(
+					this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(),
+					SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+							SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
+			this.getVauseresponses().simulateNonVARxsimulatedresponse(
+					this.getVauseresponses().getNonVAHospResponseDropffSiteValueRange(),
+					SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+							SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
+			this.getVauseresponses().simulateVAHospResponseDropoffSitesimulatedresponse(
+					this.getVauseresponses().getVAHospResponseDropoffSiteValueRange(),
+					SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+							SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaximumtogeneratevahospresponsedropoffsiteerrorval()));
+
+			this.getVauseresponses().simulateVANonRxsimulatedresponse(this.getVauseresponses().getVANonRxValueRange(),
+					SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+							SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
+			this.getVauseresponses().simulateVARxsimulatedresponse(this.getVauseresponses().getVARxValueRange(),
+					SimulatedResponseVAUseVars.getUtilitiesstaticinstance().randBetween(
+							SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+							SimulatedResponseVAUseVars.getMaximumtogeneratererrorvalforvauseresponsevars()));
+
 		} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
-	
-	// access getters from inner class for load date, record status, version number,completed form, csid, edit status, 
-	// form id, form duplication status, form scan date, help completing form, image, mail code, non va hosp drop off site,
-	// non va non rx, non va rx, num completed, num completed a-f, output filename, form completion time
 
 	/**
 	 * @return the vausevars
@@ -3128,10 +3112,5 @@ public class SimulatedResponseVAUseVars {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public static int getErrorvaltointroducenoise() {
-		// TODO Auto-generated method stub
-		return maximumtogeneratererrorvalForVAUseResponseVars;
 	}
 }

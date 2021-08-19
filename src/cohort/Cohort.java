@@ -1,21 +1,14 @@
 package cohort;
 
-import java.text.DateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.Year;
 import java.time.ZoneId;
 import java.time.temporal.ValueRange;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
-import Interfaces.Birthdeathinterfacemethods;
 import SimulatedResponseAncestry.SimulatedResponseAncestry;
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import cohortUtils.CohortUtilities;
 import simulatedDiseaseResponse.SimulatedDiseaseResponse;
 import simulatedResponseChemicalExposure.SimulatedResponseChemicalExposure;
 import simulatedResponseLifeStyleResponseVars.SimulatedResponseForLifestyleQ;
@@ -29,7 +22,24 @@ import simulatedResponseVAUseVars.SimulatedResponseVAUseVars;
  *
  */
 
-public class Cohort implements Birthdeathinterfacemethods {
+public class Cohort extends CohortUtilities {
+
+	private static int maximumNumberSiblings = 8;
+	private static int minimumNumberSiblings = 1;
+
+	/**
+	 * @return the maximumNumberSiblings
+	 */
+	private static int getMaximumNumberSiblings() {
+		return maximumNumberSiblings;
+	}
+
+	/**
+	 * @return the minimumNumberSiblings
+	 */
+	private static int getMinimumNumberSiblings() {
+		return minimumNumberSiblings;
+	}
 
 	/**
 	 *
@@ -42,21 +52,17 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 *
 	 */
-	private int aliveSimulatedResponse = 1;
-
-	/**
-	 *
-	 */
 	private SimulatedResponseAncestry ancestrysimulatedresponse;
+
 	/**
 	 *
 	 */
 	private ValueRange biologicalBrotherPresenceAbsenceValueRange;
-
 	/**
 	 *
 	 */
 	private int biologicalBrothersPresenceAbsencesimulatedresponse;
+
 	/**
 	 *
 	 */
@@ -65,7 +71,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private ValueRange biologicalDaughtersPresenceAbsenceValueRange;
-
 	/**
 	 *
 	 */
@@ -79,16 +84,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private ValueRange biologicalSonsPresenceAbsenceValueRange;
-	// Dt,Year (2010)
-	/**
-	 *
-	 */
-	private java.util.Date birthDtSimulatedResponse;
-	/**
-	 *
-	 */
-	private Year birthyear; // extract from simulated birth date
-
 	/**
 	 *
 	 */
@@ -98,16 +93,18 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private SimulatedDiseaseResponse diseassessimulatedresponse;
+
+	protected LocalDate earliestDOBForSimulation;
 	/**
 	 *
 	 */
 	private int educationSimulatedResponse;
-
 	// Generate responses for these values within this class
 	/**
 	 *
 	 */
 	private ValueRange educationValueRange;
+
 	/**
 	 *
 	 */
@@ -116,11 +113,11 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private ValueRange ethnicityValueRange;
-
 	/**
 	 *
 	 */
 	private int eyeColorSimulatedResponse;
+
 	/**
 	 *
 	 */
@@ -129,20 +126,20 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private Father father;
-
 	/**
 	 *
 	 */
 	private int hairColorSimulatedResponse;
+
 	/**
 	 *
 	 */
 	private ValueRange hairColorValueRange;
+
 	/**
 	 *
 	 */
 	private int handednesssimulatedresponse;
-
 	/**
 	 *
 	 */
@@ -151,20 +148,21 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private float heightSRFtSimulatedresponse;
+
 	/**
 	 *
 	 */
 	private float heightSRInchesSimulatedresponse;
-
 	/**
 	 *
 	 */
 	private int incomeSimulatedResponse;
-
 	/**
 	 *
 	 */
 	private ValueRange incomeValueRange;
+	protected LocalDate latestDOBForSimulation;
+
 	/**
 	 *
 	 */
@@ -173,15 +171,16 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private int maritalStatusSimulatedResponse;
-
 	/**
 	 *
 	 */
 	private ValueRange maritalStatusValueRange;
+
 	/**
 	 *
 	 */
-	private MaternalGrandParent maternalgrandparent;
+	private MaternalFemaleGrandParent maternalgrandparent;
+	private PaternalMaleGrandParent paternalgrandparent;
 	/**
 	 *
 	 */
@@ -199,78 +198,37 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 *
 	 */
 	private ValueRange multipleBirthsValueRange;
-	/**
-	 *
-	 */
-	private int numberOfBiologicalBrothersSimulatedResponse; // simulation
 
 	/**
 	 *
 	 */
+	private int numberOfBiologicalBrothersSimulatedResponse; // simulation
+	/**
+	 *
+	 */
 	private int numberOfBiologicalSistersSimulatedResponse;
+
 	// Assume value of 0-2
 	/**
 	 *
 	 */
 	private int numberOfHousesSimulatedResponse;
-	private int painSimulatedResponse;
 
+	private int painSimulatedResponse;
 	private ValueRange painValueRange;
+
 	/**
 	 *
 	 */
 	private SimulatedResponseQ1_15 q1_15simulatedresponse;
-
 	/**
 	 *
 	 */
 	private SimulatedResponseRace racesimulatedresponse;
-	/**
-	 *
-	 */
-	private int sexSimulatedResponse;
-	/**
-	 *
-	 */
-	private ValueRange sexValueRange;
-	/**
-	 *
-	 */
-	private Sibling1 sibling1;
-	/**
-	 *
-	 */
-	private Sibling2 sibling2;
-	/**
-	 *
-	 */
-	private Sibling3 sibling3;
-	/**
-	 *
-	 */
-	private Sibling4 sibling4;
 
-	/**
-	 *
-	 */
-	private Sibling5 sibling5;
-	/**
-	 *
-	 */
-	private Sibling6 sibling6;
-	/**
-	 *
-	 */
-	private Sibling7 sibling7;
-
-	/**
-	 *
-	 */
-	private Sibling8 sibling8;
+	private Sibling sibling;
 	private int skinColorSimulatedResponse;
-
 	private ValueRange skinColorValueRange;
-
 	/**
 	 *
 	 */
@@ -280,11 +238,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 */
 	private int totalNumberOfSonsSimulatedResponse;
 
-	/**
-	 *
-	 */
-	private Utilities utilities;
-	private UniformDistribution uniformdistribution;
 	/**
 	 *
 	 */
@@ -300,7 +253,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 */
 	public Cohort() throws Exception {
 
-		// Move logic out of default constructor 
+		// Move logic out of default constructor
 		try {
 			this.setUtilities(new Utilities());
 			// call overloaded constructor with value ranges
@@ -328,9 +281,11 @@ public class Cohort implements Birthdeathinterfacemethods {
 
 			this.setAdoptedValueRange(ValueRange.of(0, 1));
 			this.setAliveValueRange(ValueRange.of(0, 1));
-			this.setAliveSimulatedResponse(1);
+			this.setAliveSimulatedResponse((super.simulateAliveOrDead()));
 
 			this.setMultipleBirthsValueRange(ValueRange.of(0, 1));
+			// 1 - Male
+			// 2- Female
 			this.setSexValueRange(ValueRange.of(1, 2));
 			this.setEducationValueRange(ValueRange.of(1, 7));
 			this.setEthnicityValueRange(ValueRange.of(1, 5));
@@ -340,13 +295,19 @@ public class Cohort implements Birthdeathinterfacemethods {
 			this.setIncomeValueRange(ValueRange.of(1, 10));
 			this.setBiologicalBrotherPresenceAbsenceValueRange(ValueRange.of(0, 1));
 			this.setBiologicalSistersPresenceOrAbsenceValueRange(ValueRange.of(0, 1));
+
 			this.setBiologicalSonsPresenceAbsenceValueRange(ValueRange.of(0, 1));
 			this.setBiologicalDaughtersPresenceAbsenceValueRange(ValueRange.of(0, 1));
 			this.setMaritalStatusValueRange(ValueRange.of(1, 7));
 			this.setSkinColorValueRange(ValueRange.of(1, 6));
 			this.setPainValueRange(ValueRange.of(0, 1));
-			this.setBirthDateSimulated(this.simulateDateOfBirth());
 
+			this.setEarliestDOBForSimulation(LocalDate.of(1940, 1, 1));
+			this.setLatestDOBForSimulation(LocalDate.of(1970, 12, 31));
+			this.setBirthDateSimulated(this.simulateDateOfBirth());
+			System.out.println(this.getBirthDateSimulated().toString());
+			super.simulateYearOfBirth(this.getUtilities().extractYearFromDate(this.getBirthDateSimulated()));
+			this.simulateYearOfDeath();
 			this.setBiologicalBrothersPresenceAbsencesimulatedresponse(
 					this.simulateBiologicalBrothersPresenceAbsence());
 			this.setBiologicalDaughtersPresenceAbsenceSimulatedResponse(
@@ -358,7 +319,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 			this.setNumberOfSonsSimulatedResponse(this.simulateTotalNumberOfSons());
 			this.setNumberOfBiologicalBrothersSimulatedResponse(this.simulateNumBioBrothers());
 			this.setNumberOfBiologicalSistersSimulatedResponse(this.simulateNumBioSisters());
-
 			this.setWeightSRLbsSimulatedResponse(this.simulateweightinlbs());
 			this.setIncomeSimulatedResponse(this.simulateIncome());
 			this.setEducationSimulatedResponse(this.simulateEducationValue());
@@ -375,15 +335,17 @@ public class Cohort implements Birthdeathinterfacemethods {
 			this.setSkinColorSimulatedResponse(this.simulateSkinColorValue());
 			this.setAdoptedSimulatedResponse(this.simulateAdoptedValue());
 			this.setMultipleBirthsSimulatedResponse(this.simulateMultipleBirths());
-
 			this.setDiseassessimulatedresponse(new SimulatedDiseaseResponse(this));
-			// simulateddiseaseresponse
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		}
 	}
+
+	// Cohort, Siblings DOB: 1940 -1970
+	// Mother Father DOB: 1900-1920
 
 	/**
 	 * @return the adopted
@@ -402,13 +364,16 @@ public class Cohort implements Birthdeathinterfacemethods {
 		return this.adoptedValueRange;
 	}
 
+	// private Year deathyear; // for simulation, setting to 0, as alive is assumed
+	// 1
+
 	/**
 	 * @return the adoptedSimulatedResponse
 	 */
 	/**
 	 * @return
 	 */
-	public int getAdoptionStatus() {
+	public int getAdoptionStatusSimulatedResponse() {
 		try {
 			return this.adoptedSimulatedResponse;
 		} catch (Exception e) {
@@ -418,26 +383,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 		return this.adoptedSimulatedResponse;
 
 	}
-
-	/**
-	 * @return the aliveSimulatedResponse
-	 */
-	/**
-	 * @return
-	 */
-	public int getAliveSimulatedResponse() {
-		try {
-			return this.aliveSimulatedResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.aliveSimulatedResponse;
-
-	}
-
-	// Cohort, Siblings DOB: 1940 -1970
-	// Mother Father DOB: 1900-1920
 
 	/**
 	 * @return the ancestrysimulatedresponse
@@ -455,9 +400,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 		return this.ancestrysimulatedresponse;
 
 	}
-
-	// private Year deathyear; // for simulation, setting to 0, as alive is assumed
-	// 1
 
 	/**
 	 * @return the bioBro
@@ -483,7 +425,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int getBiologicalBrothersPresenceAbsencesimulatedresponse() {
+	public int getBiologicalBrothersPresenceAbsenceSimulatedResponse() {
 		try {
 			return this.biologicalBrothersPresenceAbsencesimulatedresponse;
 		} catch (Exception e) {
@@ -576,40 +518,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * @return the birthDt
-	 */
-	/**
-	 * @return
-	 */
-	public Date getBirthDateSimulated() {
-		try {
-			return this.birthDtSimulatedResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.birthDtSimulatedResponse;
-
-	}
-
-	/**
-	 * @return the birthyear
-	 */
-	/**
-	 * @return
-	 * @throws Exception
-	 */
-	public Year getBirthyear() throws Exception {
-		try {
-			return this.birthyear;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.birthyear;
-	}
-
-	/**
 	 * @return the simulatedresponsechemicalexposure
 	 */
 	public SimulatedResponseChemicalExposure getChemicalexposuresimulatedresponse() {
@@ -624,6 +532,13 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 */
 	public SimulatedDiseaseResponse getDiseasesSimulatedResponse() {
 		return this.diseassessimulatedresponse;
+	}
+
+	/**
+	 * @return the earliestDOBForSimulation
+	 */
+	protected LocalDate getEarliestDOBForSimulation() {
+		return this.earliestDOBForSimulation;
 	}
 
 	/**
@@ -736,7 +651,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	protected Father getFather() {
+	public Father getFather() {
 		return this.father;
 	}
 
@@ -877,6 +792,13 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
+	 * @return the latestDOBForSimulation
+	 */
+	protected LocalDate getLatestDOBForSimulation() {
+		return this.latestDOBForSimulation;
+	}
+
+	/**
 	 * @return the simulatedresponselifestyle
 	 */
 	/**
@@ -933,7 +855,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	protected MaternalGrandParent getMaternalgrandparent() {
+	public MaternalFemaleGrandParent getMaternalgrandparent() {
 		try {
 			return this.maternalgrandparent;
 		} catch (Exception e) {
@@ -967,7 +889,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	protected Mother getMother() {
+	public Mother getMother() {
 		try {
 			return this.mother;
 		} catch (Exception e) {
@@ -1031,23 +953,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 */
 	public int getNumberOfBiologicalSistersSimulatedResponse() {
 		return this.numberOfBiologicalSistersSimulatedResponse;
-	}
-
-	/**
-	 * @return the daughterQty
-	 */
-	/**
-	 * @return
-	 */
-	public int getNumberOfDaughtersSimulatedResponse() {
-		try {
-			return this.totalNumberOfDaughtersSimulatedResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.totalNumberOfDaughtersSimulatedResponse;
-
 	}
 
 	/**
@@ -1133,169 +1038,10 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * @return the sexSimulatedResponse
+	 * @return the sibling
 	 */
-	/**
-	 * @return
-	 */
-	public int getSexSimulatedResponse() {
-		try {
-			return this.sexSimulatedResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sexSimulatedResponse;
-
-	}
-
-	/**
-	 * @return the sexValueRange
-	 */
-	/**
-	 * @return
-	 */
-	private ValueRange getSexValueRange() {
-		try {
-			return this.sexValueRange;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sexValueRange;
-
-	}
-
-	/**
-	 * @return the sibling1
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling1 getSibling1() {
-		try {
-			return this.sibling1;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling1;
-
-	}
-
-	/**
-	 * @return the sibling2
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling2 getSibling2() {
-		try {
-			return this.sibling2;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling2;
-
-	}
-
-	/**
-	 * @return the sibling3
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling3 getSibling3() {
-		try {
-			return this.sibling3;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling3;
-
-	}
-
-	/**
-	 * @return the sibling4
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling4 getSibling4() {
-		try {
-			return this.sibling4;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling4;
-
-	}
-
-	/**
-	 * @return the sibling5
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling5 getSibling5() {
-		try {
-			return this.sibling5;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling5;
-	}
-
-	/**
-	 * @return the sibling6
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling6 getSibling6() {
-		try {
-			return this.sibling6;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling6;
-	}
-
-	/**
-	 * @return the sibling7
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling7 getSibling7() {
-		try {
-			return this.sibling7;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling7;
-	}
-
-	/**
-	 * @return the sibling8
-	 */
-	/**
-	 * @return
-	 */
-	protected Sibling8 getSibling8() {
-		try {
-			return this.sibling8;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.sibling8;
+	public Sibling getSibling() {
+		return this.sibling;
 	}
 
 	/**
@@ -1330,13 +1076,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	 */
 	public int getTotalNumberOfSonsSimulatedResponse() {
 		return this.totalNumberOfSonsSimulatedResponse;
-	}
-
-	/**
-	 * @return the utilities
-	 */
-	protected Utilities getUtilities() {
-		return this.utilities;
 	}
 
 	/**
@@ -1390,21 +1129,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	private void setAdoptedValueRange(ValueRange adopted) {
 		try {
 			this.adoptedValueRange = adopted;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param aliveSimulatedResponse the aliveSimulatedResponse to set
-	 */
-	/**
-	 * @param aliveSimulatedResponse
-	 */
-	private void setAliveSimulatedResponse(int aliveSimulatedValue) {
-		try {
-			this.aliveSimulatedResponse = aliveSimulatedValue;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1555,35 +1279,13 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * @param birthDt the birthDt to set
+	 * @param deathyear the deathyear to set
 	 */
-	/**
-	 * @param birthDt
+	/*
+	 * private void setDeathyear(Year deathyear) throws Exception { try {
+	 * this.deathyear = deathyear; } catch (Exception e) { // TODO Auto-generated
+	 * catch block e.printStackTrace(); } }
 	 */
-	protected void setBirthDateSimulated(java.util.Date birthDt) {
-		try {
-			this.birthDtSimulatedResponse = birthDt;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param birthyear the birthyear to set
-	 */
-	/**
-	 * @param birthyear
-	 * @throws Exception
-	 */
-	protected void setBirthyear(Year birthyear) throws Exception {
-		try {
-			this.birthyear = birthyear;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * @param simulatedresponsechemicalexposure the
@@ -1608,6 +1310,13 @@ public class Cohort implements Birthdeathinterfacemethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @param earliestDOBForSimulation the earliestDOBForSimulation to set
+	 */
+	private void setEarliestDOBForSimulation(LocalDate earliestDOBForSimulation) {
+		this.earliestDOBForSimulation = earliestDOBForSimulation;
 	}
 
 	/**
@@ -1671,15 +1380,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * @param deathyear the deathyear to set
-	 */
-	/*
-	 * private void setDeathyear(Year deathyear) throws Exception { try {
-	 * this.deathyear = deathyear; } catch (Exception e) { // TODO Auto-generated
-	 * catch block e.printStackTrace(); } }
-	 */
-
-	/**
 	 * @param eyeColorSimulatedResponse the eyeColorSimulatedResponse to set
 	 */
 	/**
@@ -1715,9 +1415,23 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @param father
 	 */
-	protected void setFather(Father father) {
+	public void setFather(Father father) {
 		this.father = father;
 	}
+
+	/**
+	 * For siblings asthma presence / absence Alzheimers presence / absence Bipolar
+	 * disorder presence / absence Breast cancer presence / absence Colon cancer
+	 * presence / absence Lung Cancer presence / absence Prostate Cancer presence /
+	 * absence (interrelated with gender of SimulatedDiseaseResponse) Skin Cancer
+	 * presence / absence Other Cancer presence / absence Depression presence /
+	 * absence DoDM presence / absence Hypertension presence / absence Cholesterol
+	 * presence / absence Kidney Disease presence / absence Liver disease presence /
+	 * absence Stroke presence / absence generate response for each of above
+	 * varables and assign to one of 8 randomly generated siblings
+	 */
+
+	// Which sibling
 
 	/**
 	 * @param hairColorSimulatedResponse the hairColorSimulatedResponse to set
@@ -1826,20 +1540,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * For siblings asthma presence / absence Alzheimers presence / absence Bipolar
-	 * disorder presence / absence Breast cancer presence / absence Colon cancer
-	 * presence / absence Lung Cancer presence / absence Prostate Cancer presence /
-	 * absence (interrelated with gender of SimulatedDiseaseResponse) Skin Cancer
-	 * presence / absence Other Cancer presence / absence Depression presence /
-	 * absence DoDM presence / absence Hypertension presence / absence Cholesterol
-	 * presence / absence Kidney Disease presence / absence Liver disease presence /
-	 * absence Stroke presence / absence generate response for each of above
-	 * varables and assign to one of 8 randomly generated siblings
-	 */
-
-	// Which sibling
-
-	/**
 	 * @param incomeValueRange the incomeValueRange to set
 	 */
 	/**
@@ -1852,6 +1552,13 @@ public class Cohort implements Birthdeathinterfacemethods {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @param latestDOBForSimulation the latestDOBForSimulation to set
+	 */
+	private void setLatestDOBForSimulation(LocalDate latestDOBForSimulation) {
+		this.latestDOBForSimulation = latestDOBForSimulation;
 	}
 
 	/**
@@ -1906,7 +1613,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @param maternalgrandparent
 	 */
-	protected void setMaternalgrandparent(MaternalGrandParent maternalGP) {
+	public void setMaternalgrandparent(MaternalFemaleGrandParent maternalGP) {
 		try {
 			this.maternalgrandparent = maternalGP;
 		} catch (Exception e) {
@@ -1936,7 +1643,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @param mother
 	 */
-	protected void setMother(Mother mother) {
+	public void setMother(Mother mother) {
 		try {
 			this.mother = mother;
 		} catch (Exception e) {
@@ -2107,153 +1814,10 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * @param sexSimulatedResponse the sexSimulatedResponse to set
+	 * @param sibling the sibling to set
 	 */
-	/**
-	 * @param sexSimulatedResponse
-	 */
-	private void setSexSimulatedResponse(int sexSimulatedResponse) {
-		try {
-			this.sexSimulatedResponse = sexSimulatedResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sexValueRange the sexValueRange to set
-	 */
-	/**
-	 * @param sex
-	 */
-	private void setSexValueRange(ValueRange sex) {
-		try {
-			this.sexValueRange = sex;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling1 the sibling1 to set
-	 */
-	/**
-	 * @param sibling1
-	 */
-	protected void setSibling1(Sibling1 sibling1) {
-		try {
-			this.sibling1 = sibling1;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling2 the sibling2 to set
-	 */
-	/**
-	 * @param sibling2
-	 */
-	protected void setSibling2(Sibling2 sibling2) {
-		try {
-			this.sibling2 = sibling2;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling3 the sibling3 to set
-	 */
-	/**
-	 * @param sibling3
-	 */
-	protected void setSibling3(Sibling3 sibling3) {
-		try {
-			this.sibling3 = sibling3;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling4 the sibling4 to set
-	 */
-	/**
-	 * @param sibling4
-	 */
-	protected void setSibling4(Sibling4 sibling4) {
-		try {
-			this.sibling4 = sibling4;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling5 the sibling5 to set
-	 */
-	/**
-	 * @param sibling5
-	 */
-	protected void setSibling5(Sibling5 sibling5) {
-		try {
-			this.sibling5 = sibling5;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling6 the sibling6 to set
-	 */
-	/**
-	 * @param sibling6
-	 */
-	protected void setSibling6(Sibling6 sibling6) {
-		try {
-			this.sibling6 = sibling6;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling7 the sibling7 to set
-	 */
-	/**
-	 * @param sibling7
-	 */
-	protected void setSibling7(Sibling7 sibling7) {
-		try {
-			this.sibling7 = sibling7;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param sibling8 the sibling8 to set
-	 */
-	/**
-	 * @param sibling8
-	 */
-	protected void setSibling8(Sibling8 sibling8) {
-		try {
-			this.sibling8 = sibling8;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void setSibling(Sibling sibling) {
+		this.sibling = sibling;
 	}
 
 	/**
@@ -2295,13 +1859,6 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * @param utilities the utilities to set
-	 */
-	protected void setUtilities(Utilities utilities) {
-		this.utilities = utilities;
-	}
-
-	/**
 	 * @param simulatedResponseVAUseVars the simulatedResponseVAUseVars to set
 	 */
 	/**
@@ -2334,40 +1891,40 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateAdoptedValue() {
+	private int simulateAdoptedValue() {
 		try {
-			this.setAdoptedSimulatedResponse(this.utilities.randBetween((int) this.getAdoptedValueRange().getMinimum(),
-					(int) this.getAdoptedValueRange().getMaximum()));
-			return this.getAdoptionStatus();
+			this.setAdoptedSimulatedResponse(this.getUtilities().randBetween(
+					(int) this.getAdoptedValueRange().getMinimum(), (int) this.getAdoptedValueRange().getMaximum()));
+			return this.getAdoptionStatusSimulatedResponse();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return this.getAdoptionStatus();
+		return this.getAdoptionStatusSimulatedResponse();
 	}
 
 	/**
 	 * @return
 	 */
-	public int simulateBiologicalBrothersPresenceAbsence() {
+	private int simulateBiologicalBrothersPresenceAbsence() {
 		try {
-			this.setBiologicalBrothersPresenceAbsencesimulatedresponse(
-					this.utilities.randBetween((int) this.getBiologicalBrotherPresenceAbsenceValueRange().getMinimum(),
-							(int) this.getBiologicalBrotherPresenceAbsenceValueRange().getMaximum()));
-			return this.getBiologicalBrothersPresenceAbsencesimulatedresponse();
+			this.setBiologicalBrothersPresenceAbsencesimulatedresponse(this.getUtilities().randBetween(
+					(int) this.getBiologicalBrotherPresenceAbsenceValueRange().getMinimum(),
+					(int) this.getBiologicalBrotherPresenceAbsenceValueRange().getMaximum()));
+			return this.getBiologicalBrothersPresenceAbsenceSimulatedResponse();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return this.getBiologicalBrothersPresenceAbsencesimulatedresponse();
+		return this.getBiologicalBrothersPresenceAbsenceSimulatedResponse();
 	}
 
 	/**
 	 * @return
 	 */
-	public int simulateBiologicalSistersPresenceAbsence() {
+	private int simulateBiologicalSistersPresenceAbsence() {
 		try {
-			this.setBiologicalSistersPresenceAbsenceSimulatedResponse(this.utilities.randBetween(
+			this.setBiologicalSistersPresenceAbsenceSimulatedResponse(this.getUtilities().randBetween(
 					(int) this.getBiologicalSistersPresenceOrAbsenceValueRange().getMinimum(),
 					(int) this.getBiologicalSistersPresenceOrAbsenceValueRange().getMaximum()));
 			return this.getBiologicalSistersPresenceAbsenceSimulatedResponse();
@@ -2382,17 +1939,16 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	protected Date simulateDateOfBirth() {
+	private Date simulateDateOfBirth() {
 		try {
-			Date simulatedDOB = new Date(ThreadLocalRandom.current()
-					.nextLong(Date.from(LocalDate.of(1940,1,1).atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime(), 
-							Date.from(LocalDate.of(1970,12,31).atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()));
+			Date simulatedDOB = new Date(ThreadLocalRandom.current().nextLong(
+					Date.from(this.getEarliestDOBForSimulation().atStartOfDay(ZoneId.systemDefault()).toInstant())
+							.getTime(),
+					Date.from(this.getLatestDOBForSimulation().atStartOfDay(ZoneId.systemDefault()).toInstant())
+							.getTime()));
 			this.setBirthDateSimulated(simulatedDOB);
-			System.out.println("Simulated DOB" + simulatedDOB);
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(simulatedDOB);
-			//System.out.println(calendar.get(Calendar.YEAR));
-			this.setBirthyear(Year.of(calendar.get(Calendar.YEAR) ));
+			System.out.println("Simulated DOB Cohort " + simulatedDOB);
+
 			return this.getBirthDateSimulated();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -2404,7 +1960,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateEducationValue() {
+	private int simulateEducationValue() {
 		try {
 			this.setEducationSimulatedResponse(
 					this.getUtilities().randBetween((int) this.getEducationValueRange().getMinimum(),
@@ -2420,7 +1976,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateEthnicityValue() {
+	private int simulateEthnicityValue() {
 		try {
 			this.setEthnicitySimulatedResponse(
 					this.getUtilities().randBetween((int) this.getEthnicityValueRange().getMinimum(),
@@ -2436,7 +1992,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateEyeColor() {
+	private int simulateEyeColor() {
 		try {
 			this.setEyeColorSimulatedResponse(this.getUtilities().randBetween(
 					(int) this.getEyeColorValueRange().getMinimum(), (int) this.getEyeColorValueRange().getMaximum()));
@@ -2451,7 +2007,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateHairColor() {
+	private int simulateHairColor() {
 		try {
 			this.setHairColorSimulatedResponse(
 					this.getUtilities().randBetween((int) this.getHairColorValueRange().getMinimum(),
@@ -2467,7 +2023,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateHandedness() {
+	private int simulateHandedness() {
 		try {
 			this.setHandednesssimulatedresponse(
 					this.getUtilities().randBetween((int) this.getHandednessValueRange().getMinimum(),
@@ -2484,7 +2040,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public float simulateheightinfeet() {
+	private float simulateheightinfeet() {
 		try {
 			this.setHeightSRFtSimulatedresponse(this.getUtilities().randFloatBetween(5, 6));
 			return this.getHeightSRFtSimulatedresponse();
@@ -2498,7 +2054,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public float simulateheightininches() {
+	private float simulateheightininches() {
 		try {
 			this.setHeightSRInchesSimulatedresponse(this.getUtilities().randFloatBetween(1, 12));
 			return this.getHeightSRInchesSimulatedresponse();
@@ -2512,7 +2068,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateIncome() {
+	private int simulateIncome() {
 		try {
 			this.setIncomeSimulatedResponse(this.getUtilities().randBetween(
 					(int) this.getIncomeValueRange().getMinimum(), (int) this.getIncomeValueRange().getMaximum()));
@@ -2527,7 +2083,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulatemaritalstatus() {
+	private int simulatemaritalstatus() {
 		try {
 			this.setMaritalStatusSimulatedResponse(
 					this.getUtilities().randBetween((int) this.getMaritalStatusValueRange().getMinimum(),
@@ -2543,10 +2099,10 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateMultipleBirths() {
+	private int simulateMultipleBirths() {
 		try {
 			this.setMultipleBirthsSimulatedResponse(
-					this.utilities.randBetween((int) this.getMultipleBirthsValueRange().getMinimum(),
+					this.getUtilities().randBetween((int) this.getMultipleBirthsValueRange().getMinimum(),
 							(int) this.getMultipleBirthsValueRange().getMaximum()));
 			return this.getMultipleBirthsSimulatedResponse();
 		} catch (Exception e) {
@@ -2559,7 +2115,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulatenumberOfHouses() {
+	private int simulatenumberOfHouses() {
 		try {
 			this.setNumberOfHousesSimulatedResponse(this.getUtilities().randBetween(0, 2));
 			return this.getNumberOfHousesSimulatedResponse();
@@ -2573,12 +2129,14 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateNumBioBrothers() {
+	private int simulateNumBioBrothers() {
 		try {
-			if (this.getBiologicalBrothersPresenceAbsencesimulatedresponse() == 1) {
-				this.setNumberOfBiologicalBrothersSimulatedResponse(this.utilities.randBetween(1, 5));
+			if (this.getBiologicalBrothersPresenceAbsenceSimulatedResponse() == 1) {
+				this.setNumberOfBiologicalBrothersSimulatedResponse(this.getUtilities()
+						.randBetween(Cohort.getMinimumNumberSiblings(), Cohort.getMaximumNumberSiblings()));
 				return this.getNumberOfBiologicalBrothersSimulatedResponse();
 			}
+			this.setNumberOfBiologicalBrothersSimulatedResponse(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -2588,19 +2146,21 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateNumBioSisters() {
+	private int simulateNumBioSisters() {
 		try {
 			if (this.getBiologicalSistersPresenceAbsenceSimulatedResponse() == 1) {
-				this.setNumberOfBiologicalSistersSimulatedResponse(this.utilities.randBetween(1, 5));
+				this.setNumberOfBiologicalSistersSimulatedResponse(this.getUtilities()
+						.randBetween(Cohort.getMinimumNumberSiblings(), Cohort.getMaximumNumberSiblings()));
 				return this.getNumberOfBiologicalSistersSimulatedResponse();
 			}
+			this.setNumberOfBiologicalSistersSimulatedResponse(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return this.getNumberOfBiologicalSistersSimulatedResponse();
 	}
 
-	public int simulatePainValue() {
+	private int simulatePainValue() {
 		try {
 			this.setPainSimulatedResponse(this.getUtilities().randBetween((int) this.getPainValueRange().getMinimum(),
 					(int) this.getPainValueRange().getMaximum()));
@@ -2615,9 +2175,9 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulatepresenceabsencebiologicaldaughter() {
+	private int simulatepresenceabsencebiologicaldaughter() {
 		try {
-			this.setBiologicalDaughtersPresenceAbsenceSimulatedResponse(this.utilities.randBetween(
+			this.setBiologicalDaughtersPresenceAbsenceSimulatedResponse(this.getUtilities().randBetween(
 					(int) this.getBiologicalDaughtersPresenceAbsenceValueRange().getMinimum(),
 					(int) this.getBiologicalDaughtersPresenceAbsenceValueRange().getMaximum()));
 			return this.getBiologicalDaughtersPresenceAbsenceSimulatedResponse();
@@ -2631,11 +2191,11 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulatepresenceabsencebiologicalson() {
+	private int simulatepresenceabsencebiologicalson() {
 		try {
-			this.setBiologicalSonsPresenceAbsenceSimulatedResponse(
-					this.utilities.randBetween((int) this.getBiologicalSonsPresenceAbsenceValueRange().getMinimum(),
-							(int) this.getBiologicalSonsPresenceAbsenceValueRange().getMaximum()));
+			this.setBiologicalSonsPresenceAbsenceSimulatedResponse(this.getUtilities().randBetween(
+					(int) this.getBiologicalSonsPresenceAbsenceValueRange().getMinimum(),
+					(int) this.getBiologicalSonsPresenceAbsenceValueRange().getMaximum()));
 			return this.getBiologicalSonsPresenceAbsenceSimulatedResponse();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -2647,22 +2207,7 @@ public class Cohort implements Birthdeathinterfacemethods {
 	/**
 	 * @return
 	 */
-	public int simulateSexValue() {
-		try {
-			this.setSexSimulatedResponse(this.utilities.randBetween((int) this.getSexValueRange().getMinimum(),
-					(int) this.getSexValueRange().getMaximum()));
-			return this.getSexSimulatedResponse();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.getSexSimulatedResponse();
-	}
-
-	/**
-	 * @return
-	 */
-	public int simulateSkinColorValue() {
+	private int simulateSkinColorValue() {
 		try {
 			this.setSkinColorSimulatedResponse(
 					this.getUtilities().randBetween((int) this.getSkinColorValueRange().getMinimum(),
@@ -2675,15 +2220,15 @@ public class Cohort implements Birthdeathinterfacemethods {
 		return this.getSkinColorSimulatedResponse();
 	}
 
-	public int simulateTotalNumberOfDaughters() {
+	private int simulateTotalNumberOfDaughters() {
 		int numberOfBiologicalDaughters = 0;
 		try {
 			if (this.getBiologicalDaughtersPresenceAbsenceSimulatedResponse() == 1) {
-				// Simulate biological sons IF PRESENT
-				numberOfBiologicalDaughters = this.utilities.randBetween(1, 5);
+				// Simulate daughters IF PRESENT
+				numberOfBiologicalDaughters = this.getUtilities().randBetween(1, 5);
 			}
 			this.setTotalNumberOfDaughtersSimulatedResponse(
-					this.utilities.randBetween(1, 5) + numberOfBiologicalDaughters);
+					this.getUtilities().randBetween(1, 5) + numberOfBiologicalDaughters);
 
 			return this.getTotalNumberOfDaughtersSimulatedResponse();
 
@@ -2693,14 +2238,14 @@ public class Cohort implements Birthdeathinterfacemethods {
 		return this.getTotalNumberOfDaughtersSimulatedResponse();
 	}
 
-	public int simulateTotalNumberOfSons() {
+	private int simulateTotalNumberOfSons() {
 		int numberOfBiologicalSons = 0;
 		try {
 			if (this.getBiologicalSonsPresenceAbsenceSimulatedResponse() == 1) {
 				// Simulate biological sons IF PRESENT
-				numberOfBiologicalSons = this.utilities.randBetween(1, 5);
+				numberOfBiologicalSons = this.getUtilities().randBetween(1, 5);
 			}
-			this.setTotalNumberOfSonsSimulatedResponse(this.utilities.randBetween(1, 5) + numberOfBiologicalSons);
+			this.setTotalNumberOfSonsSimulatedResponse(this.getUtilities().randBetween(1, 5) + numberOfBiologicalSons);
 
 			return this.getNumberOfBiologicalBrothersSimulatedResponse();
 
@@ -2710,9 +2255,9 @@ public class Cohort implements Birthdeathinterfacemethods {
 		return this.getTotalNumberOfSonsSimulatedResponse();
 	}
 
-	public float simulateweightinlbs() {
+	private float simulateweightinlbs() {
 		try {
-			this.setWeightSRLbsSimulatedResponse(this.utilities.randFloatBetween(120, 300));
+			this.setWeightSRLbsSimulatedResponse(this.getUtilities().randFloatBetween(120, 300));
 			return this.getWeightSRLbsSimulatedResponse();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -2722,35 +2267,17 @@ public class Cohort implements Birthdeathinterfacemethods {
 	}
 
 	/**
-	 * @return the uniformdistribution
+	 * @return the paternalgrandparent
 	 */
-	public UniformDistribution getUniformdistribution() {
-		return uniformdistribution;
+	public PaternalMaleGrandParent getPaternalgrandparent() {
+		return paternalgrandparent;
 	}
 
 	/**
-	 * @param uniformdistribution the uniformdistribution to set
+	 * @param paternalgrandparent the paternalgrandparent to set
 	 */
-	public void setUniformdistribution(UniformDistribution uniformdistribution) {
-		this.uniformdistribution = uniformdistribution;
-	}
-
-	@Override
-	public Year simulateYearOfBirth() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int simulateAliveOrDead() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Year simulateYearOfDeath() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setPaternalgrandparent(PaternalMaleGrandParent paternalgrandparent) {
+		this.paternalgrandparent = paternalgrandparent;
 	}
 
 }

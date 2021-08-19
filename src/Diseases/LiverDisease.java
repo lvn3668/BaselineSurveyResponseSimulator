@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * MAVERIC / VABHS 
+ * @author Lalitha Viswanathan MAVERIC / VABHS
  *
  */
 public class LiverDisease extends OsteopathicDiseaseResponse {
@@ -133,17 +132,20 @@ public class LiverDisease extends OsteopathicDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the liverMedicines
-	 */
-	private ValueRange getLiverMedicines() throws Exception {
-		try {
-			return this.LiverMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.LiverMedicines;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof LiverDisease)) {
+			return false;
+		}
+		LiverDisease other = (LiverDisease) obj;
+		return Objects.equals(this.LiverMedicines, other.LiverMedicines)
+				&& this.livermedicinesadministeredepicresponse == other.livermedicinesadministeredepicresponse;
 	}
 
 	/**
@@ -157,6 +159,27 @@ public class LiverDisease extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.livermedicinesadministeredepicresponse;
+	}
+
+	/**
+	 * @return the liverMedicines
+	 */
+	private ValueRange getLiverMedicines() throws Exception {
+		try {
+			return this.LiverMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.LiverMedicines;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.LiverMedicines, this.livermedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -190,30 +213,6 @@ public class LiverDisease extends OsteopathicDiseaseResponse {
 	public String toString() {
 		return "LiverDisease [LiverMedicines=" + this.LiverMedicines + ", livermedicinesadministeredepicresponse="
 				+ this.livermedicinesadministeredepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(LiverMedicines, livermedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof LiverDisease)) {
-			return false;
-		}
-		LiverDisease other = (LiverDisease) obj;
-		return Objects.equals(LiverMedicines, other.LiverMedicines)
-				&& livermedicinesadministeredepicresponse == other.livermedicinesadministeredepicresponse;
 	}
 
 }

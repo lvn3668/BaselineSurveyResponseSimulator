@@ -81,11 +81,11 @@ public class SimulatedResponseQ1_15 {
 	}
 
 	/**
-	* 
+	*
 	*/
 	private UniformDistribution uniformdistribution;
 	/**
-	* 
+	*
 	*/
 	private Utilities utilities;
 
@@ -156,7 +156,7 @@ public class SimulatedResponseQ1_15 {
 
 	// Move the response for these questions to Utilities package
 	/**
-	* 
+	*
 	*/
 	private ValueRange vr12Q1ValueRange;
 
@@ -190,48 +190,48 @@ public class SimulatedResponseQ1_15 {
 	 */
 	private ValueRange vr12Q4ValueRange;
 	/**
-	* 
+	*
 	*/
 	private int vr12Q5simulatedresponse;
 	/**
-	* 
+	*
 	*/
 	private ValueRange vr12Q5ValueRange;
 	/**
-	* 
+	*
 	*/
 	private int vr12Q6simulatedresponse;
 	/**
-	* 
+	*
 	*/
 	private ValueRange vr12Q6ValueRange;
 	/**
-	* 
+	*
 	*/
 	private int vr12Q7simulatedresponse;
 	/**
-	* 
+	*
 	*/
 	private ValueRange vr12Q7ValueRange;
 	/**
-	* 
+	*
 	*/
 	private int vr12Q8simulatedresponse;
 	/**
-	* 
+	*
 	*/
 	private ValueRange vr12Q8ValueRange;
 	/**
-	* 
+	*
 	*/
 	private int vr12Q9simulatedresponse;
 	/**
-	* 
+	*
 	*/
 	private ValueRange vr12Q9ValueRange;
 
 	/**
-	* 
+	*
 	*/
 	public SimulatedResponseQ1_15() {
 		try {

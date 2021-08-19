@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class OtherCancer extends CancerResponse {
@@ -127,17 +126,20 @@ public class OtherCancer extends CancerResponse {
 		}
 	}
 
-	/**
-	 * @return the otherCancerMedicines
-	 */
-	private ValueRange getOtherCancerMedicines() {
-		try {
-			return this.OtherCancerMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.OtherCancerMedicines;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof OtherCancer)) {
+			return false;
+		}
+		OtherCancer other = (OtherCancer) obj;
+		return Objects.equals(this.OtherCancerMedicines, other.OtherCancerMedicines)
+				&& this.othercancermedicinesadministeredepicresponse == other.othercancermedicinesadministeredepicresponse;
 	}
 
 	/**
@@ -151,6 +153,28 @@ public class OtherCancer extends CancerResponse {
 			e.printStackTrace();
 		}
 		return this.othercancermedicinesadministeredepicresponse;
+	}
+
+	/**
+	 * @return the otherCancerMedicines
+	 */
+	private ValueRange getOtherCancerMedicines() {
+		try {
+			return this.OtherCancerMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.OtherCancerMedicines;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.OtherCancerMedicines, this.othercancermedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -184,30 +208,6 @@ public class OtherCancer extends CancerResponse {
 		return "OtherCancer [OtherCancerMedicines=" + this.OtherCancerMedicines
 				+ ", othercancermedicinesadministeredepicresponse=" + this.othercancermedicinesadministeredepicresponse
 				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(OtherCancerMedicines, othercancermedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof OtherCancer)) {
-			return false;
-		}
-		OtherCancer other = (OtherCancer) obj;
-		return Objects.equals(OtherCancerMedicines, other.OtherCancerMedicines)
-				&& othercancermedicinesadministeredepicresponse == other.othercancermedicinesadministeredepicresponse;
 	}
 
 }

@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthEatingDisorder extends MentalHealthResponse {
@@ -141,17 +140,20 @@ public class MentalHealthEatingDisorder extends MentalHealthResponse {
 		}
 	}
 
-	/**
-	 * @return the mHEatingDisorderMeds
-	 */
-	private ValueRange getMHEatingDisorderMeds() throws Exception {
-		try {
-			return this.MHEatingDisorderMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.MHEatingDisorderMeds;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MentalHealthEatingDisorder)) {
+			return false;
+		}
+		MentalHealthEatingDisorder other = (MentalHealthEatingDisorder) obj;
+		return Objects.equals(this.MHEatingDisorderMeds, other.MHEatingDisorderMeds)
+				&& this.MHEatingDisorderMedsAdministeredEpicResponse == other.MHEatingDisorderMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -165,6 +167,28 @@ public class MentalHealthEatingDisorder extends MentalHealthResponse {
 			e.printStackTrace();
 		}
 		return this.MHEatingDisorderMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the mHEatingDisorderMeds
+	 */
+	private ValueRange getMHEatingDisorderMeds() throws Exception {
+		try {
+			return this.MHEatingDisorderMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MHEatingDisorderMeds;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.MHEatingDisorderMeds, this.MHEatingDisorderMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -199,30 +223,6 @@ public class MentalHealthEatingDisorder extends MentalHealthResponse {
 		return "MentalHealthEatingDisorder [MHEatingDisorderMeds=" + this.MHEatingDisorderMeds
 				+ ", MHEatingDisorderMedsAdministeredEpicResponse=" + this.MHEatingDisorderMedsAdministeredEpicResponse
 				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(MHEatingDisorderMeds, MHEatingDisorderMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MentalHealthEatingDisorder)) {
-			return false;
-		}
-		MentalHealthEatingDisorder other = (MentalHealthEatingDisorder) obj;
-		return Objects.equals(MHEatingDisorderMeds, other.MHEatingDisorderMeds)
-				&& MHEatingDisorderMedsAdministeredEpicResponse == other.MHEatingDisorderMedsAdministeredEpicResponse;
 	}
 
 }

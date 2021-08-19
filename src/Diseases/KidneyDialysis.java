@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class KidneyDialysis extends NephrologyResponse {
@@ -79,9 +78,9 @@ public class KidneyDialysis extends NephrologyResponse {
 		return mintogenerateerrorval;
 	}
 
+	private int KDDialysisMedsAdministeredEpicResponse;
 	// Kidney Disease other than dialysis and non-acute
 	private ValueRange KidneyDialysisMeds;
-	private int KDDialysisMedsAdministeredEpicResponse;
 
 	public KidneyDialysis(Cohort cohort) throws Exception {
 		super(cohort);
@@ -138,22 +137,25 @@ public class KidneyDialysis extends NephrologyResponse {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof KidneyDialysis)) {
+			return false;
+		}
+		KidneyDialysis other = (KidneyDialysis) obj;
+		return this.KDDialysisMedsAdministeredEpicResponse == other.KDDialysisMedsAdministeredEpicResponse
+				&& Objects.equals(this.KidneyDialysisMeds, other.KidneyDialysisMeds);
+	}
+
+	@Override
 	protected void finalize() throws Throwable {
 		// TODO Auto-generated method stub
 		super.finalize();
-	}
-
-	/**
-	 * @return the kdDialysisMeds
-	 */
-	private ValueRange getKidneyDialysisMeds() throws Exception {
-		try {
-			return this.KidneyDialysisMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.KidneyDialysisMeds;
 	}
 
 	/**
@@ -170,15 +172,24 @@ public class KidneyDialysis extends NephrologyResponse {
 	}
 
 	/**
-	 * @param kdDialysisMeds the kdDialysisMeds to set
+	 * @return the kdDialysisMeds
 	 */
-	private void setKidneyDialysisMeds(ValueRange kdDialysisMeds) throws Exception {
+	private ValueRange getKidneyDialysisMeds() throws Exception {
 		try {
-			this.KidneyDialysisMeds = kdDialysisMeds;
+			return this.KidneyDialysisMeds;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return this.KidneyDialysisMeds;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.KDDialysisMedsAdministeredEpicResponse, this.KidneyDialysisMeds);
+		return result;
 	}
 
 	/**
@@ -196,34 +207,22 @@ public class KidneyDialysis extends NephrologyResponse {
 		}
 	}
 
+	/**
+	 * @param kdDialysisMeds the kdDialysisMeds to set
+	 */
+	private void setKidneyDialysisMeds(ValueRange kdDialysisMeds) throws Exception {
+		try {
+			this.KidneyDialysisMeds = kdDialysisMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "KidneyDialysis [KidneyDialysisMeds=" + this.KidneyDialysisMeds
 				+ ", KDDialysisMedsAdministeredEpicResponse=" + this.KDDialysisMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(KDDialysisMedsAdministeredEpicResponse, KidneyDialysisMeds);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof KidneyDialysis)) {
-			return false;
-		}
-		KidneyDialysis other = (KidneyDialysis) obj;
-		return KDDialysisMedsAdministeredEpicResponse == other.KDDialysisMedsAdministeredEpicResponse
-				&& Objects.equals(KidneyDialysisMeds, other.KidneyDialysisMeds);
 	}
 
 }

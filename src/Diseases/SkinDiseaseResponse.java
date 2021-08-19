@@ -10,8 +10,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SkinDiseaseResponse {
@@ -136,7 +135,7 @@ public class SkinDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(SkinDiseaseResponse.getMintogenerateerrorval(),
@@ -178,7 +177,7 @@ public class SkinDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(SkinDiseaseResponse.getMintogenerateerrorval(),
@@ -189,6 +188,19 @@ public class SkinDiseaseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof SkinDiseaseResponse)) {
+			return false;
+		}
+		SkinDiseaseResponse other = (SkinDiseaseResponse) obj;
+		return this.diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
+				&& Objects.equals(this.yearDiagnosedSimulatedResponse, other.yearDiagnosedSimulatedResponse);
 	}
 
 	/**
@@ -271,6 +283,11 @@ public class SkinDiseaseResponse {
 		return this.yearDiagnosedSimulatedResponse;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.diseasepresenceorabsencesimulatedepicresponse, this.yearDiagnosedSimulatedResponse);
+	}
+
 	/**
 	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
 	 */
@@ -351,7 +368,8 @@ public class SkinDiseaseResponse {
 	}
 
 	/**
-	 * @param yearDiagnosedSimulatedResponse the yearDiagnosedSimulatedResponse to set
+	 * @param yearDiagnosedSimulatedResponse the yearDiagnosedSimulatedResponse to
+	 *                                       set
 	 */
 	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosed) {
 		this.yearDiagnosedSimulatedResponse = yearDiagnosed;
@@ -361,26 +379,9 @@ public class SkinDiseaseResponse {
 	public String toString() {
 		return "SkinDiseaseResponse [diseasepresenceorabsence=" + this.diseasepresenceorabsence
 				+ ", diseasepresenceorabsencesimulatedepicresponse="
-				+ this.diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosedSimulatedResponse=" + this.yearDiagnosedSimulatedResponse
-				+ ", uniformDistribution=" + this.uniformDistribution + ", utilities=" + this.utilities + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(diseasepresenceorabsencesimulatedepicresponse, yearDiagnosedSimulatedResponse);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof SkinDiseaseResponse)) {
-			return false;
-		}
-		SkinDiseaseResponse other = (SkinDiseaseResponse) obj;
-		return diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
-				&& Objects.equals(yearDiagnosedSimulatedResponse, other.yearDiagnosedSimulatedResponse);
+				+ this.diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosedSimulatedResponse="
+				+ this.yearDiagnosedSimulatedResponse + ", uniformDistribution=" + this.uniformDistribution
+				+ ", utilities=" + this.utilities + "]";
 	}
 
 }

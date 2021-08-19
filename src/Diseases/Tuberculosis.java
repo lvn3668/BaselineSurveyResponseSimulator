@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Tuberculosis extends InfectiousDiseaseResponse {
@@ -144,6 +143,22 @@ public class Tuberculosis extends InfectiousDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Tuberculosis)) {
+			return false;
+		}
+		Tuberculosis other = (Tuberculosis) obj;
+		return Objects.equals(this.TuberculosisMedicines, other.TuberculosisMedicines)
+				&& this.TuberculosisMedsAdministeredEpicResponse == other.TuberculosisMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the tuberculosisMedicines
 	 */
@@ -168,6 +183,15 @@ public class Tuberculosis extends InfectiousDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.TuberculosisMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.TuberculosisMedicines, this.TuberculosisMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -197,33 +221,9 @@ public class Tuberculosis extends InfectiousDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(TuberculosisMedicines, TuberculosisMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Tuberculosis)) {
-			return false;
-		}
-		Tuberculosis other = (Tuberculosis) obj;
-		return Objects.equals(TuberculosisMedicines, other.TuberculosisMedicines)
-				&& TuberculosisMedsAdministeredEpicResponse == other.TuberculosisMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "Tuberculosis [TuberculosisMedicines=" + TuberculosisMedicines
-				+ ", TuberculosisMedsAdministeredEpicResponse=" + TuberculosisMedsAdministeredEpicResponse + "]";
+		return "Tuberculosis [TuberculosisMedicines=" + this.TuberculosisMedicines
+				+ ", TuberculosisMedsAdministeredEpicResponse=" + this.TuberculosisMedsAdministeredEpicResponse + "]";
 	}
 
 }

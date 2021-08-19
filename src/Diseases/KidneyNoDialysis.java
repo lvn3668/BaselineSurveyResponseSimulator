@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class KidneyNoDialysis extends NephrologyResponse {
@@ -136,6 +135,22 @@ public class KidneyNoDialysis extends NephrologyResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof KidneyNoDialysis)) {
+			return false;
+		}
+		KidneyNoDialysis other = (KidneyNoDialysis) obj;
+		return Objects.equals(this.KdNoDialysisMeds, other.KdNoDialysisMeds)
+				&& this.KdNoDialysisMedsAdministeredEpicResponse == other.KdNoDialysisMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the kdNoDialysisMeds
 	 */
@@ -160,6 +175,14 @@ public class KidneyNoDialysis extends NephrologyResponse {
 			e.printStackTrace();
 		}
 		return this.KdNoDialysisMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.KdNoDialysisMeds, this.KdNoDialysisMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -190,33 +213,9 @@ public class KidneyNoDialysis extends NephrologyResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(KdNoDialysisMeds, KdNoDialysisMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof KidneyNoDialysis)) {
-			return false;
-		}
-		KidneyNoDialysis other = (KidneyNoDialysis) obj;
-		return Objects.equals(KdNoDialysisMeds, other.KdNoDialysisMeds)
-				&& KdNoDialysisMedsAdministeredEpicResponse == other.KdNoDialysisMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "KidneyNoDialysis [KdNoDialysisMeds=" + KdNoDialysisMeds + ", KdNoDialysisMedsAdministeredEpicResponse="
-				+ KdNoDialysisMedsAdministeredEpicResponse + "]";
+		return "KidneyNoDialysis [KdNoDialysisMeds=" + this.KdNoDialysisMeds
+				+ ", KdNoDialysisMedsAdministeredEpicResponse=" + this.KdNoDialysisMedsAdministeredEpicResponse + "]";
 	}
 
 }

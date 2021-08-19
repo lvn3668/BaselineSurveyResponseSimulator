@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class ProstateCancer extends CancerResponse {
@@ -144,6 +143,22 @@ public class ProstateCancer extends CancerResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof ProstateCancer)) {
+			return false;
+		}
+		ProstateCancer other = (ProstateCancer) obj;
+		return Objects.equals(this.ProstateCancerMedicines, other.ProstateCancerMedicines)
+				&& this.prostatecancermedicinesadministeredepicresponse == other.prostatecancermedicinesadministeredepicresponse;
+	}
+
 	/**
 	 * @return the prostateCancerMedicines
 	 */
@@ -162,6 +177,15 @@ public class ProstateCancer extends CancerResponse {
 			e.printStackTrace();
 		}
 		return this.prostatecancermedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.ProstateCancerMedicines, this.prostatecancermedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -187,35 +211,10 @@ public class ProstateCancer extends CancerResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(ProstateCancerMedicines, prostatecancermedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof ProstateCancer)) {
-			return false;
-		}
-		ProstateCancer other = (ProstateCancer) obj;
-		return Objects.equals(ProstateCancerMedicines, other.ProstateCancerMedicines)
-				&& prostatecancermedicinesadministeredepicresponse == other.prostatecancermedicinesadministeredepicresponse;
-	}
-
-	@Override
 	public String toString() {
-		return "ProstateCancer [ProstateCancerMedicines=" + ProstateCancerMedicines
-				+ ", prostatecancermedicinesadministeredepicresponse=" + prostatecancermedicinesadministeredepicresponse
-				+ "]";
+		return "ProstateCancer [ProstateCancerMedicines=" + this.ProstateCancerMedicines
+				+ ", prostatecancermedicinesadministeredepicresponse="
+				+ this.prostatecancermedicinesadministeredepicresponse + "]";
 	}
 
 }

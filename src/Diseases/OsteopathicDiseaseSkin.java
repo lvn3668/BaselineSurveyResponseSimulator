@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class OsteopathicDiseaseSkin extends OsteopathicDiseaseResponse {
@@ -137,6 +136,22 @@ public class OsteopathicDiseaseSkin extends OsteopathicDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof OsteopathicDiseaseSkin)) {
+			return false;
+		}
+		OsteopathicDiseaseSkin other = (OsteopathicDiseaseSkin) obj;
+		return Objects.equals(this.OsteopathicDSkinMed, other.OsteopathicDSkinMed)
+				&& this.OsteopathicDiseasesSkinMedsAdministeredEpicResponse == other.OsteopathicDiseasesSkinMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the osteopathicDiseasesSkinMedsAdministeredEpicResponse
 	 */
@@ -161,6 +176,15 @@ public class OsteopathicDiseaseSkin extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.OsteopathicDSkinMed;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.OsteopathicDSkinMed, this.OsteopathicDiseasesSkinMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -191,35 +215,10 @@ public class OsteopathicDiseaseSkin extends OsteopathicDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(OsteopathicDSkinMed, OsteopathicDiseasesSkinMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof OsteopathicDiseaseSkin)) {
-			return false;
-		}
-		OsteopathicDiseaseSkin other = (OsteopathicDiseaseSkin) obj;
-		return Objects.equals(OsteopathicDSkinMed, other.OsteopathicDSkinMed)
-				&& OsteopathicDiseasesSkinMedsAdministeredEpicResponse == other.OsteopathicDiseasesSkinMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
 		return "OsteopathicDiseaseSkin [OsteopathicDiseasesSkinMedsAdministeredEpicResponse="
-				+ OsteopathicDiseasesSkinMedsAdministeredEpicResponse + ", OsteopathicDSkinMed=" + OsteopathicDSkinMed
-				+ "]";
+				+ this.OsteopathicDiseasesSkinMedsAdministeredEpicResponse + ", OsteopathicDSkinMed="
+				+ this.OsteopathicDSkinMed + "]";
 	}
 
 }

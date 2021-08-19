@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class HIV extends InfectiousDiseaseResponse {
@@ -132,6 +131,22 @@ public class HIV extends InfectiousDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof HIV)) {
+			return false;
+		}
+		HIV other = (HIV) obj;
+		return Objects.equals(this.HIVMedicines, other.HIVMedicines)
+				&& this.HIVMedsAdministeredEpicResponse == other.HIVMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the hIVMedicines
 	 */
@@ -158,6 +173,14 @@ public class HIV extends InfectiousDiseaseResponse {
 		return this.HIVMedsAdministeredEpicResponse;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.HIVMedicines, this.HIVMedsAdministeredEpicResponse);
+		return result;
+	}
+
 	/**
 	 * @param hIVMedicines the hIVMedicines to set
 	 */
@@ -182,33 +205,9 @@ public class HIV extends InfectiousDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(HIVMedicines, HIVMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof HIV)) {
-			return false;
-		}
-		HIV other = (HIV) obj;
-		return Objects.equals(HIVMedicines, other.HIVMedicines)
-				&& HIVMedsAdministeredEpicResponse == other.HIVMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "HIV [HIVMedicines=" + HIVMedicines + ", HIVMedsAdministeredEpicResponse="
-				+ HIVMedsAdministeredEpicResponse + "]";
+		return "HIV [HIVMedicines=" + this.HIVMedicines + ", HIVMedsAdministeredEpicResponse="
+				+ this.HIVMedsAdministeredEpicResponse + "]";
 	}
 
 }

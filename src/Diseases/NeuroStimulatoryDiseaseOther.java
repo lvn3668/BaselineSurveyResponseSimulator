@@ -7,8 +7,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERRIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERRIC
  *
  */
 public class NeuroStimulatoryDiseaseOther extends NeuroStimulatoryDiseaseResponse {

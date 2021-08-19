@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Stroke extends MiscDiseaseResponse {
@@ -142,6 +141,22 @@ public class Stroke extends MiscDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Stroke)) {
+			return false;
+		}
+		Stroke other = (Stroke) obj;
+		return Objects.equals(this.StrokeMedicines, other.StrokeMedicines)
+				&& this.StrokeMedsAdministeredEpicResponse == other.StrokeMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the strokeMedicines
 	 */
@@ -166,6 +181,14 @@ public class Stroke extends MiscDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.StrokeMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.StrokeMedicines, this.StrokeMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -198,30 +221,6 @@ public class Stroke extends MiscDiseaseResponse {
 	public String toString() {
 		return "Stroke [StrokeMedicines=" + this.StrokeMedicines + ", StrokeMedsAdministeredEpicResponse="
 				+ this.StrokeMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(StrokeMedicines, StrokeMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Stroke)) {
-			return false;
-		}
-		Stroke other = (Stroke) obj;
-		return Objects.equals(StrokeMedicines, other.StrokeMedicines)
-				&& StrokeMedsAdministeredEpicResponse == other.StrokeMedsAdministeredEpicResponse;
 	}
 
 }

@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class KidneyDiseaseAcute extends NephrologyResponse {
@@ -137,6 +136,22 @@ public class KidneyDiseaseAcute extends NephrologyResponse {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof KidneyDiseaseAcute)) {
+			return false;
+		}
+		KidneyDiseaseAcute other = (KidneyDiseaseAcute) obj;
+		return Objects.equals(this.KDAcuteMeds, other.KDAcuteMeds)
+				&& this.KDAcuteMedsAdministeredEpicResponse == other.KDAcuteMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the kDAcuteMeds
 	 */
@@ -161,6 +176,14 @@ public class KidneyDiseaseAcute extends NephrologyResponse {
 			e.printStackTrace();
 		}
 		return this.KDAcuteMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.KDAcuteMeds, this.KDAcuteMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -190,33 +213,9 @@ public class KidneyDiseaseAcute extends NephrologyResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(KDAcuteMeds, KDAcuteMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof KidneyDiseaseAcute)) {
-			return false;
-		}
-		KidneyDiseaseAcute other = (KidneyDiseaseAcute) obj;
-		return Objects.equals(KDAcuteMeds, other.KDAcuteMeds)
-				&& KDAcuteMedsAdministeredEpicResponse == other.KDAcuteMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "KidneyDiseaseAcute [KDAcuteMeds=" + KDAcuteMeds + ", KDAcuteMedsAdministeredEpicResponse="
-				+ KDAcuteMedsAdministeredEpicResponse + "]";
+		return "KidneyDiseaseAcute [KDAcuteMeds=" + this.KDAcuteMeds + ", KDAcuteMedsAdministeredEpicResponse="
+				+ this.KDAcuteMedsAdministeredEpicResponse + "]";
 	}
 
 }

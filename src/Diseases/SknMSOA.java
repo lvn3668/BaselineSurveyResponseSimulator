@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SknMSOA extends SkinDiseaseResponse {
@@ -141,17 +140,20 @@ public class SknMSOA extends SkinDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the sknMSOAMedicines
-	 */
-	private ValueRange getSknMSOAMedicines() {
-		try {
-			return this.SknMSOAMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.SknMSOAMedicines;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof SknMSOA)) {
+			return false;
+		}
+		SknMSOA other = (SknMSOA) obj;
+		return Objects.equals(this.SknMSOAMedicines, other.SknMSOAMedicines)
+				&& this.SknMSOAMedicinesAdministeredEpicResponse == other.SknMSOAMedicinesAdministeredEpicResponse;
 	}
 
 	/**
@@ -165,6 +167,27 @@ public class SknMSOA extends SkinDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.SknMSOAMedicinesAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the sknMSOAMedicines
+	 */
+	private ValueRange getSknMSOAMedicines() {
+		try {
+			return this.SknMSOAMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.SknMSOAMedicines;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.SknMSOAMedicines, this.SknMSOAMedicinesAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -194,33 +217,9 @@ public class SknMSOA extends SkinDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(SknMSOAMedicines, SknMSOAMedicinesAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof SknMSOA)) {
-			return false;
-		}
-		SknMSOA other = (SknMSOA) obj;
-		return Objects.equals(SknMSOAMedicines, other.SknMSOAMedicines)
-				&& SknMSOAMedicinesAdministeredEpicResponse == other.SknMSOAMedicinesAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "SknMSOA [SknMSOAMedicines=" + SknMSOAMedicines + ", SknMSOAMedicinesAdministeredEpicResponse="
-				+ SknMSOAMedicinesAdministeredEpicResponse + "]";
+		return "SknMSOA [SknMSOAMedicines=" + this.SknMSOAMedicines + ", SknMSOAMedicinesAdministeredEpicResponse="
+				+ this.SknMSOAMedicinesAdministeredEpicResponse + "]";
 	}
 
 }

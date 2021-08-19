@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class CoronaryArteryDisease extends CirculatoryDiseaseResponse {
@@ -158,6 +157,22 @@ public class CoronaryArteryDisease extends CirculatoryDiseaseResponse {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof CoronaryArteryDisease)) {
+			return false;
+		}
+		CoronaryArteryDisease other = (CoronaryArteryDisease) obj;
+		return Objects.equals(this.CoronaryArteryMedicines, other.CoronaryArteryMedicines)
+				&& this.cadmedicinesadministeredepicresponse == other.cadmedicinesadministeredepicresponse;
+	}
+
+	@Override
 	protected void finalize() throws Exception {
 		// TODO Auto-generated method stub
 		try {
@@ -193,6 +208,14 @@ public class CoronaryArteryDisease extends CirculatoryDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.CoronaryArteryMedicines;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.CoronaryArteryMedicines, this.cadmedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -233,30 +256,6 @@ public class CoronaryArteryDisease extends CirculatoryDiseaseResponse {
 		return "CoronaryArteryDisease [CoronaryArteryMedicines=" + this.CoronaryArteryMedicines
 				+ ", cadmedicinesadministeredepicresponse=" + this.cadmedicinesadministeredepicresponse + "]";
 
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(CoronaryArteryMedicines, cadmedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof CoronaryArteryDisease)) {
-			return false;
-		}
-		CoronaryArteryDisease other = (CoronaryArteryDisease) obj;
-		return Objects.equals(CoronaryArteryMedicines, other.CoronaryArteryMedicines)
-				&& cadmedicinesadministeredepicresponse == other.cadmedicinesadministeredepicresponse;
 	}
 
 }

@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class InfectiousDiseaseOther extends InfectiousDiseaseResponse {
@@ -136,6 +135,22 @@ public class InfectiousDiseaseOther extends InfectiousDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof InfectiousDiseaseOther)) {
+			return false;
+		}
+		InfectiousDiseaseOther other = (InfectiousDiseaseOther) obj;
+		return Objects.equals(this.IDOtherMed, other.IDOtherMed)
+				&& this.InfectiousDiseasesOtherMedsAdministeredEpicResponse == other.InfectiousDiseasesOtherMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the iDOtherMed
 	 */
@@ -160,6 +175,15 @@ public class InfectiousDiseaseOther extends InfectiousDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.InfectiousDiseasesOtherMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.IDOtherMed, this.InfectiousDiseasesOtherMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -194,30 +218,6 @@ public class InfectiousDiseaseOther extends InfectiousDiseaseResponse {
 		return "InfectiousDiseaseOther [IDOtherMed=" + this.IDOtherMed
 				+ ", InfectiousDiseasesOtherMedsAdministeredEpicResponse="
 				+ this.InfectiousDiseasesOtherMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(IDOtherMed, InfectiousDiseasesOtherMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof InfectiousDiseaseOther)) {
-			return false;
-		}
-		InfectiousDiseaseOther other = (InfectiousDiseaseOther) obj;
-		return Objects.equals(IDOtherMed, other.IDOtherMed)
-				&& InfectiousDiseasesOtherMedsAdministeredEpicResponse == other.InfectiousDiseasesOtherMedsAdministeredEpicResponse;
 	}
 
 }

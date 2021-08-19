@@ -10,8 +10,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS /MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS /MAVERIC
  *
  */
 public class NephrologyResponse {
@@ -120,10 +119,10 @@ public class NephrologyResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(NephrologyResponse.getMintogenerateerrorval(),
-								NephrologyResponse.getMaxtogenerateerrorval())));
+				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(
+						NephrologyResponse.getMintogenerateerrorval(), NephrologyResponse.getMaxtogenerateerrorval())));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -160,7 +159,7 @@ public class NephrologyResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(
 						new StringBuilder(this.getUtilities().randBetween(NephrologyResponse.getMintogenerateerrorval(),
@@ -172,6 +171,19 @@ public class NephrologyResponse {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof NephrologyResponse)) {
+			return false;
+		}
+		NephrologyResponse other = (NephrologyResponse) obj;
+		return this.diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
+				&& Objects.equals(this.yearDiagnosed, other.yearDiagnosed);
 	}
 
 	/**
@@ -243,6 +255,11 @@ public class NephrologyResponse {
 			e.printStackTrace();
 		}
 		return this.yearDiagnosed;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.diseasepresenceorabsencesimulatedepicresponse, this.yearDiagnosed);
 	}
 
 	/**
@@ -317,27 +334,9 @@ public class NephrologyResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(diseasepresenceorabsencesimulatedepicresponse, yearDiagnosed);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof NephrologyResponse)) {
-			return false;
-		}
-		NephrologyResponse other = (NephrologyResponse) obj;
-		return diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
-				&& Objects.equals(yearDiagnosed, other.yearDiagnosed);
-	}
-
-	@Override
 	public String toString() {
 		return "NephrologyResponse [diseasepresenceorabsencesimulatedepicresponse="
-				+ diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + yearDiagnosed + "]";
+				+ this.diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + this.yearDiagnosed + "]";
 	}
 
 }

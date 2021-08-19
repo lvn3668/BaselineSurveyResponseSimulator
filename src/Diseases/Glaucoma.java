@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Glaucoma extends HearingVisionDiseaseResponse {
@@ -136,6 +135,22 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Glaucoma)) {
+			return false;
+		}
+		Glaucoma other = (Glaucoma) obj;
+		return Objects.equals(this.GlaucomaMedicines, other.GlaucomaMedicines)
+				&& this.GlaucomaMedsAdministeredEpicResponse == other.GlaucomaMedsAdministeredEpicResponse;
+	}
+
+	@Override
 	protected void finalize() throws Throwable {
 		// TODO Auto-generated method stub
 		super.finalize();
@@ -156,6 +171,14 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 	 */
 	public int getGlaucomamedicinesadministeredepicresponse() {
 		return this.GlaucomaMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.GlaucomaMedicines, this.GlaucomaMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -181,30 +204,6 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 	public String toString() {
 		return "Glaucoma [GlaucomaMedicines=" + this.GlaucomaMedicines + ", GlaucomaMedsAdministeredEpicResponse="
 				+ this.GlaucomaMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GlaucomaMedicines, GlaucomaMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Glaucoma)) {
-			return false;
-		}
-		Glaucoma other = (Glaucoma) obj;
-		return Objects.equals(GlaucomaMedicines, other.GlaucomaMedicines)
-				&& GlaucomaMedsAdministeredEpicResponse == other.GlaucomaMedsAdministeredEpicResponse;
 	}
 
 }

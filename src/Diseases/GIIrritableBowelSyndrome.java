@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
@@ -139,6 +138,22 @@ public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GIIrritableBowelSyndrome)) {
+			return false;
+		}
+		GIIrritableBowelSyndrome other = (GIIrritableBowelSyndrome) obj;
+		return this.GIIBSMedsAdministeredEpicResponse == other.GIIBSMedsAdministeredEpicResponse
+				&& Objects.equals(this.GI_IBS_Meds, other.GI_IBS_Meds);
+	}
+
 	/**
 	 * @return the gI_IBS_Meds
 	 */
@@ -151,6 +166,14 @@ public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
 	 */
 	public int getGiIrritableBowelSyndromemedicinesadministeredepicresponse() throws Exception {
 		return this.GIIBSMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.GIIBSMedsAdministeredEpicResponse, this.GI_IBS_Meds);
+		return result;
 	}
 
 	/**
@@ -173,29 +196,5 @@ public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
 	public String toString() {
 		return "GIIrritableBowelSyndrome [GI_IBS_Meds=" + this.GI_IBS_Meds + ", GIIBSMedsAdministeredEpicResponse="
 				+ this.GIIBSMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GIIBSMedsAdministeredEpicResponse, GI_IBS_Meds);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GIIrritableBowelSyndrome)) {
-			return false;
-		}
-		GIIrritableBowelSyndrome other = (GIIrritableBowelSyndrome) obj;
-		return GIIBSMedsAdministeredEpicResponse == other.GIIBSMedsAdministeredEpicResponse
-				&& Objects.equals(GI_IBS_Meds, other.GI_IBS_Meds);
 	}
 }

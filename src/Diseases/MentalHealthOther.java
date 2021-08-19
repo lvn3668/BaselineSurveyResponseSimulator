@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthOther extends MentalHealthResponse {
@@ -137,17 +136,20 @@ public class MentalHealthOther extends MentalHealthResponse {
 
 	}
 
-	/**
-	 * @return the mHOtherMeds
-	 */
-	private ValueRange getMHOtherMeds() {
-		try {
-			return this.MHOtherMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.MHOtherMeds;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MentalHealthOther)) {
+			return false;
+		}
+		MentalHealthOther other = (MentalHealthOther) obj;
+		return Objects.equals(this.MHOtherMeds, other.MHOtherMeds)
+				&& this.MHOtherMedsAdministeredEpicResponse == other.MHOtherMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -161,6 +163,27 @@ public class MentalHealthOther extends MentalHealthResponse {
 			e.printStackTrace();
 		}
 		return this.MHOtherMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the mHOtherMeds
+	 */
+	private ValueRange getMHOtherMeds() {
+		try {
+			return this.MHOtherMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MHOtherMeds;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.MHOtherMeds, this.MHOtherMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -193,30 +216,6 @@ public class MentalHealthOther extends MentalHealthResponse {
 	public String toString() {
 		return "MentalHealthOther [MHOtherMeds=" + this.MHOtherMeds + ", MHOtherMedsAdministeredEpicResponse="
 				+ this.MHOtherMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(MHOtherMeds, MHOtherMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MentalHealthOther)) {
-			return false;
-		}
-		MentalHealthOther other = (MentalHealthOther) obj;
-		return Objects.equals(MHOtherMeds, other.MHOtherMeds)
-				&& MHOtherMedsAdministeredEpicResponse == other.MHOtherMedsAdministeredEpicResponse;
 	}
 
 }

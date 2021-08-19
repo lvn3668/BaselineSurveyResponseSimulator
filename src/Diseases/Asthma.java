@@ -11,16 +11,16 @@ public class Asthma extends OsteopathicDiseaseResponse {
 
 	/**
 	 * /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
- *
- */
+	 *
+	 * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
+	 *
+	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int maxtogenerateerrorval = 5;
 	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
 
@@ -51,11 +51,11 @@ public class Asthma extends OsteopathicDiseaseResponse {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private ValueRange AsthmaMedicines;
 	/**
-	 * 
+	 *
 	 */
 	private int asthmamedicinesadministeredepicresponse;
 
@@ -78,11 +78,10 @@ public class Asthma extends OsteopathicDiseaseResponse {
 							.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval())))) {
 				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities().randBetween(
 						(int) this.getAsthmaMedicines().getMinimum(), (int) this.getAsthmaMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities()
 						.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,13 +110,27 @@ public class Asthma extends OsteopathicDiseaseResponse {
 							.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval())))) {
 				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities().randBetween(
 						(int) this.getAsthmaMedicines().getMinimum(), (int) this.getAsthmaMedicines().getMaximum()));
-			} else
+			} else {
 				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities()
 						.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Asthma)) {
+			return false;
+		}
+		Asthma other = (Asthma) obj;
+		return Objects.equals(this.AsthmaMedicines, other.AsthmaMedicines)
+				&& this.asthmamedicinesadministeredepicresponse == other.asthmamedicinesadministeredepicresponse;
 	}
 
 	/**
@@ -152,6 +165,11 @@ public class Asthma extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.asthmamedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.AsthmaMedicines, this.asthmamedicinesadministeredepicresponse);
 	}
 
 	/**
@@ -196,24 +214,6 @@ public class Asthma extends OsteopathicDiseaseResponse {
 	public String toString() {
 		return "Asthma [AsthmaMedicines=" + this.AsthmaMedicines + ", asthmamedicinesadministeredepicresponse="
 				+ this.asthmamedicinesadministeredepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(AsthmaMedicines, asthmamedicinesadministeredepicresponse);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof Asthma)) {
-			return false;
-		}
-		Asthma other = (Asthma) obj;
-		return Objects.equals(AsthmaMedicines, other.AsthmaMedicines)
-				&& asthmamedicinesadministeredepicresponse == other.asthmamedicinesadministeredepicresponse;
 	}
 
 }

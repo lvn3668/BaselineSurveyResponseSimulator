@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
@@ -24,7 +23,7 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int maxtogenerateerrorval = 5;
 	/**
@@ -40,7 +39,7 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
 
@@ -86,11 +85,11 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private int chfmedicinesadministeredepicresponse;
 	/**
-	 * 
+	 *
 	 */
 	private ValueRange CongestiveHeartFailureMedicines;
 
@@ -162,6 +161,22 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof CongestiveHeartFailure)) {
+			return false;
+		}
+		CongestiveHeartFailure other = (CongestiveHeartFailure) obj;
+		return Objects.equals(this.CongestiveHeartFailureMedicines, other.CongestiveHeartFailureMedicines)
+				&& this.chfmedicinesadministeredepicresponse == other.chfmedicinesadministeredepicresponse;
+	}
+
 	/**
 	 *
 	 */
@@ -176,6 +191,23 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 			e.printStackTrace();
 			throw e;
 		}
+	}
+
+	/**
+	 * @return the congestiveHeartFailureMedicines
+	 */
+	/**
+	 * @return
+	 * @throws Exception
+	 */
+	private ValueRange getCongestiveHeartFailureMedicines() {
+		try {
+			return this.CongestiveHeartFailureMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.CongestiveHeartFailureMedicines;
 	}
 
 	/**
@@ -195,21 +227,13 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 		return this.chfmedicinesadministeredepicresponse;
 	}
 
-	/**
-	 * @return the congestiveHeartFailureMedicines
-	 */
-	/**
-	 * @return
-	 * @throws Exception
-	 */
-	private ValueRange getCongestiveHeartFailureMedicines() {
-		try {
-			return this.CongestiveHeartFailureMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.CongestiveHeartFailureMedicines;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.getCongestiveHeartFailureMedicines(), this.chfmedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -263,31 +287,6 @@ public class CongestiveHeartFailure extends CirculatoryDiseaseResponse {
 		return "CongestiveHeartFailure [CongestiveHeartFailureMedicines=" + this.CongestiveHeartFailureMedicines
 				+ ", chfmedicinesadministeredepicresponse=" + this.chfmedicinesadministeredepicresponse + "]";
 
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(this.getCongestiveHeartFailureMedicines(), this.chfmedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof CongestiveHeartFailure)) {
-			return false;
-		}
-		CongestiveHeartFailure other = (CongestiveHeartFailure) obj;
-		return Objects.equals(this.CongestiveHeartFailureMedicines, other.CongestiveHeartFailureMedicines)
-				&& this.chfmedicinesadministeredepicresponse == other.chfmedicinesadministeredepicresponse;
 	}
 
 }

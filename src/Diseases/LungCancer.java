@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class LungCancer extends CancerResponse {
@@ -146,6 +145,22 @@ public class LungCancer extends CancerResponse {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof LungCancer)) {
+			return false;
+		}
+		LungCancer other = (LungCancer) obj;
+		return Objects.equals(this.LungCancerMedicines, other.LungCancerMedicines)
+				&& this.lungcancermedicinesadministeredepicresponse == other.lungcancermedicinesadministeredepicresponse;
+	}
+
 	/**
 	 * @return the lungCancerMedicines
 	 */
@@ -170,6 +185,15 @@ public class LungCancer extends CancerResponse {
 			e.printStackTrace();
 		}
 		return this.lungcancermedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.LungCancerMedicines, this.lungcancermedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -200,33 +224,10 @@ public class LungCancer extends CancerResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(LungCancerMedicines, lungcancermedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof LungCancer)) {
-			return false;
-		}
-		LungCancer other = (LungCancer) obj;
-		return Objects.equals(LungCancerMedicines, other.LungCancerMedicines)
-				&& lungcancermedicinesadministeredepicresponse == other.lungcancermedicinesadministeredepicresponse;
-	}
-
-	@Override
 	public String toString() {
-		return "LungCancer [LungCancerMedicines=" + LungCancerMedicines
-				+ ", lungcancermedicinesadministeredepicresponse=" + lungcancermedicinesadministeredepicresponse + "]";
+		return "LungCancer [LungCancerMedicines=" + this.LungCancerMedicines
+				+ ", lungcancermedicinesadministeredepicresponse=" + this.lungcancermedicinesadministeredepicresponse
+				+ "]";
 	}
 
 }

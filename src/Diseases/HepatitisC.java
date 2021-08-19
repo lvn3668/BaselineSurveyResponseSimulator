@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class HepatitisC extends InfectiousDiseaseResponse {
@@ -133,14 +132,20 @@ public class HepatitisC extends InfectiousDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the hepCMedicines
-	 */
-	private ValueRange getHepCMedicines() throws Exception {
-		try {
-			return this.HepCMedicines;
-		} finally {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof HepatitisC)) {
+			return false;
+		}
+		HepatitisC other = (HepatitisC) obj;
+		return Objects.equals(this.HepCMedicines, other.HepCMedicines)
+				&& this.HepCMedsAdministeredEpicResponse == other.HepCMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -151,6 +156,24 @@ public class HepatitisC extends InfectiousDiseaseResponse {
 			return this.HepCMedsAdministeredEpicResponse;
 		} finally {
 		}
+	}
+
+	/**
+	 * @return the hepCMedicines
+	 */
+	private ValueRange getHepCMedicines() throws Exception {
+		try {
+			return this.HepCMedicines;
+		} finally {
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.HepCMedicines, this.HepCMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -175,33 +198,9 @@ public class HepatitisC extends InfectiousDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(HepCMedicines, HepCMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof HepatitisC)) {
-			return false;
-		}
-		HepatitisC other = (HepatitisC) obj;
-		return Objects.equals(HepCMedicines, other.HepCMedicines)
-				&& HepCMedsAdministeredEpicResponse == other.HepCMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "HepatitisC [HepCMedicines=" + HepCMedicines + ", HepCMedsAdministeredEpicResponse="
-				+ HepCMedsAdministeredEpicResponse + "]";
+		return "HepatitisC [HepCMedicines=" + this.HepCMedicines + ", HepCMedsAdministeredEpicResponse="
+				+ this.HepCMedsAdministeredEpicResponse + "]";
 	}
 
 }

@@ -8,27 +8,26 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation MAVERIC / VABHS
+ * @author Lalitha Viswanathan Affiliation MAVERIC / VABHS
  *
  */
 public class Cataract extends HearingVisionDiseaseResponse {
 
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int maxtogenerateerrorval = 5;
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
 
@@ -71,12 +70,12 @@ public class Cataract extends HearingVisionDiseaseResponse {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private ValueRange CataractMedicines;
 	// default is error response
 	/**
-	 * 
+	 *
 	 */
 	private int cataractmedicinesadministeredepicresponse;
 
@@ -101,11 +100,10 @@ public class Cataract extends HearingVisionDiseaseResponse {
 				this.setCataractmedicinesadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getCataractMedicines().getMinimum(),
 								(int) this.getCataractMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setCataractmedicinesadministeredepicresponse(this.getUtilities()
 						.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -137,15 +135,22 @@ public class Cataract extends HearingVisionDiseaseResponse {
 				this.setCataractmedicinesadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getCataractMedicines().getMinimum(),
 								(int) this.getCataractMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setCataractmedicinesadministeredepicresponse(this.getUtilities()
 						.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj != null && obj instanceof Cataract && this instanceof Cataract && this.hashCode() == obj.hashCode()) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -179,6 +184,11 @@ public class Cataract extends HearingVisionDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.cataractmedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getCataractMedicines(), this.getCataractmedicinesadministeredepicresponse());
 	}
 
 	/**
@@ -221,19 +231,6 @@ public class Cataract extends HearingVisionDiseaseResponse {
 	public String toString() {
 		return "Cataract [CataractMedicines=" + this.CataractMedicines + ", cataractmedicinesadministeredepicresponse="
 				+ this.cataractmedicinesadministeredepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(getCataractMedicines(), getCataractmedicinesadministeredepicresponse());
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj != null && obj instanceof Cataract && this instanceof Cataract && this.hashCode() == obj.hashCode()) {
-			return true;
-		} else
-			return false;
 	}
 
 }

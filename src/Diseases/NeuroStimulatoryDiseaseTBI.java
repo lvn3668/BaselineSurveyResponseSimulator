@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class NeuroStimulatoryDiseaseTBI extends NeuroStimulatoryDiseaseResponse {
@@ -139,6 +138,22 @@ public class NeuroStimulatoryDiseaseTBI extends NeuroStimulatoryDiseaseResponse 
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof NeuroStimulatoryDiseaseTBI)) {
+			return false;
+		}
+		NeuroStimulatoryDiseaseTBI other = (NeuroStimulatoryDiseaseTBI) obj;
+		return Objects.equals(this.NSTBIMed, other.NSTBIMed)
+				&& this.NeuroStimulatoryTBIMedsAdministeredEpicResponse == other.NeuroStimulatoryTBIMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the neuroStimulatoryTBIMedsAdministeredEpicResponse
 	 */
@@ -163,6 +178,14 @@ public class NeuroStimulatoryDiseaseTBI extends NeuroStimulatoryDiseaseResponse 
 			e.printStackTrace();
 		}
 		return this.NSTBIMed;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.NSTBIMed, this.NeuroStimulatoryTBIMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -197,30 +220,6 @@ public class NeuroStimulatoryDiseaseTBI extends NeuroStimulatoryDiseaseResponse 
 		return "NeuroStimulatoryDiseaseTBI [NSTBIMed=" + this.NSTBIMed
 				+ ", NeuroStimulatoryTBIMedsAdministeredEpicResponse="
 				+ this.NeuroStimulatoryTBIMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(NSTBIMed, NeuroStimulatoryTBIMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof NeuroStimulatoryDiseaseTBI)) {
-			return false;
-		}
-		NeuroStimulatoryDiseaseTBI other = (NeuroStimulatoryDiseaseTBI) obj;
-		return Objects.equals(NSTBIMed, other.NSTBIMed)
-				&& NeuroStimulatoryTBIMedsAdministeredEpicResponse == other.NeuroStimulatoryTBIMedsAdministeredEpicResponse;
 	}
 
 }

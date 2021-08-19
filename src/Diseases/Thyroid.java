@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Thyroid extends OsteopathicDiseaseResponse {
@@ -142,6 +141,22 @@ public class Thyroid extends OsteopathicDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Thyroid)) {
+			return false;
+		}
+		Thyroid other = (Thyroid) obj;
+		return Objects.equals(this.ThyroidMedicines, other.ThyroidMedicines)
+				&& this.thyroidmedicinesadministeredepicresponse == other.thyroidmedicinesadministeredepicresponse;
+	}
+
 	/**
 	 * @return the thyroidMedicines
 	 */
@@ -160,6 +175,14 @@ public class Thyroid extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.thyroidmedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.ThyroidMedicines, this.thyroidmedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -184,33 +207,9 @@ public class Thyroid extends OsteopathicDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(ThyroidMedicines, thyroidmedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Thyroid)) {
-			return false;
-		}
-		Thyroid other = (Thyroid) obj;
-		return Objects.equals(ThyroidMedicines, other.ThyroidMedicines)
-				&& thyroidmedicinesadministeredepicresponse == other.thyroidmedicinesadministeredepicresponse;
-	}
-
-	@Override
 	public String toString() {
-		return "Thyroid [ThyroidMedicines=" + ThyroidMedicines + ", thyroidmedicinesadministeredepicresponse="
-				+ thyroidmedicinesadministeredepicresponse + "]";
+		return "Thyroid [ThyroidMedicines=" + this.ThyroidMedicines + ", thyroidmedicinesadministeredepicresponse="
+				+ this.thyroidmedicinesadministeredepicresponse + "]";
 	}
 
 }

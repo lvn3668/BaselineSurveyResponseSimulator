@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GIPolyp extends GastroIntestinalDiseaseResponse {
@@ -95,8 +94,9 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 			// add getters for uniform dist and random epic vars
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
 							.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval())))) {
-				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getGiPolypmedicinesValueRange().getMinimum(), (int) this.getGiPolypmedicinesValueRange().getMaximum()));
+				this.setGIPolypMedsAdministeredEpicResponse(
+						this.getUtilities().randBetween((int) this.getGiPolypmedicinesValueRange().getMinimum(),
+								(int) this.getGiPolypmedicinesValueRange().getMaximum()));
 			} else {
 				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities()
 						.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval()));
@@ -121,8 +121,9 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 			// add getters for uniform dist and random epic vars
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
 							.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval())))) {
-				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getGiPolypmedicinesValueRange().getMinimum(), (int) this.getGiPolypmedicinesValueRange().getMaximum()));
+				this.setGIPolypMedsAdministeredEpicResponse(
+						this.getUtilities().randBetween((int) this.getGiPolypmedicinesValueRange().getMinimum(),
+								(int) this.getGiPolypmedicinesValueRange().getMaximum()));
 			} else {
 				this.setGIPolypMedsAdministeredEpicResponse(this.getUtilities()
 						.randBetween(GIPolyp.getMintogenerateerrorval(), GIPolyp.getMaxtogenerateerrorval()));
@@ -132,6 +133,32 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GIPolyp)) {
+			return false;
+		}
+		GIPolyp other = (GIPolyp) obj;
+		return Objects.equals(this.GIPolypMeds, other.GIPolypMeds)
+				&& this.GIPolypMedsAdministeredEpicResponse == other.GIPolypMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the gIPolypMedsAdministeredEpicResponse
+	 */
+	public int getGiPolypmedicinesadministeredepicresponse() throws Exception {
+		try {
+			return this.GIPolypMedsAdministeredEpicResponse;
+		} finally {
+		}
 	}
 
 	/**
@@ -144,14 +171,12 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the gIPolypMedsAdministeredEpicResponse
-	 */
-	public int getGiPolypmedicinesadministeredepicresponse() throws Exception {
-		try {
-			return this.GIPolypMedsAdministeredEpicResponse;
-		} finally {
-		}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.GIPolypMeds, this.GIPolypMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -176,29 +201,5 @@ public class GIPolyp extends GastroIntestinalDiseaseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GIPolypMeds, GIPolypMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GIPolyp)) {
-			return false;
-		}
-		GIPolyp other = (GIPolyp) obj;
-		return Objects.equals(GIPolypMeds, other.GIPolypMeds)
-				&& GIPolypMedsAdministeredEpicResponse == other.GIPolypMedsAdministeredEpicResponse;
 	}
 }

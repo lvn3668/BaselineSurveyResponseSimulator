@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SleepApnea extends OsteopathicDiseaseResponse {
@@ -135,6 +134,22 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof SleepApnea)) {
+			return false;
+		}
+		SleepApnea other = (SleepApnea) obj;
+		return Objects.equals(this.SleepApneaMedicines, other.SleepApneaMedicines)
+				&& this.sleepapneamedicinesadministeredepicresponse == other.sleepapneamedicinesadministeredepicresponse;
+	}
+
 	private ValueRange getSleepApneaMedicines() {
 		try {
 			return this.SleepApneaMedicines;
@@ -156,6 +171,15 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.sleepapneamedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.SleepApneaMedicines, this.sleepapneamedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -189,30 +213,6 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 		return "SleepApnea [SleepApneaMedicines=" + this.SleepApneaMedicines
 				+ ", sleepapneamedicinesadministeredepicresponse=" + this.sleepapneamedicinesadministeredepicresponse
 				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(SleepApneaMedicines, sleepapneamedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof SleepApnea)) {
-			return false;
-		}
-		SleepApnea other = (SleepApnea) obj;
-		return Objects.equals(SleepApneaMedicines, other.SleepApneaMedicines)
-				&& sleepapneamedicinesadministeredepicresponse == other.sleepapneamedicinesadministeredepicresponse;
 	}
 
 }

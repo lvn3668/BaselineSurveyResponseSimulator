@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Migrane extends NeuroStimulatoryDiseaseResponse {
@@ -134,6 +133,22 @@ public class Migrane extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Migrane)) {
+			return false;
+		}
+		Migrane other = (Migrane) obj;
+		return Objects.equals(this.MigraneMedicines, other.MigraneMedicines)
+				&& this.MigraneMedsEpicResponse == other.MigraneMedsEpicResponse;
+	}
+
 	/**
 	 * @return the migraneMedicines
 	 */
@@ -160,6 +175,14 @@ public class Migrane extends NeuroStimulatoryDiseaseResponse {
 		return this.MigraneMedsEpicResponse;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.MigraneMedicines, this.MigraneMedsEpicResponse);
+		return result;
+	}
+
 	/**
 	 * @param migraneMedicines the migraneMedicines to set
 	 */
@@ -181,30 +204,6 @@ public class Migrane extends NeuroStimulatoryDiseaseResponse {
 	public String toString() {
 		return "Migrane [MigraneMedicines=" + this.MigraneMedicines + ", MigraneMedsEpicResponse="
 				+ this.MigraneMedsEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(MigraneMedicines, MigraneMedsEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Migrane)) {
-			return false;
-		}
-		Migrane other = (Migrane) obj;
-		return Objects.equals(MigraneMedicines, other.MigraneMedicines)
-				&& MigraneMedsEpicResponse == other.MigraneMedsEpicResponse;
 	}
 
 }

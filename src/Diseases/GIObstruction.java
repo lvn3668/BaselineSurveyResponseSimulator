@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GIObstruction extends GastroIntestinalDiseaseResponse {
@@ -137,14 +136,20 @@ public class GIObstruction extends GastroIntestinalDiseaseResponse {
 
 	}
 
-	/**
-	 * @return the gIObstructionMeds
-	 */
-	private ValueRange getGIObstructionMeds() throws Exception {
-		try {
-			return this.GIObstructionMeds;
-		} finally {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GIObstruction)) {
+			return false;
+		}
+		GIObstruction other = (GIObstruction) obj;
+		return Objects.equals(this.GIObstructionMeds, other.GIObstructionMeds)
+				&& this.GIObstructionMedsAdministeredEpicResponse == other.GIObstructionMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -155,6 +160,24 @@ public class GIObstruction extends GastroIntestinalDiseaseResponse {
 			return this.GIObstructionMedsAdministeredEpicResponse;
 		} finally {
 		}
+	}
+
+	/**
+	 * @return the gIObstructionMeds
+	 */
+	private ValueRange getGIObstructionMeds() throws Exception {
+		try {
+			return this.GIObstructionMeds;
+		} finally {
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.GIObstructionMeds, this.GIObstructionMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -180,29 +203,5 @@ public class GIObstruction extends GastroIntestinalDiseaseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GIObstructionMeds, GIObstructionMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GIObstruction)) {
-			return false;
-		}
-		GIObstruction other = (GIObstruction) obj;
-		return Objects.equals(GIObstructionMeds, other.GIObstructionMeds)
-				&& GIObstructionMedsAdministeredEpicResponse == other.GIObstructionMedsAdministeredEpicResponse;
 	}
 }

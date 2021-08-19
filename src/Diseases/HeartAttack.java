@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class HeartAttack extends MiscDiseaseResponse {
@@ -135,6 +134,22 @@ public class HeartAttack extends MiscDiseaseResponse {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof HeartAttack)) {
+			return false;
+		}
+		HeartAttack other = (HeartAttack) obj;
+		return Objects.equals(this.HeartAttackMedicines, other.HeartAttackMedicines)
+				&& this.HeartAttackMedicinesAdministeredEpicResponse == other.HeartAttackMedicinesAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the heartAttackMedicines
 	 */
@@ -153,6 +168,15 @@ public class HeartAttack extends MiscDiseaseResponse {
 			return this.HeartAttackMedicinesAdministeredEpicResponse;
 		} finally {
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.HeartAttackMedicines, this.HeartAttackMedicinesAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -179,33 +203,9 @@ public class HeartAttack extends MiscDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(HeartAttackMedicines, HeartAttackMedicinesAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof HeartAttack)) {
-			return false;
-		}
-		HeartAttack other = (HeartAttack) obj;
-		return Objects.equals(HeartAttackMedicines, other.HeartAttackMedicines)
-				&& HeartAttackMedicinesAdministeredEpicResponse == other.HeartAttackMedicinesAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "HeartAttack [HeartAttackMedicines=" + HeartAttackMedicines
-				+ ", HeartAttackMedicinesAdministeredEpicResponse=" + HeartAttackMedicinesAdministeredEpicResponse
+		return "HeartAttack [HeartAttackMedicines=" + this.HeartAttackMedicines
+				+ ", HeartAttackMedicinesAdministeredEpicResponse=" + this.HeartAttackMedicinesAdministeredEpicResponse
 				+ "]";
 	}
 }

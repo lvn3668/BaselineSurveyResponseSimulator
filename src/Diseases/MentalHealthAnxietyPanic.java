@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthAnxietyPanic extends MentalHealthResponse {
@@ -142,17 +141,20 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 		}
 	}
 
-	/**
-	 * @return the mHAnxPancMedicines
-	 */
-	private ValueRange getMHAnxPancMedicines() throws Exception {
-		try {
-			return this.MHAnxPancMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.MHAnxPancMedicines;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MentalHealthAnxietyPanic)) {
+			return false;
+		}
+		MentalHealthAnxietyPanic other = (MentalHealthAnxietyPanic) obj;
+		return Objects.equals(this.MHAnxPancMedicines, other.MHAnxPancMedicines)
+				&& this.MHAnxPanicMedsAdministeredEpicResponse == other.MHAnxPanicMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -166,6 +168,27 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 			e.printStackTrace();
 		}
 		return this.MHAnxPanicMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the mHAnxPancMedicines
+	 */
+	private ValueRange getMHAnxPancMedicines() throws Exception {
+		try {
+			return this.MHAnxPancMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MHAnxPancMedicines;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.MHAnxPancMedicines, this.MHAnxPanicMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	private void setMHAnxietyPanicMeds(ValueRange valuerange) {
@@ -199,30 +222,6 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 	public String toString() {
 		return "MentalHealthAnxietyPanic [MHAnxPancMedicines=" + this.MHAnxPancMedicines
 				+ ", MHAnxPanicMedsAdministeredEpicResponse=" + this.MHAnxPanicMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(MHAnxPancMedicines, MHAnxPanicMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MentalHealthAnxietyPanic)) {
-			return false;
-		}
-		MentalHealthAnxietyPanic other = (MentalHealthAnxietyPanic) obj;
-		return Objects.equals(MHAnxPancMedicines, other.MHAnxPancMedicines)
-				&& MHAnxPanicMedsAdministeredEpicResponse == other.MHAnxPanicMedsAdministeredEpicResponse;
 	}
 
 }

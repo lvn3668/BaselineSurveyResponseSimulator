@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Cholesterol extends MiscDiseaseResponse {
@@ -156,6 +155,20 @@ public class Cholesterol extends MiscDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		try {
+			if (obj != null && this instanceof Cholesterol && obj instanceof Cholesterol
+					&& this.hashCode() == obj.hashCode()) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	/**
 	 * @return the cholesterolMedicines
 	 */
@@ -188,6 +201,17 @@ public class Cholesterol extends MiscDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.cholesterolmedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		try {
+			return Objects.hash(this.getCholesterolMedicines(), this.getCholesterolmedicinesadministeredepicresponse());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	/**
@@ -234,31 +258,6 @@ public class Cholesterol extends MiscDiseaseResponse {
 		return "Cholesterol [CholesterolMedicines=" + this.CholesterolMedicines
 				+ ", cholesterolmedicinesadministeredepicresponse=" + this.cholesterolmedicinesadministeredepicresponse
 				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		try {
-			return Objects.hash(this.getCholesterolMedicines(), this.getCholesterolmedicinesadministeredepicresponse());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		try {
-			if (obj != null && this instanceof Cholesterol && obj instanceof Cholesterol
-					&& this.hashCode() == obj.hashCode()) {
-				return true;
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
 	}
 
 }

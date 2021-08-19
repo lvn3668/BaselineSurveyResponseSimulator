@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
@@ -159,6 +158,15 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj != null && obj instanceof CirculatoryDiseaseOther && this instanceof CirculatoryDiseaseOther
+				&& this.hashCode() == obj.hashCode()) {
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * @return the circDOtherMed
 	 */
@@ -183,6 +191,12 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.CirculatoryDiseasesOtherMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), this.getCircDOtherMed(),
+				this.getCirculatorydiseaseothermedicinesadministeredepicresponse());
 	}
 
 	/**
@@ -218,21 +232,6 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 		return "CirculatoryDiseaseOther [CircDOtherMed=" + this.CircDOtherMed
 				+ ", CirculatoryDiseasesOtherMedsAdministeredEpicResponse="
 				+ this.CirculatoryDiseasesOtherMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.getCircDOtherMed(),
-				this.getCirculatorydiseaseothermedicinesadministeredepicresponse());
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj != null && obj instanceof CirculatoryDiseaseOther && this instanceof CirculatoryDiseaseOther
-				&& this.hashCode() == obj.hashCode()) {
-			return true;
-		}
-		return false;
 	}
 
 }

@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Hypertension extends MiscDiseaseResponse {
@@ -133,6 +132,22 @@ public class Hypertension extends MiscDiseaseResponse {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Hypertension)) {
+			return false;
+		}
+		Hypertension other = (Hypertension) obj;
+		return Objects.equals(this.HTNMeds, other.HTNMeds)
+				&& this.HTNMedsAdministeredEpicResponse == other.HTNMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the hTNMeds
 	 */
@@ -157,6 +172,14 @@ public class Hypertension extends MiscDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.HTNMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.HTNMeds, this.HTNMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -188,30 +211,6 @@ public class Hypertension extends MiscDiseaseResponse {
 	public String toString() {
 		return "Hypertension [HTNMeds=" + this.HTNMeds + ", HTNMedsAdministeredEpicResponse="
 				+ this.HTNMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(HTNMeds, HTNMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Hypertension)) {
-			return false;
-		}
-		Hypertension other = (Hypertension) obj;
-		return Objects.equals(HTNMeds, other.HTNMeds)
-				&& HTNMedsAdministeredEpicResponse == other.HTNMedsAdministeredEpicResponse;
 	}
 
 }

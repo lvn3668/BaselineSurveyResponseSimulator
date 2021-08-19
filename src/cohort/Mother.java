@@ -1,47 +1,108 @@
 package cohort;
 
-import java.time.Instant;
-import java.time.Year;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.concurrent.ThreadLocalRandom;
 
-import Interfaces.Birthdeathinterfacemethods;
+import Utilities.Utilities;
+import cohortUtils.CohortUtilities;
+import simulatedDiseaseResponse.simulatedDiseasePresenceAbsenceResponseForFamilyMembers;
 
 /**
  * @author Lalitha Viswanathan
- * Affiliation MAVERIC / VABHS 
+ * Affiliation MAVERIC / VABHS
  *
  */
-public class Mother extends Cohort implements Birthdeathinterfacemethods {
-	public Mother(Cohort cohort) throws Exception {
-		// TODO Auto-generated constructor stub
+/**
+ * @author visu4
+ *
+ */
+public class Mother extends CohortUtilities {
+	private static LocalDate earliestDOBMother;
+	private static LocalDate latestDOBMother;
 
+	/**
+	 * @return the earliestDOBMother
+	 */
+	private static LocalDate getEarliestDOBMother() {
+		return earliestDOBMother;
 	}
 
-	@Override
-	public int simulateAliveOrDead() {
-		// TODO Auto-generated method stub
-		return 1;
+	/**
+	 * @return the latestDOBMother
+	 */
+	private static LocalDate getLatestDOBMother() {
+		return latestDOBMother;
+	}
+
+	/**
+	 * @param earliestDOBMother the earliestDOBMother to set
+	 */
+	private static void setEarliestDOBMother(LocalDate earliestDOBMother) {
+		Mother.earliestDOBMother = earliestDOBMother;
+	}
+
+	/**
+	 * @param latestDOBMother the latestDOBMother to set
+	 */
+	private static void setLatestDOBMother(LocalDate latestDOBMother) {
+		System.out.println("Latest dob mother " + latestDOBMother.toString());
+		Mother.latestDOBMother = latestDOBMother;
+	}
+
+	private simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsenceFamilyMembers;
+
+	public Mother(Cohort cohort) throws Exception {
+		// TODO Auto-generated constructor stub
+		// Set sex for mother to 2
+		// 1 : Male ; 2 : Female assumption
+		super.setUtilities(new Utilities());
+		System.out.println("Cohort DOB inside Mother class is " + cohort.getBirthDateSimulated().toString());
+		this.setSexSimulatedResponse(2);
+
+		Mother.setEarliestDOBMother(LocalDate
+				.of(super.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() - 40, 1, 1));
+		Mother.setLatestDOBMother(LocalDate
+				.of(super.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() - 20, 12, 31));
+
+		this.setBirthDateSimulated(this.simulateDateOfBirth());
+
+		this.simulateYearOfBirth(super.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()));
+		this.simulateYearOfDeath();
+		this.setAliveSimulatedResponse(this.simulateAliveOrDead());
+		this.setSimulatedDiseasePresenceAbsenceFamilyMembers(
+				new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
+	}
+
+	/**
+	 * @return the simulatedDiseasePresenceAbsence
+	 */
+	public simulatedDiseasePresenceAbsenceResponseForFamilyMembers getSimulatedDiseasePresenceAbsence() {
+		return this.simulatedDiseasePresenceAbsenceFamilyMembers;
+	}
+
+	/**
+	 * @param simulatedDiseasePresenceAbsence the simulatedDiseasePresenceAbsence to
+	 *                                        set
+	 */
+	private void setSimulatedDiseasePresenceAbsenceFamilyMembers(
+			simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsence) {
+		this.simulatedDiseasePresenceAbsenceFamilyMembers = simulatedDiseasePresenceAbsence;
 	}
 
 	/**
 	 * MomBrthYr,Year MomLive,"{0,1}" MomDthYr,Year TBD
 	 */
 
-	public Date simulateDateOfBirth(Cohort cohort) {
+	private Date simulateDateOfBirth() {
 		try {
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(cohort.getBirthDateSimulated());
-
-			// Mother's DOB precedes Cohorts DOB
-			Date simulatedDOB = Date.from(Instant.ofEpochSecond(ThreadLocalRandom.current().nextLong(
-					(new GregorianCalendar(calendar.get(Calendar.YEAR) - 40, 0, 0).getTime()).getTime(),
-					(new GregorianCalendar(calendar.get(Calendar.YEAR) - 20, 0, 0).getTime()).getTime())));
+			Date simulatedDOB = new Date(ThreadLocalRandom.current().nextLong(
+					Date.from(Mother.getEarliestDOBMother().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime(),
+					Date.from(Mother.getLatestDOBMother().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()));
 			this.setBirthDateSimulated(simulatedDOB);
-			calendar.setTime(simulatedDOB);
-			this.setBirthyear(Year.parse(new StringBuilder(calendar.get(Calendar.YEAR))));
+			System.out.println("Simulated DOB Mother" + simulatedDOB);
+
 			return this.getBirthDateSimulated();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -49,17 +110,6 @@ public class Mother extends Cohort implements Birthdeathinterfacemethods {
 		}
 		return this.getBirthDateSimulated();
 	}
-
-	@Override
-	public Year simulateYearOfBirth() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public java.time.Year simulateYearOfDeath() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
+
+// BIO Daughter BIO SON DOB not captured (only presence / absence captured

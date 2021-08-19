@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
@@ -79,8 +78,8 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 		return mintogenerateerrorval;
 	}
 
-	private int memorylossmedicinesadministeredepicresponse;
 	private ValueRange MemoryLossMedicines;
+	private int memorylossmedicinesadministeredepicresponse;
 
 	public MemoryLoss(Cohort cohort) throws Exception {
 		super(cohort);
@@ -135,17 +134,20 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the memorylossmedicinesadministeredepicresponse
-	 */
-	public int getMemoryLossmedicinesadministeredepicresponse() {
-		try {
-			return this.memorylossmedicinesadministeredepicresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.memorylossmedicinesadministeredepicresponse;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MemoryLoss)) {
+			return false;
+		}
+		MemoryLoss other = (MemoryLoss) obj;
+		return Objects.equals(this.MemoryLossMedicines, other.MemoryLossMedicines)
+				&& this.memorylossmedicinesadministeredepicresponse == other.memorylossmedicinesadministeredepicresponse;
 	}
 
 	/**
@@ -162,17 +164,25 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 	}
 
 	/**
-	 * @param memorylossmedicinesadministeredepicresponse the
-	 *                                                    memorylossmedicinesadministeredepicresponse
-	 *                                                    to set
+	 * @return the memorylossmedicinesadministeredepicresponse
 	 */
-	private void setMemorylossmedicinesadministeredepicresponse(int migranemedicinesadministeredepicresponse) {
+	public int getMemoryLossmedicinesadministeredepicresponse() {
 		try {
-			this.memorylossmedicinesadministeredepicresponse = migranemedicinesadministeredepicresponse;
+			return this.memorylossmedicinesadministeredepicresponse;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return this.memorylossmedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.MemoryLossMedicines, this.memorylossmedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -187,34 +197,25 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(MemoryLossMedicines, memorylossmedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
+	/**
+	 * @param memorylossmedicinesadministeredepicresponse the
+	 *                                                    memorylossmedicinesadministeredepicresponse
+	 *                                                    to set
+	 */
+	private void setMemorylossmedicinesadministeredepicresponse(int migranemedicinesadministeredepicresponse) {
+		try {
+			this.memorylossmedicinesadministeredepicresponse = migranemedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MemoryLoss)) {
-			return false;
-		}
-		MemoryLoss other = (MemoryLoss) obj;
-		return Objects.equals(MemoryLossMedicines, other.MemoryLossMedicines)
-				&& memorylossmedicinesadministeredepicresponse == other.memorylossmedicinesadministeredepicresponse;
 	}
 
 	@Override
 	public String toString() {
-		return "MemoryLoss [memorylossmedicinesadministeredepicresponse=" + memorylossmedicinesadministeredepicresponse
-				+ ", MemoryLossMedicines=" + MemoryLossMedicines + "]";
+		return "MemoryLoss [memorylossmedicinesadministeredepicresponse="
+				+ this.memorylossmedicinesadministeredepicresponse + ", MemoryLossMedicines=" + this.MemoryLossMedicines
+				+ "]";
 	}
 
 }

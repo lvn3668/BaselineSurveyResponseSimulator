@@ -10,8 +10,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class CirculatoryDiseaseResponse {
@@ -99,10 +98,10 @@ public class CirculatoryDiseaseResponse {
 			// Minimum is SimulatedDiseaseResponse year of birth
 			// Maximum is Today
 			this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-					.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+					.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 		} else {
-			this.setYearDiagnosedSimulatedResponse(Year.of(
-					this.getUtilities().randBetween(CirculatoryDiseaseResponse.getMintogenerateerrorval(),
+			this.setYearDiagnosedSimulatedResponse(
+					Year.of(this.getUtilities().randBetween(CirculatoryDiseaseResponse.getMintogenerateerrorval(),
 							CirculatoryDiseaseResponse.getMaxtogenerateerrorval())));
 		}
 
@@ -141,7 +140,7 @@ public class CirculatoryDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(CirculatoryDiseaseResponse.getMintogenerateerrorval(),
@@ -153,6 +152,20 @@ public class CirculatoryDiseaseResponse {
 			e.printStackTrace();
 			throw e;
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof CirculatoryDiseaseResponse)) {
+			return false;
+		}
+		CirculatoryDiseaseResponse other = (CirculatoryDiseaseResponse) obj;
+		return this.getDiseasepresenceorabsencesimulatedepicresponse() == other
+				.getDiseasepresenceorabsencesimulatedepicresponse()
+				&& Objects.equals(this.getYearDiagnosedSimulatedResponse(), other.getYearDiagnosedSimulatedResponse());
 	}
 
 	/**
@@ -202,6 +215,12 @@ public class CirculatoryDiseaseResponse {
 		return this.yearDiagnosedSimulatedResponse;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(),
+				this.getYearDiagnosedSimulatedResponse());
+	}
+
 	/**
 	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
 	 */
@@ -245,25 +264,6 @@ public class CirculatoryDiseaseResponse {
 	 */
 	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosedSimulatedResponse) {
 		this.yearDiagnosedSimulatedResponse = yearDiagnosedSimulatedResponse;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(getDiseasepresenceorabsencesimulatedepicresponse(), getYearDiagnosedSimulatedResponse());
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof CirculatoryDiseaseResponse)) {
-			return false;
-		}
-		CirculatoryDiseaseResponse other = (CirculatoryDiseaseResponse) obj;
-		return getDiseasepresenceorabsencesimulatedepicresponse() == other
-				.getDiseasepresenceorabsencesimulatedepicresponse()
-				&& Objects.equals(getYearDiagnosedSimulatedResponse(), other.getYearDiagnosedSimulatedResponse());
 	}
 
 }

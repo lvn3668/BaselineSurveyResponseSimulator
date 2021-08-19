@@ -8,33 +8,24 @@ import randomizer.UniformDistribution;
 
 public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	/**
-	 * @author Lalitha Viswanathan
-	 * Affiliation VABHS / MAVERIC 
 	 *
 	 */
-
-	@Override
-	public String toString() {
-		return "Alzheimers [AlzheimersMedicines=" + this.AlzheimersMedicines
-				+ ", alzheimersmedsadministeredepicresponse=" + this.alzheimersmedsadministeredepicresponse + "]";
-	}
+	private static final int maxtogenerateerrorval = 5;
 
 	/**
-	 * 
-	 */
-	private ValueRange AlzheimersMedicines;
-	/**
-	 * 
-	 */
-	private int alzheimersmedsadministeredepicresponse;
-	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
+
 	/**
-	 * 
+	 * @return the maxtogenerateerrorval
 	 */
-	private static final int maxtogenerateerrorval = 5;
+	/**
+	 * @return
+	 */
+	private static int getMaxtogenerateerrorval() {
+		return maxtogenerateerrorval;
+	}
 
 	/**
 	 * @return the mintogenerateerrorval
@@ -47,14 +38,14 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	}
 
 	/**
-	 * @return the maxtogenerateerrorval
+	 *
 	 */
+	private ValueRange AlzheimersMedicines;
+
 	/**
-	 * @return
+	 *
 	 */
-	private static int getMaxtogenerateerrorval() {
-		return maxtogenerateerrorval;
-	}
+	private int alzheimersmedsadministeredepicresponse;
 
 	/**
 	 * @throws Exception
@@ -77,85 +68,14 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 				this.setAlzheimersmedsadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getAlzheimersMedicines().getMinimum(),
 								(int) this.getAlzheimersMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setAlzheimersmedsadministeredepicresponse(this.getUtilities()
 						.randBetween(Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-	}
-
-	/**
-	 * @return the alzheimersMedicines
-	 */
-	/**
-	 * @return
-	 * @throws Exception
-	 */
-	private ValueRange getAlzheimersMedicines() throws Exception {
-
-		try {
-			return this.AlzheimersMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.AlzheimersMedicines;
-	}
-
-	/**
-	 * @param alzheimersMedicines the alzheimersMedicines to set
-	 */
-	/**
-	 * @param alzheimersMedicines
-	 * @throws Exception
-	 */
-	private void setAlzheimersMedicines(ValueRange alzheimersMedicines) throws Exception {
-		try {
-			this.AlzheimersMedicines = alzheimersMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @return the alzheimersmedsadministeredepicresponse
-	 */
-	/**
-	 * @return
-	 * @throws Exception
-	 */
-	public int getAlzheimersmedicinesadministeredepicresponse() throws Exception {
-		try {
-			return this.alzheimersmedsadministeredepicresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.alzheimersmedsadministeredepicresponse;
-	}
-
-	/**
-	 * @param alzheimersmedsadministeredepicresponse the
-	 *                                               alzheimersmedsadministeredepicresponse
-	 *                                               to set
-	 */
-	/**
-	 * @param alzheimersmedsadministeredepicresponse
-	 * @throws Exception
-	 */
-	private void setAlzheimersmedsadministeredepicresponse(int alzheimersmedsadministeredepicresponse)
-			throws Exception {
-		try {
-			this.alzheimersmedsadministeredepicresponse = alzheimersmedsadministeredepicresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -183,16 +103,59 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 				this.setAlzheimersmedsadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getAlzheimersMedicines().getMinimum(),
 								(int) this.getAlzheimersMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setAlzheimersmedsadministeredepicresponse(this.getUtilities()
 						.randBetween(Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval()));
+			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (!(obj instanceof Alzheimers) && (this.hashCode() != obj.hashCode())) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * @return the alzheimersMedicines
+	 */
+	/**
+	 * @return
+	 * @throws Exception
+	 */
+	private ValueRange getAlzheimersMedicines() throws Exception {
+
+		try {
+			return this.AlzheimersMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.AlzheimersMedicines;
+	}
+
+	/**
+	 * @return the alzheimersmedsadministeredepicresponse
+	 */
+	/**
+	 * @return
+	 * @throws Exception
+	 */
+	public int getAlzheimersmedicinesadministeredepicresponse() throws Exception {
+		try {
+			return this.alzheimersmedsadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.alzheimersmedsadministeredepicresponse;
 	}
 
 	@Override
@@ -210,13 +173,50 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-
-		if (!(obj instanceof Alzheimers) && (this.hashCode() != obj.hashCode())) {
-			return false;
+	/**
+	 * @param alzheimersMedicines the alzheimersMedicines to set
+	 */
+	/**
+	 * @param alzheimersMedicines
+	 * @throws Exception
+	 */
+	private void setAlzheimersMedicines(ValueRange alzheimersMedicines) throws Exception {
+		try {
+			this.AlzheimersMedicines = alzheimersMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return true;
+	}
+
+	/**
+	 * @param alzheimersmedsadministeredepicresponse the
+	 *                                               alzheimersmedsadministeredepicresponse
+	 *                                               to set
+	 */
+	/**
+	 * @param alzheimersmedsadministeredepicresponse
+	 * @throws Exception
+	 */
+	private void setAlzheimersmedsadministeredepicresponse(int alzheimersmedsadministeredepicresponse)
+			throws Exception {
+		try {
+			this.alzheimersmedsadministeredepicresponse = alzheimersmedsadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
+	 *
+	 */
+
+	@Override
+	public String toString() {
+		return "Alzheimers [AlzheimersMedicines=" + this.AlzheimersMedicines
+				+ ", alzheimersmedsadministeredepicresponse=" + this.alzheimersmedsadministeredepicresponse + "]";
 	}
 
 }

@@ -1,6 +1,6 @@
 /**
  * @author Lalitha Viswanathan
- * Affiliation: MAVERIC / VABHS 
+ * Affiliation: MAVERIC / VABHS
  */
 package simulatedResponseMilitaryDuty;
 
@@ -416,7 +416,6 @@ public class SimulatedResponseMilitaryDuty {
 			SimulatedResponseMilitaryDuty.setErrorResponse(
 					this.getUtilities().randBetween(SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
 							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse()));
-
 
 			this.setMilitaryBranchArmyValueRange(ValueRange.of(0, 1));
 			this.setMilitaryBranchArmysimulatedresponse(SimulatedResponseMilitaryDuty.getErrorResponse());

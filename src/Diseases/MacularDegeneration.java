@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MacularDegeneration extends HearingVisionDiseaseResponse {
@@ -139,6 +138,22 @@ public class MacularDegeneration extends HearingVisionDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MacularDegeneration)) {
+			return false;
+		}
+		MacularDegeneration other = (MacularDegeneration) obj;
+		return Objects.equals(this.MacularDegenerationMedicines, other.MacularDegenerationMedicines)
+				&& this.maculardegenerationmedsadministeredepicresponse == other.maculardegenerationmedsadministeredepicresponse;
+	}
+
 	/**
 	 * @return the macularDegenerationMedicines
 	 */
@@ -163,6 +178,15 @@ public class MacularDegeneration extends HearingVisionDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.maculardegenerationmedsadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.MacularDegenerationMedicines, this.maculardegenerationmedsadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -197,31 +221,6 @@ public class MacularDegeneration extends HearingVisionDiseaseResponse {
 		return "MacularDegeneration [MacularDegenerationMedicines=" + this.MacularDegenerationMedicines
 				+ ", maculardegenerationmedsadministeredepicresponse="
 				+ this.maculardegenerationmedsadministeredepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(MacularDegenerationMedicines, maculardegenerationmedsadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MacularDegeneration)) {
-			return false;
-		}
-		MacularDegeneration other = (MacularDegeneration) obj;
-		return Objects.equals(MacularDegenerationMedicines, other.MacularDegenerationMedicines)
-				&& maculardegenerationmedsadministeredepicresponse == other.maculardegenerationmedsadministeredepicresponse;
 	}
 
 }

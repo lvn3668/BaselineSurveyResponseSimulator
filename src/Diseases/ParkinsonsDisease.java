@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class ParkinsonsDisease extends NeuroStimulatoryDiseaseResponse {
@@ -137,6 +136,22 @@ public class ParkinsonsDisease extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof ParkinsonsDisease)) {
+			return false;
+		}
+		ParkinsonsDisease other = (ParkinsonsDisease) obj;
+		return Objects.equals(this.ParkinsonsDiseaseMedicines, other.ParkinsonsDiseaseMedicines)
+				&& this.ParkinsonsDiseaseMedsadministeredepicresponse == other.ParkinsonsDiseaseMedsadministeredepicresponse;
+	}
+
 	/**
 	 * @return the multipleSclerosisMedicines
 	 */
@@ -161,6 +176,15 @@ public class ParkinsonsDisease extends NeuroStimulatoryDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.ParkinsonsDiseaseMedsadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.ParkinsonsDiseaseMedicines, this.ParkinsonsDiseaseMedsadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -189,35 +213,10 @@ public class ParkinsonsDisease extends NeuroStimulatoryDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(ParkinsonsDiseaseMedicines, ParkinsonsDiseaseMedsadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof ParkinsonsDisease)) {
-			return false;
-		}
-		ParkinsonsDisease other = (ParkinsonsDisease) obj;
-		return Objects.equals(ParkinsonsDiseaseMedicines, other.ParkinsonsDiseaseMedicines)
-				&& ParkinsonsDiseaseMedsadministeredepicresponse == other.ParkinsonsDiseaseMedsadministeredepicresponse;
-	}
-
-	@Override
 	public String toString() {
-		return "ParkinsonsDisease [ParkinsonsDiseaseMedicines=" + ParkinsonsDiseaseMedicines
-				+ ", ParkinsonsDiseaseMedsadministeredepicresponse=" + ParkinsonsDiseaseMedsadministeredepicresponse
-				+ "]";
+		return "ParkinsonsDisease [ParkinsonsDiseaseMedicines=" + this.ParkinsonsDiseaseMedicines
+				+ ", ParkinsonsDiseaseMedsadministeredepicresponse="
+				+ this.ParkinsonsDiseaseMedsadministeredepicresponse + "]";
 	}
 
 }

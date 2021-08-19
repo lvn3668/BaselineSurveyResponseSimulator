@@ -7,20 +7,11 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 
-	@Override
-	public String toString() {
-		return "GICeliacDisease [GICeliacDiseaseMeds=" + this.GICeliacDiseaseMeds
-				+ ", celiacDiseaseMedAdministeredEpicResponse=" + this.celiacDiseaseMedAdministeredEpicResponse + "]";
-	}
-
-	private ValueRange GICeliacDiseaseMeds;
-	private int celiacDiseaseMedAdministeredEpicResponse;
 	/**
 	 *
 	 */
@@ -34,6 +25,7 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 	 *
 	 */
 	private static final int maxtogenerateerrorval = 5;
+
 	/**
 	 *
 	 */
@@ -50,84 +42,6 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
-
-	public GICeliacDisease(Cohort cohort) throws Exception {
-		super(cohort);
-		try {
-			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GICeliacDisease.getMintogenerateerrorval(),
-					GICeliacDisease.getMaxtogenerateerrorval()));
-
-			this.setGICeliacDiseaseMeds(ValueRange.of(0, 1));
-			this.setCeliacDiseaseMedAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval())))) {
-				this.setCeliacDiseaseMedAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getGICeliacDiseaseMeds().getMinimum(),
-								(int) this.getGICeliacDiseaseMeds().getMaximum()));
-			} else {
-				this.setCeliacDiseaseMedAdministeredEpicResponse(this.getUtilities().randBetween(
-						GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval()));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @return the gICeliacDiseaseMeds
-	 */
-	private ValueRange getGICeliacDiseaseMeds() throws Exception {
-		try {
-			return this.GICeliacDiseaseMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.GICeliacDiseaseMeds;
-	}
-
-	/**
-	 * @param gICeliacDiseaseMeds the gICeliacDiseaseMeds to set
-	 */
-	private void setGICeliacDiseaseMeds(ValueRange gICeliacDiseaseMeds) throws Exception {
-		try {
-			this.GICeliacDiseaseMeds = gICeliacDiseaseMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @return the celiacDiseaseMedAdministeredEpicResponse
-	 */
-	public int getGiCeliacDiseasemedicinesadministeredepicresponse() throws Exception {
-		try {
-			return this.celiacDiseaseMedAdministeredEpicResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.celiacDiseaseMedAdministeredEpicResponse;
-	}
-
-	/**
-	 * @param celiacDiseaseMedAdministeredEpicResponse the
-	 *                                                 celiacDiseaseMedAdministeredEpicResponse
-	 *                                                 to set
-	 */
-	private void setCeliacDiseaseMedAdministeredEpicResponse(int celiacDiseaseMedAdministeredEpicResponse)
-			throws Exception {
-		try {
-			this.celiacDiseaseMedAdministeredEpicResponse = celiacDiseaseMedAdministeredEpicResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * @return
@@ -164,6 +78,35 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 		return mintogenerateerrorval;
 	}
 
+	private int celiacDiseaseMedAdministeredEpicResponse;
+
+	private ValueRange GICeliacDiseaseMeds;
+
+	public GICeliacDisease(Cohort cohort) throws Exception {
+		super(cohort);
+		try {
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new UniformDistribution(GICeliacDisease.getMintogenerateerrorval(),
+					GICeliacDisease.getMaxtogenerateerrorval()));
+
+			this.setGICeliacDiseaseMeds(ValueRange.of(0, 1));
+			this.setCeliacDiseaseMedAdministeredEpicResponse(2);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval())))) {
+				this.setCeliacDiseaseMedAdministeredEpicResponse(
+						this.getUtilities().randBetween((int) this.getGICeliacDiseaseMeds().getMinimum(),
+								(int) this.getGICeliacDiseaseMeds().getMaximum()));
+			} else {
+				this.setCeliacDiseaseMedAdministeredEpicResponse(this.getUtilities().randBetween(
+						GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval()));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public GICeliacDisease(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(cohort, valuerange, simulatedresponse);
@@ -189,6 +132,65 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @return the celiacDiseaseMedAdministeredEpicResponse
+	 */
+	public int getGiCeliacDiseasemedicinesadministeredepicresponse() throws Exception {
+		try {
+			return this.celiacDiseaseMedAdministeredEpicResponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.celiacDiseaseMedAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the gICeliacDiseaseMeds
+	 */
+	private ValueRange getGICeliacDiseaseMeds() throws Exception {
+		try {
+			return this.GICeliacDiseaseMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.GICeliacDiseaseMeds;
+	}
+
+	/**
+	 * @param celiacDiseaseMedAdministeredEpicResponse the
+	 *                                                 celiacDiseaseMedAdministeredEpicResponse
+	 *                                                 to set
+	 */
+	private void setCeliacDiseaseMedAdministeredEpicResponse(int celiacDiseaseMedAdministeredEpicResponse)
+			throws Exception {
+		try {
+			this.celiacDiseaseMedAdministeredEpicResponse = celiacDiseaseMedAdministeredEpicResponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @param gICeliacDiseaseMeds the gICeliacDiseaseMeds to set
+	 */
+	private void setGICeliacDiseaseMeds(ValueRange gICeliacDiseaseMeds) throws Exception {
+		try {
+			this.GICeliacDiseaseMeds = gICeliacDiseaseMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "GICeliacDisease [GICeliacDiseaseMeds=" + this.GICeliacDiseaseMeds
+				+ ", celiacDiseaseMedAdministeredEpicResponse=" + this.celiacDiseaseMedAdministeredEpicResponse + "]";
 	}
 
 }

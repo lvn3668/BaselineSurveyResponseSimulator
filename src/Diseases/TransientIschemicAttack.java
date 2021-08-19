@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class TransientIschemicAttack extends MiscDiseaseResponse {
@@ -146,6 +145,22 @@ public class TransientIschemicAttack extends MiscDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof TransientIschemicAttack)) {
+			return false;
+		}
+		TransientIschemicAttack other = (TransientIschemicAttack) obj;
+		return Objects.equals(this.TIAMedicines, other.TIAMedicines)
+				&& this.TIAMedsAdministeredEpicResponse == other.TIAMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the tIAMedicines
 	 */
@@ -170,6 +185,14 @@ public class TransientIschemicAttack extends MiscDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.TIAMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.TIAMedicines, this.TIAMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -198,33 +221,9 @@ public class TransientIschemicAttack extends MiscDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(TIAMedicines, TIAMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof TransientIschemicAttack)) {
-			return false;
-		}
-		TransientIschemicAttack other = (TransientIschemicAttack) obj;
-		return Objects.equals(TIAMedicines, other.TIAMedicines)
-				&& TIAMedsAdministeredEpicResponse == other.TIAMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "TransientIschemicAttack [TIAMedicines=" + TIAMedicines + ", TIAMedsAdministeredEpicResponse="
-				+ TIAMedsAdministeredEpicResponse + "]";
+		return "TransientIschemicAttack [TIAMedicines=" + this.TIAMedicines + ", TIAMedsAdministeredEpicResponse="
+				+ this.TIAMedsAdministeredEpicResponse + "]";
 	}
 
 }

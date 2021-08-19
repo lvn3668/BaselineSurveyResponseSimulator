@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GIUlcer extends GastroIntestinalDiseaseResponse {
@@ -132,17 +131,20 @@ public class GIUlcer extends GastroIntestinalDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the gIUlcerMeds
-	 */
-	private ValueRange getGIUlcerMeds() throws Exception {
-		try {
-			return this.GIUlcerMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.GIUlcerMeds;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GIUlcer)) {
+			return false;
+		}
+		GIUlcer other = (GIUlcer) obj;
+		return Objects.equals(this.GIUlcerMeds, other.GIUlcerMeds)
+				&& this.GIUlcerMedsAdministeredEpicResponse == other.GIUlcerMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -156,6 +158,27 @@ public class GIUlcer extends GastroIntestinalDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.GIUlcerMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the gIUlcerMeds
+	 */
+	private ValueRange getGIUlcerMeds() throws Exception {
+		try {
+			return this.GIUlcerMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.GIUlcerMeds;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.GIUlcerMeds, this.GIUlcerMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -188,30 +211,6 @@ public class GIUlcer extends GastroIntestinalDiseaseResponse {
 	public String toString() {
 		return "GIUlcer [GIUlcerMeds=" + this.GIUlcerMeds + ", GIUlcerMedsAdministeredEpicResponse="
 				+ this.GIUlcerMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GIUlcerMeds, GIUlcerMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GIUlcer)) {
-			return false;
-		}
-		GIUlcer other = (GIUlcer) obj;
-		return Objects.equals(GIUlcerMeds, other.GIUlcerMeds)
-				&& GIUlcerMedsAdministeredEpicResponse == other.GIUlcerMedsAdministeredEpicResponse;
 	}
 
 }

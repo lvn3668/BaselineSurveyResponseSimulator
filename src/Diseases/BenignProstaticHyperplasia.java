@@ -10,23 +10,14 @@ import randomizer.UniformDistribution;
 public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 
 	/**
-	 *  @author Lalitha Viswanathan
-	 *  Affiliation VABHS / MAVERIC 
-	 */
-	private ValueRange BPHMedicines;
-	/**
-	 * 
-	 */
-	private int bphmedicinesadministeredepicresponse;
-	/**
-	 * 
+	 *
 	 */
 	private static final int maxtogenerateerrorval = 5;
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
 
@@ -75,6 +66,16 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 	}
 
 	/**
+	 * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
+	 */
+	private ValueRange BPHMedicines;
+
+	/**
+	 *
+	 */
+	private int bphmedicinesadministeredepicresponse;
+
+	/**
 	 * @throws Exception
 	 */
 	public BenignProstaticHyperplasia(Cohort cohort) throws Exception {
@@ -91,32 +92,23 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 			// generate uniform distribution between min and max error vals and pick a
 			// random number, check pdf value
 			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							getUtilities().randBetween(BenignProstaticHyperplasia.getMintogenerateerrorval(),
+					(!this.getUniformdistribution()
+							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+									BenignProstaticHyperplasia.getMintogenerateerrorval(),
 									BenignProstaticHyperplasia.getMaxtogenerateerrorval())))) {
-				this.setBphmedicinesadministeredepicresponse(getUtilities().randBetween(
+				this.setBphmedicinesadministeredepicresponse(this.getUtilities().randBetween(
 						(int) this.getBPHMedicines().getMinimum(), (int) this.getBPHMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setBphmedicinesadministeredepicresponse(
 						this.getUtilities().randBetween(BenignProstaticHyperplasia.getMintogenerateerrorval(),
 								BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
+			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		}
-	}
-
-	/**
-	 *
-	 */
-	@Override
-	public String toString() {
-		return "BenignProstaticHyperplasia [BPHMedicines=" + this.BPHMedicines
-				+ ", bphmedicinesadministeredepicresponse=" + this.bphmedicinesadministeredepicresponse + "]";
 	}
 
 	/**
@@ -145,17 +137,30 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 									BenignProstaticHyperplasia.getMaxtogenerateerrorval())))) {
 				this.setBphmedicinesadministeredepicresponse(this.getUtilities().randBetween(
 						(int) this.getBPHMedicines().getMinimum(), (int) this.getBPHMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setBphmedicinesadministeredepicresponse(
 						this.getUtilities().randBetween(BenignProstaticHyperplasia.getMintogenerateerrorval(),
 								BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		try {
+			if ((obj instanceof BenignProstaticHyperplasia) && (this.hashCode() == obj.hashCode())) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	/**
@@ -176,23 +181,6 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 	}
 
 	/**
-	 * @param bPHMedicines the bPHMedicines to set
-	 */
-	/**
-	 * @param bPHMedicines
-	 * @throws Exception
-	 */
-	private void setBPHMedicines(ValueRange bPHMedicines) throws Exception {
-		try {
-			this.BPHMedicines = bPHMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
-		}
-	}
-
-	/**
 	 * @return the bphmedicinesadministeredepicresponse
 	 */
 	/**
@@ -207,6 +195,34 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.bphmedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		try {
+			return Objects.hash(this.BPHMedicines, this.bphmedicinesadministeredepicresponse);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	/**
+	 * @param bPHMedicines the bPHMedicines to set
+	 */
+	/**
+	 * @param bPHMedicines
+	 * @throws Exception
+	 */
+	private void setBPHMedicines(ValueRange bPHMedicines) throws Exception {
+		try {
+			this.BPHMedicines = bPHMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	/**
@@ -228,31 +244,13 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 		}
 	}
 
+	/**
+	 *
+	 */
 	@Override
-	public int hashCode() {
-		try {
-			return Objects.hash(this.BPHMedicines, this.bphmedicinesadministeredepicresponse);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		try {
-			if ((obj instanceof BenignProstaticHyperplasia) && (this.hashCode() == obj.hashCode())) {
-				return true;
-			}
-
-			else
-				return false;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
+	public String toString() {
+		return "BenignProstaticHyperplasia [BPHMedicines=" + this.BPHMedicines
+				+ ", bphmedicinesadministeredepicresponse=" + this.bphmedicinesadministeredepicresponse + "]";
 	}
 
 }

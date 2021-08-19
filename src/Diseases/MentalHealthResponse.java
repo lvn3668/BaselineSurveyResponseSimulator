@@ -4,15 +4,13 @@ import java.time.Year;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
 import java.util.Objects;
-import java.util.Random;
 
 import Utilities.Utilities;
 import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthResponse {
@@ -119,10 +117,10 @@ public class MentalHealthResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.of(
-						this.getUtilities().randBetween(MentalHealthResponse.getMintogenerateerrorval(),
+				this.setYearDiagnosedSimulatedResponse(
+						Year.of(this.getUtilities().randBetween(MentalHealthResponse.getMintogenerateerrorval(),
 								MentalHealthResponse.getMaxtogenerateerrorval())));
 			}
 		} catch (Exception e) {
@@ -165,7 +163,7 @@ public class MentalHealthResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(MentalHealthResponse.getMintogenerateerrorval(),
@@ -177,6 +175,19 @@ public class MentalHealthResponse {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof MentalHealthResponse)) {
+			return false;
+		}
+		MentalHealthResponse other = (MentalHealthResponse) obj;
+		return this.diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
+				&& Objects.equals(this.yearDiagnosed, other.yearDiagnosed);
 	}
 
 	/**
@@ -250,6 +261,11 @@ public class MentalHealthResponse {
 		return this.yearDiagnosed;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.diseasepresenceorabsencesimulatedepicresponse, this.yearDiagnosed);
+	}
+
 	/**
 	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
 	 */
@@ -321,27 +337,9 @@ public class MentalHealthResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(diseasepresenceorabsencesimulatedepicresponse, yearDiagnosed);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof MentalHealthResponse)) {
-			return false;
-		}
-		MentalHealthResponse other = (MentalHealthResponse) obj;
-		return diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
-				&& Objects.equals(yearDiagnosed, other.yearDiagnosed);
-	}
-
-	@Override
 	public String toString() {
 		return "MentalHealthResponse [diseasepresenceorabsencesimulatedepicresponse="
-				+ diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + yearDiagnosed + "]";
+				+ this.diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + this.yearDiagnosed + "]";
 	}
 
 }

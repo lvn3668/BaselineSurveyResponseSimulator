@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GIUlceritiveColitis extends GastroIntestinalDiseaseResponse {
@@ -137,6 +136,22 @@ public class GIUlceritiveColitis extends GastroIntestinalDiseaseResponse {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GIUlceritiveColitis)) {
+			return false;
+		}
+		GIUlceritiveColitis other = (GIUlceritiveColitis) obj;
+		return Objects.equals(this.GIUCMeds, other.GIUCMeds)
+				&& this.GIUCMedsAdministeredEpicResponse == other.GIUCMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the gIUCMeds
 	 */
@@ -149,6 +164,14 @@ public class GIUlceritiveColitis extends GastroIntestinalDiseaseResponse {
 	 */
 	public int getGiUlceritiveColitismedicinesadministeredepicresponse() {
 		return this.GIUCMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.GIUCMeds, this.GIUCMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -170,30 +193,6 @@ public class GIUlceritiveColitis extends GastroIntestinalDiseaseResponse {
 	public String toString() {
 		return "GIUC [GIUCMeds=" + this.GIUCMeds + ", GIUCMedsAdministeredEpicResponse="
 				+ this.GIUCMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GIUCMeds, GIUCMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GIUlceritiveColitis)) {
-			return false;
-		}
-		GIUlceritiveColitis other = (GIUlceritiveColitis) obj;
-		return Objects.equals(GIUCMeds, other.GIUCMeds)
-				&& GIUCMedsAdministeredEpicResponse == other.GIUCMedsAdministeredEpicResponse;
 	}
 
 }

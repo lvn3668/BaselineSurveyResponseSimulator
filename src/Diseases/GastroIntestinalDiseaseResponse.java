@@ -4,21 +4,17 @@ import java.time.Year;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
 import java.util.Objects;
-import java.util.Random;
 
 import Utilities.Utilities;
 import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS /MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS /MAVERIC
  *
  */
 public class GastroIntestinalDiseaseResponse {
 
-	private ValueRange diseasepresenceorabsence;
-	private UniformDistribution uniformdistribution;
 	/**
 	 *
 	 */
@@ -39,125 +35,6 @@ public class GastroIntestinalDiseaseResponse {
 	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
-	// error response
-	private int diseasepresenceorabsencesimulatedepicresponse;
-	private Utilities utilities;
-	private Year yearDiagnosedSimulatedResponse;
-
-	/**
-	 *
-	 */
-	/**
-	 *
-	 */
-	/**
-	 *
-	 */
-	/**
-	 *
-	 */
-	/**
-	 *
-	 */
-	/**
-	 *
-	 */
-
-	@Override
-	protected void finalize() throws Throwable {
-		// TODO Auto-generated method stub
-		super.finalize();
-	}
-
-	/**
-	 * @return the uniformdistribution
-	 */
-	protected UniformDistribution getUniformdistribution() throws Exception {
-		try {
-			return this.uniformdistribution;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.uniformdistribution;
-	}
-
-	/**
-	 * @return the utilities
-	 */
-	protected Utilities getUtilities() {
-		return this.utilities;
-	}
-
-	/**
-	 * @param uniformdistribution the uniformdistribution to set
-	 */
-	protected void setUniformdistribution(UniformDistribution uniformdist) throws Exception {
-		try {
-			this.uniformdistribution = uniformdist;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @param utilities the utilities to set
-	 */
-	protected void setUtilities(Utilities utilities) {
-		this.utilities = utilities;
-	}
-
-	/**
-	 * @return the diseasepresenceorabsence
-	 */
-	private ValueRange getDiseasepresenceorabsence() {
-		return this.diseasepresenceorabsence;
-	}
-
-	/**
-	 * @return the diseasepresenceorabsencesimulatedepicresponse
-	 */
-	public int getDiseasepresenceorabsencesimulatedepicresponse() {
-		return this.diseasepresenceorabsencesimulatedepicresponse;
-	}
-
-	/**
-	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
-	 */
-	private void setDiseasepresenceorabsence(ValueRange diseasepresenceorabsence) {
-		this.diseasepresenceorabsence = diseasepresenceorabsence;
-	}
-
-	/**
-	 * @param diseasepresenceorabsencesimulatedepicresponse the
-	 *                                                      diseasepresenceorabsencesimulatedepicresponse
-	 *                                                      to set
-	 */
-	private void setDiseasepresenceorabsencesimulatedepicresponse(int diseasepresenceorabsencesimulatedepicresponse) {
-		this.diseasepresenceorabsencesimulatedepicresponse = diseasepresenceorabsencesimulatedepicresponse;
-	}
-
-	/**
-	 * @return the diagnosed
-	 */
-	public Year getYearDiagnosedSimulatedResponse() throws Exception {
-		try {
-			return this.yearDiagnosedSimulatedResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.yearDiagnosedSimulatedResponse;
-	}
-
-	/**
-	 * @param yearDiagnosedSimulatedResponse the yearDiagnosedSimulatedResponse to
-	 *                                       set
-	 */
-	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosedSimulatedResponse) {
-		this.yearDiagnosedSimulatedResponse = yearDiagnosedSimulatedResponse;
-	}
 
 	/**
 	 * @return the maxtogenerateerrorval
@@ -191,12 +68,22 @@ public class GastroIntestinalDiseaseResponse {
 		return mintogenerateerrorval;
 	}
 
+	private ValueRange diseasepresenceorabsence;
+	// error response
+	private int diseasepresenceorabsencesimulatedepicresponse;
+	private UniformDistribution uniformdistribution;
+
+	private Utilities utilities;
+
+	private Year yearDiagnosedSimulatedResponse;
+
 	public GastroIntestinalDiseaseResponse(Cohort cohort) throws Exception {
 		try {
 
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
-					GastroIntestinalDiseaseResponse.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new UniformDistribution(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
+							GastroIntestinalDiseaseResponse.getMaxtogenerateerrorval()));
 
 			// TODO Auto-generated constructor stub
 			this.setDiseasepresenceorabsence(ValueRange.of(0, 1));
@@ -224,10 +111,10 @@ public class GastroIntestinalDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.of(
-						this.getUtilities().randBetween(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
+				this.setYearDiagnosedSimulatedResponse(Year
+						.of(this.getUtilities().randBetween(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
 								GastroIntestinalDiseaseResponse.getMaxtogenerateerrorval())));
 			}
 
@@ -241,8 +128,9 @@ public class GastroIntestinalDiseaseResponse {
 			throws Exception {
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
-					GastroIntestinalDiseaseResponse.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new UniformDistribution(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
+							GastroIntestinalDiseaseResponse.getMaxtogenerateerrorval()));
 
 			// TODO Auto-generated constructor stub
 			this.setDiseasepresenceorabsence(valuerange);
@@ -270,7 +158,7 @@ public class GastroIntestinalDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
@@ -285,11 +173,6 @@ public class GastroIntestinalDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(diseasepresenceorabsencesimulatedepicresponse, yearDiagnosedSimulatedResponse);
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -298,15 +181,135 @@ public class GastroIntestinalDiseaseResponse {
 			return false;
 		}
 		GastroIntestinalDiseaseResponse other = (GastroIntestinalDiseaseResponse) obj;
-		return diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
-				&& Objects.equals(yearDiagnosedSimulatedResponse, other.yearDiagnosedSimulatedResponse);
+		return this.diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
+				&& Objects.equals(this.yearDiagnosedSimulatedResponse, other.yearDiagnosedSimulatedResponse);
+	}
+
+	/**
+	 *
+	 */
+	/**
+	 *
+	 */
+	/**
+	 *
+	 */
+	/**
+	 *
+	 */
+	/**
+	 *
+	 */
+	/**
+	 *
+	 */
+
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+
+	/**
+	 * @return the diseasepresenceorabsence
+	 */
+	private ValueRange getDiseasepresenceorabsence() {
+		return this.diseasepresenceorabsence;
+	}
+
+	/**
+	 * @return the diseasepresenceorabsencesimulatedepicresponse
+	 */
+	public int getDiseasepresenceorabsencesimulatedepicresponse() {
+		return this.diseasepresenceorabsencesimulatedepicresponse;
+	}
+
+	/**
+	 * @return the uniformdistribution
+	 */
+	protected UniformDistribution getUniformdistribution() throws Exception {
+		try {
+			return this.uniformdistribution;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.uniformdistribution;
+	}
+
+	/**
+	 * @return the utilities
+	 */
+	protected Utilities getUtilities() {
+		return this.utilities;
+	}
+
+	/**
+	 * @return the diagnosed
+	 */
+	public Year getYearDiagnosedSimulatedResponse() throws Exception {
+		try {
+			return this.yearDiagnosedSimulatedResponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.yearDiagnosedSimulatedResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.diseasepresenceorabsencesimulatedepicresponse, this.yearDiagnosedSimulatedResponse);
+	}
+
+	/**
+	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
+	 */
+	private void setDiseasepresenceorabsence(ValueRange diseasepresenceorabsence) {
+		this.diseasepresenceorabsence = diseasepresenceorabsence;
+	}
+
+	/**
+	 * @param diseasepresenceorabsencesimulatedepicresponse the
+	 *                                                      diseasepresenceorabsencesimulatedepicresponse
+	 *                                                      to set
+	 */
+	private void setDiseasepresenceorabsencesimulatedepicresponse(int diseasepresenceorabsencesimulatedepicresponse) {
+		this.diseasepresenceorabsencesimulatedepicresponse = diseasepresenceorabsencesimulatedepicresponse;
+	}
+
+	/**
+	 * @param uniformdistribution the uniformdistribution to set
+	 */
+	protected void setUniformdistribution(UniformDistribution uniformdist) throws Exception {
+		try {
+			this.uniformdistribution = uniformdist;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @param utilities the utilities to set
+	 */
+	protected void setUtilities(Utilities utilities) {
+		this.utilities = utilities;
+	}
+
+	/**
+	 * @param yearDiagnosedSimulatedResponse the yearDiagnosedSimulatedResponse to
+	 *                                       set
+	 */
+	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosedSimulatedResponse) {
+		this.yearDiagnosedSimulatedResponse = yearDiagnosedSimulatedResponse;
 	}
 
 	@Override
 	public String toString() {
 		return "GastroIntestinalDiseaseResponse [diseasepresenceorabsencesimulatedepicresponse="
-				+ diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosedSimulatedResponse="
-				+ yearDiagnosedSimulatedResponse + "]";
+				+ this.diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosedSimulatedResponse="
+				+ this.yearDiagnosedSimulatedResponse + "]";
 	}
 
 }

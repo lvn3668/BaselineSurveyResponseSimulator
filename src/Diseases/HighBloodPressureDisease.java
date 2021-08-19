@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class HighBloodPressureDisease extends InfectiousDiseaseResponse {
@@ -136,6 +135,22 @@ public class HighBloodPressureDisease extends InfectiousDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof HighBloodPressureDisease)) {
+			return false;
+		}
+		HighBloodPressureDisease other = (HighBloodPressureDisease) obj;
+		return Objects.equals(this.HBPDMed, other.HBPDMed)
+				&& this.HBPDMedsAdministeredEpicResponse == other.HBPDMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the hBPDMed
 	 */
@@ -154,6 +169,14 @@ public class HighBloodPressureDisease extends InfectiousDiseaseResponse {
 			return this.HBPDMedsAdministeredEpicResponse;
 		} finally {
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.HBPDMed, this.HBPDMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -183,30 +206,6 @@ public class HighBloodPressureDisease extends InfectiousDiseaseResponse {
 	public String toString() {
 		return "HighBloodPressureDisease [HBPDMed=" + this.HBPDMed + ", HBPDMedsAdministeredEpicResponse="
 				+ this.HBPDMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(HBPDMed, HBPDMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof HighBloodPressureDisease)) {
-			return false;
-		}
-		HighBloodPressureDisease other = (HighBloodPressureDisease) obj;
-		return Objects.equals(HBPDMed, other.HBPDMed)
-				&& HBPDMedsAdministeredEpicResponse == other.HBPDMedsAdministeredEpicResponse;
 	}
 
 }

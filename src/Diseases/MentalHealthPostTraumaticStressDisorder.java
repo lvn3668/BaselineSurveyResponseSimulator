@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthPostTraumaticStressDisorder extends MentalHealthResponse {
@@ -142,17 +141,19 @@ public class MentalHealthPostTraumaticStressDisorder extends MentalHealthRespons
 		}
 	}
 
-	/**
-	 * @return the mHPTSD
-	 */
-	private ValueRange getMHPTSD() throws Exception {
-		try {
-			return this.MHPTSD;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.MHPTSD;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MentalHealthPostTraumaticStressDisorder)) {
+			return false;
+		}
+		MentalHealthPostTraumaticStressDisorder other = (MentalHealthPostTraumaticStressDisorder) obj;
+		return Objects.equals(this.MHPTSD, other.MHPTSD) && this.MHPTSDMedsEpicResponse == other.MHPTSDMedsEpicResponse;
 	}
 
 	/**
@@ -166,6 +167,27 @@ public class MentalHealthPostTraumaticStressDisorder extends MentalHealthRespons
 			e.printStackTrace();
 		}
 		return this.MHPTSDMedsEpicResponse;
+	}
+
+	/**
+	 * @return the mHPTSD
+	 */
+	private ValueRange getMHPTSD() throws Exception {
+		try {
+			return this.MHPTSD;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MHPTSD;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.MHPTSD, this.MHPTSDMedsEpicResponse);
+		return result;
 	}
 
 	/**
@@ -193,32 +215,9 @@ public class MentalHealthPostTraumaticStressDisorder extends MentalHealthRespons
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(MHPTSD, MHPTSDMedsEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MentalHealthPostTraumaticStressDisorder)) {
-			return false;
-		}
-		MentalHealthPostTraumaticStressDisorder other = (MentalHealthPostTraumaticStressDisorder) obj;
-		return Objects.equals(MHPTSD, other.MHPTSD) && MHPTSDMedsEpicResponse == other.MHPTSDMedsEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "MentalHealthPostTraumaticStressDisorder [MHPTSD=" + MHPTSD + ", MHPTSDMedsEpicResponse="
-				+ MHPTSDMedsEpicResponse + "]";
+		return "MentalHealthPostTraumaticStressDisorder [MHPTSD=" + this.MHPTSD + ", MHPTSDMedsEpicResponse="
+				+ this.MHPTSDMedsEpicResponse + "]";
 	}
 
 }

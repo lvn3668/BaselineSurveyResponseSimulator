@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class PulmonaryVascularDisease extends MiscDiseaseResponse {
@@ -139,6 +138,22 @@ public class PulmonaryVascularDisease extends MiscDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof PulmonaryVascularDisease)) {
+			return false;
+		}
+		PulmonaryVascularDisease other = (PulmonaryVascularDisease) obj;
+		return Objects.equals(this.PulmonaryVascularDiseaseMedicines, other.PulmonaryVascularDiseaseMedicines)
+				&& this.PulmonaryVascularDiseaseMedsEpicResponse == other.PulmonaryVascularDiseaseMedsEpicResponse;
+	}
+
 	/**
 	 * @return the pulmonaryVascularDiseaseMedicines
 	 */
@@ -163,6 +178,15 @@ public class PulmonaryVascularDisease extends MiscDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.PulmonaryVascularDiseaseMedsEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.PulmonaryVascularDiseaseMedicines, this.PulmonaryVascularDiseaseMedsEpicResponse);
+		return result;
 	}
 
 	/**
@@ -197,31 +221,6 @@ public class PulmonaryVascularDisease extends MiscDiseaseResponse {
 	public String toString() {
 		return "PulmonaryVascularDisease [PulmonaryVascularDiseaseMedicines=" + this.PulmonaryVascularDiseaseMedicines
 				+ ", PulmonaryVascularDiseaseMedsEpicResponse=" + this.PulmonaryVascularDiseaseMedsEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(PulmonaryVascularDiseaseMedicines, PulmonaryVascularDiseaseMedsEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof PulmonaryVascularDisease)) {
-			return false;
-		}
-		PulmonaryVascularDisease other = (PulmonaryVascularDisease) obj;
-		return Objects.equals(PulmonaryVascularDiseaseMedicines, other.PulmonaryVascularDiseaseMedicines)
-				&& PulmonaryVascularDiseaseMedsEpicResponse == other.PulmonaryVascularDiseaseMedsEpicResponse;
 	}
 
 }

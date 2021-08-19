@@ -10,17 +10,16 @@ import randomizer.UniformDistribution;
 public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse {
 
 	/**
-	 * @author Lalitha Viswanathan
-	 * Affiliation VABHS / MAVERIC 
+	 * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
 	 *
 	 */
 
 	private static final int maxtogenerateerrorval = 5;
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
 
@@ -51,11 +50,11 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private ValueRange ALSMedicines;
 	/**
-	 * 
+	 *
 	 */
 	private int alsmedsadministeredepicresponse;
 
@@ -80,12 +79,11 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 									AmytrophicLateralSclerosis.getMaxtogenerateerrorval())))) {
 				this.setAlsmedsadministeredepicresponse(this.getUtilities().randBetween(
 						(int) this.getALSMedicines().getMinimum(), (int) this.getALSMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setAlsmedsadministeredepicresponse(
 						this.getUtilities().randBetween(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
 								AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,16 +115,32 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 									AmytrophicLateralSclerosis.getMaxtogenerateerrorval())))) {
 				this.setAlsmedsadministeredepicresponse(this.getUtilities().randBetween(
 						(int) this.getALSMedicines().getMinimum(), (int) this.getALSMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setAlsmedsadministeredepicresponse(
 						this.getUtilities().randBetween(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
 								AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (!(obj instanceof AmytrophicLateralSclerosis)) {
+			return false;
+		}
+		try {
+			return Objects.equals(this.getALSMedicines(), ((AmytrophicLateralSclerosis) obj).getALSMedicines()) && this
+					.getAmytrophiclateralsclerosismedicinesadministeredepicresponse() == ((AmytrophicLateralSclerosis) obj)
+							.getAmytrophiclateralsclerosismedicinesadministeredepicresponse();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	/**
@@ -160,6 +174,19 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 			e.printStackTrace();
 		}
 		return this.alsmedsadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		try {
+			if (this.getALSMedicines() != null) {
+				return (this.getALSMedicines().hashCode() + Integer
+						.toString(this.getAmytrophiclateralsclerosismedicinesadministeredepicresponse()).hashCode());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	/**
@@ -202,36 +229,6 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 	public String toString() {
 		return "AmytrophicLateralSclerosis [ALSMedicines=" + this.ALSMedicines + ", alsmedsadministeredepicresponse="
 				+ this.alsmedsadministeredepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		try {
-			if (this.getALSMedicines() != null)
-
-				return (this.getALSMedicines().hashCode()
-						+ Integer.toString(this.getAmytrophiclateralsclerosismedicinesadministeredepicresponse()).hashCode());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-
-		if (!(obj instanceof AmytrophicLateralSclerosis)) {
-			return false;
-		}
-		try {
-			return Objects.equals(this.getALSMedicines(), ((AmytrophicLateralSclerosis) obj).getALSMedicines())
-					&& this.getAmytrophiclateralsclerosismedicinesadministeredepicresponse() == ((AmytrophicLateralSclerosis) obj)
-							.getAmytrophiclateralsclerosismedicinesadministeredepicresponse();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
 	}
 
 }

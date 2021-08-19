@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SknMSGout extends SkinDiseaseResponse {
@@ -145,17 +144,20 @@ public class SknMSGout extends SkinDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the sknMSGoutMedicines
-	 */
-	private ValueRange getSknMSGoutMedicines() throws Exception {
-		try {
-			return this.SknMSGoutMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.SknMSGoutMedicines;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof SknMSGout)) {
+			return false;
+		}
+		SknMSGout other = (SknMSGout) obj;
+		return Objects.equals(this.SknMSGoutMedicines, other.SknMSGoutMedicines)
+				&& this.SknMSGoutMedsAdministeredEpicResponse == other.SknMSGoutMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -169,6 +171,27 @@ public class SknMSGout extends SkinDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.SknMSGoutMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the sknMSGoutMedicines
+	 */
+	private ValueRange getSknMSGoutMedicines() throws Exception {
+		try {
+			return this.SknMSGoutMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.SknMSGoutMedicines;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.SknMSGoutMedicines, this.SknMSGoutMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -198,33 +221,9 @@ public class SknMSGout extends SkinDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(SknMSGoutMedicines, SknMSGoutMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof SknMSGout)) {
-			return false;
-		}
-		SknMSGout other = (SknMSGout) obj;
-		return Objects.equals(SknMSGoutMedicines, other.SknMSGoutMedicines)
-				&& SknMSGoutMedsAdministeredEpicResponse == other.SknMSGoutMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "SknMSGout [SknMSGoutMedicines=" + SknMSGoutMedicines + ", SknMSGoutMedsAdministeredEpicResponse="
-				+ SknMSGoutMedsAdministeredEpicResponse + "]";
+		return "SknMSGout [SknMSGoutMedicines=" + this.SknMSGoutMedicines + ", SknMSGoutMedsAdministeredEpicResponse="
+				+ this.SknMSGoutMedsAdministeredEpicResponse + "]";
 	}
 
 }

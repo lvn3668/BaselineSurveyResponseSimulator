@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
@@ -134,6 +133,22 @@ public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GICrohnsDisease)) {
+			return false;
+		}
+		GICrohnsDisease other = (GICrohnsDisease) obj;
+		return this.CrohnsDiseaseMedsAdministeredEpicResponse == other.CrohnsDiseaseMedsAdministeredEpicResponse
+				&& Objects.equals(this.GICrohnsDiseaseMeds, other.GICrohnsDiseaseMeds);
+	}
+
 	/**
 	 * @return the crohnsDiseaseMedsAdministeredEpicResponse
 	 */
@@ -158,6 +173,15 @@ public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.GICrohnsDiseaseMeds;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.CrohnsDiseaseMedsAdministeredEpicResponse, this.GICrohnsDiseaseMeds);
+		return result;
 	}
 
 	/**
@@ -191,30 +215,6 @@ public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
 	public String toString() {
 		return "GICrohnsDisease [GICrohnsDiseaseMeds=" + this.GICrohnsDiseaseMeds
 				+ ", CrohnsDiseaseMedsAdministeredEpicResponse=" + this.CrohnsDiseaseMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(CrohnsDiseaseMedsAdministeredEpicResponse, GICrohnsDiseaseMeds);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GICrohnsDisease)) {
-			return false;
-		}
-		GICrohnsDisease other = (GICrohnsDisease) obj;
-		return CrohnsDiseaseMedsAdministeredEpicResponse == other.CrohnsDiseaseMedsAdministeredEpicResponse
-				&& Objects.equals(GICrohnsDiseaseMeds, other.GICrohnsDiseaseMeds);
 	}
 
 }

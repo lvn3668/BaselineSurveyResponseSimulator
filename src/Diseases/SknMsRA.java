@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SknMsRA extends SkinDiseaseResponse {
@@ -143,17 +142,20 @@ public class SknMsRA extends SkinDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the sknMsRAMedicines
-	 */
-	private ValueRange getSknMsRAMedicines() {
-		try {
-			return this.SknMsRAMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.SknMsRAMedicines;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof SknMsRA)) {
+			return false;
+		}
+		SknMsRA other = (SknMsRA) obj;
+		return Objects.equals(this.SknMsRAMedicines, other.SknMsRAMedicines)
+				&& this.SknMsRAMedsAdministeredEpicResponse == other.SknMsRAMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -167,6 +169,27 @@ public class SknMsRA extends SkinDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.SknMsRAMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the sknMsRAMedicines
+	 */
+	private ValueRange getSknMsRAMedicines() {
+		try {
+			return this.SknMsRAMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.SknMsRAMedicines;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.SknMsRAMedicines, this.SknMsRAMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -199,30 +222,6 @@ public class SknMsRA extends SkinDiseaseResponse {
 	public String toString() {
 		return "SknMsRA [SknMsRAMedicines=" + this.SknMsRAMedicines + ", SknMsRAMedsAdministeredEpicResponse="
 				+ this.SknMsRAMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(SknMsRAMedicines, SknMsRAMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof SknMsRA)) {
-			return false;
-		}
-		SknMsRA other = (SknMsRA) obj;
-		return Objects.equals(SknMsRAMedicines, other.SknMsRAMedicines)
-				&& SknMsRAMedsAdministeredEpicResponse == other.SknMsRAMedsAdministeredEpicResponse;
 	}
 
 }

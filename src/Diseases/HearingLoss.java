@@ -131,6 +131,22 @@ public class HearingLoss extends HearingVisionDiseaseResponse {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof HearingLoss)) {
+			return false;
+		}
+		HearingLoss other = (HearingLoss) obj;
+		return Objects.equals(this.HearingLossMedicines, other.HearingLossMedicines)
+				&& this.hearinglossMedicinesAdministeredEpicResponse == other.hearinglossMedicinesAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the hearingLossMedicines
 	 */
@@ -146,6 +162,15 @@ public class HearingLoss extends HearingVisionDiseaseResponse {
 	 */
 	public int getHearingLossmedicinesadministeredepicresponse() {
 		return this.hearinglossMedicinesAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.HearingLossMedicines, this.hearinglossMedicinesAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -174,30 +199,6 @@ public class HearingLoss extends HearingVisionDiseaseResponse {
 		return "HearingLoss [HearingLossMedicines=" + this.HearingLossMedicines
 				+ ", hearinglossMedicinesAdministeredEpicResponse=" + this.hearinglossMedicinesAdministeredEpicResponse
 				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(HearingLossMedicines, hearinglossMedicinesAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof HearingLoss)) {
-			return false;
-		}
-		HearingLoss other = (HearingLoss) obj;
-		return Objects.equals(HearingLossMedicines, other.HearingLossMedicines)
-				&& hearinglossMedicinesAdministeredEpicResponse == other.hearinglossMedicinesAdministeredEpicResponse;
 	}
 
 }

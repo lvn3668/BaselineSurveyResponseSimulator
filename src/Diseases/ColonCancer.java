@@ -8,15 +8,11 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class ColonCancer extends CancerResponse {
 
-	ValueRange ColonCancerMedicines = ValueRange.of(0, 1);
-	// default is error response
-	int coloncancermedicinesadministeredepicresponse = 2;
 	/**
 	 *
 	 */
@@ -40,6 +36,67 @@ public class ColonCancer extends CancerResponse {
 	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
+
+	/**
+	 * @return the maxtogenerateerrorval
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	private static int getMaxtogenerateerrorval() {
+		try {
+			return maxtogenerateerrorval;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return maxtogenerateerrorval;
+	}
+
+	/**
+	 * @return the mintogenerateerrorval
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	private static int getMintogenerateerrorval() {
+		try {
+			return mintogenerateerrorval;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mintogenerateerrorval;
+	}
+
+	ValueRange ColonCancerMedicines = ValueRange.of(0, 1);
+
+	// default is error response
+	int coloncancermedicinesadministeredepicresponse = 2;
 
 	public ColonCancer(Cohort cohort) throws Exception {
 		// TODO Auto-generated constructor stub
@@ -100,6 +157,22 @@ public class ColonCancer extends CancerResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof ColonCancer)) {
+			return false;
+		}
+		ColonCancer other = (ColonCancer) obj;
+		return Objects.equals(this.ColonCancerMedicines, other.ColonCancerMedicines)
+				&& this.coloncancermedicinesadministeredepicresponse == other.coloncancermedicinesadministeredepicresponse;
+	}
+
 	/**
 	 * @return the colonCancerMedicines
 	 */
@@ -114,19 +187,6 @@ public class ColonCancer extends CancerResponse {
 	}
 
 	/**
-	 * @param colonCancerMedicines the colonCancerMedicines to set
-	 */
-	private void setColonCancerMedicines(ValueRange colonCancerMedicines) throws Exception {
-		try {
-			this.ColonCancerMedicines = colonCancerMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
-		}
-	}
-
-	/**
 	 * @return the coloncancermedicinesadministeredepicresponse
 	 */
 	public int getColonCancermedicinesadministeredepicresponse() {
@@ -137,6 +197,28 @@ public class ColonCancer extends CancerResponse {
 			e.printStackTrace();
 		}
 		return this.coloncancermedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.ColonCancerMedicines, this.coloncancermedicinesadministeredepicresponse);
+		return result;
+	}
+
+	/**
+	 * @param colonCancerMedicines the colonCancerMedicines to set
+	 */
+	private void setColonCancerMedicines(ValueRange colonCancerMedicines) throws Exception {
+		try {
+			this.ColonCancerMedicines = colonCancerMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	/**
@@ -160,87 +242,6 @@ public class ColonCancer extends CancerResponse {
 		return "ColonCancer [ColonCancerMedicines=" + this.ColonCancerMedicines
 				+ ", coloncancermedicinesadministeredepicresponse=" + this.coloncancermedicinesadministeredepicresponse
 				+ "]";
-	}
-
-	/**
-	 * @return the maxtogenerateerrorval
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	private static int getMaxtogenerateerrorval() {
-		try {
-			return maxtogenerateerrorval;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return maxtogenerateerrorval;
-	}
-
-	/**
-	 * @return the mintogenerateerrorval
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	private static int getMintogenerateerrorval() {
-		try {
-			return mintogenerateerrorval;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return mintogenerateerrorval;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(this.ColonCancerMedicines, this.coloncancermedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof ColonCancer)) {
-			return false;
-		}
-		ColonCancer other = (ColonCancer) obj;
-		return Objects.equals(this.ColonCancerMedicines, other.ColonCancerMedicines)
-				&& this.coloncancermedicinesadministeredepicresponse == other.coloncancermedicinesadministeredepicresponse;
 	}
 
 }

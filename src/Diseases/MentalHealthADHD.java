@@ -7,8 +7,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthADHD extends MentalHealthResponse {
@@ -137,19 +136,6 @@ public class MentalHealthADHD extends MentalHealthResponse {
 	}
 
 	/**
-	 * @return the mHADHDMeds
-	 */
-	private ValueRange getMHADHDMeds() throws Exception {
-		try {
-			return this.MHADHDMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.MHADHDMeds;
-	}
-
-	/**
 	 * @return the mHADHDMedsAdministeredEpicResponse
 	 */
 	public int getMentalhealthADHDmedicinesadministeredepicresponse() throws Exception {
@@ -160,6 +146,19 @@ public class MentalHealthADHD extends MentalHealthResponse {
 			e.printStackTrace();
 		}
 		return this.MHADHDMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the mHADHDMeds
+	 */
+	private ValueRange getMHADHDMeds() throws Exception {
+		try {
+			return this.MHADHDMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MHADHDMeds;
 	}
 
 	/**

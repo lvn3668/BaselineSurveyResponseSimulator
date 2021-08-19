@@ -5,8 +5,7 @@ import org.apache.commons.math3.exception.NumberIsTooLargeException;
 
 // Generate noise from variety of distributions and average it
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class UniformDistribution {
@@ -60,13 +59,6 @@ public class UniformDistribution {
 	 */
 	private org.apache.commons.math3.distribution.UniformIntegerDistribution getUiderrorresponsedist() {
 		return this.uniformintegerdistribution_errorresponsedist;
-	}
-
-	/**
-	 * @return the uidyear
-	 */
-	private org.apache.commons.math3.distribution.UniformIntegerDistribution getUidyear() {
-		return this.uniformintegerdistribution_year;
 	}
 
 	// To be generated Randomly from caller

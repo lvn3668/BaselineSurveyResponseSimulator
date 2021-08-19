@@ -1,49 +1,54 @@
 package cohort;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.time.Year;
-import java.time.temporal.ValueRange;
-import java.util.Calendar;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 import Utilities.Utilities;
 import randomizer.UniformDistribution;
+import simulatedDiseaseResponse.simulatedDiseasePresenceAbsenceResponseForFamilyMembers;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation MAVERIC / VABHS 
+ * @author Lalitha Viswanathan Affiliation MAVERIC / VABHS
  *
  */
 public class Sibling4 extends Sibling {
 
-	private static final Date earliestDOB = new Date("1-1-1940");
-	private static int errorResponse;
-	private static final Date latestDOB = new Date("12-31-1970");
+	private static LocalDate earliestDOBSibling;
+	private static LocalDate latestDOBSibling;
 	private static final int maxToGenerateErrorVal = 4;
 	// If Sibling 1-8 exists, etc.
 
 	private static final int minToGenerateErrorVal = 2;
 
 	/**
-	 * @return the earliestdob
+	 * @return the earliestdobsibling
 	 */
-	public static Date getEarliestdob() {
-		return earliestDOB;
+	public static LocalDate getEarliestdobsibling() {
+		return earliestDOBSibling;
 	}
 
 	/**
-	 * @return the errorResponse
+	 * @return the earliestDOBSibling
 	 */
-	private static int getErrorResponse() {
-		return errorResponse;
+	private static LocalDate getEarliestDOBSibling() {
+		return earliestDOBSibling;
 	}
 
 	/**
-	 * @return the latestdob
+	 * @return the latestdobsibling
 	 */
-	public static Date getLatestdob() {
-		return latestDOB;
+	public static LocalDate getLatestdobsibling() {
+		return latestDOBSibling;
+	}
+
+	/**
+	 * @return the latestDOBSibling
+	 */
+	private static LocalDate getLatestDOBSibling() {
+		return latestDOBSibling;
 	}
 
 	/**
@@ -61,82 +66,74 @@ public class Sibling4 extends Sibling {
 	}
 
 	/**
+	 * @param earliestDOBSibling the earliestDOBSibling to set
+	 */
+	private static void setEarliestDOBSibling(LocalDate earliestDOBSibling) {
+		Sibling4.earliestDOBSibling = earliestDOBSibling;
+	}
+
+	/**
 	 * @param errorResponse the errorResponse to set
 	 */
 	private static void setErrorResponse(int errorResponse) {
 		try {
-			Sibling4.errorResponse = errorResponse;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private int siblingexistssimulatedresponse;
-	private ValueRange siblingexistsValueRange = ValueRange.of(1, 2);
+	/**
+	 * @param latestDOBSibling the latestDOBSibling to set
+	 */
+	private static void setLatestDOBSibling(LocalDate latestDOBSibling) {
+		Sibling4.latestDOBSibling = latestDOBSibling;
+	}
 
 	public Sibling4(Cohort cohort) throws Exception {
 		// TODO Auto-generated constructor stub
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
 				new UniformDistribution(Sibling4.getMintogenerateerrorval(), Sibling4.getMaxtogenerateerrorval()));
-		this.setSiblingexistsValueRange(ValueRange.of(1, 2));
 		Sibling4.setErrorResponse(this.getUtilities().randBetween(Sibling4.getMintogenerateerrorval(),
 				Sibling4.getMaxtogenerateerrorval()));
-		this.setSiblingexistssimulatedresponse(Sibling4.getErrorResponse());
-	}
+		// Assign gender to Sibling
+		this.setSexSimulatedResponse(this.simulateSexValue());
 
-	/**
-	 * @return the siblingexistssimulatedresponse
-	 */
-	public int getSiblingexistssimulatedresponse() {
-		return this.siblingexistssimulatedresponse;
-	}
+		if (cohort.getMultipleBirthsSimulatedResponse() == 1) {
 
-	/**
-	 * @return the siblingexistsValueRange
-	 */
-	public ValueRange getSiblingexistsValueRange() {
-		return this.siblingexistsValueRange;
-	}
+			Sibling4.setEarliestDOBSibling(cohort.getEarliestDOBForSimulation());
+			Sibling4.setLatestDOBSibling(cohort.getLatestDOBForSimulation());
+		} else {
+			Sibling4.setEarliestDOBSibling(LocalDate
+					.of(this.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() - 10, 1, 1));
+			Sibling4.setLatestDOBSibling(LocalDate.of(
+					this.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() + 10, 12, 31));
+		}
 
-	/**
-	 * @param siblingexistssimulatedresponse the siblingexistssimulatedresponse to
-	 *                                       set
-	 */
-	public void setSiblingexistssimulatedresponse(int siblingexistssimulatedresponse) {
-		this.siblingexistssimulatedresponse = siblingexistssimulatedresponse;
-	}
-
-	/**
-	 * @param siblingexistsValueRange the siblingexistsValueRange to set
-	 */
-	public void setSiblingexistsValueRange(ValueRange siblingexistsValueRange) {
-		this.siblingexistsValueRange = siblingexistsValueRange;
+		this.setBirthDateSimulated(this.simulateDateOfBirth());
+		this.simulateYearOfBirth(this.getUtilities().extractYearFromDate(this.getBirthDateSimulated()));
+		this.simulateYearOfDeath();
+		this.setSimulatedDiseasePresenceAbsenceFamilyMembers(
+				new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
 	}
 
 	@Override
 	// Assumed alive
 	public int simulateAliveOrDead() {
 		// TODO Auto-generated method stub
-		try {
-			this.setSiblingexistssimulatedresponse(1);
-			return this.getSiblingexistssimulatedresponse();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.getSiblingexistssimulatedresponse();
+		return super.simulateAliveOrDead();
 	}
 
 	public Date simulateDateOfBirth() {
 		try {
-			Date simulatedDOB = Date.from(Instant.ofEpochSecond(ThreadLocalRandom.current()
-					.nextLong(Sibling4.getEarliestdob().getTime(), Sibling4.getLatestdob().getTime())));
+			Date simulatedDOB = new Date(ThreadLocalRandom.current().nextLong(
+					Date.from(Sibling4.getEarliestDOBSibling().atStartOfDay(ZoneId.systemDefault()).toInstant())
+							.getTime(),
+					Date.from(Sibling4.getLatestDOBSibling().atStartOfDay(ZoneId.systemDefault()).toInstant())
+							.getTime()));
 			this.setBirthDateSimulated(simulatedDOB);
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(simulatedDOB);
-			this.setBirthyear(Year.parse(new StringBuilder(calendar.get(Calendar.YEAR))));
+			System.out.println("Sibling 4 DOB " + this.getBirthDateSimulated().toString());
 			return this.getBirthDateSimulated();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -146,16 +143,16 @@ public class Sibling4 extends Sibling {
 	}
 
 	@Override
-	public Year simulateYearOfBirth() {
+	public void simulateYearOfBirth(Year year) {
 		// TODO Auto-generated method stub
-		return null;
+		super.simulateYearOfBirth(year);
 	}
 
 	@Override
 	// Year of death N/A
-	public Year simulateYearOfDeath() {
+	public void simulateYearOfDeath() {
 		// TODO Auto-generated method stub
-		return null;
+		super.simulateYearOfDeath();
 	}
 
 }

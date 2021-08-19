@@ -4,15 +4,13 @@ import java.time.Year;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
 import java.util.Objects;
-import java.util.Random;
 
 import Utilities.Utilities;
 import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class HearingVisionDiseaseResponse {
@@ -104,12 +102,11 @@ public class HearingVisionDiseaseResponse {
 				this.setDiseasepresenceorabsencesimulatedepicresponse(
 						this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
 								(int) this.getDiseasepresenceorabsence().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setDiseasepresenceorabsencesimulatedepicresponse(
 						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
 								HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
+			}
 
 			// Use Noise to check if valid values of Year are to be generated
 			// If not to generate noise, then assign diagnoses year between 1900 and 2020
@@ -121,13 +118,12 @@ public class HearingVisionDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
-			}
-
-			else
-				this.setYearDiagnosedSimulatedResponse(Year.of(
-						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+			} else {
+				this.setYearDiagnosedSimulatedResponse(
+						Year.of(this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
 								HearingVisionDiseaseResponse.getMaxtogenerateerrorval())));
+			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -152,12 +148,11 @@ public class HearingVisionDiseaseResponse {
 				this.setDiseasepresenceorabsencesimulatedepicresponse(
 						this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
 								(int) this.getDiseasepresenceorabsence().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setDiseasepresenceorabsencesimulatedepicresponse(
 						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
 								HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
+			}
 
 			// Use Noise to check if valid values of Year are to be generated
 			// If not to generate noise, then assign diagnoses year between 1900 and 2020
@@ -169,19 +164,40 @@ public class HearingVisionDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
-			}
-
-			else
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
 								HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))));
+			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		try {
+			if (obj != null && this instanceof HearingVisionDiseaseResponse
+					&& obj instanceof HearingVisionDiseaseResponse && this.hashCode() == obj.hashCode()) {
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	/**
+	 * @return the diseasepresenceorabsence
+	 */
+	private ValueRange getDiseasepresenceorabsence() {
+		return this.diseasepresenceorabsence;
 	}
 
 	/**
@@ -227,6 +243,32 @@ public class HearingVisionDiseaseResponse {
 	 */
 	protected Utilities getUtilities() {
 		return this.utilities;
+	}
+
+	/**
+	 * @return the yearDiagnosed
+	 */
+	public Year getYearDiagnosedSimulatedResponse() {
+		return this.yearDiagnosed;
+	}
+
+	@Override
+	public int hashCode() {
+		try {
+			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(),
+					this.getYearDiagnosedSimulatedResponse());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	/**
+	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
+	 */
+	private void setDiseasepresenceorabsence(ValueRange diseasepresenceorabsence) {
+		this.diseasepresenceorabsence = diseasepresenceorabsence;
 	}
 
 	/**
@@ -276,64 +318,16 @@ public class HearingVisionDiseaseResponse {
 	}
 
 	/**
-	 * @return the yearDiagnosed
-	 */
-	public Year getYearDiagnosedSimulatedResponse() {
-		return this.yearDiagnosed;
-	}
-
-	/**
 	 * @param yearDiagnosed the yearDiagnosed to set
 	 */
 	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosed) {
 		this.yearDiagnosed = yearDiagnosed;
 	}
 
-	/**
-	 * @return the diseasepresenceorabsence
-	 */
-	private ValueRange getDiseasepresenceorabsence() {
-		return this.diseasepresenceorabsence;
-	}
-
-	/**
-	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
-	 */
-	private void setDiseasepresenceorabsence(ValueRange diseasepresenceorabsence) {
-		this.diseasepresenceorabsence = diseasepresenceorabsence;
-	}
-
-	@Override
-	public int hashCode() {
-		try {
-			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(),
-					this.getYearDiagnosedSimulatedResponse());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		try {
-			if (obj != null && this instanceof HearingVisionDiseaseResponse
-					&& obj instanceof HearingVisionDiseaseResponse && this.hashCode() == obj.hashCode()) {
-				return true;
-			} else
-				return false;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 	@Override
 	public String toString() {
 		return "HearingVisionDiseaseResponse [diseasepresenceorabsencesimulatedepicresponse="
-				+ diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + yearDiagnosed + "]";
+				+ this.diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + this.yearDiagnosed + "]";
 	}
 
 }

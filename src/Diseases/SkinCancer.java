@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SkinCancer extends CancerResponse {
@@ -144,6 +143,22 @@ public class SkinCancer extends CancerResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof SkinCancer)) {
+			return false;
+		}
+		SkinCancer other = (SkinCancer) obj;
+		return Objects.equals(this.SkinCancerMedicines, other.SkinCancerMedicines)
+				&& this.skincancermedicinesadministeredepicresponse == other.skincancermedicinesadministeredepicresponse;
+	}
+
 	/**
 	 * @return the skinCancerMedicines
 	 */
@@ -168,6 +183,15 @@ public class SkinCancer extends CancerResponse {
 			e.printStackTrace();
 		}
 		return this.skincancermedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.SkinCancerMedicines, this.skincancermedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -197,33 +221,10 @@ public class SkinCancer extends CancerResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(SkinCancerMedicines, skincancermedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof SkinCancer)) {
-			return false;
-		}
-		SkinCancer other = (SkinCancer) obj;
-		return Objects.equals(SkinCancerMedicines, other.SkinCancerMedicines)
-				&& skincancermedicinesadministeredepicresponse == other.skincancermedicinesadministeredepicresponse;
-	}
-
-	@Override
 	public String toString() {
-		return "SkinCancer [SkinCancerMedicines=" + SkinCancerMedicines
-				+ ", skincancermedicinesadministeredepicresponse=" + skincancermedicinesadministeredepicresponse + "]";
+		return "SkinCancer [SkinCancerMedicines=" + this.SkinCancerMedicines
+				+ ", skincancermedicinesadministeredepicresponse=" + this.skincancermedicinesadministeredepicresponse
+				+ "]";
 	}
 
 }

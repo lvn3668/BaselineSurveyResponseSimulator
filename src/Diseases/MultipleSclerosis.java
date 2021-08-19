@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MultipleSclerosis extends NeuroStimulatoryDiseaseResponse {
@@ -137,17 +136,20 @@ public class MultipleSclerosis extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the mSMedsadministeredepicresponse
-	 */
-	public int getMultiplesclerosismedicinesadministeredepicresponse() throws Exception {
-		try {
-			return this.MSMedsadministeredepicresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.MSMedsadministeredepicresponse;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MultipleSclerosis)) {
+			return false;
+		}
+		MultipleSclerosis other = (MultipleSclerosis) obj;
+		return this.MSMedsadministeredepicresponse == other.MSMedsadministeredepicresponse
+				&& Objects.equals(this.MultipleSclerosisMedicines, other.MultipleSclerosisMedicines);
 	}
 
 	/**
@@ -161,6 +163,27 @@ public class MultipleSclerosis extends NeuroStimulatoryDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.MultipleSclerosisMedicines;
+	}
+
+	/**
+	 * @return the mSMedsadministeredepicresponse
+	 */
+	public int getMultiplesclerosismedicinesadministeredepicresponse() throws Exception {
+		try {
+			return this.MSMedsadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MSMedsadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.MSMedsadministeredepicresponse, this.MultipleSclerosisMedicines);
+		return result;
 	}
 
 	/**
@@ -192,30 +215,6 @@ public class MultipleSclerosis extends NeuroStimulatoryDiseaseResponse {
 	public String toString() {
 		return "MultipleSclerosis [MultipleSclerosisMedicines=" + this.MultipleSclerosisMedicines
 				+ ", MSMedsadministeredepicresponse=" + this.MSMedsadministeredepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(MSMedsadministeredepicresponse, MultipleSclerosisMedicines);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MultipleSclerosis)) {
-			return false;
-		}
-		MultipleSclerosis other = (MultipleSclerosis) obj;
-		return MSMedsadministeredepicresponse == other.MSMedsadministeredepicresponse
-				&& Objects.equals(MultipleSclerosisMedicines, other.MultipleSclerosisMedicines);
 	}
 
 }

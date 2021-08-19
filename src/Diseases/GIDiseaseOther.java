@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class GIDiseaseOther extends GastroIntestinalDiseaseResponse {
@@ -132,14 +131,20 @@ public class GIDiseaseOther extends GastroIntestinalDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the gIOtherMed
-	 */
-	private ValueRange getGIOtherMed() throws Exception {
-		try {
-			return this.GIOtherMed;
-		} finally {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GIDiseaseOther)) {
+			return false;
+		}
+		GIDiseaseOther other = (GIDiseaseOther) obj;
+		return Objects.equals(this.GIOtherMed, other.GIOtherMed)
+				&& this.GIOtherMedAdministeredEpicResponse == other.GIOtherMedAdministeredEpicResponse;
 	}
 
 	/**
@@ -150,6 +155,24 @@ public class GIDiseaseOther extends GastroIntestinalDiseaseResponse {
 			return this.GIOtherMedAdministeredEpicResponse;
 		} finally {
 		}
+	}
+
+	/**
+	 * @return the gIOtherMed
+	 */
+	private ValueRange getGIOtherMed() throws Exception {
+		try {
+			return this.GIOtherMed;
+		} finally {
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.GIOtherMed, this.GIOtherMedAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -178,30 +201,6 @@ public class GIDiseaseOther extends GastroIntestinalDiseaseResponse {
 	public String toString() {
 		return "GIDiseaseOther [GIOtherMed=" + this.GIOtherMed + ", GIOtherMedAdministeredEpicResponse="
 				+ this.GIOtherMedAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GIOtherMed, GIOtherMedAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GIDiseaseOther)) {
-			return false;
-		}
-		GIDiseaseOther other = (GIDiseaseOther) obj;
-		return Objects.equals(GIOtherMed, other.GIOtherMed)
-				&& GIOtherMedAdministeredEpicResponse == other.GIOtherMedAdministeredEpicResponse;
 	}
 
 }

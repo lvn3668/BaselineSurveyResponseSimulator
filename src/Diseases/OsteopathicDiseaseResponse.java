@@ -4,7 +4,6 @@ import java.time.Year;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
 import java.util.Objects;
-import java.util.Random;
 
 import Utilities.Utilities;
 import cohort.Cohort;
@@ -15,8 +14,7 @@ import randomizer.UniformDistribution;
 // Cancer, GI, HV, MH, etc. inherit from Disease
 //
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public abstract class OsteopathicDiseaseResponse {
@@ -85,7 +83,6 @@ public abstract class OsteopathicDiseaseResponse {
 		return mintogenerateerrorval;
 	}
 
-	private Cohort cohort;
 	private ValueRange diseasepresenceorabsence;
 	private int diseasepresenceorabsencesimulatedepicresponse;
 	private UniformDistribution uniformdistribution;
@@ -124,10 +121,10 @@ public abstract class OsteopathicDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.of(
-						this.getUtilities().randBetween(OsteopathicDiseaseResponse.getMintogenerateerrorval(),
+				this.setYearDiagnosedSimulatedResponse(
+						Year.of(this.getUtilities().randBetween(OsteopathicDiseaseResponse.getMintogenerateerrorval(),
 								OsteopathicDiseaseResponse.getMaxtogenerateerrorval())));
 			}
 		} catch (Exception e) {
@@ -169,7 +166,7 @@ public abstract class OsteopathicDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(OsteopathicDiseaseResponse.getMintogenerateerrorval(),
@@ -183,11 +180,17 @@ public abstract class OsteopathicDiseaseResponse {
 
 	}
 
-	/**
-	 * @return the cohort
-	 */
-	private Cohort getCohort() {
-		return this.cohort;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof OsteopathicDiseaseResponse)) {
+			return false;
+		}
+		OsteopathicDiseaseResponse other = (OsteopathicDiseaseResponse) obj;
+		return this.diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
+				&& Objects.equals(this.yearDiagnosed, other.yearDiagnosed);
 	}
 
 	/**
@@ -255,11 +258,15 @@ public abstract class OsteopathicDiseaseResponse {
 		return this.yearDiagnosed;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.diseasepresenceorabsencesimulatedepicresponse, this.yearDiagnosed);
+	}
+
 	/**
 	 * @param cohort the cohort to set
 	 */
 	private void setCohort(Cohort cohort) {
-		this.cohort = cohort;
 	}
 
 	/**
@@ -334,24 +341,6 @@ public abstract class OsteopathicDiseaseResponse {
 				+ ", yearDiagnosed=" + this.yearDiagnosed + ", uniformdistribution=" + this.uniformdistribution
 				+ ", diseasepresenceorabsencesimulatedepicresponse="
 				+ this.diseasepresenceorabsencesimulatedepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(diseasepresenceorabsencesimulatedepicresponse, yearDiagnosed);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof OsteopathicDiseaseResponse)) {
-			return false;
-		}
-		OsteopathicDiseaseResponse other = (OsteopathicDiseaseResponse) obj;
-		return diseasepresenceorabsencesimulatedepicresponse == other.diseasepresenceorabsencesimulatedepicresponse
-				&& Objects.equals(yearDiagnosed, other.yearDiagnosed);
 	}
 
 }

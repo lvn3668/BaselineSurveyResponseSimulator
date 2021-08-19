@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SknMSOthr extends SkinDiseaseResponse {
@@ -145,17 +144,20 @@ public class SknMSOthr extends SkinDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return the sknMSOtherMedsEpicResponse
-	 */
-	public int getSknMSOthrmedicinesadministeredepicresponse() throws Exception {
-		try {
-			return this.SknMSOtherMedsEpicResponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.SknMSOtherMedsEpicResponse;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof SknMSOthr)) {
+			return false;
+		}
+		SknMSOthr other = (SknMSOthr) obj;
+		return this.SknMSOtherMedsEpicResponse == other.SknMSOtherMedsEpicResponse
+				&& Objects.equals(this.SknMSOthrMedicines, other.SknMSOthrMedicines);
 	}
 
 	/**
@@ -169,6 +171,27 @@ public class SknMSOthr extends SkinDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.SknMSOthrMedicines;
+	}
+
+	/**
+	 * @return the sknMSOtherMedsEpicResponse
+	 */
+	public int getSknMSOthrmedicinesadministeredepicresponse() throws Exception {
+		try {
+			return this.SknMSOtherMedsEpicResponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.SknMSOtherMedsEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.SknMSOtherMedsEpicResponse, this.SknMSOthrMedicines);
+		return result;
 	}
 
 	/**
@@ -194,30 +217,6 @@ public class SknMSOthr extends SkinDiseaseResponse {
 	public String toString() {
 		return "SknMSOthr [SknMSOthrMedicines=" + this.SknMSOthrMedicines + ", SknMSOtherMedsEpicResponse="
 				+ this.SknMSOtherMedsEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(SknMSOtherMedsEpicResponse, SknMSOthrMedicines);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof SknMSOthr)) {
-			return false;
-		}
-		SknMSOthr other = (SknMSOthr) obj;
-		return SknMSOtherMedsEpicResponse == other.SknMSOtherMedsEpicResponse
-				&& Objects.equals(SknMSOthrMedicines, other.SknMSOthrMedicines);
 	}
 
 }

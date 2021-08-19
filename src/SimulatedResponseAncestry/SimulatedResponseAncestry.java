@@ -6,8 +6,7 @@ import Utilities.Utilities;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation: VABHS / MAVERIC
+ * @author Lalitha Viswanathan Affiliation: VABHS / MAVERIC
  *
  */
 public class SimulatedResponseAncestry {
@@ -652,7 +651,7 @@ public class SimulatedResponseAncestry {
 	}
 
 	/**
-	 * @param uniformDistribution the uniformDistribution to set
+	 * @param uniformdistribution the uniformDistribution to set
 	 */
 	private void setUniformDistribution(UniformDistribution uniformdist) {
 		try {

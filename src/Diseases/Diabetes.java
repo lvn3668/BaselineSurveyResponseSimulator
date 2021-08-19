@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Diabetes extends OsteopathicDiseaseResponse {
@@ -145,6 +144,22 @@ public class Diabetes extends OsteopathicDiseaseResponse {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Diabetes)) {
+			return false;
+		}
+		Diabetes other = (Diabetes) obj;
+		return Objects.equals(this.DiabetesMedicines, other.DiabetesMedicines)
+				&& this.diabetesmedicinesadministeredepicresponse == other.diabetesmedicinesadministeredepicresponse;
+	}
+
+	@Override
 	protected void finalize() throws Throwable {
 		// TODO Auto-generated method stub
 		this.DiabetesMedicines = null;
@@ -174,6 +189,14 @@ public class Diabetes extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.diabetesmedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.DiabetesMedicines, this.diabetesmedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -209,30 +232,6 @@ public class Diabetes extends OsteopathicDiseaseResponse {
 	public String toString() {
 		return "Diabetes [DiabetesMedicines=" + this.DiabetesMedicines + ", diabetesmedicinesadministeredepicresponse="
 				+ this.diabetesmedicinesadministeredepicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(DiabetesMedicines, diabetesmedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Diabetes)) {
-			return false;
-		}
-		Diabetes other = (Diabetes) obj;
-		return Objects.equals(DiabetesMedicines, other.DiabetesMedicines)
-				&& diabetesmedicinesadministeredepicresponse == other.diabetesmedicinesadministeredepicresponse;
 	}
 
 }

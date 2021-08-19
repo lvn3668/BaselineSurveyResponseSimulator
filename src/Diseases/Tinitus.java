@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class Tinitus extends HearingVisionDiseaseResponse {
@@ -150,6 +149,22 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Tinitus)) {
+			return false;
+		}
+		Tinitus other = (Tinitus) obj;
+		return Objects.equals(this.TinitusMedicines, other.TinitusMedicines)
+				&& this.TinitusMedsAdministeredEpicResponse == other.TinitusMedsAdministeredEpicResponse;
+	}
+
 	/**
 	 * @return the tinitusMedicines
 	 */
@@ -174,6 +189,14 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.TinitusMedsAdministeredEpicResponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.TinitusMedicines, this.TinitusMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -206,30 +229,6 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 	public String toString() {
 		return "Tinitus [TinitusMedicines=" + this.TinitusMedicines + ", TinitusMedsAdministeredEpicResponse="
 				+ this.TinitusMedsAdministeredEpicResponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(TinitusMedicines, TinitusMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Tinitus)) {
-			return false;
-		}
-		Tinitus other = (Tinitus) obj;
-		return Objects.equals(TinitusMedicines, other.TinitusMedicines)
-				&& TinitusMedsAdministeredEpicResponse == other.TinitusMedsAdministeredEpicResponse;
 	}
 
 }

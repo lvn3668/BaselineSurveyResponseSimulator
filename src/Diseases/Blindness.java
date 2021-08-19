@@ -8,90 +8,23 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 
 public class Blindness extends HearingVisionDiseaseResponse {
 
-	
-	private ValueRange BlindnessMedicines;
-	// change to random number not 0 or 1
-	private int blindnessmedicinesadministeredepicresponse;
 	/**
-	 * 
+	 *
 	 */
 	private static final int maxtogenerateerrorval = 5;
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
-
-	@Override
-	public String toString() {
-		return "Blindness [BlindnessMedicines=" + this.BlindnessMedicines
-				+ ", blindnessmedicinesadministeredepicresponse=" + this.blindnessmedicinesadministeredepicresponse
-				+ "]";
-	}
-
-	/**
-	 * @return the blindnessMedicines
-	 */
-	private ValueRange getBlindnessMedicines() throws Exception {
-		try {
-			return this.BlindnessMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.BlindnessMedicines;
-	}
-
-	/**
-	 * @param blindnessMedicines the blindnessMedicines to set
-	 */
-	private void setBlindnessMedicines(ValueRange blindnessMedicines) throws Exception {
-		try {
-			this.BlindnessMedicines = blindnessMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
-		}
-	}
-
-	/**
-	 * @return the blindnessmedicinesadministeredepicresponse
-	 */
-	public int getBlindnessmedicinesadministeredepicresponse() throws Exception {
-		try {
-			return this.blindnessmedicinesadministeredepicresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.blindnessmedicinesadministeredepicresponse;
-	}
-
-	/**
-	 * @param blindnessmedicinesadministeredepicresponse the
-	 *                                                   blindnessmedicinesadministeredepicresponse
-	 *                                                   to set
-	 */
-	private void setBlindnessmedicinesadministeredepicresponse(int blindnessmedicinesadministeredepicresponse)
-			throws Exception {
-		try {
-			this.blindnessmedicinesadministeredepicresponse = blindnessmedicinesadministeredepicresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
-		}
-	}
 
 	/**
 	 * @return the maxtogenerateerrorval
@@ -137,6 +70,11 @@ public class Blindness extends HearingVisionDiseaseResponse {
 		return mintogenerateerrorval;
 	}
 
+	private ValueRange BlindnessMedicines;
+
+	// change to random number not 0 or 1
+	private int blindnessmedicinesadministeredepicresponse;
+
 	public Blindness(Cohort cohort) throws Exception {
 		super(cohort);
 		try {
@@ -155,11 +93,10 @@ public class Blindness extends HearingVisionDiseaseResponse {
 				this.setBlindnessmedicinesadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getBlindnessMedicines().getMinimum(),
 								(int) this.getBlindnessMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setBlindnessmedicinesadministeredepicresponse(this.getUtilities()
 						.randBetween(Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval()));
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -188,16 +125,50 @@ public class Blindness extends HearingVisionDiseaseResponse {
 				this.setBlindnessmedicinesadministeredepicresponse(
 						this.getUtilities().randBetween((int) this.getBlindnessMedicines().getMinimum(),
 								(int) this.getBlindnessMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setBlindnessmedicinesadministeredepicresponse(this.getUtilities()
 						.randBetween(Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if ((obj != null) && (obj instanceof Blindness) && (this instanceof Blindness)
+				&& (this.hashCode() == obj.hashCode())) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @return the blindnessMedicines
+	 */
+	private ValueRange getBlindnessMedicines() throws Exception {
+		try {
+			return this.BlindnessMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.BlindnessMedicines;
+	}
+
+	/**
+	 * @return the blindnessmedicinesadministeredepicresponse
+	 */
+	public int getBlindnessmedicinesadministeredepicresponse() throws Exception {
+		try {
+			return this.blindnessmedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.blindnessmedicinesadministeredepicresponse;
 	}
 
 	@Override
@@ -212,13 +183,40 @@ public class Blindness extends HearingVisionDiseaseResponse {
 		return 0;
 	}
 
+	/**
+	 * @param blindnessMedicines the blindnessMedicines to set
+	 */
+	private void setBlindnessMedicines(ValueRange blindnessMedicines) throws Exception {
+		try {
+			this.BlindnessMedicines = blindnessMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	/**
+	 * @param blindnessmedicinesadministeredepicresponse the
+	 *                                                   blindnessmedicinesadministeredepicresponse
+	 *                                                   to set
+	 */
+	private void setBlindnessmedicinesadministeredepicresponse(int blindnessmedicinesadministeredepicresponse)
+			throws Exception {
+		try {
+			this.blindnessmedicinesadministeredepicresponse = blindnessmedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
 	@Override
-	public boolean equals(Object obj) {
-		if ((obj != null) && (obj instanceof Blindness) && (this instanceof Blindness)
-				&& (this.hashCode() == obj.hashCode())) {
-			return true;
-		} else
-			return false;
+	public String toString() {
+		return "Blindness [BlindnessMedicines=" + this.BlindnessMedicines
+				+ ", blindnessmedicinesadministeredepicresponse=" + this.blindnessmedicinesadministeredepicresponse
+				+ "]";
 	}
 
 }

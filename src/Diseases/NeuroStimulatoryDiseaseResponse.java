@@ -1,21 +1,16 @@
 package Diseases;
 
-import java.time.LocalDate;
 import java.time.Year;
-import java.time.ZoneId;
 import java.time.temporal.ValueRange;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
-import java.util.concurrent.ThreadLocalRandom;
 
 import Utilities.Utilities;
 import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class NeuroStimulatoryDiseaseResponse {
@@ -98,8 +93,9 @@ public class NeuroStimulatoryDiseaseResponse {
 	public NeuroStimulatoryDiseaseResponse(Cohort cohort) throws Exception {
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
-					NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new UniformDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
+							NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
 
 			this.setDiseasepresenceorabsence(ValueRange.of(0, 1));
 			this.setDiseasepresenceorabsencesimulatedepicresponse(2);
@@ -126,10 +122,10 @@ public class NeuroStimulatoryDiseaseResponse {
 				// Maximum is Today
 
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.of(
-						this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
+				this.setYearDiagnosedSimulatedResponse(Year
+						.of(this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
 								NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval())));
 			}
 
@@ -143,8 +139,9 @@ public class NeuroStimulatoryDiseaseResponse {
 			throws Exception {
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
-					NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new UniformDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
+							NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
 
 			// TODO Auto-generated constructor stub
 			this.setDiseasepresenceorabsence(valuerange);
@@ -172,7 +169,7 @@ public class NeuroStimulatoryDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
@@ -184,6 +181,15 @@ public class NeuroStimulatoryDiseaseResponse {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if ((obj != null) && (obj instanceof NeuroStimulatoryDiseaseResponse)
+				&& (this instanceof NeuroStimulatoryDiseaseResponse) && (this.hashCode() == obj.hashCode())) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -245,6 +251,18 @@ public class NeuroStimulatoryDiseaseResponse {
 		return this.yearDiagnosed;
 	}
 
+	@Override
+	public int hashCode() {
+		try {
+			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(),
+					this.getYearDiagnosedSimulatedResponse());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 	/**
 	 * @param diseasepresenceorabsence the diseasepresenceorabsence to set
 	 */
@@ -303,26 +321,6 @@ public class NeuroStimulatoryDiseaseResponse {
 	 */
 	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosed) {
 		this.yearDiagnosed = yearDiagnosed;
-	}
-
-	@Override
-	public int hashCode() {
-		try {
-			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(), this.getYearDiagnosedSimulatedResponse());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if ((obj != null) && (obj instanceof NeuroStimulatoryDiseaseResponse)
-				&& (this instanceof NeuroStimulatoryDiseaseResponse) && (this.hashCode() == obj.hashCode())) {
-			return true;
-		} else
-			return false;
 	}
 
 }

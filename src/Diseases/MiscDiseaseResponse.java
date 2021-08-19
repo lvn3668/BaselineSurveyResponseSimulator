@@ -14,8 +14,7 @@ import randomizer.UniformDistribution;
 // Cancer, GI, HV, MH, etc. inherit from Disease
 //
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public abstract class MiscDiseaseResponse {
@@ -124,10 +123,10 @@ public abstract class MiscDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.of(
-						this.getUtilities().randBetween(MiscDiseaseResponse.getMintogenerateerrorval(),
+				this.setYearDiagnosedSimulatedResponse(
+						Year.of(this.getUtilities().randBetween(MiscDiseaseResponse.getMintogenerateerrorval(),
 								MiscDiseaseResponse.getMaxtogenerateerrorval())));
 			}
 
@@ -167,7 +166,7 @@ public abstract class MiscDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getBirthyear().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(MiscDiseaseResponse.getMintogenerateerrorval(),
@@ -179,6 +178,15 @@ public abstract class MiscDiseaseResponse {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj != null && this instanceof MiscDiseaseResponse && obj instanceof MiscDiseaseResponse
+				&& this.hashCode() == obj.hashCode()) {
+			return true;
+		}
+		return false;
 	}
 
 	private ValueRange getDiseasepresenceorabsence() throws Exception {
@@ -247,6 +255,18 @@ public abstract class MiscDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.yearDiagnosed;
+	}
+
+	@Override
+	public int hashCode() {
+		try {
+			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(),
+					this.getYearDiagnosedSimulatedResponse());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	/**
@@ -320,29 +340,9 @@ public abstract class MiscDiseaseResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		try {
-			return Objects.hash(this.getDiseasepresenceorabsencesimulatedepicresponse(), this.getYearDiagnosedSimulatedResponse());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj != null && this instanceof MiscDiseaseResponse && obj instanceof MiscDiseaseResponse
-				&& this.hashCode() == obj.hashCode()) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
 	public String toString() {
 		return "MiscDiseaseResponse [diseasepresenceorabsencesimulatedepicresponse="
-				+ diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + yearDiagnosed + "]";
+				+ this.diseasepresenceorabsencesimulatedepicresponse + ", yearDiagnosed=" + this.yearDiagnosed + "]";
 	}
 
 }

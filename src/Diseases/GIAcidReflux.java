@@ -8,14 +8,11 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS /MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS /MAVERIC
  *
  */
 public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 
-	private ValueRange GIAcidRefluxMedicines;
-	private int acidRefluxmedicinesadministeredepicresponse;
 	/**
 	 *
 	 */
@@ -45,6 +42,45 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
+
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	private static int getMaxtogenerateerrorval() {
+		return maxtogenerateerrorval;
+	}
+
+	/**
+	 * @return the mintogenerateerrorval
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	private static int getMintogenerateerrorval() {
+		return mintogenerateerrorval;
+	}
+
+	private int acidRefluxmedicinesadministeredepicresponse;
+
+	private ValueRange GIAcidRefluxMedicines;
 
 	public GIAcidReflux(Cohort cohort) throws Exception {
 		super(cohort);
@@ -99,6 +135,22 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof GIAcidReflux)) {
+			return false;
+		}
+		GIAcidReflux other = (GIAcidReflux) obj;
+		return Objects.equals(this.GIAcidRefluxMedicines, other.GIAcidRefluxMedicines)
+				&& this.acidRefluxmedicinesadministeredepicresponse == other.acidRefluxmedicinesadministeredepicresponse;
+	}
+
 	/**
 	 * @return the gIAcidRefluxMedicines
 	 */
@@ -113,18 +165,6 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 	}
 
 	/**
-	 * @param gIAcidRefluxMedicines the gIAcidRefluxMedicines to set
-	 */
-	private void setGIAcidRefluxMedicines(ValueRange gIAcidRefluxMedicines) throws Exception {
-		try {
-			this.GIAcidRefluxMedicines = gIAcidRefluxMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * @return the acidRefluxmedicinesadministeredepicresponse
 	 */
 	public int getGiAcidRefluxmedicinesadministeredepicresponse() throws Exception {
@@ -135,6 +175,15 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.acidRefluxmedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.GIAcidRefluxMedicines, this.acidRefluxmedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -152,68 +201,22 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 	}
 
 	/**
-	 * @return
+	 * @param gIAcidRefluxMedicines the gIAcidRefluxMedicines to set
 	 */
-	/**
-	 * @return
-	 */
-	private static int getMaxtogenerateerrorval() {
-		return maxtogenerateerrorval;
-	}
-
-	/**
-	 * @return the mintogenerateerrorval
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	private static int getMintogenerateerrorval() {
-		return mintogenerateerrorval;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(GIAcidRefluxMedicines, acidRefluxmedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
+	private void setGIAcidRefluxMedicines(ValueRange gIAcidRefluxMedicines) throws Exception {
+		try {
+			this.GIAcidRefluxMedicines = gIAcidRefluxMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof GIAcidReflux)) {
-			return false;
-		}
-		GIAcidReflux other = (GIAcidReflux) obj;
-		return Objects.equals(GIAcidRefluxMedicines, other.GIAcidRefluxMedicines)
-				&& acidRefluxmedicinesadministeredepicresponse == other.acidRefluxmedicinesadministeredepicresponse;
 	}
 
 	@Override
 	public String toString() {
-		return "GIAcidReflux [GIAcidRefluxMedicines=" + GIAcidRefluxMedicines
-				+ ", acidRefluxmedicinesadministeredepicresponse=" + acidRefluxmedicinesadministeredepicresponse + "]";
+		return "GIAcidReflux [GIAcidRefluxMedicines=" + this.GIAcidRefluxMedicines
+				+ ", acidRefluxmedicinesadministeredepicresponse=" + this.acidRefluxmedicinesadministeredepicresponse
+				+ "]";
 	}
 
 }

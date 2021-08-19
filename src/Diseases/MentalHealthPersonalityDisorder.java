@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthPersonalityDisorder extends MentalHealthResponse {
@@ -86,8 +85,9 @@ public class MentalHealthPersonalityDisorder extends MentalHealthResponse {
 		super(cohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthPersonalityDisorder.getMintogenerateerrorval(),
-					MentalHealthPersonalityDisorder.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new UniformDistribution(MentalHealthPersonalityDisorder.getMintogenerateerrorval(),
+							MentalHealthPersonalityDisorder.getMaxtogenerateerrorval()));
 
 			this.setMHPersonalityDisorderMeds(ValueRange.of(0, 1));
 			this.setMHPersonalityDisorderMedsAdministeredEpicResponse(2);
@@ -119,8 +119,9 @@ public class MentalHealthPersonalityDisorder extends MentalHealthResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthPersonalityDisorder.getMintogenerateerrorval(),
-					MentalHealthPersonalityDisorder.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new UniformDistribution(MentalHealthPersonalityDisorder.getMintogenerateerrorval(),
+							MentalHealthPersonalityDisorder.getMaxtogenerateerrorval()));
 
 			this.setMHPersonalityDisorderMeds(valuerange);
 			this.setMHPersonalityDisorderMedsAdministeredEpicResponse(simulatedresponse);
@@ -143,17 +144,20 @@ public class MentalHealthPersonalityDisorder extends MentalHealthResponse {
 		}
 	}
 
-	/**
-	 * @return the mHPersonalityDisorderMeds
-	 */
-	private ValueRange getMHPersonalityDisorderMeds() throws Exception {
-		try {
-			return this.MHPersonalityDisorderMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.MHPersonalityDisorderMeds;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MentalHealthPersonalityDisorder)) {
+			return false;
+		}
+		MentalHealthPersonalityDisorder other = (MentalHealthPersonalityDisorder) obj;
+		return Objects.equals(this.MHPersonalityDisorderMeds, other.MHPersonalityDisorderMeds)
+				&& this.MHPersonalityDisorderMedsAdministeredEpicResponse == other.MHPersonalityDisorderMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -167,6 +171,28 @@ public class MentalHealthPersonalityDisorder extends MentalHealthResponse {
 			e.printStackTrace();
 		}
 		return this.MHPersonalityDisorderMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the mHPersonalityDisorderMeds
+	 */
+	private ValueRange getMHPersonalityDisorderMeds() throws Exception {
+		try {
+			return this.MHPersonalityDisorderMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MHPersonalityDisorderMeds;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.MHPersonalityDisorderMeds, this.MHPersonalityDisorderMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -197,35 +223,10 @@ public class MentalHealthPersonalityDisorder extends MentalHealthResponse {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(MHPersonalityDisorderMeds, MHPersonalityDisorderMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MentalHealthPersonalityDisorder)) {
-			return false;
-		}
-		MentalHealthPersonalityDisorder other = (MentalHealthPersonalityDisorder) obj;
-		return Objects.equals(MHPersonalityDisorderMeds, other.MHPersonalityDisorderMeds)
-				&& MHPersonalityDisorderMedsAdministeredEpicResponse == other.MHPersonalityDisorderMedsAdministeredEpicResponse;
-	}
-
-	@Override
 	public String toString() {
-		return "MentalHealthPersonalityDisorder [MHPersonalityDisorderMeds=" + MHPersonalityDisorderMeds
+		return "MentalHealthPersonalityDisorder [MHPersonalityDisorderMeds=" + this.MHPersonalityDisorderMeds
 				+ ", MHPersonalityDisorderMedsAdministeredEpicResponse="
-				+ MHPersonalityDisorderMedsAdministeredEpicResponse + "]";
+				+ this.MHPersonalityDisorderMedsAdministeredEpicResponse + "]";
 	}
 
 }

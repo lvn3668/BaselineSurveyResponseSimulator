@@ -9,8 +9,7 @@ import randomizer.UniformDistribution;
 
 // Differentiate between handled expections and unhandled (thrown)
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class MentalHealthSchizophrenia extends MentalHealthResponse {
@@ -148,17 +147,20 @@ public class MentalHealthSchizophrenia extends MentalHealthResponse {
 		}
 	}
 
-	/**
-	 * @return the mHSchizophreniaMeds
-	 */
-	private ValueRange getMHSchizophreniaMeds() throws Exception {
-		try {
-			return this.MHSchizophreniaMeds;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
 		}
-		return this.MHSchizophreniaMeds;
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof MentalHealthSchizophrenia)) {
+			return false;
+		}
+		MentalHealthSchizophrenia other = (MentalHealthSchizophrenia) obj;
+		return Objects.equals(this.MHSchizophreniaMeds, other.MHSchizophreniaMeds)
+				&& this.MHSchizophreniaMedsAdministeredEpicResponse == other.MHSchizophreniaMedsAdministeredEpicResponse;
 	}
 
 	/**
@@ -172,6 +174,28 @@ public class MentalHealthSchizophrenia extends MentalHealthResponse {
 			e.printStackTrace();
 		}
 		return this.MHSchizophreniaMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @return the mHSchizophreniaMeds
+	 */
+	private ValueRange getMHSchizophreniaMeds() throws Exception {
+		try {
+			return this.MHSchizophreniaMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.MHSchizophreniaMeds;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.MHSchizophreniaMeds, this.MHSchizophreniaMedsAdministeredEpicResponse);
+		return result;
 	}
 
 	/**
@@ -207,31 +231,6 @@ public class MentalHealthSchizophrenia extends MentalHealthResponse {
 		return "MentalHealthSchizophrenia [MHSchizophreniaMeds=" + this.MHSchizophreniaMeds
 				+ ", MHSchizophreniaMedsAdministeredEpicResponse=" + this.MHSchizophreniaMedsAdministeredEpicResponse
 				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ Objects.hash(this.MHSchizophreniaMeds, this.MHSchizophreniaMedsAdministeredEpicResponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof MentalHealthSchizophrenia)) {
-			return false;
-		}
-		MentalHealthSchizophrenia other = (MentalHealthSchizophrenia) obj;
-		return Objects.equals(this.MHSchizophreniaMeds, other.MHSchizophreniaMeds)
-				&& this.MHSchizophreniaMedsAdministeredEpicResponse == other.MHSchizophreniaMedsAdministeredEpicResponse;
 	}
 
 }

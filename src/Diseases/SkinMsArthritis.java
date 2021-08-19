@@ -8,8 +8,7 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class SkinMsArthritis extends SkinDiseaseResponse {
@@ -144,6 +143,22 @@ public class SkinMsArthritis extends SkinDiseaseResponse {
 		}
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof SkinMsArthritis)) {
+			return false;
+		}
+		SkinMsArthritis other = (SkinMsArthritis) obj;
+		return Objects.equals(this.ArthritisMedicines, other.ArthritisMedicines)
+				&& this.arthritismedicinesadministeredepicresponse == other.arthritismedicinesadministeredepicresponse;
+	}
+
 	/**
 	 * @return the arthritisMedicines
 	 */
@@ -168,6 +183,15 @@ public class SkinMsArthritis extends SkinDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.arthritismedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result
+				+ Objects.hash(this.ArthritisMedicines, this.arthritismedicinesadministeredepicresponse);
+		return result;
 	}
 
 	/**
@@ -201,30 +225,6 @@ public class SkinMsArthritis extends SkinDiseaseResponse {
 		return "SkinMsArthritis [ArthritisMedicines=" + this.ArthritisMedicines
 				+ ", arthritismedicinesadministeredepicresponse=" + this.arthritismedicinesadministeredepicresponse
 				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(ArthritisMedicines, arthritismedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof SkinMsArthritis)) {
-			return false;
-		}
-		SkinMsArthritis other = (SkinMsArthritis) obj;
-		return Objects.equals(ArthritisMedicines, other.ArthritisMedicines)
-				&& arthritismedicinesadministeredepicresponse == other.arthritismedicinesadministeredepicresponse;
 	}
 
 }

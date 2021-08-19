@@ -1,6 +1,6 @@
 /**
  *  @author Lalitha Viswanathan
- *  Affiliation: MAVERIC / VABHS 
+ *  Affiliation: MAVERIC / VABHS
  */
 package simulatedResponseChemicalExposure;
 

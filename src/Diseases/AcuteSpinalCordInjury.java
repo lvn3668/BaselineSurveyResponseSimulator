@@ -1,29 +1,29 @@
 package Diseases;
 
 import java.time.temporal.ValueRange;
-import randomizer.*;
-import Utilities.*;
+
+import Utilities.Utilities;
 import cohort.Cohort;
+import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation VABHS / MAVERIC 
+ * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
  *
  */
 public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int maxtogenerateerrorval = 5;
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
 
@@ -54,17 +54,17 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private ValueRange AcuteSpinalCordInjuryMedicines;
 	/**
-	 * 
+	 *
 	 */
 	/**
-	 * 
+	 *
 	 */
 	private int NS_ASCI_medicinesadministered_epicresponse;
 
@@ -89,17 +89,16 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 			// random number, check pdf value
 			// if less than 0.5 then generate 0 or 1
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
+							this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
 									AcuteSpinalCordInjury.getMaxtogenerateerrorval())))) {
 				this.setNS_ASCI_medicinesadministered_epicresponse(
-						getUtilities().randBetween((int) this.AcuteSpinalCordInjuryMedicines.getMinimum(),
+						this.getUtilities().randBetween((int) this.AcuteSpinalCordInjuryMedicines.getMinimum(),
 								(int) this.AcuteSpinalCordInjuryMedicines.getMaximum()));
-			}
-
-			else
+			} else {
 				this.setNS_ASCI_medicinesadministered_epicresponse(
-						getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
+						this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
 								AcuteSpinalCordInjury.getMaxtogenerateerrorval()));
+			}
 		} catch (RuntimeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -133,21 +132,30 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 			// random number, check pdf value
 			// if less than 0.5 then generate 0 or 1
 					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
+							this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
 									AcuteSpinalCordInjury.getMaxtogenerateerrorval())))) {
 				this.setNS_ASCI_medicinesadministered_epicresponse(
-						getUtilities().randBetween((int) this.getAcuteSpinalCordInjuryMedicines().getMinimum(),
+						this.getUtilities().randBetween((int) this.getAcuteSpinalCordInjuryMedicines().getMinimum(),
 								(int) this.getAcuteSpinalCordInjuryMedicines().getMaximum()));
-			}
-
-			else
+			} else {
 				this.setNS_ASCI_medicinesadministered_epicresponse(
-						getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
+						this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
 								AcuteSpinalCordInjury.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		AcuteSpinalCordInjury other = (AcuteSpinalCordInjury) obj;
+		if ((!(obj instanceof AcuteSpinalCordInjury) && (this.hashCode() != other.hashCode()))) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -182,6 +190,20 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 	 */
 	public int getAcuteSpinalCordInjurymedicinesadministeredepicresponse() {
 		return this.NS_ASCI_medicinesadministered_epicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		try {
+			return (Integer.toString(this.getAcuteSpinalCordInjurymedicinesadministeredepicresponse()).hashCode()
+					+ Integer.toString((int) this.getAcuteSpinalCordInjuryMedicines().getMinimum()).hashCode()
+					+ Integer.toString((int) this.getAcuteSpinalCordInjuryMedicines().getMaximum()).hashCode());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
 	}
 
 	/**
@@ -228,35 +250,6 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 	public String toString() {
 		return "AcuteSpinalCordInjury [AcuteSpinalCordInjuryMedicines=" + this.AcuteSpinalCordInjuryMedicines
 				+ ", NS_SCImedicinesadministeredepicresponse=" + this.NS_ASCI_medicinesadministered_epicresponse + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		try {
-			return  (
-					Integer.toString(this.getAcuteSpinalCordInjurymedicinesadministeredepicresponse()).hashCode() +
-					Integer.toString((int)this.getAcuteSpinalCordInjuryMedicines().getMinimum()).hashCode() +
-					Integer.toString((int)this.getAcuteSpinalCordInjuryMedicines().getMaximum()).hashCode()
-					);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-
-		AcuteSpinalCordInjury other = (AcuteSpinalCordInjury) obj;
-		if  ( 
-				(!(obj instanceof AcuteSpinalCordInjury) && (this.hashCode() != other.hashCode()))
-				){
-			return false;
-		}
-
-		else return true;
 	}
 
 }

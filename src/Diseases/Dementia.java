@@ -8,14 +8,11 @@ import cohort.Cohort;
 import randomizer.UniformDistribution;
 
 /**
- * @author Lalitha Viswanathan
- * Affiliation MAVERIC / VABHS 
+ * @author Lalitha Viswanathan Affiliation MAVERIC / VABHS
  *
  */
 public class Dementia extends NeuroStimulatoryDiseaseResponse {
 
-	private ValueRange DementiaMedicines;
-	private int dementiamedicinesadministeredepicresponse;
 	/**
 	 *
 	 */
@@ -45,6 +42,57 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 	 *
 	 */
 	private static final int mintogenerateerrorval = 2;
+
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	private static int getMaxtogenerateerrorval() {
+		try {
+			return maxtogenerateerrorval;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return maxtogenerateerrorval;
+	}
+
+	/**
+	 * @return the mintogenerateerrorval
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	/**
+	 * @return
+	 */
+	private static int getMintogenerateerrorval() {
+		try {
+			return mintogenerateerrorval;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mintogenerateerrorval;
+	}
+
+	private ValueRange DementiaMedicines;
+
+	private int dementiamedicinesadministeredepicresponse;
 
 	public Dementia(Cohort cohort) throws Exception {
 		super(cohort);
@@ -102,25 +150,26 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof Dementia)) {
+			return false;
+		}
+		Dementia other = (Dementia) obj;
+		return Objects.equals(this.DementiaMedicines, other.DementiaMedicines)
+				&& this.dementiamedicinesadministeredepicresponse == other.dementiamedicinesadministeredepicresponse;
+	}
+
+	@Override
 	protected void finalize() throws Throwable {
 		// TODO Auto-generated method stub
 
 		this.DementiaMedicines = null;
-	}
-
-	@Override
-	public String toString() {
-		try {
-			return "Dementia [DementiaMedicines=" + this.DementiaMedicines
-					+ ", dementiamedicinesadministeredepicresponse=" + this.dementiamedicinesadministeredepicresponse
-					+ "]";
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return "Dementia [DementiaMedicines=" + this.DementiaMedicines + ", dementiamedicinesadministeredepicresponse="
-				+ this.dementiamedicinesadministeredepicresponse + "]";
 	}
 
 	/**
@@ -137,19 +186,6 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 	}
 
 	/**
-	 * @param dementiaMedicines the dementiaMedicines to set
-	 */
-	private void setDementiaMedicines(ValueRange dementiaMedicines) throws Exception {
-		try {
-			this.DementiaMedicines = dementiaMedicines;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw e;
-		}
-	}
-
-	/**
 	 * @return the dementiamedicinesadministeredepicresponse
 	 */
 	public int getDementiamedicinesadministeredepicresponse() throws Exception {
@@ -160,6 +196,27 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 			e.printStackTrace();
 		}
 		return this.dementiamedicinesadministeredepicresponse;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.DementiaMedicines, this.dementiamedicinesadministeredepicresponse);
+		return result;
+	}
+
+	/**
+	 * @param dementiaMedicines the dementiaMedicines to set
+	 */
+	private void setDementiaMedicines(ValueRange dementiaMedicines) throws Exception {
+		try {
+			this.DementiaMedicines = dementiaMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	/**
@@ -177,75 +234,19 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	private static int getMaxtogenerateerrorval() {
+	@Override
+	public String toString() {
 		try {
-			return maxtogenerateerrorval;
+			return "Dementia [DementiaMedicines=" + this.DementiaMedicines
+					+ ", dementiamedicinesadministeredepicresponse=" + this.dementiamedicinesadministeredepicresponse
+					+ "]";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return maxtogenerateerrorval;
-	}
 
-	/**
-	 * @return the mintogenerateerrorval
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	/**
-	 * @return
-	 */
-	private static int getMintogenerateerrorval() {
-		try {
-			return mintogenerateerrorval;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return mintogenerateerrorval;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(DementiaMedicines, dementiamedicinesadministeredepicresponse);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (!(obj instanceof Dementia)) {
-			return false;
-		}
-		Dementia other = (Dementia) obj;
-		return Objects.equals(DementiaMedicines, other.DementiaMedicines)
-				&& dementiamedicinesadministeredepicresponse == other.dementiamedicinesadministeredepicresponse;
+		return "Dementia [DementiaMedicines=" + this.DementiaMedicines + ", dementiamedicinesadministeredepicresponse="
+				+ this.dementiamedicinesadministeredepicresponse + "]";
 	}
 
 }
