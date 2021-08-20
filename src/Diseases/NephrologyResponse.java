@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -90,7 +90,7 @@ public class NephrologyResponse {
 	 * @return the diseasepresenceorabsence
 	 */
 
-	public NephrologyResponse(Cohort cohort) throws Exception {
+	public NephrologyResponse(VeteranCohort veteranCohort) throws Exception {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(NephrologyResponse.getMintogenerateerrorval(),
@@ -119,7 +119,7 @@ public class NephrologyResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(
 						NephrologyResponse.getMintogenerateerrorval(), NephrologyResponse.getMaxtogenerateerrorval())));
@@ -130,7 +130,7 @@ public class NephrologyResponse {
 		}
 	}
 
-	public NephrologyResponse(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public NephrologyResponse(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(NephrologyResponse.getMintogenerateerrorval(),
@@ -159,7 +159,7 @@ public class NephrologyResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(
 						new StringBuilder(this.getUtilities().randBetween(NephrologyResponse.getMintogenerateerrorval(),

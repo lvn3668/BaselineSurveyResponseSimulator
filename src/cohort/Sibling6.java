@@ -90,7 +90,7 @@ public class Sibling6 extends Sibling {
 		Sibling6.latestDOBSibling = latestDOBSibling;
 	}
 
-	public Sibling6(Cohort cohort) throws Exception {
+	public Sibling6(VeteranCohort veteranCohort) throws Exception {
 		// TODO Auto-generated constructor stub
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
@@ -100,15 +100,15 @@ public class Sibling6 extends Sibling {
 		// Assign gender to Sibling
 		this.setSexSimulatedResponse(this.simulateSexValue());
 
-		if (cohort.getMultipleBirthsSimulatedResponse() == 1) {
+		if (veteranCohort.getMultipleBirthsSimulatedResponse() == 1) {
 
-			Sibling6.setEarliestDOBSibling(cohort.getEarliestDOBForSimulation());
-			Sibling6.setLatestDOBSibling(cohort.getLatestDOBForSimulation());
+			Sibling6.setEarliestDOBSibling(veteranCohort.getEarliestDOBForSimulation());
+			Sibling6.setLatestDOBSibling(veteranCohort.getLatestDOBForSimulation());
 		} else {
 			Sibling6.setEarliestDOBSibling(LocalDate
-					.of(this.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() - 10, 1, 1));
+					.of(this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 10, 1, 1));
 			Sibling6.setLatestDOBSibling(LocalDate.of(
-					this.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() + 10, 12, 31));
+					this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() + 10, 12, 31));
 		}
 
 		this.setBirthDateSimulated(this.simulateDateOfBirth());

@@ -761,6 +761,7 @@ public class Utilities {
 
 	public int checkIfSiblingHasColonCancer(simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingargs) {
 		for (simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulateddiseaseresponse : siblingargs) {
+			System.out.println("Checking for colon cancer in variable number of siblings utilities class " + simulateddiseaseresponse.getColoncancerpresenceabsencesimulatedresponse());
 			if (simulateddiseaseresponse != null
 					&& simulateddiseaseresponse instanceof simulatedDiseasePresenceAbsenceResponseForFamilyMembers
 					&& simulateddiseaseresponse.getColoncancerpresenceabsencesimulatedresponse() == 1) {

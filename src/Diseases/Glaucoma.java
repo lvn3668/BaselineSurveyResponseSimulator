@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 	private ValueRange GlaucomaMedicines;
 	private int GlaucomaMedsAdministeredEpicResponse;
 
-	public Glaucoma(Cohort cohort) throws Exception {
-		super(cohort);
+	public Glaucoma(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
@@ -107,9 +107,9 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 		}
 	}
 
-	public Glaucoma(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public Glaucoma(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -67,7 +67,7 @@ public class CirculatoryDiseaseResponse {
 	private Utilities utilities;
 	private Year yearDiagnosedSimulatedResponse;
 
-	public CirculatoryDiseaseResponse(Cohort cohort) throws Exception {
+	public CirculatoryDiseaseResponse(VeteranCohort veteranCohort) throws Exception {
 		this.setUtilities(new Utilities());
 		this.setUniformdisttribution(new UniformDistribution(CirculatoryDiseaseResponse.getMintogenerateerrorval(),
 				CirculatoryDiseaseResponse.getMaxtogenerateerrorval()));
@@ -98,7 +98,7 @@ public class CirculatoryDiseaseResponse {
 			// Minimum is SimulatedDiseaseResponse year of birth
 			// Maximum is Today
 			this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-					.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+					.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 		} else {
 			this.setYearDiagnosedSimulatedResponse(
 					Year.of(this.getUtilities().randBetween(CirculatoryDiseaseResponse.getMintogenerateerrorval(),
@@ -107,7 +107,7 @@ public class CirculatoryDiseaseResponse {
 
 	}
 
-	public CirculatoryDiseaseResponse(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public CirculatoryDiseaseResponse(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 
 		try {
 			this.setUtilities(new Utilities());
@@ -140,7 +140,7 @@ public class CirculatoryDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(CirculatoryDiseaseResponse.getMintogenerateerrorval(),

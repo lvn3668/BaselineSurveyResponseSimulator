@@ -3,7 +3,7 @@ package Diseases;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -72,11 +72,11 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 	 * @throws Exception
 	 */
 	/**
-	 * @param cohort
+	 * @param veteranCohort
 	 * @throws Exception
 	 */
-	public AcuteSpinalCordInjury(Cohort cohort) throws Exception {
-		super(cohort);
+	public AcuteSpinalCordInjury(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(AcuteSpinalCordInjury.getMintogenerateerrorval(),
@@ -111,15 +111,15 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 	 * @throws Exception
 	 */
 	/**
-	 * @param cohort
+	 * @param veteranCohort
 	 * @param valuerange
 	 * @param NS_SCImedicinesadministeredepicresponse
 	 * @throws Exception
 	 */
-	public AcuteSpinalCordInjury(Cohort cohort, ValueRange valuerange, int NS_SCImedicinesadministeredepicresponse)
+	public AcuteSpinalCordInjury(VeteranCohort veteranCohort, ValueRange valuerange, int NS_SCImedicinesadministeredepicresponse)
 			throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, NS_SCImedicinesadministeredepicresponse);
+		super(veteranCohort, valuerange, NS_SCImedicinesadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(AcuteSpinalCordInjury.getMintogenerateerrorval(),

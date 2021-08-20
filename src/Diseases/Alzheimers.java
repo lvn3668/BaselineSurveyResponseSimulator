@@ -3,7 +3,7 @@ package Diseases;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
@@ -50,8 +50,8 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @throws Exception
 	 */
-	public Alzheimers(Cohort cohort) throws Exception {
-		super(cohort);
+	public Alzheimers(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(Alzheimers.getMintogenerateerrorval(),
@@ -83,10 +83,10 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	 * @param alzheimersmedsadministeredepicresponse
 	 * @throws Exception
 	 */
-	public Alzheimers(Cohort cohort, ValueRange valuerange, int alzheimersmedsadministeredepicresponse)
+	public Alzheimers(VeteranCohort veteranCohort, ValueRange valuerange, int alzheimersmedsadministeredepicresponse)
 			throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, alzheimersmedsadministeredepicresponse);
+		super(veteranCohort, valuerange, alzheimersmedsadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(Alzheimers.getMintogenerateerrorval(),

@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -82,8 +82,8 @@ public class KidneyDiseaseAcute extends NephrologyResponse {
 	private ValueRange KDAcuteMeds;
 	private int KDAcuteMedsAdministeredEpicResponse;
 
-	public KidneyDiseaseAcute(Cohort cohort) throws Exception {
-		super(cohort);
+	public KidneyDiseaseAcute(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(KidneyDiseaseAcute.getMintogenerateerrorval(),
@@ -108,9 +108,9 @@ public class KidneyDiseaseAcute extends NephrologyResponse {
 		}
 	}
 
-	public KidneyDiseaseAcute(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public KidneyDiseaseAcute(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort);
+		super(veteranCohort);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

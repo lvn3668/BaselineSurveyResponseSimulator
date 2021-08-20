@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class SknMSOthr extends SkinDiseaseResponse {
 	private int SknMSOtherMedsEpicResponse;
 	private ValueRange SknMSOthrMedicines;
 
-	public SknMSOthr(Cohort cohort) throws Exception {
-		super(cohort);
+	public SknMSOthr(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformDistribution(new UniformDistribution(SknMSOthr.getMintogenerateerrorval(),
@@ -110,9 +110,9 @@ public class SknMSOthr extends SkinDiseaseResponse {
 
 	}
 
-	public SknMSOthr(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public SknMSOthr(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		this.setUtilities(new Utilities());
 		this.setUniformDistribution(
 				new UniformDistribution(SknMSOthr.getMintogenerateerrorval(), SknMSOthr.getMaxtogenerateerrorval()));

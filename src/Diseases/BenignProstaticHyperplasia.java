@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
@@ -78,8 +78,8 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 	/**
 	 * @throws Exception
 	 */
-	public BenignProstaticHyperplasia(Cohort cohort) throws Exception {
-		super(cohort);
+	public BenignProstaticHyperplasia(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 
 		try {
 			this.setUtilities(new Utilities());
@@ -116,10 +116,10 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 	 * @param bphmedicinesadministeredepicresponse
 	 * @throws Exception
 	 */
-	public BenignProstaticHyperplasia(Cohort cohort, ValueRange valuerange, int bphmedicinesadministeredepicresponse)
+	public BenignProstaticHyperplasia(VeteranCohort veteranCohort, ValueRange valuerange, int bphmedicinesadministeredepicresponse)
 			throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, bphmedicinesadministeredepicresponse);
+		super(veteranCohort, valuerange, bphmedicinesadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(BenignProstaticHyperplasia.getMintogenerateerrorval(),

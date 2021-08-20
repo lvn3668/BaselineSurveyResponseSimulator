@@ -3,7 +3,7 @@ package Diseases;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class MentalHealthADHD extends MentalHealthResponse {
 	private ValueRange MHADHDMeds;
 	private int MHADHDMedsAdministeredEpicResponse;
 
-	public MentalHealthADHD(Cohort cohort) throws Exception {
-		super(cohort);
+	public MentalHealthADHD(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(MentalHealthADHD.getMintogenerateerrorval(),
@@ -107,9 +107,9 @@ public class MentalHealthADHD extends MentalHealthResponse {
 		}
 	}
 
-	public MentalHealthADHD(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MentalHealthADHD(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

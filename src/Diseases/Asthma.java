@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 public class Asthma extends OsteopathicDiseaseResponse {
@@ -62,8 +62,8 @@ public class Asthma extends OsteopathicDiseaseResponse {
 	/**
 	 * @throws Exception
 	 */
-	public Asthma(Cohort cohort) throws Exception {
-		super(cohort);
+	public Asthma(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
@@ -93,9 +93,9 @@ public class Asthma extends OsteopathicDiseaseResponse {
 	 * @param asthmamedicinesadministeredepicresponse
 	 * @throws Exception
 	 */
-	public Asthma(Cohort cohort, ValueRange valuerange, int asthmamedicinesadministeredepicresponse) throws Exception {
+	public Asthma(VeteranCohort veteranCohort, ValueRange valuerange, int asthmamedicinesadministeredepicresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, asthmamedicinesadministeredepicresponse);
+		super(veteranCohort, valuerange, asthmamedicinesadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(

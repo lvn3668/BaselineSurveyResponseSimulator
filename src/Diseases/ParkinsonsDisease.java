@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,9 +81,9 @@ public class ParkinsonsDisease extends NeuroStimulatoryDiseaseResponse {
 	private ValueRange ParkinsonsDiseaseMedicines;
 	private int ParkinsonsDiseaseMedsadministeredepicresponse;
 
-	public ParkinsonsDisease(Cohort cohort) throws Exception {
+	public ParkinsonsDisease(VeteranCohort veteranCohort) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort);
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(ParkinsonsDisease.getMintogenerateerrorval(),
@@ -108,9 +108,9 @@ public class ParkinsonsDisease extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
-	public ParkinsonsDisease(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public ParkinsonsDisease(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

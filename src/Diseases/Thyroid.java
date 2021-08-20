@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class Thyroid extends OsteopathicDiseaseResponse {
 	private ValueRange ThyroidMedicines;
 	private int thyroidmedicinesadministeredepicresponse;
 
-	public Thyroid(Cohort cohort) throws Exception {
-		super(cohort);
+	public Thyroid(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
@@ -108,9 +108,9 @@ public class Thyroid extends OsteopathicDiseaseResponse {
 		}
 	}
 
-	public Thyroid(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public Thyroid(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort);
+		super(veteranCohort);
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
 				new UniformDistribution(Thyroid.getMintogenerateerrorval(), Thyroid.getMaxtogenerateerrorval()));

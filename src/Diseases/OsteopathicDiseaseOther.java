@@ -3,7 +3,7 @@ package Diseases;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -98,8 +98,8 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 
 	private Utilities utilities;
 
-	public OsteopathicDiseaseOther(Cohort cohort) throws Exception {
-		super(cohort);
+	public OsteopathicDiseaseOther(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformDistribution(new UniformDistribution(OsteopathicDiseaseOther.getMintogenerateerrorval(),
@@ -125,9 +125,9 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 		}
 	}
 
-	public OsteopathicDiseaseOther(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public OsteopathicDiseaseOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

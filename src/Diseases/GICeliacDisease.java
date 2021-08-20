@@ -3,7 +3,7 @@ package Diseases;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -82,8 +82,8 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 
 	private ValueRange GICeliacDiseaseMeds;
 
-	public GICeliacDisease(Cohort cohort) throws Exception {
-		super(cohort);
+	public GICeliacDisease(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(GICeliacDisease.getMintogenerateerrorval(),
@@ -107,9 +107,9 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 		}
 	}
 
-	public GICeliacDisease(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public GICeliacDisease(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

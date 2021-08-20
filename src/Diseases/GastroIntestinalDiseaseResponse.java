@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -77,7 +77,7 @@ public class GastroIntestinalDiseaseResponse {
 
 	private Year yearDiagnosedSimulatedResponse;
 
-	public GastroIntestinalDiseaseResponse(Cohort cohort) throws Exception {
+	public GastroIntestinalDiseaseResponse(VeteranCohort veteranCohort) throws Exception {
 		try {
 
 			this.setUtilities(new Utilities());
@@ -111,7 +111,7 @@ public class GastroIntestinalDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year
 						.of(this.getUtilities().randBetween(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),
@@ -124,7 +124,7 @@ public class GastroIntestinalDiseaseResponse {
 		}
 	}
 
-	public GastroIntestinalDiseaseResponse(Cohort cohort, ValueRange valuerange, int simulatedresponse)
+	public GastroIntestinalDiseaseResponse(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
 			throws Exception {
 		try {
 			this.setUtilities(new Utilities());
@@ -158,7 +158,7 @@ public class GastroIntestinalDiseaseResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(GastroIntestinalDiseaseResponse.getMintogenerateerrorval(),

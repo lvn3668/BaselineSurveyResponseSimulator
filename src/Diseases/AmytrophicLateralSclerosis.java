@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse {
@@ -61,8 +61,8 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 	/**
 	 * @throws Exception
 	 */
-	public AmytrophicLateralSclerosis(Cohort cohort) throws Exception {
-		super(cohort);
+	public AmytrophicLateralSclerosis(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
@@ -95,10 +95,10 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 	 * @param alsmedsadministeredepicresponse
 	 * @throws Exception
 	 */
-	public AmytrophicLateralSclerosis(Cohort cohort, ValueRange valuerange, int alsmedsadministeredepicresponse)
+	public AmytrophicLateralSclerosis(VeteranCohort veteranCohort, ValueRange valuerange, int alsmedsadministeredepicresponse)
 			throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, alsmedsadministeredepicresponse);
+		super(veteranCohort, valuerange, alsmedsadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(AmytrophicLateralSclerosis.getMintogenerateerrorval(),

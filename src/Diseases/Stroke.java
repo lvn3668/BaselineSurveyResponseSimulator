@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class Stroke extends MiscDiseaseResponse {
 	private ValueRange StrokeMedicines;
 	private int StrokeMedsAdministeredEpicResponse;
 
-	public Stroke(Cohort cohort) throws Exception {
-		super(cohort);
+	public Stroke(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
@@ -108,9 +108,9 @@ public class Stroke extends MiscDiseaseResponse {
 		}
 	}
 
-	public Stroke(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public Stroke(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
 				new UniformDistribution(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));

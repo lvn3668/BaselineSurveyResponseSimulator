@@ -101,6 +101,32 @@ public class Sibling extends CohortUtilities {
 		}
 
 	}
+	
+	public void printDiseasePresenceInSiblings()
+	{
+		try {
+			System.out.println("Sibling(1..n) Alzheimers " + this.getSiblingAlzheimerspresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Asthma " + this.getSiblingAsthmapresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Bipolar " + this.getSiblingBipolarpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Brst Cancer " +this.getSiblingBreastCancerpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Cholesterol " + this.getSiblingCholesterolpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Coloncancer " +this.getSiblingColonCancerpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) CAD " +this.getSiblingCoronaryarterydiseasepresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Depression " + this.getSiblingDepressionpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Diabetes " +this.getSiblingDiabetespresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Kidney disease no dialysis " +this.getSiblingKidneynodialysispresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Liver disease " +this.getSiblingLiverdiseasepresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Lung cancer " + this.getSiblingLungcancerpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Lung disease " +this.getSiblingLungdiseasepresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Other cancer " +this.getSiblingOthercancerpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Prostate cancer " +this.getSiblingProstatecancerpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Skin cancer " +this.getSiblingSkincancerpresenceabsencesimulatedresponse());
+			System.out.println("Sibling(1..n) Stroke " +this.getSiblingStrokepresenceabsencesimulatedresponse());
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 
 	public void checkForDiseasePresenceAbsenceInSiblings(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... simulateddiseaseresponsesiblings) {
@@ -625,6 +651,118 @@ public class Sibling extends CohortUtilities {
 	public void simulateYearOfDeath() {
 		// TODO Auto-generated method stub
 		super.simulateYearOfDeath();
+	}
+
+	/**
+	 * @return the siblingAsthmapresenceabsencesimulatedresponse
+	 */
+	private int getSiblingAsthmapresenceabsencesimulatedresponse() {
+		return siblingAsthmapresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingBipolarpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingBipolarpresenceabsencesimulatedresponse() {
+		return siblingBipolarpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingBreastCancerpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingBreastCancerpresenceabsencesimulatedresponse() {
+		return siblingBreastCancerpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingCholesterolpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingCholesterolpresenceabsencesimulatedresponse() {
+		return siblingCholesterolpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingColonCancerpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingColonCancerpresenceabsencesimulatedresponse() {
+		return siblingColonCancerpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingCoronaryarterydiseasepresenceabsencesimulatedresponse
+	 */
+	private int getSiblingCoronaryarterydiseasepresenceabsencesimulatedresponse() {
+		return siblingCoronaryarterydiseasepresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingDepressionpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingDepressionpresenceabsencesimulatedresponse() {
+		return siblingDepressionpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingDiabetespresenceabsencesimulatedresponse
+	 */
+	private int getSiblingDiabetespresenceabsencesimulatedresponse() {
+		return siblingDiabetespresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingKidneynodialysispresenceabsencesimulatedresponse
+	 */
+	private int getSiblingKidneynodialysispresenceabsencesimulatedresponse() {
+		return siblingKidneynodialysispresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingLiverdiseasepresenceabsencesimulatedresponse
+	 */
+	private int getSiblingLiverdiseasepresenceabsencesimulatedresponse() {
+		return siblingLiverdiseasepresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingLungcancerpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingLungcancerpresenceabsencesimulatedresponse() {
+		return siblingLungcancerpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingLungdiseasepresenceabsencesimulatedresponse
+	 */
+	private int getSiblingLungdiseasepresenceabsencesimulatedresponse() {
+		return siblingLungdiseasepresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingOthercancerpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingOthercancerpresenceabsencesimulatedresponse() {
+		return siblingOthercancerpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingProstatecancerpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingProstatecancerpresenceabsencesimulatedresponse() {
+		return siblingProstatecancerpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingSkincancerpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingSkincancerpresenceabsencesimulatedresponse() {
+		return siblingSkincancerpresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingStrokepresenceabsencesimulatedresponse
+	 */
+	private int getSiblingStrokepresenceabsencesimulatedresponse() {
+		return siblingStrokepresenceabsencesimulatedresponse;
 	}
 
 }

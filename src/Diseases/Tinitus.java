@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 	private ValueRange TinitusMedicines;
 	private int TinitusMedsAdministeredEpicResponse;
 
-	public Tinitus(Cohort cohort) throws Exception {
-		super(cohort);
+	public Tinitus(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 
@@ -115,9 +115,9 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 
 	}
 
-	public Tinitus(Cohort cohort, ValueRange valuerange, int simulatedresponse) {
+	public Tinitus(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		try {
 			this.setUtilities(new Utilities());
 

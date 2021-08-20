@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 	private ValueRange MemoryLossMedicines;
 	private int memorylossmedicinesadministeredepicresponse;
 
-	public MemoryLoss(Cohort cohort) throws Exception {
-		super(cohort);
+	public MemoryLoss(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(MemoryLoss.getMintogenerateerrorval(),
@@ -107,9 +107,9 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 		}
 	}
 
-	public MemoryLoss(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MemoryLoss(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

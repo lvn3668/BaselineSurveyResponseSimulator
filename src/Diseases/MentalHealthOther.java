@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,8 +81,8 @@ public class MentalHealthOther extends MentalHealthResponse {
 	private ValueRange MHOtherMeds;
 	private int MHOtherMedsAdministeredEpicResponse;
 
-	public MentalHealthOther(Cohort cohort) throws Exception {
-		super(cohort);
+	public MentalHealthOther(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(MentalHealthOther.getMintogenerateerrorval(),
@@ -107,9 +107,9 @@ public class MentalHealthOther extends MentalHealthResponse {
 		}
 	}
 
-	public MentalHealthOther(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MentalHealthOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

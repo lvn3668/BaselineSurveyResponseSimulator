@@ -50,20 +50,20 @@ public class Father extends CohortUtilities {
 
 	private simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsenceFamilyMembers;
 
-	public Father(Cohort cohort) throws Exception {
+	public Father(VeteranCohort veteranCohort) throws Exception {
 		// TODO Auto-generated constructor stub
 
 		super.setUtilities(new Utilities());
-		System.out.println("Cohort DOB inside Father class is " + cohort.getBirthDateSimulated().toString());
+		System.out.println("Cohort DOB inside Father class is " + veteranCohort.getBirthDateSimulated().toString());
 
 		this.setSexSimulatedResponse(1);
 		Father.setEarliestDOBFather(LocalDate
-				.of(this.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() - 40, 1, 1));
+				.of(this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 40, 1, 1));
 		Father.setLatestDOBFather(LocalDate
-				.of(this.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue() - 20, 12, 31));
+				.of(this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 20, 12, 31));
 		this.setBirthDateSimulated(this.simulateDateOfBirth());
 		System.out.println("Father DOB is " + this.getBirthDateSimulated().toString());
-		this.simulateYearOfBirth(super.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()));
+		this.simulateYearOfBirth(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()));
 		this.simulateYearOfDeath();
 		this.setAliveSimulatedResponse(this.simulateAliveOrDead());
 		this.setSimulatedDiseasePresenceAbsenceFamilyMembers(

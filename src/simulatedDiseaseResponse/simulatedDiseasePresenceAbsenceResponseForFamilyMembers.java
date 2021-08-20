@@ -162,6 +162,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 
 			this.simulateResponseVariablesForFamilyMembers(cohortSex);
+			//this.printsimulatedresponses();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

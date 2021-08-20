@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -82,8 +82,8 @@ public class Cataract extends HearingVisionDiseaseResponse {
 	/**
 	 * @throws Exception
 	 */
-	public Cataract(Cohort cohort) throws Exception {
-		super(cohort);
+	public Cataract(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
@@ -116,9 +116,9 @@ public class Cataract extends HearingVisionDiseaseResponse {
 	 * @param simulatedresponse
 	 * @throws Exception
 	 */
-	public Cataract(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public Cataract(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
 				new UniformDistribution(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));

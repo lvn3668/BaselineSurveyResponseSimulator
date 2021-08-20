@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 // Differentiate between handled expections and unhandled (thrown)
@@ -88,8 +88,8 @@ public class MentalHealthSchizophrenia extends MentalHealthResponse {
 	// subclass of Exception is handled
 
 	// Make exception handling more specific and throw the rest
-	public MentalHealthSchizophrenia(Cohort cohort) throws Exception {
-		super(cohort);
+	public MentalHealthSchizophrenia(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(MentalHealthSchizophrenia.getMintogenerateerrorval(),
@@ -117,9 +117,9 @@ public class MentalHealthSchizophrenia extends MentalHealthResponse {
 		}
 	}
 
-	public MentalHealthSchizophrenia(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MentalHealthSchizophrenia(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());

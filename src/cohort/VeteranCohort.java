@@ -22,7 +22,7 @@ import simulatedResponseVAUseVars.SimulatedResponseVAUseVars;
  *
  */
 
-public class Cohort extends CohortUtilities {
+public class VeteranCohort extends CohortUtilities {
 
 	private static int maximumNumberSiblings = 8;
 	private static int minimumNumberSiblings = 1;
@@ -251,7 +251,7 @@ public class Cohort extends CohortUtilities {
 	/**
 	 * @throws Exception
 	 */
-	public Cohort() throws Exception {
+	public VeteranCohort() throws Exception {
 
 		// Move logic out of default constructor
 		try {
@@ -2133,7 +2133,7 @@ public class Cohort extends CohortUtilities {
 		try {
 			if (this.getBiologicalBrothersPresenceAbsenceSimulatedResponse() == 1) {
 				this.setNumberOfBiologicalBrothersSimulatedResponse(this.getUtilities()
-						.randBetween(Cohort.getMinimumNumberSiblings(), Cohort.getMaximumNumberSiblings()));
+						.randBetween(VeteranCohort.getMinimumNumberSiblings(), VeteranCohort.getMaximumNumberSiblings()));
 				return this.getNumberOfBiologicalBrothersSimulatedResponse();
 			}
 			this.setNumberOfBiologicalBrothersSimulatedResponse(0);
@@ -2150,7 +2150,7 @@ public class Cohort extends CohortUtilities {
 		try {
 			if (this.getBiologicalSistersPresenceAbsenceSimulatedResponse() == 1) {
 				this.setNumberOfBiologicalSistersSimulatedResponse(this.getUtilities()
-						.randBetween(Cohort.getMinimumNumberSiblings(), Cohort.getMaximumNumberSiblings()));
+						.randBetween(VeteranCohort.getMinimumNumberSiblings(), VeteranCohort.getMaximumNumberSiblings()));
 				return this.getNumberOfBiologicalSistersSimulatedResponse();
 			}
 			this.setNumberOfBiologicalSistersSimulatedResponse(0);

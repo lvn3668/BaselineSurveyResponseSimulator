@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -85,8 +85,8 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 	 * @return the sleepApneaMedicines
 	 */
 
-	public SleepApnea(Cohort cohort) throws Exception {
-		super(cohort);
+	public SleepApnea(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(SleepApnea.getMintogenerateerrorval(),
@@ -100,9 +100,9 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 		}
 	}
 
-	public SleepApnea(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public SleepApnea(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
 				new UniformDistribution(SleepApnea.getMintogenerateerrorval(), SleepApnea.getMaxtogenerateerrorval()));

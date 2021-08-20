@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -98,9 +98,9 @@ public class ColonCancer extends CancerResponse {
 	// default is error response
 	int coloncancermedicinesadministeredepicresponse = 2;
 
-	public ColonCancer(Cohort cohort) throws Exception {
+	public ColonCancer(VeteranCohort veteranCohort) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort);
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(ColonCancer.getMintogenerateerrorval(),
@@ -127,9 +127,9 @@ public class ColonCancer extends CancerResponse {
 		}
 	}
 
-	public ColonCancer(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public ColonCancer(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, simulatedresponse);
+		super(veteranCohort, valuerange, simulatedresponse);
 
 		try {
 			this.setUtilities(new Utilities());

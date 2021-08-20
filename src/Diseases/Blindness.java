@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -75,8 +75,8 @@ public class Blindness extends HearingVisionDiseaseResponse {
 	// change to random number not 0 or 1
 	private int blindnessmedicinesadministeredepicresponse;
 
-	public Blindness(Cohort cohort) throws Exception {
-		super(cohort);
+	public Blindness(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(Blindness.getMintogenerateerrorval(),
@@ -104,10 +104,10 @@ public class Blindness extends HearingVisionDiseaseResponse {
 		}
 	}
 
-	public Blindness(Cohort cohort, ValueRange valuerange, int blindnessmedicinesadministeredepicresponse)
+	public Blindness(VeteranCohort veteranCohort, ValueRange valuerange, int blindnessmedicinesadministeredepicresponse)
 			throws Exception {
 		// TODO Auto-generated constructor stub
-		super(cohort, valuerange, blindnessmedicinesadministeredepicresponse);
+		super(veteranCohort, valuerange, blindnessmedicinesadministeredepicresponse);
 
 		try {
 			this.setUtilities(new Utilities());

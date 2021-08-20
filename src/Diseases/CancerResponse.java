@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import Utilities.Utilities;
-import cohort.Cohort;
+import cohort.VeteranCohort;
 import randomizer.UniformDistribution;
 
 /**
@@ -81,9 +81,9 @@ public class CancerResponse {
 
 	private Year yearDiagnosedSimulatedResponse;
 
-	public CancerResponse(Cohort cohort) throws Exception {
+	public CancerResponse(VeteranCohort veteranCohort) throws Exception {
 		try {
-			this.setCohort(cohort);
+			this.setCohort(veteranCohort);
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(CancerResponse.getMintogenerateerrorval(),
 					CancerResponse.getMaxtogenerateerrorval()));
@@ -111,7 +111,7 @@ public class CancerResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(
 						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval())));
@@ -123,10 +123,10 @@ public class CancerResponse {
 		}
 	}
 
-	public CancerResponse(Cohort cohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public CancerResponse(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 
 		try {
-			this.setCohort(cohort);
+			this.setCohort(veteranCohort);
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(new UniformDistribution(CancerResponse.getMintogenerateerrorval(),
 					CancerResponse.getMaxtogenerateerrorval()));
@@ -154,7 +154,7 @@ public class CancerResponse {
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(cohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities().randBetween(
 						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))));
@@ -251,9 +251,9 @@ public class CancerResponse {
 	}
 
 	/**
-	 * @param cohort the cohort to set
+	 * @param veteranCohort the cohort to set
 	 */
-	private void setCohort(Cohort cohort) {
+	private void setCohort(VeteranCohort veteranCohort) {
 	}
 
 	/**
