@@ -2935,7 +2935,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param deployedInGulfsimulatederrorresponse
 	 * @return
 	 */
-	public int simulateDeployGulfResponse(ValueRange valuerange, int deployedInGulfsimulatederrorresponse) {
+	private int simulateDeployGulfResponse(ValueRange valuerange, int deployedInGulfsimulatederrorresponse) {
 		try {
 			this.setDeployGulfValueRange(valuerange);
 			this.setDeployGulfsimulatedresponse(deployedInGulfsimulatederrorresponse);
@@ -2961,7 +2961,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateDeployOEFOIFResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateDeployOEFOIFResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setDeployOEFOIFValueRange(valuerange);
 			this.setDeployOEFOIFsimulatedresponse(simulatederrorresponse);
@@ -2987,7 +2987,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchAirForceResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchAirForceResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryBranchAirForceValueRange(valuerange);
 			this.setMilitaryBranchAirForcesimulatedresponse(simulatederrorresponse);
@@ -3013,7 +3013,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchArmyResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchArmyResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryBranchArmyValueRange(valuerange);
 			this.setMilitaryBranchArmysimulatedresponse(simulatederrorresponse);
@@ -3039,7 +3039,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchCoastGuardResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchCoastGuardResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryBranchCoastGuardValueRange(valuerange);
 			this.setMilitaryBranchCoastGuardsimulatedresponse(simulatederrorresponse);
@@ -3065,7 +3065,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param raceDeployedInGulfsimulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchMilitaryCrossResponse(ValueRange valuerange,
+	private int simulateMilitaryBranchMilitaryCrossResponse(ValueRange valuerange,
 			int raceDeployedInGulfsimulatederrorresponse) {
 		try {
 			this.setMilitaryBranchMilitaryCrossValueRange(valuerange);
@@ -3092,7 +3092,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchMMResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchMMResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryBranchMMValueRange(valuerange);
 			this.setMilitaryBranchMMsimulatedresponse(simulatederrorresponse);
@@ -3118,7 +3118,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchNationalGuardResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchNationalGuardResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryBranchNationalGuardValueRange(valuerange);
 			this.setMilitaryBranchNationalGuardsimulatedresponse(simulatederrorresponse);
@@ -3144,7 +3144,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchNavyResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchNavyResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryBranchNavyValueRange(valuerange);
 			this.setMilitaryBranchNavysimulatedresponse(simulatederrorresponse);
@@ -3170,7 +3170,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchNOAAResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchNOAAResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryBranchNOAAValueRange(valuerange);
 			this.setMilitaryBranchNOAAsimulatedresponse(simulatederrorresponse);
@@ -3196,7 +3196,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryBranchPublicHealthServiceResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryBranchPublicHealthServiceResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMltyBranchPublicHealthServiceValueRange(valuerange);
 			this.setMilitaryBranchPublicHealthServicesimulatedresponse(simulatederrorresponse);
@@ -3291,7 +3291,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService1Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService1Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService1ValueRange(valuerange);
 			this.setMilitaryService1simulatedresponse(simulatederrorresponse);
@@ -3317,7 +3317,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService2Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService2Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService2ValueRange(valuerange);
 			this.setMilitaryService2simulatedresponse(simulatederrorresponse);
@@ -3343,7 +3343,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService3Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService3Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService3ValueRange(valuerange);
 			this.setMilitaryService3simulatedresponse(simulatederrorresponse);
@@ -3369,7 +3369,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService4Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService4Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService4ValueRange(valuerange);
 			this.setMilitaryService4simulatedresponse(simulatederrorresponse);
@@ -3395,7 +3395,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService5Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService5Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService5ValueRange(valuerange);
 			this.setMilitaryService5simulatedresponse(simulatederrorresponse);
@@ -3421,7 +3421,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService6Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService6Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService6ValueRange(valuerange);
 			this.setMilitaryService6simulatedresponse(simulatederrorresponse);
@@ -3447,7 +3447,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService7Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService7Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService7ValueRange(valuerange);
 			this.setMilitaryService7simulatedresponse(simulatederrorresponse);
@@ -3473,7 +3473,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService8Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService8Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService8ValueRange(valuerange);
 			this.setMilitaryService8simulatedresponse(simulatederrorresponse);
@@ -3499,7 +3499,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryService9Response(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryService9Response(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryService9ValueRange(valuerange);
 			this.setMilitaryService9simulatedresponse(simulatederrorresponse);
@@ -3525,7 +3525,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateMilitaryServiceTypeResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateMilitaryServiceTypeResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setMilitaryServiceTypeValueRange(valuerange);
 			this.setMilitaryServiceTypesimulatedresponse(simulatederrorresponse);
@@ -3551,7 +3551,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateServiceOutsideUSResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateServiceOutsideUSResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setServiceOutsideUSValueRange(valuerange);
 			this.setServiceOutsideUSsimulatedresponse(simulatederrorresponse);
@@ -3577,7 +3577,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationAsiaFareastResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationAsiaFareastResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationAsiaFareastValueRange(valuerange);
 			this.setStationAsiaFareastsimulatedresponse(simulatederrorresponse);
@@ -3598,7 +3598,7 @@ public class SimulatedResponseMilitaryDuty {
 		return simulatederrorresponse;
 	}
 
-	public int simulateStationAsiaSouthPacificResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationAsiaSouthPacificResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationAsiaSouthPacificValueRange(valuerange);
 			this.setStationAsiaSouthPacificsimulatedresponse(simulatederrorresponse);
@@ -3624,7 +3624,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationCarribeanResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationCarribeanResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationCarribeanValueRange(valuerange);
 			this.setStationCarribeansimulatedresponse(simulatederrorresponse);
@@ -3650,7 +3650,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationEastEuropeanResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationEastEuropeanResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationEastEuropeanValueRange(valuerange);
 			this.setStationEastEuropeansimulatedresponse(simulatederrorresponse);
@@ -3676,7 +3676,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationMexicoResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationMexicoResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationMexicoValueRange(valuerange);
 			this.setStationMexicosimulatedresponse(simulatederrorresponse);
@@ -3702,7 +3702,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationMiddleEastResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationMiddleEastResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationMiddleEastValueRange(valuerange);
 			this.setStationMiddleEastsimulatedresponse(simulatederrorresponse);
@@ -3728,7 +3728,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationNorthCentralEuropeanResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationNorthCentralEuropeanResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationNorthCentralEuropeanValueRange(valuerange);
 			this.setStationNortHCentralEuropeansimulatedresponse(simulatederrorresponse);
@@ -3754,7 +3754,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationOtherResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationOtherResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationOtherValueRange(valuerange);
 			this.setStationOthersimulatedresponse(simulatederrorresponse);
@@ -3780,7 +3780,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationSouthCentralAmericanResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationSouthCentralAmericanResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationSouthCentralAmericanValueRange(valuerange);
 			this.setStationSouthCentralAmericansimulatedresponse(simulatederrorresponse);
@@ -3806,7 +3806,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationSouthEuropeanMediterraneanResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationSouthEuropeanMediterraneanResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationSouthEuropeanMediterraneanValueRange(valuerange);
 			this.setStationSouthEuropeanMediterraneansimulatedresponse(simulatederrorresponse);
@@ -3832,7 +3832,7 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	public int simulateStationUSCanadaResponse(ValueRange valuerange, int simulatederrorresponse) {
+	private int simulateStationUSCanadaResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationUSCanadaValueRange(valuerange);
 			this.setStationUSCanadasimulatedresponse(simulatederrorresponse);

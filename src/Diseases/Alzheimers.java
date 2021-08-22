@@ -46,19 +46,10 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	 *
 	 */
 	private int alzheimersmedsadministeredepicresponse;
-
-	/**
-	 * @throws Exception
-	 */
-	public Alzheimers(VeteranCohort veteranCohort) throws Exception {
-		super(veteranCohort);
+	
+	public void simulateResponses() 
+	{
 		try {
-			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Alzheimers.getMintogenerateerrorval(),
-					Alzheimers.getMaxtogenerateerrorval()));
-			this.setAlzheimersMedicines(ValueRange.of(0, 1));
-			this.setAlzheimersmedsadministeredepicresponse(2);
-
 			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
 			// generate uniform distribution between min and max error vals and pick a
 			// random number, check pdf value
@@ -72,6 +63,25 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 				this.setAlzheimersmedsadministeredepicresponse(this.getUtilities()
 						.randBetween(Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval()));
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public Alzheimers(VeteranCohort veteranCohort) throws Exception {
+		super(veteranCohort);
+		try {
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new UniformDistribution(Alzheimers.getMintogenerateerrorval(),
+					Alzheimers.getMaxtogenerateerrorval()));
+			this.setAlzheimersMedicines(ValueRange.of(0, 1));
+			this.setAlzheimersmedsadministeredepicresponse(2);
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -93,20 +103,6 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 					Alzheimers.getMaxtogenerateerrorval()));
 			this.setAlzheimersMedicines(valuerange);
 			this.setAlzheimersmedsadministeredepicresponse(alzheimersmedsadministeredepicresponse);
-
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval())))) {
-				this.setAlzheimersmedsadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getAlzheimersMedicines().getMinimum(),
-								(int) this.getAlzheimersMedicines().getMaximum()));
-			} else {
-				this.setAlzheimersmedsadministeredepicresponse(this.getUtilities()
-						.randBetween(Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

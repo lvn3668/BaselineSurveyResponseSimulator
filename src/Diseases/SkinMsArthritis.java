@@ -81,6 +81,30 @@ public class SkinMsArthritis extends SkinDiseaseResponse {
 	private ValueRange ArthritisMedicines;
 	private int arthritismedicinesadministeredepicresponse;
 
+	public void simulateResponses()
+	{
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							SkinMsArthritis.getMintogenerateerrorval(), SkinMsArthritis.getMaxtogenerateerrorval())))) {
+				this.setArthritismedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getArthritisMedicines().getMinimum(),
+								(int) this.getArthritisMedicines().getMaximum()));
+			} else {
+				this.setArthritismedicinesadministeredepicresponse(this.getUtilities().randBetween(
+						SkinMsArthritis.getMintogenerateerrorval(), SkinMsArthritis.getMaxtogenerateerrorval()));
+			}
+
+			
+		} catch (Exception e)
+		{
+			
+		}
+		
+	}
 	public SkinMsArthritis(VeteranCohort veteranCohort) throws Exception {
 		super(veteranCohort);
 		try {
@@ -90,19 +114,6 @@ public class SkinMsArthritis extends SkinDiseaseResponse {
 
 			this.setArthritisMedicines(ValueRange.of(0, 1));
 			this.setArthritismedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SkinMsArthritis.getMintogenerateerrorval(), SkinMsArthritis.getMaxtogenerateerrorval())))) {
-				this.setArthritismedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getArthritisMedicines().getMinimum(),
-								(int) this.getArthritisMedicines().getMaximum()));
-			} else {
-				this.setArthritismedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						SkinMsArthritis.getMintogenerateerrorval(), SkinMsArthritis.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,6 +123,7 @@ public class SkinMsArthritis extends SkinDiseaseResponse {
 	public SkinMsArthritis(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
+		try {
 		this.setUtilities(new Utilities());
 		this.setUniformDistribution(new UniformDistribution(SkinMsArthritis.getMintogenerateerrorval(),
 				SkinMsArthritis.getMaxtogenerateerrorval()));
@@ -121,21 +133,6 @@ public class SkinMsArthritis extends SkinDiseaseResponse {
 		// if CancerResponse is positive, then generate values
 		// for whether medicines are being administered or not
 		// else set to 0
-
-		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SkinMsArthritis.getMintogenerateerrorval(), SkinMsArthritis.getMaxtogenerateerrorval())))) {
-				this.setArthritismedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getArthritisMedicines().getMinimum(),
-								(int) this.getArthritisMedicines().getMaximum()));
-			} else {
-				this.setArthritismedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						SkinMsArthritis.getMintogenerateerrorval(), SkinMsArthritis.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

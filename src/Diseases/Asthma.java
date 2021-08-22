@@ -70,6 +70,15 @@ public class Asthma extends OsteopathicDiseaseResponse {
 					new UniformDistribution(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
 			this.setAsthmaMedicines(ValueRange.of(0, 1));
 			this.setAsthmamedicinesadministeredepicresponse(2);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void simulateResponses()
+	{
+		try {
 			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
 			// generate uniform distribution between min and max error vals and pick a
 			// random number, check pdf value
@@ -83,11 +92,12 @@ public class Asthma extends OsteopathicDiseaseResponse {
 						.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e)
+		{
+			
 		}
+		
 	}
-
 	/**
 	 * @param valuerange
 	 * @param asthmamedicinesadministeredepicresponse
@@ -102,18 +112,6 @@ public class Asthma extends OsteopathicDiseaseResponse {
 					new UniformDistribution(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
 			this.setAsthmaMedicines(valuerange);
 			this.setAsthmamedicinesadministeredepicresponse(asthmamedicinesadministeredepicresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval())))) {
-				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getAsthmaMedicines().getMinimum(), (int) this.getAsthmaMedicines().getMaximum()));
-			} else {
-				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

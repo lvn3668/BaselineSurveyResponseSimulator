@@ -569,7 +569,7 @@ public class SimulatedResponseChemicalExposure {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateExposurePyrBr(ValueRange valuerange, int simulatedresponse) throws Exception {
+	private int simulateExposurePyrBr(ValueRange valuerange, int simulatedresponse) throws Exception {
 		try {
 			this.setExposurePyrBrValueRange(valuerange);
 			this.setExposurePyrBrsimulatedresponse(simulatedresponse);
@@ -598,7 +598,7 @@ public class SimulatedResponseChemicalExposure {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateExposureToAgentO(ValueRange valuerange, int simulatedresponse) throws Exception {
+	private int simulateExposureToAgentO(ValueRange valuerange, int simulatedresponse) throws Exception {
 		try {
 			this.setExposureToAgentOValueRange(valuerange);
 			this.setExposureToAgentOSimulatedResponse(simulatedresponse);
@@ -626,7 +626,7 @@ public class SimulatedResponseChemicalExposure {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateExposureToAnthrax(ValueRange valuerange, int simulatedresponse) throws Exception {
+	private int simulateExposureToAnthrax(ValueRange valuerange, int simulatedresponse) throws Exception {
 		try {
 			this.setExposureToAnthraxValueRange(valuerange);
 			this.setExposureToAnthraxsimulatedresponse(simulatedresponse);
@@ -654,7 +654,7 @@ public class SimulatedResponseChemicalExposure {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateExposureToChemBioAgents(ValueRange valuerange, int simulatedresponse) throws Exception {
+	private int simulateExposureToChemBioAgents(ValueRange valuerange, int simulatedresponse) throws Exception {
 		try {
 			this.setExposureToChemBioAgentsValueRange(valuerange);
 			this.setExposureToChemicalBioAgentssimulatedresponse(simulatedresponse);

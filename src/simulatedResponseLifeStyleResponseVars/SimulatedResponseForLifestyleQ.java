@@ -677,7 +677,7 @@ public class SimulatedResponseForLifestyleQ {
 		}
 	}
 
-	public int simulateActiveExerciseResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateActiveExerciseResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setActiveExerciseValueRange(valuerange);
 			this.setActiveExercisesimulatedresponse(errorresponse);
@@ -698,7 +698,7 @@ public class SimulatedResponseForLifestyleQ {
 
 	}
 
-	public int simulateActiveStatusResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateActiveStatusResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setActiveStatusValueRange(valuerange);
 			this.setActiveStatussimulatedresponse(errorresponse);
@@ -718,7 +718,7 @@ public class SimulatedResponseForLifestyleQ {
 		return errorresponse;
 	}
 
-	public int simulateActiveWorkResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateActiveWorkResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setActiveWorkValueRange(valuerange);
 			this.setActiveWorksimulatedresponse(errorresponse);
@@ -738,7 +738,7 @@ public class SimulatedResponseForLifestyleQ {
 		return errorresponse;
 	}
 
-	public int simulateAlcoholBingeResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateAlcoholBingeResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setAlcoholBingeValueRange(valuerange);
 			this.setAlcoholBingesimulatedresponse(errorresponse);
@@ -758,7 +758,7 @@ public class SimulatedResponseForLifestyleQ {
 		return errorresponse;
 	}
 
-	public int simulateAlcoholFrequencyResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateAlcoholFrequencyResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setAlcoholFrequencyValueRange(valuerange);
 			this.setAlcoholFrequencysimulatedresponse(errorresponse);
@@ -779,7 +779,7 @@ public class SimulatedResponseForLifestyleQ {
 
 	}
 
-	public int simulateAlcoholQuantityResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateAlcoholQuantityResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setAlcoholQuantityValueRange(valuerange);
 			this.setAlcoholQuantitysimulatedresponse(errorresponse);
@@ -826,7 +826,7 @@ public class SimulatedResponseForLifestyleQ {
 		}
 	}
 
-	public int simulateSmoke100cigarettesResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateSmoke100cigarettesResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setSmoke100cigarettesValueRange(valuerange);
 			this.setSmoke100cigarettessimulatedresponse(errorresponse);
@@ -847,7 +847,7 @@ public class SimulatedResponseForLifestyleQ {
 
 	}
 
-	public int simulateSmokeDailyResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateSmokeDailyResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setSmokeDailyValueRange(valuerange);
 			this.setSmokedailysimulatedresponse(errorresponse);
@@ -868,7 +868,7 @@ public class SimulatedResponseForLifestyleQ {
 
 	}
 
-	public int simulateSmokeNowResponse(ValueRange valuerange, int errorresponse) {
+	private int simulateSmokeNowResponse(ValueRange valuerange, int errorresponse) {
 		try {
 			this.setSmokeNowValueRange(valuerange);
 			this.setSmokenowsimulatedresponse(errorresponse);

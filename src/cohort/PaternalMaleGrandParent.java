@@ -19,15 +19,26 @@ public class PaternalMaleGrandParent extends CohortUtilities {
 
 	// KidneyNoDialysis maternalGrandParentKdDisease;
 	public PaternalMaleGrandParent() throws Exception {
-		this.setSexSimulatedResponse(1);
-		this.setSimulatedDiseasePresenceAbsenceFamilyMembers(new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
-
+		try {
+			this.setSexSimulatedResponse(1);
+			this.setSimulatedDiseasePresenceAbsenceFamilyMembers(new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
+			this.getSimulatedDiseasePresenceAbsenceFamilyMembers().simulateResponseVariablesForFamilyMembers(this.getSexSimulatedResponse());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @return the simulatedDiseasePresenceAbsence
 	 */
-	public simulatedDiseasePresenceAbsenceResponseForFamilyMembers getSimulatedDiseasePresenceAbsence() {
+	public simulatedDiseasePresenceAbsenceResponseForFamilyMembers getSimulatedDiseasePresenceAbsenceFamilyMembers() {
+		try {
+			return this.simulatedDiseasePresenceAbsenceFamilyMembers;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this.simulatedDiseasePresenceAbsenceFamilyMembers;
 	}
 
@@ -37,7 +48,12 @@ public class PaternalMaleGrandParent extends CohortUtilities {
 	 */
 	private void setSimulatedDiseasePresenceAbsenceFamilyMembers(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsence) {
-		this.simulatedDiseasePresenceAbsenceFamilyMembers = simulatedDiseasePresenceAbsence;
+		try {
+			this.simulatedDiseasePresenceAbsenceFamilyMembers = simulatedDiseasePresenceAbsence;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

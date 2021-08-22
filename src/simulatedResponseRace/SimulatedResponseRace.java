@@ -981,7 +981,7 @@ public class SimulatedResponseRace {
 	 * @param raceafricanamericanserrorresponse
 	 * @return
 	 */
-	public int simulateRaceAfricanAmericanResponse(ValueRange valuerange, int raceafricanamericanserrorresponse) {
+	private int simulateRaceAfricanAmericanResponse(ValueRange valuerange, int raceafricanamericanserrorresponse) {
 		try {
 			this.setRaceAfricanAmericanValueRange(valuerange);
 			this.setRaceAfricanAmericansimulatedresponse(raceafricanamericanserrorresponse);
@@ -1006,7 +1006,7 @@ public class SimulatedResponseRace {
 	 * @param raceamericanindianerrorresponse
 	 * @return
 	 */
-	public int simulateRaceAmericanIndianResponse(ValueRange valuerange, int raceamericanindianerrorresponse) {
+	private int simulateRaceAmericanIndianResponse(ValueRange valuerange, int raceamericanindianerrorresponse) {
 		try {
 			this.setRaceAmericanIndianValueRange(valuerange);
 			this.setRaceAmericanIndiansimulatedresponse(raceamericanindianerrorresponse);
@@ -1026,7 +1026,7 @@ public class SimulatedResponseRace {
 		return raceamericanindianerrorresponse;
 	}
 
-	public int simulateRaceAsianChineseResponse(ValueRange valuerange, int raceasianChineseerrorresponse) {
+	private int simulateRaceAsianChineseResponse(ValueRange valuerange, int raceasianChineseerrorresponse) {
 		try {
 			this.setRaceAsianChineseValueRange(valuerange);
 			this.setRaceAsianChinesesimulatedresponse(raceasianChineseerrorresponse);
@@ -1051,7 +1051,7 @@ public class SimulatedResponseRace {
 	 * @param raceasianFilipinoerrorresponse
 	 * @return
 	 */
-	public int simulateRaceAsianFilipinoResponse(ValueRange valuerange, int raceasianFilipinoerrorresponse) {
+	private int simulateRaceAsianFilipinoResponse(ValueRange valuerange, int raceasianFilipinoerrorresponse) {
 		try {
 			this.setRaceAsianFilipinoValueRange(valuerange);
 			this.setRaceAsianFilipinosimulatedresponse(raceasianFilipinoerrorresponse);
@@ -1077,7 +1077,7 @@ public class SimulatedResponseRace {
 	 * @param raceasianIndianerrorresponse
 	 * @return
 	 */
-	public int simulateRaceAsianIndianResponse(ValueRange valuerange, int raceasianIndianerrorresponse) {
+	private int simulateRaceAsianIndianResponse(ValueRange valuerange, int raceasianIndianerrorresponse) {
 		try {
 			this.setRaceAsianIndianValueRange(valuerange);
 			this.setRaceAsianIndiansimulatedresponse(raceasianIndianerrorresponse);
@@ -1105,7 +1105,7 @@ public class SimulatedResponseRace {
 	 * @param raceasianJapanerrorresponse
 	 * @return
 	 */
-	public int simulateRaceAsianJapanResponse(ValueRange valuerange, int raceasianJapanerrorresponse) {
+	private int simulateRaceAsianJapanResponse(ValueRange valuerange, int raceasianJapanerrorresponse) {
 		try {
 			this.setRaceAsianJapanValueRange(valuerange);
 			this.setRaceAsianJapansimulatedresponse(raceasianJapanerrorresponse);
@@ -1130,7 +1130,7 @@ public class SimulatedResponseRace {
 	 * @param raceasianOthererrorresponse
 	 * @return
 	 */
-	public int simulateRaceAsianOtherResponse(ValueRange valuerange, int raceasianOthererrorresponse) {
+	private int simulateRaceAsianOtherResponse(ValueRange valuerange, int raceasianOthererrorresponse) {
 		try {
 			this.setRaceAsianOtherValueRange(valuerange);
 			this.setRaceAsianOthersimulatedresponse(raceasianOthererrorresponse);
@@ -1150,7 +1150,7 @@ public class SimulatedResponseRace {
 		return raceasianOthererrorresponse;
 	}
 
-	public int simulateRaceOtherResponse(ValueRange valuerange, int raceOthererrorresponse) {
+	private int simulateRaceOtherResponse(ValueRange valuerange, int raceOthererrorresponse) {
 		try {
 			this.setRaceOtherValueRange(valuerange);
 			this.setRaceOthersimulatedresponse(raceOthererrorresponse);
@@ -1175,7 +1175,7 @@ public class SimulatedResponseRace {
 	 * @param raceasianPacificIslandererrorresponse
 	 * @return
 	 */
-	public int simulateRacePacificIslanderResponse(ValueRange valuerange, int raceasianPacificIslandererrorresponse)
+	private int simulateRacePacificIslanderResponse(ValueRange valuerange, int raceasianPacificIslandererrorresponse)
 			throws Exception {
 		try {
 			this.setRacePacificIslanderValueRange(valuerange);
@@ -1221,7 +1221,7 @@ public class SimulatedResponseRace {
 		}
 	}
 
-	public int simulateRaceWhiteResponse(ValueRange valuerange, int racewhiteerrorresponse) {
+	private int simulateRaceWhiteResponse(ValueRange valuerange, int racewhiteerrorresponse) {
 		try {
 			this.setRaceAfricanAmericanValueRange(valuerange);
 			this.setRaceAfricanAmericansimulatedresponse(racewhiteerrorresponse);

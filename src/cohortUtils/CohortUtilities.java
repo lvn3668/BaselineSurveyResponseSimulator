@@ -16,6 +16,12 @@ public class CohortUtilities {
 	 * @return the yearOfDeath
 	 */
 	protected static LocalDate getDeathDate() {
+		try {
+			return deathDate;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return deathDate;
 	}
 
@@ -23,7 +29,12 @@ public class CohortUtilities {
 	 * @param yearOfDeath the yearOfDeath to set
 	 */
 	protected static void setDeathDate(LocalDate yearOfDeath) {
-		CohortUtilities.deathDate = yearOfDeath;
+		try {
+			CohortUtilities.deathDate = yearOfDeath;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -69,7 +80,7 @@ public class CohortUtilities {
 	/**
 	 * @return
 	 */
-	protected int getAliveSimulatedResponse() {
+	public int getAliveSimulatedResponse() {
 		try {
 			return this.aliveSimulatedResponse;
 		} catch (Exception e) {
@@ -135,6 +146,12 @@ public class CohortUtilities {
 	 * @return the uniformDistribution
 	 */
 	protected UniformDistribution getUniformdistribution() {
+		try {
+			return this.uniformdistribution;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this.uniformdistribution;
 	}
 
@@ -142,6 +159,12 @@ public class CohortUtilities {
 	 * @return the utilities
 	 */
 	protected Utilities getUtilities() {
+		try {
+			return this.utilities;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this.utilities;
 	}
 
@@ -150,9 +173,8 @@ public class CohortUtilities {
 	 */
 	/**
 	 * @return
-	 * @throws Exception
 	 */
-	public Year getYearOfBirth() throws Exception {
+	public Year getYearOfBirth() {
 		try {
 			return this.yearOfBirth;
 		} catch (Exception e) {
@@ -165,7 +187,13 @@ public class CohortUtilities {
 	/**
 	 * @return the yearOfDeath
 	 */
-	protected Year getYearOfDeath() {
+	public Year getYearOfDeath() {
+		try {
+			return this.yearOfDeath;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this.yearOfDeath;
 	}
 
@@ -233,14 +261,24 @@ public class CohortUtilities {
 	 * @param uniformDistribution the uniformDistribution to set
 	 */
 	protected void setUniformdistribution(UniformDistribution uniformDistribution) {
-		this.uniformdistribution = uniformDistribution;
+		try {
+			this.uniformdistribution = uniformDistribution;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @param utilities the utilities to set
 	 */
 	protected void setUtilities(Utilities utilities) {
-		this.utilities = utilities;
+		try {
+			this.utilities = utilities;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -263,7 +301,12 @@ public class CohortUtilities {
 	 * @param yearOfDeath the yearOfDeath to set
 	 */
 	protected void setYearOfDeath(Year yearOfDeath) {
-		this.yearOfDeath = yearOfDeath;
+		try {
+			this.yearOfDeath = yearOfDeath;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected int simulateAliveOrDead() {
@@ -298,7 +341,12 @@ public class CohortUtilities {
 
 	protected void simulateYearOfDeath() {
 		// TODO Auto-generated method stub
-		this.setYearOfDeath(this.getUtilities().extractYearFromDate(CohortUtilities.getDeathDate()));
+		try {
+			this.setYearOfDeath(this.getUtilities().extractYearFromDate(CohortUtilities.getDeathDate()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

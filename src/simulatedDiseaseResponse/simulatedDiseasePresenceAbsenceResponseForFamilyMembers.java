@@ -52,7 +52,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	private ValueRange bipolarDisorderValueRange;
 	private int bipolarpresenceabsencesimulatedresponse;
 	private int breastcancersimulatedresponse;
-	private ValueRange BreastCancerValueRange;
+	private ValueRange breastcancerValueRange;
 	private int cholesterolpresenceabsencesimulatedresponse;
 	private ValueRange cholesterolValueRange;
 	private int coloncancerpresenceabsencesimulatedresponse;
@@ -112,7 +112,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 			this.setBipolarDisorderValueRange(ValueRange.of(0, 1));
 			this.setBipolarpresenceabsencesimulatedresponse(
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
-			this.setBreastCancerValueRange(ValueRange.of(0, 1));
+			this.setBreastcancerValueRange(ValueRange.of(0, 1));
 			this.setBreastcancersimulatedresponse(
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 			this.setCholesterolValueRange(ValueRange.of(0, 1));
@@ -161,7 +161,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 			this.setDiabetespresenceabsencesimulatedresponse(
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 
-			this.simulateResponseVariablesForFamilyMembers(cohortSex);
+			
 			//this.printsimulatedresponses();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -248,8 +248,8 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	/**
 	 * @return the breastCancerValueRange
 	 */
-	private ValueRange getBreastCancerValueRange() {
-		return this.BreastCancerValueRange;
+	private ValueRange getBreastcancerValueRange() {
+		return this.breastcancerValueRange;
 	}
 
 	/**
@@ -520,8 +520,8 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	/**
 	 * @param breastCancerValueRange the breastCancerValueRange to set
 	 */
-	private void setBreastCancerValueRange(ValueRange breastCancerValueRange) {
-		this.BreastCancerValueRange = breastCancerValueRange;
+	private void setBreastcancerValueRange(ValueRange breastCancerValueRange) {
+		this.breastcancerValueRange = breastCancerValueRange;
 	}
 
 	/**
@@ -753,7 +753,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		this.utilities = utilities;
 	}
 
-	public int simulateAlzheimersResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAlzheimersResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAlzheimersValueRange(valuerange);
 			this.setAlzheimerspresenceabsencesimulatedresponse(simulatedresponse);
@@ -773,7 +773,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getAlzheimerspresenceabsencesimulatedresponse();
 	}
 
-	public int simulateAsthmaResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAsthmaResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setDepressionValueRange(valuerange);
 			this.setDepressionpresenceabsencesimulatedresponse(simulatedresponse);
@@ -792,7 +792,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getAsthmapresenceabsencesimulatedresponse();
 	}
 
-	public int simulateBipolarDisorderResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateBipolarDisorderResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setBipolarDisorderValueRange(valuerange);
 			this.setBipolarpresenceabsencesimulatedresponse(simulatedresponse);
@@ -812,17 +812,17 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getBipolarpresenceabsencesimulatedresponse();
 	}
 
-	public int simulateBreastCancerResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateBreastCancerResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
-			this.setBreastCancerValueRange(valuerange);
+			this.setBreastcancerValueRange(valuerange);
 			this.setBreastcancersimulatedresponse(simulatedresponse);
 			if ((!this.getUniformdistribution()
 					.generatenoiseinresponsevariables(this.getUtilities().randBetween(
 							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMintogenerateerrorval(),
 							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMaxtogenerateerrorval())))) {
 				this.setBreastcancersimulatedresponse(
-						this.getUtilities().randBetween((int) this.getBreastCancerValueRange().getMinimum(),
-								(int) this.getBreastCancerValueRange().getMaximum()));
+						this.getUtilities().randBetween((int) this.getBreastcancerValueRange().getMinimum(),
+								(int) this.getBreastcancerValueRange().getMaximum()));
 				return this.getBreastcancersimulatedresponse();
 			}
 		} catch (Exception e) {
@@ -832,7 +832,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getBreastcancersimulatedresponse();
 	}
 
-	public int simulateCholesterolResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateCholesterolResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setCholesterolValueRange(valuerange);
 			this.setCholesterolpresenceabsencesimulatedresponse(simulatedresponse);
@@ -852,7 +852,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getCholesterolpresenceabsencesimulatedresponse();
 	}
 
-	public int simulateColonCancerResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateColonCancerResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setColonCancerValueRange(valuerange);
 			this.setColoncancerpresenceabsencesimulatedresponse(simulatedresponse);
@@ -872,7 +872,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getColoncancerpresenceabsencesimulatedresponse();
 	}
 
-	public int simulateCoronaryArteryDiseaseResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateCoronaryArteryDiseaseResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setCoronaryArteryDiseaseValueRange(valuerange);
 			this.setCoronaryarterydiseasesimulatedresponse(simulatedresponse);
@@ -892,7 +892,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getCoronaryarterydiseasesimulatedresponse();
 	}
 
-	public int simulateDepressionResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateDepressionResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setDepressionValueRange(valuerange);
 			this.setDepressionpresenceabsencesimulatedresponse(simulatedresponse);
@@ -912,7 +912,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getDepressionpresenceabsencesimulatedresponse();
 	}
 
-	public int simulateDiabetesResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateDiabetesResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setDiabetesValueRange(valuerange);
 			this.setDiabetespresenceabsencesimulatedresponse(simulatedresponse);
@@ -932,7 +932,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getDiabetespresenceabsencesimulatedresponse();
 	}
 
-	public int simulateHypertensionResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateHypertensionResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setHypertensionValueRange(valuerange);
 			this.setHypertensionpresenceabsencesimulatedresponse(simulatedresponse);
@@ -952,7 +952,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getHypertensionpresenceabsencesimulatedresponse();
 	}
 
-	public int simulateKidneyNoDialysisResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateKidneyNoDialysisResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setKidneyNoDialysisValueRange(valuerange);
 			this.setKidneynodialysispresenceabsencesimulatedresponse(simulatedresponse);
@@ -972,7 +972,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getKidneynodialysispresenceabsencesimulatedresponse();
 	}
 
-	public int simulateLiverDiseaseResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateLiverDiseaseResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setLiverDiseaseValueRange(valuerange);
 			this.setLiverdiseasepresenceabsencesimulatedresponse(simulatedresponse);
@@ -992,7 +992,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getLiverdiseasepresenceabsencesimulatedresponse();
 	}
 
-	public int simulateLungCancerResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateLungCancerResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setLungCancerValueRange(valuerange);
 			this.setLungcancersimulatedresponse(simulatedresponse);
@@ -1012,7 +1012,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getLungcancerpresenceabsencesimulatedresponse();
 	}
 
-	public int simulateLungDiseaseResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateLungDiseaseResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setLungDiseaseValueRange(valuerange);
 			this.setLungdiseasepresenceabsencesimulatedresponse(simulatedresponse);
@@ -1032,7 +1032,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getLungdiseasepresenceabsencesimulatedresponse();
 	}
 
-	public int simulateOtherCancerResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateOtherCancerResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setOtherCancerValueRange(valuerange);
 			this.setOthercancersimulatedresponse(simulatedresponse);
@@ -1052,7 +1052,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getOthercancersimulatedresponse();
 	}
 
-	public int simulateProstateCancerResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateProstateCancerResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setProstateCancerValueRange(valuerange);
 			this.setProstatecancersimulatedresponse(simulatedresponse);
@@ -1072,7 +1072,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getProstatecancersimulatedresponse();
 	}
 
-	private void simulateResponseVariablesForFamilyMembers(int cohortSex) {
+	public void simulateResponseVariablesForFamilyMembers(int cohortSex) {
 		try {
 			this.simulateAlzheimersResponse(this.getAlzheimersValueRange(),
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
@@ -1080,7 +1080,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 			this.simulateBipolarDisorderResponse(this.getBipolarDisorderValueRange(),
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
-			this.simulateBreastCancerResponse(this.getBreastCancerValueRange(),
+			this.simulateBreastCancerResponse(this.getBreastcancerValueRange(),
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 			this.simulateCholesterolResponse(this.getCholesterolValueRange(),
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
@@ -1105,6 +1105,10 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 			this.simulateOtherCancerResponse(this.getOtherCancerValueRange(),
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 			this.simulateSkinCancerResponse(this.getSkinCancerValueRange(),
+					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
+			this.simulateSchizophreniaResponse(this.getSchizophreniaValueRange(),
+					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
+			this.simulateProstateCancerResponse(this.getProstateCancerValueRange(),
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 			if (cohortSex == 1) {
 				this.simulateLungCancerResponse(this.getLungCancerValueRange(),
@@ -1135,7 +1139,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getSkincancersimulatedresponse();
 	}
 
-	public int simulateStrokeResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateStrokeResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setStrokeValueRange(valuerange);
 			this.setStrokepresenceabsencesimulatedresponse(simulatedresponse);
@@ -1154,7 +1158,7 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		return this.getStrokepresenceabsencesimulatedresponse();
 	}
 	
-	public int simulateSchizophreniaResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateSchizophreniaResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setSchizophreniaValueRange(valuerange);
 			this.setSchizophreniapresenceabsencesimulatedresponse(simulatedresponse);
@@ -1177,28 +1181,50 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	 * @return the schizophreniaValueRange
 	 */
 	public ValueRange getSchizophreniaValueRange() {
-		return schizophreniaValueRange;
+		try {
+			return this.schizophreniaValueRange;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.schizophreniaValueRange;
 	}
 
 	/**
 	 * @param schizophreniaValueRange the schizophreniaValueRange to set
 	 */
 	public void setSchizophreniaValueRange(ValueRange schizophreniaValueRange) {
-		this.schizophreniaValueRange = schizophreniaValueRange;
+		try {
+			this.schizophreniaValueRange = schizophreniaValueRange;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @return the schizophreniapresenceabsencesimulatedresponse
 	 */
 	public int getSchizophreniapresenceabsencesimulatedresponse() {
-		return schizophreniapresenceabsencesimulatedresponse;
+		try {
+			return this.schizophreniapresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.schizophreniapresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @param schizophreniapresenceabsencesimulatedresponse the schizophreniapresenceabsencesimulatedresponse to set
 	 */
 	public void setSchizophreniapresenceabsencesimulatedresponse(int schizophreniapresenceabsencesimulatedresponse) {
-		this.schizophreniapresenceabsencesimulatedresponse = schizophreniapresenceabsencesimulatedresponse;
+		try {
+			this.schizophreniapresenceabsencesimulatedresponse = schizophreniapresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

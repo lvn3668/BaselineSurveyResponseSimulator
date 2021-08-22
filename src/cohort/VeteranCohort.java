@@ -6,10 +6,10 @@ import java.time.temporal.ValueRange;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
-import SimulatedResponseAncestry.SimulatedResponseAncestry;
 import Utilities.Utilities;
 import cohortUtils.CohortUtilities;
 import simulatedDiseaseResponse.SimulatedDiseaseResponse;
+import simulatedResponseAncestry.SimulatedResponseAncestry;
 import simulatedResponseChemicalExposure.SimulatedResponseChemicalExposure;
 import simulatedResponseLifeStyleResponseVars.SimulatedResponseForLifestyleQ;
 import simulatedResponseMilitaryDuty.SimulatedResponseMilitaryDuty;
@@ -30,7 +30,7 @@ public class VeteranCohort extends CohortUtilities {
 	/**
 	 * @return the maximumNumberSiblings
 	 */
-	private static int getMaximumNumberSiblings() {
+	public static int getMaximumNumberSiblings() {
 		return maximumNumberSiblings;
 	}
 
@@ -179,8 +179,8 @@ public class VeteranCohort extends CohortUtilities {
 	/**
 	 *
 	 */
-	private MaternalFemaleGrandParent maternalgrandparent;
-	private PaternalMaleGrandParent paternalgrandparent;
+	private MaternalFemaleGrandParent maternalfemalegrandparent;
+	private PaternalMaleGrandParent paternalmalegrandparent;
 	/**
 	 *
 	 */
@@ -247,65 +247,22 @@ public class VeteranCohort extends CohortUtilities {
 	 *
 	 */
 	private float WeightSRLbsSimulatedResponse;
-
-	/**
-	 * @throws Exception
-	 */
-	public VeteranCohort() throws Exception {
-
-		// Move logic out of default constructor
+	
+	
+	public void simulateVeteranCohortResponseVariables() throws Exception
+	{
 		try {
-			this.setUtilities(new Utilities());
-			// call overloaded constructor with value ranges
-			this.setQ1_15SimulatedResponse(new SimulatedResponseQ1_15());
+			
+			
 			this.getQ1_15Simulatedresponse().simulateQ1_Q15responseVariables();
-
-			// calling default constructor
-			this.setRaceSimulatedResponse(new SimulatedResponseRace());
 			this.getRacesimulatedresponse().simulateRaceResponseVariables();
-
-			this.setChemicalexposuresimulatedresponse(new SimulatedResponseChemicalExposure());
 			this.getChemicalexposuresimulatedresponse().simulateChemicalExposureResponseVariables();
-
-			this.setLifestyleQsimulatedresponse(new SimulatedResponseForLifestyleQ());
 			this.getLifestyleQsimulatedresponse().simulateLifeStyleQResponseVariables();
-
-			this.setAncestrysimulatedresponse(new SimulatedResponseAncestry());
 			this.getAncestrysimulatedresponse().simulateAncestryResponseVariables();
-
-			this.setMilitarydutysimulatedresponse(new SimulatedResponseMilitaryDuty());
 			this.getMilitarydutysimulatedresponse().simulateMilitaryDutyResponseVariables();
-
-			this.setVAUseVarsSimulatedResponse(new SimulatedResponseVAUseVars());
 			this.getVAUseVarssimulatedResponse().getVauseresponses();
-
-			this.setAdoptedValueRange(ValueRange.of(0, 1));
-			this.setAliveValueRange(ValueRange.of(0, 1));
-			this.setAliveSimulatedResponse((super.simulateAliveOrDead()));
-
-			this.setMultipleBirthsValueRange(ValueRange.of(0, 1));
-			// 1 - Male
-			// 2- Female
-			this.setSexValueRange(ValueRange.of(1, 2));
-			this.setEducationValueRange(ValueRange.of(1, 7));
-			this.setEthnicityValueRange(ValueRange.of(1, 5));
-			this.setEyeColorValueRange(ValueRange.of(1, 6));
-			this.setHairColorValueRange(ValueRange.of(1, 5));
-			this.setHandednessValueRange(ValueRange.of(1, 3));
-			this.setIncomeValueRange(ValueRange.of(1, 10));
-			this.setBiologicalBrotherPresenceAbsenceValueRange(ValueRange.of(0, 1));
-			this.setBiologicalSistersPresenceOrAbsenceValueRange(ValueRange.of(0, 1));
-
-			this.setBiologicalSonsPresenceAbsenceValueRange(ValueRange.of(0, 1));
-			this.setBiologicalDaughtersPresenceAbsenceValueRange(ValueRange.of(0, 1));
-			this.setMaritalStatusValueRange(ValueRange.of(1, 7));
-			this.setSkinColorValueRange(ValueRange.of(1, 6));
-			this.setPainValueRange(ValueRange.of(0, 1));
-
-			this.setEarliestDOBForSimulation(LocalDate.of(1940, 1, 1));
-			this.setLatestDOBForSimulation(LocalDate.of(1970, 12, 31));
 			this.setBirthDateSimulated(this.simulateDateOfBirth());
-			System.out.println(this.getBirthDateSimulated().toString());
+			//System.out.println(this.getBirthDateSimulated().toString());
 			super.simulateYearOfBirth(this.getUtilities().extractYearFromDate(this.getBirthDateSimulated()));
 			this.simulateYearOfDeath();
 			this.setBiologicalBrothersPresenceAbsencesimulatedresponse(
@@ -335,8 +292,63 @@ public class VeteranCohort extends CohortUtilities {
 			this.setSkinColorSimulatedResponse(this.simulateSkinColorValue());
 			this.setAdoptedSimulatedResponse(this.simulateAdoptedValue());
 			this.setMultipleBirthsSimulatedResponse(this.simulateMultipleBirths());
+			
+			// Move logic out of constructor for simulateddiseaseresponse
 			this.setDiseassessimulatedresponse(new SimulatedDiseaseResponse(this));
 
+			this.setMother(new Mother(this));
+			this.getMother().simulateResponseVariablesForMother(this);
+			this.setFather(new Father(this));
+			this.getFather().simulateResponseVariablesForFather(this);
+			this.setMaternalfemalegrandparent(new MaternalFemaleGrandParent());
+			this.setPaternalmalegrandparent(new PaternalMaleGrandParent());
+			this.generateSiblingsForCohortCreation();
+
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public VeteranCohort() throws Exception {
+
+		// Move logic out of default constructor
+		try {
+			this.setUtilities(new Utilities());
+			this.setQ1_15SimulatedResponse(new SimulatedResponseQ1_15());
+			this.setRaceSimulatedResponse(new SimulatedResponseRace());
+			this.setChemicalexposuresimulatedresponse(new SimulatedResponseChemicalExposure());
+			this.setLifestyleQsimulatedresponse(new SimulatedResponseForLifestyleQ());
+			this.setAncestrysimulatedresponse(new SimulatedResponseAncestry());
+			this.setMilitarydutysimulatedresponse(new SimulatedResponseMilitaryDuty());
+			this.setVAUseVarsSimulatedResponse(new SimulatedResponseVAUseVars());
+			this.setAdoptedValueRange(ValueRange.of(0, 1));
+			this.setAliveValueRange(ValueRange.of(0, 1));
+			this.setAliveSimulatedResponse((super.simulateAliveOrDead()));
+			this.setMultipleBirthsValueRange(ValueRange.of(0, 1));
+			// 1 - Male
+			// 2- Female
+			this.setSexValueRange(ValueRange.of(1, 2));
+			this.setEducationValueRange(ValueRange.of(1, 7));
+			this.setEthnicityValueRange(ValueRange.of(1, 5));
+			this.setEyeColorValueRange(ValueRange.of(1, 6));
+			this.setHairColorValueRange(ValueRange.of(1, 5));
+			this.setHandednessValueRange(ValueRange.of(1, 3));
+			this.setIncomeValueRange(ValueRange.of(1, 10));
+			this.setBiologicalBrotherPresenceAbsenceValueRange(ValueRange.of(0, 1));
+			this.setBiologicalSistersPresenceOrAbsenceValueRange(ValueRange.of(0, 1));
+			this.setBiologicalSonsPresenceAbsenceValueRange(ValueRange.of(0, 1));
+			this.setBiologicalDaughtersPresenceAbsenceValueRange(ValueRange.of(0, 1));
+			this.setMaritalStatusValueRange(ValueRange.of(1, 7));
+			this.setSkinColorValueRange(ValueRange.of(1, 6));
+			this.setPainValueRange(ValueRange.of(0, 1));
+			this.setEarliestDOBForSimulation(LocalDate.of(1940, 1, 1));
+			this.setLatestDOBForSimulation(LocalDate.of(1970, 12, 31));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -855,14 +867,14 @@ public class VeteranCohort extends CohortUtilities {
 	/**
 	 * @return
 	 */
-	public MaternalFemaleGrandParent getMaternalgrandparent() {
+	public MaternalFemaleGrandParent getMaternalfemalegrandparent() {
 		try {
-			return this.maternalgrandparent;
+			return this.maternalfemalegrandparent;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return this.maternalgrandparent;
+		return this.maternalfemalegrandparent;
 
 	}
 
@@ -1611,11 +1623,11 @@ public class VeteranCohort extends CohortUtilities {
 	 * @param maternalgrandparent the maternalgrandparent to set
 	 */
 	/**
-	 * @param maternalgrandparent
+	 * @param maternalfemalegrandparent
 	 */
-	public void setMaternalgrandparent(MaternalFemaleGrandParent maternalGP) {
+	public void setMaternalfemalegrandparent(MaternalFemaleGrandParent maternalGP) {
 		try {
-			this.maternalgrandparent = maternalGP;
+			this.maternalfemalegrandparent = maternalGP;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -2269,15 +2281,309 @@ public class VeteranCohort extends CohortUtilities {
 	/**
 	 * @return the paternalgrandparent
 	 */
-	public PaternalMaleGrandParent getPaternalgrandparent() {
-		return paternalgrandparent;
+	public PaternalMaleGrandParent getPaternalmalegrandparent() {
+		return this.paternalmalegrandparent;
 	}
 
 	/**
 	 * @param paternalgrandparent the paternalgrandparent to set
 	 */
-	public void setPaternalgrandparent(PaternalMaleGrandParent paternalgrandparent) {
-		this.paternalgrandparent = paternalgrandparent;
+	public void setPaternalmalegrandparent(PaternalMaleGrandParent paternalgrandparent) {
+		this.paternalmalegrandparent = paternalgrandparent;
 	}
+
+	/**	private static VeteranCohort simulateVeteranResponses() {
+		// TODO Auto-generated method stub
+		try {
+			VeteranCohort veteranCohort = new VeteranCohort();
+			return veteranCohort;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	} **/
+	
+
+	//	public static void printSDR(SimulatedDiseaseResponse sdr)
+	//	{
+	//		Class<?>[] classlist = sdr.class.getClasses();
+	//	}
+	
+		/*
+		 * public static String printgetters(Object c) {
+		 *
+		 * Process process = null; try { StringBuilder diseasehierarchycalls = new
+		 * StringBuilder(); java.lang.reflect.Method[] methlist =
+		 * c.getClass().getDeclaredMethods(); int i = 0;
+		 *
+		 * while (i < c.getClass().getDeclaredMethods().length) { String methodname; if
+		 * (methlist[i].getName().startsWith("get") &&
+		 * (methlist[i].getReturnType().getName().startsWith("Disease")+",")) { methodname =
+		 * methlist[i].getName().replace("()",""); StringBuilder yeardiagnosedmethodname
+		 * = new StringBuilder(methlist[i].getName()+","); StringBuilder
+		 * diseasemedsadministeredmethodName = new StringBuilder(methlist[i].getName()+",");
+		 * StringBuilder diseasepresenceabsencemethname = new
+		 * StringBuilder(methlist[i].getName()+","); String epicvarname =
+		 * methlist[i].getName().replace("get", "").replace("()", "");
+		 * yeardiagnosedmethodname = yeardiagnosedmethodname.insert(0,
+		 * "System.out.println( \"" + epicvarname
+		 * +"YearDiagnosed \" + cohort.getDiseasesSimulatedResponse().").append(
+		 * "().getYearDiagnosedSimulatedResponse()+",");"); diseasepresenceabsencemethname =
+		 * diseasepresenceabsencemethname.insert(0,"System.out.println(\"" + epicvarname
+		 * +"DiseasePresenceAbsence \" + cohort.getDiseaseSimulatedResponse().").append(
+		 * "().getDiseasepresenceorabsencesimulatedepicresponse()+",");");
+		 * diseasemedsadministeredmethodName = new
+		 * StringBuilder(methlist[i].getName()+",").insert(0, "System.out.println(\""+
+		 * epicvarname+"MedsAdministered \"+cohort.getDiseaseSimulatedResponse().").
+		 * append("()."+methodname+"medicinesadministeredepicresponse();");
+		 * System.out.println(diseasepresenceabsencemethname);
+		 * System.out.println(yeardiagnosedmethodname);
+		 * System.out.println(diseasemedsadministeredmethodName); //process =
+		 * Runtime.getRuntime().exec(methName.toString()+",");
+		 *
+		 * //Scanner scanner = new Scanner(process.getInputStream()+",");
+		 * //scanner.useDelimiter("\r\n");
+		 *
+		 * //while (scanner.hasNext()+",") { // System.out.println(scanner.next()+","); //}
+		 *
+		 * //scanner.close(); } i++; } } catch (Exception e) { // TODO Auto-generated
+		 * catch block e.printStackTrace(); } //catch (InstantiationException e) { //
+		 * TODO Auto-generated catch block //e.printStackTrace(); //} catch
+		 * (IllegalAccessException e) { // TODO Auto-generated catch block
+		 * //e.printStackTrace(); //} //return null; return null;
+		 *
+		 * }
+		 */
+	
+		
+		private void generateSiblingsForCohortCreation() throws Exception
+		{ 
+			if (this != null) {
+			int totalNumberOfSiblings = this.getNumberOfBiologicalBrothersSimulatedResponse()
+					+ this.getNumberOfBiologicalSistersSimulatedResponse();
+			//System.out.println("Total number of siblings simulated " + totalNumberOfSiblings);
+			if (totalNumberOfSiblings > 0) {
+				this.setSibling(new Sibling());
+				switch (totalNumberOfSiblings) {
+				case 1:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+					this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+	
+					break;
+				case 2:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+					//		this.getSibling().getSibling2());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+	
+					break;
+				case 3:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+					//		this.getSibling().getSibling2(), this.getSibling().getSibling3());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					break;
+				case 4:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().setSibling4(new Sibling4(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+					//		this.getSibling().getSibling2(), this.getSibling().getSibling3(),
+					//		this.getSibling().getSibling4());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+	
+					break;
+				case 5:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().setSibling4(new Sibling4(this));
+					this.getSibling().setSibling5(new Sibling5(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+					//		this.getSibling().getSibling2(), this.getSibling().getSibling3(),
+					//		this.getSibling().getSibling4(), this.getSibling().getSibling5());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+	
+					break;
+				case 6:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().setSibling4(new Sibling4(this));
+					this.getSibling().setSibling5(new Sibling5(this));
+					this.getSibling().setSibling6(new Sibling6(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+					//		this.getSibling().getSibling2(), this.getSibling().getSibling3(),
+					//		this.getSibling().getSibling4(), this.getSibling().getSibling5(),
+					//		this.getSibling().getSibling6());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+	
+					break;
+				case 7:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().setSibling4(new Sibling4(this));
+					this.getSibling().setSibling5(new Sibling5(this));
+					this.getSibling().setSibling6(new Sibling6(this));
+					this.getSibling().setSibling7(new Sibling7(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+					//		this.getSibling().getSibling2(), this.getSibling().getSibling3(),
+					//		this.getSibling().getSibling4(), this.getSibling().getSibling5(),
+					//		this.getSibling().getSibling6(), this.getSibling().getSibling5(),
+					//		this.getSibling().getSibling7());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+	
+					break;
+				case 8:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().setSibling4(new Sibling4(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().setSibling5(new Sibling5(this));
+					this.getSibling().setSibling6(new Sibling6(this));
+					this.getSibling().setSibling7(new Sibling7(this));
+					this.getSibling().setSibling8(new Sibling8(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling8().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					//this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+					//		this.getSibling().getSibling2(), this.getSibling().getSibling3(),
+					//		this.getSibling().getSibling4(), this.getSibling().getSibling5(),
+					//		this.getSibling().getSibling6(), this.getSibling().getSibling5(),
+					//		this.getSibling().getSibling7(), this.getSibling().getSibling8());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling8().getSimulatedDiseasePresenceAbsenceFamilyMembers()
+							);
+	
+					break;
+				default:
+					this.getSibling().setSibling1(new Sibling1(this));
+					this.getSibling().setSibling2(new Sibling2(this));
+					this.getSibling().setSibling3(new Sibling3(this));
+					this.getSibling().setSibling4(new Sibling4(this));
+					this.getSibling().setSibling5(new Sibling5(this));
+					this.getSibling().setSibling6(new Sibling6(this));
+					this.getSibling().setSibling7(new Sibling7(this));
+					this.getSibling().setSibling8(new Sibling8(this));
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling8().getSimulatedDiseasePresenceAbsenceFamilyMembers());
+					this.getSibling().printSiblingDetails(this.getSibling().getSibling1(),
+							this.getSibling().getSibling2(), this.getSibling().getSibling3(),
+							this.getSibling().getSibling4(), this.getSibling().getSibling5(),
+							this.getSibling().getSibling6(), this.getSibling().getSibling5(),
+							this.getSibling().getSibling7(), this.getSibling().getSibling8());
+					this.getSibling().checkForDiseasePresenceAbsenceInSiblings(
+							this.getSibling().getSibling1().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
+							this.getSibling().getSibling8().getSimulatedDiseasePresenceAbsenceFamilyMembers()
+							);
+	
+					break;
+				}
+			}
+			//if (totalNumberOfSiblings > 0) {
+			//	System.out.println("Printing disease presence in cohort no " + cohortno);
+			//veteranCohort.getSibling().printDiseasePresenceInSiblings();
+			//}
+			//return veteranCohort;
+			} else
+				throw new Exception();
+	
+		}
 
 }

@@ -24,24 +24,10 @@ public class Sibling4 extends Sibling {
 	private static final int minToGenerateErrorVal = 2;
 
 	/**
-	 * @return the earliestdobsibling
-	 */
-	public static LocalDate getEarliestdobsibling() {
-		return earliestDOBSibling;
-	}
-
-	/**
 	 * @return the earliestDOBSibling
 	 */
 	private static LocalDate getEarliestDOBSibling() {
 		return earliestDOBSibling;
-	}
-
-	/**
-	 * @return the latestdobsibling
-	 */
-	public static LocalDate getLatestdobsibling() {
-		return latestDOBSibling;
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package SimulatedResponseAncestry;
+package simulatedResponseAncestry;
 
 import java.time.temporal.ValueRange;
 
@@ -79,7 +79,7 @@ public class SimulatedResponseAncestry {
 	 */
 	private static void setErrorResponse(int errorResponse) {
 		try {
-			errorResponse = errorResponse;
+			SimulatedResponseAncestry.errorResponse = errorResponse;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -674,7 +674,7 @@ public class SimulatedResponseAncestry {
 		}
 	}
 
-	public int simulateAncestryAfricanResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestryAfricanResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestryAfricanValueRange(valuerange);
 			this.setAncestryafricansimulatedepicresponse(simulatedresponse);
@@ -695,7 +695,7 @@ public class SimulatedResponseAncestry {
 		return simulatedresponse;
 	}
 
-	public int simulateAncestryEastAsianResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestryEastAsianResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestryEastAsianValueRange(valuerange);
 			this.setAncestryeastasiansimulatedepicresponse(simulatedresponse);
@@ -716,7 +716,7 @@ public class SimulatedResponseAncestry {
 		return simulatedresponse;
 	}
 
-	public int simulateAncestryMiddleEasternResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestryMiddleEasternResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestryMiddleEasternValueRange(valuerange);
 			this.setAncestrymiddleeasternsimulatedepicresponse(simulatedresponse);
@@ -737,7 +737,7 @@ public class SimulatedResponseAncestry {
 		return simulatedresponse;
 	}
 
-	public int simulateAncestryNorthAmericanResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestryNorthAmericanResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestryNorthAmericanValueRange(valuerange);
 			this.setAncestrynorthamericansimulatedepicresponse(simulatedresponse);
@@ -758,7 +758,7 @@ public class SimulatedResponseAncestry {
 		return simulatedresponse;
 	}
 
-	public int simulateAncestryNorthEuropeanResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestryNorthEuropeanResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestryNorthEuropeanValueRange(valuerange);
 			this.setAncestrynortheuropeansimulatedepicresponse(simulatedresponse);
@@ -805,7 +805,7 @@ public class SimulatedResponseAncestry {
 		}
 	}
 
-	public int simulateAncestrySamoaAmericanResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestrySamoaAmericanResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestrySamoaAmericanValueRange(valuerange);
 			this.setAncestrysamoaamericansimulatedepicresponse(simulatedresponse);
@@ -826,7 +826,7 @@ public class SimulatedResponseAncestry {
 		return simulatedresponse;
 	}
 
-	public int simulateAncestrySouthEurasianResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestrySouthEurasianResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestrySouthEurasianValueRange(valuerange);
 			this.setAncestrysoutheurasiansimulatedepicresponse(simulatedresponse);
@@ -847,7 +847,7 @@ public class SimulatedResponseAncestry {
 		return simulatedresponse;
 	}
 
-	public int simulateAncestrySouthWestAsianResponse(ValueRange valuerange, int simulatedresponse) {
+	private int simulateAncestrySouthWestAsianResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setAncestrySouthWestAsianValueRange(valuerange);
 			this.setAncestrysouthwestasiansimulatedepicresponse(simulatedresponse);

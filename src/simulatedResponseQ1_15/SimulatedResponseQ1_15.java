@@ -1325,7 +1325,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q10response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q10response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q10ValueRange(valuerange);
 			this.setVr12Q10simulatedresponse(simulatederrorresponse);
@@ -1352,7 +1352,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q11response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q11response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q11ValueRange(valuerange);
 			this.setVr12Q11simulatedresponse(simulatederrorresponse);
@@ -1379,7 +1379,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q12response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q12response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q12ValueRange(valuerange);
 			this.setVr12Q12simulatedresponse(simulatederrorresponse);
@@ -1406,7 +1406,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q13response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q13response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q13ValueRange(valuerange);
 			this.setVr12Q13simulatedresponse(simulatederrorresponse);
@@ -1433,7 +1433,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q14response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q14response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q14ValueRange(valuerange);
 			this.setVr12Q14simulatedresponse(simulatederrorresponse);
@@ -1460,7 +1460,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q15response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q15response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q12ValueRange(valuerange);
 			this.setVr12Q12simulatedresponse(simulatederrorresponse);
@@ -1487,7 +1487,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q1response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q1response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q1ValueRange(valuerange);
 			this.setVr12Q1simulatedresponse(simulatederrorresponse);
@@ -1511,7 +1511,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q2response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q2response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q2ValueRange(valuerange);
 			this.setVr12Q2simulatedresponse(simulatederrorresponse);
@@ -1535,7 +1535,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q3response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q3response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q3ValueRange(valuerange);
 			this.setVr12Q3simulatedresponse(simulatederrorresponse);
@@ -1560,7 +1560,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q4response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q4response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q4ValueRange(valuerange);
 			this.setVr12Q4simulatedresponse(simulatederrorresponse);
@@ -1585,7 +1585,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q5response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q5response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q5ValueRange(valuerange);
 			this.setVr12Q5simulatedresponse(simulatederrorresponse);
@@ -1610,7 +1610,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q6response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q6response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q6ValueRange(valuerange);
 			this.setVr12Q6simulatedresponse(simulatederrorresponse);
@@ -1635,7 +1635,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q7response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q7response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q7ValueRange(valuerange);
 			this.setVr12Q7simulatedresponse(simulatederrorresponse);
@@ -1660,7 +1660,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q8response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q8response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q8ValueRange(valuerange);
 			this.setVr12Q8simulatedresponse(simulatederrorresponse);
@@ -1685,7 +1685,7 @@ public class SimulatedResponseQ1_15 {
 	 * @return
 	 * @throws Exception
 	 */
-	public int simulateVR12Q9response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
+	private int simulateVR12Q9response(ValueRange valuerange, int simulatederrorresponse) throws Exception {
 		try {
 			this.setVr12Q9ValueRange(valuerange);
 			this.setVr12Q9simulatedresponse(simulatederrorresponse);

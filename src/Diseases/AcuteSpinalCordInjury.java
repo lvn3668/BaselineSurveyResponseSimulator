@@ -84,6 +84,16 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 
 			this.setAcuteSpinalCordInjuryMedicines(ValueRange.of(0, 1));
 			this.setNS_ASCI_medicinesadministered_epicresponse(2);
+
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void simulateResponses()
+	{
+		try {
 			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
 			// generate uniform distribution between min and max error vals and pick a
 			// random number, check pdf value
@@ -92,15 +102,16 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 							this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
 									AcuteSpinalCordInjury.getMaxtogenerateerrorval())))) {
 				this.setNS_ASCI_medicinesadministered_epicresponse(
-						this.getUtilities().randBetween((int) this.AcuteSpinalCordInjuryMedicines.getMinimum(),
-								(int) this.AcuteSpinalCordInjuryMedicines.getMaximum()));
+						this.getUtilities().randBetween((int) this.getAcuteSpinalCordInjuryMedicines().getMinimum(),
+								(int) this.getAcuteSpinalCordInjuryMedicines().getMaximum()));
 			} else {
 				this.setNS_ASCI_medicinesadministered_epicresponse(
 						this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
 								AcuteSpinalCordInjury.getMaxtogenerateerrorval()));
 			}
-		} catch (RuntimeException e) {
-			// TODO Auto-generated catch block
+			
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
@@ -127,21 +138,7 @@ public class AcuteSpinalCordInjury extends NeuroStimulatoryDiseaseResponse {
 			this.setAcuteSpinalCordInjuryMedicines(valuerange);
 			this.setNS_ASCI_medicinesadministered_epicresponse(NS_SCImedicinesadministeredepicresponse);
 
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
-									AcuteSpinalCordInjury.getMaxtogenerateerrorval())))) {
-				this.setNS_ASCI_medicinesadministered_epicresponse(
-						this.getUtilities().randBetween((int) this.getAcuteSpinalCordInjuryMedicines().getMinimum(),
-								(int) this.getAcuteSpinalCordInjuryMedicines().getMaximum()));
-			} else {
-				this.setNS_ASCI_medicinesadministered_epicresponse(
-						this.getUtilities().randBetween(AcuteSpinalCordInjury.getMintogenerateerrorval(),
-								AcuteSpinalCordInjury.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

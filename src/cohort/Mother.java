@@ -15,7 +15,6 @@ import simulatedDiseaseResponse.simulatedDiseasePresenceAbsenceResponseForFamily
  *
  */
 /**
- * @author visu4
  *
  */
 public class Mother extends CohortUtilities {
@@ -26,6 +25,12 @@ public class Mother extends CohortUtilities {
 	 * @return the earliestDOBMother
 	 */
 	private static LocalDate getEarliestDOBMother() {
+		try {
+			return earliestDOBMother;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return earliestDOBMother;
 	}
 
@@ -33,6 +38,12 @@ public class Mother extends CohortUtilities {
 	 * @return the latestDOBMother
 	 */
 	private static LocalDate getLatestDOBMother() {
+		try {
+			return latestDOBMother;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return latestDOBMother;
 	}
 
@@ -40,7 +51,12 @@ public class Mother extends CohortUtilities {
 	 * @param earliestDOBMother the earliestDOBMother to set
 	 */
 	private static void setEarliestDOBMother(LocalDate earliestDOBMother) {
-		Mother.earliestDOBMother = earliestDOBMother;
+		try {
+			Mother.earliestDOBMother = earliestDOBMother;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -53,32 +69,51 @@ public class Mother extends CohortUtilities {
 
 	private simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsenceFamilyMembers;
 
+	protected void simulateResponseVariablesForMother(VeteranCohort veteranCohort) 
+	{
+
+		try {
+			this.setBirthDateSimulated(this.simulateDateOfBirth());
+			this.simulateYearOfBirth(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()));
+			this.simulateYearOfDeath();
+			this.setAliveSimulatedResponse(this.simulateAliveOrDead());
+			this.setSimulatedDiseasePresenceAbsenceFamilyMembers(
+					new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
+			this.getSimulatedDiseasePresenceAbsence().simulateResponseVariablesForFamilyMembers(this.getSexSimulatedResponse());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Mother(VeteranCohort veteranCohort) throws Exception {
 		// TODO Auto-generated constructor stub
 		// Set sex for mother to 2
 		// 1 : Male ; 2 : Female assumption
-		super.setUtilities(new Utilities());
-		System.out.println("Cohort DOB inside Mother class is " + veteranCohort.getBirthDateSimulated().toString());
-		this.setSexSimulatedResponse(2);
+		try {
+			super.setUtilities(new Utilities());
+			this.setSexSimulatedResponse(2);
 
-		Mother.setEarliestDOBMother(LocalDate
-				.of(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 40, 1, 1));
-		Mother.setLatestDOBMother(LocalDate
-				.of(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 20, 12, 31));
+			Mother.setEarliestDOBMother(LocalDate
+					.of(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 40, 1, 1));
+			Mother.setLatestDOBMother(LocalDate
+					.of(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 20, 12, 31));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		this.setBirthDateSimulated(this.simulateDateOfBirth());
-
-		this.simulateYearOfBirth(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()));
-		this.simulateYearOfDeath();
-		this.setAliveSimulatedResponse(this.simulateAliveOrDead());
-		this.setSimulatedDiseasePresenceAbsenceFamilyMembers(
-				new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
 	}
 
 	/**
 	 * @return the simulatedDiseasePresenceAbsence
 	 */
 	public simulatedDiseasePresenceAbsenceResponseForFamilyMembers getSimulatedDiseasePresenceAbsence() {
+		try {
+			return this.simulatedDiseasePresenceAbsenceFamilyMembers;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this.simulatedDiseasePresenceAbsenceFamilyMembers;
 	}
 
@@ -88,7 +123,12 @@ public class Mother extends CohortUtilities {
 	 */
 	private void setSimulatedDiseasePresenceAbsenceFamilyMembers(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsence) {
-		this.simulatedDiseasePresenceAbsenceFamilyMembers = simulatedDiseasePresenceAbsence;
+		try {
+			this.simulatedDiseasePresenceAbsenceFamilyMembers = simulatedDiseasePresenceAbsence;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -101,8 +141,6 @@ public class Mother extends CohortUtilities {
 					Date.from(Mother.getEarliestDOBMother().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime(),
 					Date.from(Mother.getLatestDOBMother().atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime()));
 			this.setBirthDateSimulated(simulatedDOB);
-			System.out.println("Simulated DOB Mother" + simulatedDOB);
-
 			return this.getBirthDateSimulated();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -112,4 +150,3 @@ public class Mother extends CohortUtilities {
 	}
 }
 
-// BIO Daughter BIO SON DOB not captured (only presence / absence captured

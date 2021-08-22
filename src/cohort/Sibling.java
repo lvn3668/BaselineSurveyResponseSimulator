@@ -56,7 +56,7 @@ public class Sibling extends CohortUtilities {
 	private Sibling8 sibling8;
 
 	private int siblingAlzheimerspresenceabsencesimulatedresponse;
-
+	private int siblingSchizophreniapresenceabsencesimulatedresponse;
 	private int siblingAsthmapresenceabsencesimulatedresponse;
 
 	private int siblingBipolarpresenceabsencesimulatedresponse;
@@ -78,11 +78,12 @@ public class Sibling extends CohortUtilities {
 	private int siblingStrokepresenceabsencesimulatedresponse;
 	private simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsenceFamilyMembers;
 
+	private int siblingHypertensionpresenceabsencesimulatedresponse;
+
 	public Sibling() throws Exception {
 		// TODO Auto-generated constructor stub
 		super();
 		try {
-
 			// If Sibling class is created, sibling is assumed to exist
 			this.setAliveSimulatedResponse(this.simulateAliveOrDead());
 			this.simulateYearOfDeath();
@@ -149,73 +150,6 @@ public class Sibling extends CohortUtilities {
 			this.setSiblingProstatecancerpresenceabsencesimulatedresponse(simulateddiseaseresponsesiblings);
 			this.setSiblingSkincancerpresenceabsencesimulatedresponse(simulateddiseaseresponsesiblings);
 			this.setSiblingStrokepresenceabsencesimulatedresponse(simulateddiseaseresponsesiblings);
-			/*
-			 * switch (this.getNumberOfBiologicalBrothersSimulatedResponse()+this.
-			 * getNumberOfBiologicalSistersSimulatedResponse()) { case 1:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers()); break; case 2:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 * case 3:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 * case 4:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 * case 5:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 * case 6:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 * case 7:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 * case 8:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers()
-			 * ,this.getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling8().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 * default:
-			 * this.setSiblingAlzheimerspresenceabsencesimulatedresponse(this.getSibling1().
-			 * getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling2().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling3().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling4().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling5().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling6().getSimulatedDiseasePresenceAbsenceFamilyMembers()
-			 * ,this.getSibling7().getSimulatedDiseasePresenceAbsenceFamilyMembers(),
-			 * this.getSibling8().getSimulatedDiseasePresenceAbsenceFamilyMembers()); break;
-			 *
-			 * }
-			 */
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -506,56 +440,101 @@ public class Sibling extends CohortUtilities {
 
 	private void setSiblingAlzheimerspresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingAlzheimerspresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasAlzheimers(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingAlzheimerspresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasAlzheimers(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingAsthmapresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingAsthmapresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasAsthma(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingAsthmapresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasAsthma(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingBipolarpresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingBipolarpresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasBipolar(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingBipolarpresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasBipolar(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingBreastcancerpresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingBreastCancerpresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasBreastCancer(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingBreastCancerpresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasBreastCancer(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingCholesterolpresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingCholesterolpresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasCholesterol(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingCholesterolpresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasCholesterol(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingColoncancerpresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingColonCancerpresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasColonCancer(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingColonCancerpresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasColonCancer(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingCoronaryArteryDiseasepresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingCoronaryarterydiseasepresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasCoronaryArteryDisease(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingCoronaryarterydiseasepresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasCoronaryArteryDisease(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingDepressionpresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingDepressionpresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasDepression(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingDepressionpresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasDepression(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void setSiblingDiabetespresenceabsencesimulatedresponse(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers... siblingsdiseasepresenceabsence) {
-		this.siblingDiabetespresenceabsencesimulatedresponse = this.getUtilities()
-				.checkIfSiblingHasDiabetes(siblingsdiseasepresenceabsence);
+		try {
+			this.siblingDiabetespresenceabsencesimulatedresponse = this.getUtilities()
+					.checkIfSiblingHasDiabetes(siblingsdiseasepresenceabsence);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -565,6 +544,7 @@ public class Sibling extends CohortUtilities {
 	 */
 	private void setSiblingHypertensionpresenceabsencesimulatedresponse(
 			int siblingHypertensionpresenceabsencesimulatedresponse) {
+		this.siblingHypertensionpresenceabsencesimulatedresponse = siblingHypertensionpresenceabsencesimulatedresponse;
 	}
 
 	private void setSiblingHypertensionpresenceabsencesimulatedresponse(
@@ -627,7 +607,12 @@ public class Sibling extends CohortUtilities {
 	 */
 	protected void setSimulatedDiseasePresenceAbsenceFamilyMembers(
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsence) {
-		this.simulatedDiseasePresenceAbsenceFamilyMembers = simulatedDiseasePresenceAbsence;
+		try {
+			this.simulatedDiseasePresenceAbsenceFamilyMembers = simulatedDiseasePresenceAbsence;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -656,113 +641,168 @@ public class Sibling extends CohortUtilities {
 	/**
 	 * @return the siblingAsthmapresenceabsencesimulatedresponse
 	 */
-	private int getSiblingAsthmapresenceabsencesimulatedresponse() {
-		return siblingAsthmapresenceabsencesimulatedresponse;
+	public int getSiblingAsthmapresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingAsthmapresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingAsthmapresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingBipolarpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingBipolarpresenceabsencesimulatedresponse() {
-		return siblingBipolarpresenceabsencesimulatedresponse;
+	public int getSiblingBipolarpresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingBipolarpresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingBipolarpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingBreastCancerpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingBreastCancerpresenceabsencesimulatedresponse() {
-		return siblingBreastCancerpresenceabsencesimulatedresponse;
+	public int getSiblingBreastCancerpresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingBreastCancerpresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingBreastCancerpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingCholesterolpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingCholesterolpresenceabsencesimulatedresponse() {
-		return siblingCholesterolpresenceabsencesimulatedresponse;
+	public int getSiblingCholesterolpresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingCholesterolpresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingCholesterolpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingColonCancerpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingColonCancerpresenceabsencesimulatedresponse() {
-		return siblingColonCancerpresenceabsencesimulatedresponse;
+	public int getSiblingColonCancerpresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingColonCancerpresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingColonCancerpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingCoronaryarterydiseasepresenceabsencesimulatedresponse
 	 */
-	private int getSiblingCoronaryarterydiseasepresenceabsencesimulatedresponse() {
-		return siblingCoronaryarterydiseasepresenceabsencesimulatedresponse;
+	public int getSiblingCoronaryarterydiseasepresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingCoronaryarterydiseasepresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingCoronaryarterydiseasepresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingDepressionpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingDepressionpresenceabsencesimulatedresponse() {
-		return siblingDepressionpresenceabsencesimulatedresponse;
+	public int getSiblingDepressionpresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingDepressionpresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingDepressionpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingDiabetespresenceabsencesimulatedresponse
 	 */
-	private int getSiblingDiabetespresenceabsencesimulatedresponse() {
-		return siblingDiabetespresenceabsencesimulatedresponse;
+	public int getSiblingDiabetespresenceabsencesimulatedresponse() {
+		try {
+			return this.siblingDiabetespresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.siblingDiabetespresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingKidneynodialysispresenceabsencesimulatedresponse
 	 */
-	private int getSiblingKidneynodialysispresenceabsencesimulatedresponse() {
-		return siblingKidneynodialysispresenceabsencesimulatedresponse;
+	public int getSiblingKidneynodialysispresenceabsencesimulatedresponse() {
+		return this.siblingKidneynodialysispresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingLiverdiseasepresenceabsencesimulatedresponse
 	 */
-	private int getSiblingLiverdiseasepresenceabsencesimulatedresponse() {
-		return siblingLiverdiseasepresenceabsencesimulatedresponse;
+	public int getSiblingLiverdiseasepresenceabsencesimulatedresponse() {
+		return this.siblingLiverdiseasepresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingLungcancerpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingLungcancerpresenceabsencesimulatedresponse() {
-		return siblingLungcancerpresenceabsencesimulatedresponse;
+	public int getSiblingLungcancerpresenceabsencesimulatedresponse() {
+		return this.siblingLungcancerpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingLungdiseasepresenceabsencesimulatedresponse
 	 */
-	private int getSiblingLungdiseasepresenceabsencesimulatedresponse() {
-		return siblingLungdiseasepresenceabsencesimulatedresponse;
+	public int getSiblingLungdiseasepresenceabsencesimulatedresponse() {
+		return this.siblingLungdiseasepresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingOthercancerpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingOthercancerpresenceabsencesimulatedresponse() {
-		return siblingOthercancerpresenceabsencesimulatedresponse;
+	public int getSiblingOthercancerpresenceabsencesimulatedresponse() {
+		return this.siblingOthercancerpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingProstatecancerpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingProstatecancerpresenceabsencesimulatedresponse() {
-		return siblingProstatecancerpresenceabsencesimulatedresponse;
+	public int getSiblingProstatecancerpresenceabsencesimulatedresponse() {
+		return this.siblingProstatecancerpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingSkincancerpresenceabsencesimulatedresponse
 	 */
-	private int getSiblingSkincancerpresenceabsencesimulatedresponse() {
-		return siblingSkincancerpresenceabsencesimulatedresponse;
+	public int getSiblingSkincancerpresenceabsencesimulatedresponse() {
+		return this.siblingSkincancerpresenceabsencesimulatedresponse;
 	}
 
 	/**
 	 * @return the siblingStrokepresenceabsencesimulatedresponse
 	 */
-	private int getSiblingStrokepresenceabsencesimulatedresponse() {
-		return siblingStrokepresenceabsencesimulatedresponse;
+	public int getSiblingStrokepresenceabsencesimulatedresponse() {
+		return this.siblingStrokepresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the siblingHypertensionpresenceabsencesimulatedresponse
+	 */
+	private int getSiblingHypertensionpresenceabsencesimulatedresponse() {
+		return this.siblingHypertensionpresenceabsencesimulatedresponse;
 	}
 
 }
