@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -86,20 +86,10 @@ public class HIV extends InfectiousDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
-					new UniformDistribution(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval()));
+					new RandomizingDistribution(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval()));
 
 			this.setHIVMedicines(ValueRange.of(0, 1));
 			this.setHIVMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval())))) {
-				this.setHIVMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getHIVMedicines().getMinimum(), (int) this.getHIVMedicines().getMaximum()));
-			} else {
-				this.setHIVMedsAdministeredEpicResponse(this.getUtilities().randBetween(HIV.getMintogenerateerrorval(),
-						HIV.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,20 +102,10 @@ public class HIV extends InfectiousDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
-					new UniformDistribution(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval()));
+					new RandomizingDistribution(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval()));
 
 			this.setHIVMedicines(valuerange);
 			this.setHIVMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval())))) {
-				this.setHIVMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getHIVMedicines().getMinimum(), (int) this.getHIVMedicines().getMaximum()));
-			} else {
-				this.setHIVMedsAdministeredEpicResponse(this.getUtilities().randBetween(HIV.getMintogenerateerrorval(),
-						HIV.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -201,6 +181,24 @@ public class HIV extends InfectiousDiseaseResponse {
 		try {
 			this.HIVMedsAdministeredEpicResponse = hIVMedsAdministeredEpicResponse;
 		} finally {
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+						.randBetween(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval())))) {
+			this.setHIVMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween((int) this.getHIVMedicines().getMinimum(), (int) this.getHIVMedicines().getMaximum()));
+		} else {
+			this.setHIVMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween(HIV.getMintogenerateerrorval(), HIV.getMaxtogenerateerrorval()));
 		}
 	}
 

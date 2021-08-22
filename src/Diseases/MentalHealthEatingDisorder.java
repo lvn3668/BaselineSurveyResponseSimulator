@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,56 +85,31 @@ public class MentalHealthEatingDisorder extends MentalHealthResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthEatingDisorder.getMintogenerateerrorval(),
-					MentalHealthEatingDisorder.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(MentalHealthEatingDisorder.getMintogenerateerrorval(),
+							MentalHealthEatingDisorder.getMaxtogenerateerrorval()));
 
 			this.setMHEatingDisorderMeds(ValueRange.of(0, 1));
 			this.setMHEatingDisorderMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									MentalHealthEatingDisorder.getMintogenerateerrorval(),
-									MentalHealthEatingDisorder.getMaxtogenerateerrorval())))) {
-				this.setMHEatingDisorderMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getMHEatingDisorderMeds().getMinimum(),
-								(int) this.getMHEatingDisorderMeds().getMaximum()));
-			} else {
-				this.setMHEatingDisorderMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(MentalHealthEatingDisorder.getMintogenerateerrorval(),
-								MentalHealthEatingDisorder.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
 
-	public MentalHealthEatingDisorder(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MentalHealthEatingDisorder(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthEatingDisorder.getMintogenerateerrorval(),
-					MentalHealthEatingDisorder.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(MentalHealthEatingDisorder.getMintogenerateerrorval(),
+							MentalHealthEatingDisorder.getMaxtogenerateerrorval()));
 
 			this.setMHEatingDisorderMeds(valuerange);
 			this.setMHEatingDisorderMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									MentalHealthEatingDisorder.getMintogenerateerrorval(),
-									MentalHealthEatingDisorder.getMaxtogenerateerrorval())))) {
-				this.setMHEatingDisorderMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getMHEatingDisorderMeds().getMinimum(),
-								(int) this.getMHEatingDisorderMeds().getMaximum()));
-			} else {
-				this.setMHEatingDisorderMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(MentalHealthEatingDisorder.getMintogenerateerrorval(),
-								MentalHealthEatingDisorder.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -215,6 +190,26 @@ public class MentalHealthEatingDisorder extends MentalHealthResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(MentalHealthEatingDisorder.getMintogenerateerrorval(),
+								MentalHealthEatingDisorder.getMaxtogenerateerrorval())))) {
+			this.setMHEatingDisorderMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween((int) this.getMHEatingDisorderMeds().getMinimum(),
+							(int) this.getMHEatingDisorderMeds().getMaximum()));
+		} else {
+			this.setMHEatingDisorderMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween(MentalHealthEatingDisorder.getMintogenerateerrorval(),
+							MentalHealthEatingDisorder.getMaxtogenerateerrorval()));
 		}
 	}
 

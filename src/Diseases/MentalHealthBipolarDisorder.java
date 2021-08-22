@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,54 +85,31 @@ public class MentalHealthBipolarDisorder extends MentalHealthResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
-					MentalHealthBipolarDisorder.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
+							MentalHealthBipolarDisorder.getMaxtogenerateerrorval()));
 
 			this.setMHBPDMeds(ValueRange.of(0, 1));
 			this.setMHBPDMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									MentalHealthBipolarDisorder.getMintogenerateerrorval(),
-									MentalHealthBipolarDisorder.getMaxtogenerateerrorval())))) {
-				this.setMHBPDMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getMHBPDMeds().getMinimum(), (int) this.getMHBPDMeds().getMaximum()));
-			} else {
-				this.setMHBPDMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
-								MentalHealthBipolarDisorder.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
 
-	public MentalHealthBipolarDisorder(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MentalHealthBipolarDisorder(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
-					MentalHealthBipolarDisorder.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
+							MentalHealthBipolarDisorder.getMaxtogenerateerrorval()));
 
 			this.setMHBPDMeds(valuerange);
 			this.setMHBPDMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									MentalHealthBipolarDisorder.getMintogenerateerrorval(),
-									MentalHealthBipolarDisorder.getMaxtogenerateerrorval())))) {
-				this.setMHBPDMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getMHBPDMeds().getMinimum(), (int) this.getMHBPDMeds().getMaximum()));
-			} else {
-				this.setMHBPDMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
-								MentalHealthBipolarDisorder.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -211,6 +188,25 @@ public class MentalHealthBipolarDisorder extends MentalHealthResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
+								MentalHealthBipolarDisorder.getMaxtogenerateerrorval())))) {
+			this.setMHBPDMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween((int) this.getMHBPDMeds().getMinimum(), (int) this.getMHBPDMeds().getMaximum()));
+		} else {
+			this.setMHBPDMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween(MentalHealthBipolarDisorder.getMintogenerateerrorval(),
+							MentalHealthBipolarDisorder.getMaxtogenerateerrorval()));
 		}
 	}
 

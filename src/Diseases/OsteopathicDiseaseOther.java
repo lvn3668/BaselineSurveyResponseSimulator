@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -94,7 +94,7 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 	/**
 	 *
 	 */
-	private UniformDistribution uniformDistribution;
+	private RandomizingDistribution randomizingDistribution;
 
 	private Utilities utilities;
 
@@ -102,53 +102,28 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformDistribution(new UniformDistribution(OsteopathicDiseaseOther.getMintogenerateerrorval(),
+			this.setUniformDistribution(new RandomizingDistribution(OsteopathicDiseaseOther.getMintogenerateerrorval(),
 					OsteopathicDiseaseOther.getMaxtogenerateerrorval()));
 
 			this.setOsteopathicDOtherMed(ValueRange.of(0, 1));
 			this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(OsteopathicDiseaseOther.getMintogenerateerrorval(),
-									OsteopathicDiseaseOther.getMaxtogenerateerrorval())))) {
-				this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getOsteopathicDOtherMed().getMinimum(),
-								(int) this.getOsteopathicDOtherMed().getMaximum()));
-			} else {
-				this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(OsteopathicDiseaseOther.getMintogenerateerrorval(),
-								OsteopathicDiseaseOther.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public OsteopathicDiseaseOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public OsteopathicDiseaseOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformDistribution(new UniformDistribution(OsteopathicDiseaseOther.getMintogenerateerrorval(),
+			this.setUniformDistribution(new RandomizingDistribution(OsteopathicDiseaseOther.getMintogenerateerrorval(),
 					OsteopathicDiseaseOther.getMaxtogenerateerrorval()));
 
 			this.setOsteopathicDOtherMed(valuerange);
 			this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(OsteopathicDiseaseOther.getMintogenerateerrorval(),
-									OsteopathicDiseaseOther.getMaxtogenerateerrorval())))) {
-				this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getOsteopathicDOtherMed().getMinimum(),
-								(int) this.getOsteopathicDOtherMed().getMaximum()));
-			} else {
-				this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(OsteopathicDiseaseOther.getMintogenerateerrorval(),
-								OsteopathicDiseaseOther.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -178,7 +153,7 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 	 *
 	 * /**
 	 *
-	 * @return the uniformDistribution
+	 * @return the randomizingDistribution
 	 */
 	/**
 	 * @return
@@ -192,8 +167,8 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 	/**
 	 * @return
 	 */
-	public UniformDistribution getUniformDistribution() {
-		return this.uniformDistribution;
+	public RandomizingDistribution getUniformDistribution() {
+		return this.randomizingDistribution;
 	}
 
 	/**
@@ -253,22 +228,22 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 	 * @return
 	 */
 	/**
-	 * @param uniformDistribution the uniformDistribution to set
+	 * @param randomizingDistribution the randomizingDistribution to set
 	 */
 	/**
-	 * @param uniformDistribution
+	 * @param randomizingDistribution
 	 */
 	/**
-	 * @param uniformDistribution
+	 * @param randomizingDistribution
 	 */
 	/**
-	 * @param uniformDistribution
+	 * @param randomizingDistribution
 	 */
 	/**
-	 * @param uniformDistribution
+	 * @param randomizingDistribution
 	 */
-	public void setUniformDistribution(UniformDistribution uniformDistribution) {
-		this.uniformDistribution = uniformDistribution;
+	public void setUniformDistribution(RandomizingDistribution randomizingDistribution) {
+		this.randomizingDistribution = randomizingDistribution;
 	}
 
 	/**
@@ -288,6 +263,32 @@ public class OsteopathicDiseaseOther extends OsteopathicDiseaseResponse {
 	 */
 	public void setUtilities(Utilities utilities) {
 		this.utilities = utilities;
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformDistribution().generatenoiseinresponsevariables(
+							this.getUtilities().randBetween(OsteopathicDiseaseOther.getMintogenerateerrorval(),
+									OsteopathicDiseaseOther.getMaxtogenerateerrorval())))) {
+				this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(
+						this.getUtilities().randBetween((int) this.getOsteopathicDOtherMed().getMinimum(),
+								(int) this.getOsteopathicDOtherMed().getMaximum()));
+			} else {
+				this.setOsteopathicDiseasesOtherMedsAdministeredEpicResponse(
+						this.getUtilities().randBetween(OsteopathicDiseaseOther.getMintogenerateerrorval(),
+								OsteopathicDiseaseOther.getMaxtogenerateerrorval()));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

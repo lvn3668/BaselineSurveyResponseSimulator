@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,24 +85,12 @@ public class ProstateCancer extends CancerResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(ProstateCancer.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(ProstateCancer.getMintogenerateerrorval(),
 					ProstateCancer.getMaxtogenerateerrorval()));
 
 			this.setProstateCancerMedicines(ValueRange.of(0, 1));
 			this.setProstatecancermedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							ProstateCancer.getMintogenerateerrorval(), ProstateCancer.getMaxtogenerateerrorval())))) {
-				this.setProstatecancermedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getProstateCancerMedicines().getMinimum(),
-								(int) this.getProstateCancerMedicines().getMaximum()));
-			} else {
-				this.setProstatecancermedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						ProstateCancer.getMintogenerateerrorval(), ProstateCancer.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -112,30 +100,17 @@ public class ProstateCancer extends CancerResponse {
 	public ProstateCancer(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort);
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(new UniformDistribution(ProstateCancer.getMintogenerateerrorval(),
-				ProstateCancer.getMaxtogenerateerrorval()));
-
-		this.setProstateCancerMedicines(valuerange);
-		this.setProstatecancermedicinesadministeredepicresponse(simulatedresponse);
-		// if CancerResponse is positive, then generate values
-		// for whether medicines are being administered or not
-		// else set to 0
 
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							ProstateCancer.getMintogenerateerrorval(), ProstateCancer.getMaxtogenerateerrorval())))) {
-				this.setProstatecancermedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getProstateCancerMedicines().getMinimum(),
-								(int) this.getProstateCancerMedicines().getMaximum()));
-			} else {
-				this.setProstatecancermedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						ProstateCancer.getMintogenerateerrorval(), ProstateCancer.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new RandomizingDistribution(ProstateCancer.getMintogenerateerrorval(),
+					ProstateCancer.getMaxtogenerateerrorval()));
+
+			this.setProstateCancerMedicines(valuerange);
+			this.setProstatecancermedicinesadministeredepicresponse(simulatedresponse);
+			// if CancerResponse is positive, then generate values
+			// for whether medicines are being administered or not
+			// else set to 0
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -207,6 +182,26 @@ public class ProstateCancer extends CancerResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+						ProstateCancer.getMintogenerateerrorval(), ProstateCancer.getMaxtogenerateerrorval())))) {
+			this.setProstatecancermedicinesadministeredepicresponse(
+					this.getUtilities().randBetween((int) this.getProstateCancerMedicines().getMinimum(),
+							(int) this.getProstateCancerMedicines().getMaximum()));
+		} else {
+			this.setProstatecancermedicinesadministeredepicresponse(this.getUtilities()
+					.randBetween(ProstateCancer.getMintogenerateerrorval(), ProstateCancer.getMaxtogenerateerrorval()));
 		}
 	}
 

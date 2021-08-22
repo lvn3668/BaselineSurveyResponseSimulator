@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -97,24 +97,12 @@ public class Cholesterol extends MiscDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Cholesterol.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(Cholesterol.getMintogenerateerrorval(),
 					Cholesterol.getMaxtogenerateerrorval()));
 
 			this.setCholesterolMedicines(ValueRange.of(0, 1));
 			this.setCholesterolmedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Cholesterol.getMintogenerateerrorval(), Cholesterol.getMaxtogenerateerrorval())))) {
-				this.setCholesterolmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getCholesterolMedicines().getMinimum(),
-								(int) this.getCholesterolMedicines().getMaximum()));
-			} else {
-				this.setCholesterolmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Cholesterol.getMintogenerateerrorval(), Cholesterol.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,26 +117,14 @@ public class Cholesterol extends MiscDiseaseResponse {
 	public Cholesterol(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(new UniformDistribution(Cholesterol.getMintogenerateerrorval(),
-				Cholesterol.getMaxtogenerateerrorval()));
-
-		this.setCholesterolMedicines(valuerange);
-		this.setCholesterolmedicinesadministeredepicresponse(simulatedresponse);
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Cholesterol.getMintogenerateerrorval(), Cholesterol.getMaxtogenerateerrorval())))) {
-				this.setCholesterolmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getCholesterolMedicines().getMinimum(),
-								(int) this.getCholesterolMedicines().getMaximum()));
-			} else {
-				this.setCholesterolmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Cholesterol.getMintogenerateerrorval(), Cholesterol.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new RandomizingDistribution(Cholesterol.getMintogenerateerrorval(),
+					Cholesterol.getMaxtogenerateerrorval()));
+
+			this.setCholesterolMedicines(valuerange);
+			this.setCholesterolmedicinesadministeredepicresponse(simulatedresponse);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -244,6 +220,29 @@ public class Cholesterol extends MiscDiseaseResponse {
 			throws Exception {
 		try {
 			this.cholesterolmedicinesadministeredepicresponse = cholesterolmedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void simulateResponses(VeteranCohort veterancohort) {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							Cholesterol.getMintogenerateerrorval(), Cholesterol.getMaxtogenerateerrorval())))) {
+				this.setCholesterolmedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getCholesterolMedicines().getMinimum(),
+								(int) this.getCholesterolMedicines().getMaximum()));
+			} else {
+				this.setCholesterolmedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(Cholesterol.getMintogenerateerrorval(), Cholesterol.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

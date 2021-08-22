@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -89,7 +89,7 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(SleepApnea.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(SleepApnea.getMintogenerateerrorval(),
 					SleepApnea.getMaxtogenerateerrorval()));
 
 			this.setSleepApneaMedicines(ValueRange.of(0, 1));
@@ -103,30 +103,14 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 	public SleepApnea(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(
-				new UniformDistribution(SleepApnea.getMintogenerateerrorval(), SleepApnea.getMaxtogenerateerrorval()));
-
-		this.setSleepApneaMedicines(valuerange);
-		this.setSleepapneamedicinesadministeredepicresponse(simulatedresponse);
-		// if CancerResponse is positive, then generate values
-		// for whether medicines are being administered or not
-		// else set to 0
 
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SleepApnea.getMintogenerateerrorval(), SleepApnea.getMaxtogenerateerrorval())))) {
-				this.setSleepapneamedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getSleepApneaMedicines().getMinimum(),
-								(int) this.getSleepApneaMedicines().getMaximum()));
-			} else {
-				this.setSleepapneamedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(SleepApnea.getMintogenerateerrorval(), SleepApnea.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new RandomizingDistribution(SleepApnea.getMintogenerateerrorval(),
+					SleepApnea.getMaxtogenerateerrorval()));
+
+			this.setSleepApneaMedicines(valuerange);
+			this.setSleepapneamedicinesadministeredepicresponse(simulatedresponse);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -202,6 +186,34 @@ public class SleepApnea extends OsteopathicDiseaseResponse {
 	private void setSleepapneamedicinesadministeredepicresponse(int sleepapneamedicinesadministeredepicresponse) {
 		try {
 			this.sleepapneamedicinesadministeredepicresponse = sleepapneamedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+		// if CancerResponse is positive, then generate values
+// for whether medicines are being administered or not
+// else set to 0
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							SleepApnea.getMintogenerateerrorval(), SleepApnea.getMaxtogenerateerrorval())))) {
+				this.setSleepapneamedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getSleepApneaMedicines().getMinimum(),
+								(int) this.getSleepApneaMedicines().getMaximum()));
+			} else {
+				this.setSleepapneamedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(SleepApnea.getMintogenerateerrorval(), SleepApnea.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

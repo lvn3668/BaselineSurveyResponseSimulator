@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 import simulatedDiseaseResponse.simulatedDiseasePresenceAbsenceResponseForFamilyMembers;
 
 /**
@@ -80,26 +80,23 @@ public class Sibling1 extends Sibling {
 		// TODO Auto-generated constructor stub
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
-				new UniformDistribution(Sibling1.getMintogenerateerrorval(), Sibling1.getMaxtogenerateerrorval()));
+				new RandomizingDistribution(Sibling1.getMintogenerateerrorval(), Sibling1.getMaxtogenerateerrorval()));
 		Sibling1.setErrorResponse(this.getUtilities().randBetween(Sibling1.getMintogenerateerrorval(),
 				Sibling1.getMaxtogenerateerrorval()));
 		// Assign gender to Sibling
 		this.setSexSimulatedResponse(this.simulateSexValue());
 
-		System.out.println("Cohort Year of Birth "
-				+ this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue());
-//		System.out.println("Sibling 1 earliest year of birth " +
-//		Integer.parseInt(this.getUtilities().extractYearFromDate(cohort.getBirthDateSimulated()).getValue()) -
-//		this.getUtilities().randBetween(1,20));
 		if (veteranCohort.getMultipleBirthsSimulatedResponse() == 1) {
 
 			Sibling1.setEarliestDOBSibling(veteranCohort.getEarliestDOBForSimulation());
 			Sibling1.setLatestDOBSibling(veteranCohort.getLatestDOBForSimulation());
 		} else {
-			Sibling1.setEarliestDOBSibling(LocalDate
-					.of(this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 10, 1, 1));
+			Sibling1.setEarliestDOBSibling(LocalDate.of(
+					this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 10, 1,
+					1));
 			Sibling1.setLatestDOBSibling(LocalDate.of(
-					this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() + 10, 12, 31));
+					this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() + 10, 12,
+					31));
 		}
 
 		this.setBirthDateSimulated(this.simulateDateOfBirth());
@@ -125,8 +122,6 @@ public class Sibling1 extends Sibling {
 					Date.from(Sibling1.getLatestDOBSibling().atStartOfDay(ZoneId.systemDefault()).toInstant())
 							.getTime()));
 			this.setBirthDateSimulated(simulatedDOB);
-
-			System.out.println("Sibling 1 DOB " + simulatedDOB);
 			return this.getBirthDateSimulated();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

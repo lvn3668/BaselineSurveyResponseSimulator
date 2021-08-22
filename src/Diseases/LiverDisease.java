@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan MAVERIC / VABHS
@@ -85,21 +85,11 @@ public class LiverDisease extends OsteopathicDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(LiverDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(LiverDisease.getMintogenerateerrorval(),
 					LiverDisease.getMaxtogenerateerrorval()));
 
 			this.setLiverMedicines(ValueRange.of(0, 1));
 			this.setLivermedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							LiverDisease.getMintogenerateerrorval(), LiverDisease.getMaxtogenerateerrorval())))) {
-				this.setLivermedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getLiverMedicines().getMinimum(), (int) this.getLiverMedicines().getMaximum()));
-			} else {
-				this.setLivermedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(LiverDisease.getMintogenerateerrorval(), LiverDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -112,21 +102,11 @@ public class LiverDisease extends OsteopathicDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(LiverDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(LiverDisease.getMintogenerateerrorval(),
 					LiverDisease.getMaxtogenerateerrorval()));
 
 			this.setLiverMedicines(valuerange);
 			this.setLivermedicinesadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							LiverDisease.getMintogenerateerrorval(), LiverDisease.getMaxtogenerateerrorval())))) {
-				this.setLivermedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getLiverMedicines().getMinimum(), (int) this.getLiverMedicines().getMaximum()));
-			} else {
-				this.setLivermedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(LiverDisease.getMintogenerateerrorval(), LiverDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -203,6 +183,29 @@ public class LiverDisease extends OsteopathicDiseaseResponse {
 			throws Exception {
 		try {
 			this.livermedicinesadministeredepicresponse = livermedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							LiverDisease.getMintogenerateerrorval(), LiverDisease.getMaxtogenerateerrorval())))) {
+				this.setLivermedicinesadministeredepicresponse(this.getUtilities().randBetween(
+						(int) this.getLiverMedicines().getMinimum(), (int) this.getLiverMedicines().getMaximum()));
+			} else {
+				this.setLivermedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(LiverDisease.getMintogenerateerrorval(), LiverDisease.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

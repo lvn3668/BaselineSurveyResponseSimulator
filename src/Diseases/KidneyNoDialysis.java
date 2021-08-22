@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -86,50 +86,29 @@ public class KidneyNoDialysis extends NephrologyResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(KidneyNoDialysis.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(KidneyNoDialysis.getMintogenerateerrorval(),
 					KidneyNoDialysis.getMaxtogenerateerrorval()));
 
 			this.setKdNoDialysisMeds(ValueRange.of(0, 1));
 			this.setKdNoDialysisMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(KidneyNoDialysis.getMintogenerateerrorval(),
-									KidneyNoDialysis.getMaxtogenerateerrorval())))) {
-				this.setKdNoDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getKdNoDialysisMeds().getMinimum(), (int) this.getKdNoDialysisMeds().getMaximum()));
-			} else {
-				this.setKdNoDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						KidneyNoDialysis.getMintogenerateerrorval(), KidneyNoDialysis.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
 
-	public KidneyNoDialysis(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public KidneyNoDialysis(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(KidneyNoDialysis.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(KidneyNoDialysis.getMintogenerateerrorval(),
 					KidneyNoDialysis.getMaxtogenerateerrorval()));
 
 			this.setKdNoDialysisMeds(valuerange);
 			this.setKdNoDialysisMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(KidneyNoDialysis.getMintogenerateerrorval(),
-									KidneyNoDialysis.getMaxtogenerateerrorval())))) {
-				this.setKdNoDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getKdNoDialysisMeds().getMinimum(), (int) this.getKdNoDialysisMeds().getMaximum()));
-			} else {
-				this.setKdNoDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						KidneyNoDialysis.getMintogenerateerrorval(), KidneyNoDialysis.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -206,6 +185,29 @@ public class KidneyNoDialysis extends NephrologyResponse {
 			throws Exception {
 		try {
 			this.KdNoDialysisMedsAdministeredEpicResponse = kdNoDialysisMedsAdministeredEpicResponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(
+							this.getUtilities().randBetween(KidneyNoDialysis.getMintogenerateerrorval(),
+									KidneyNoDialysis.getMaxtogenerateerrorval())))) {
+				this.setKdNoDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+						(int) this.getKdNoDialysisMeds().getMinimum(), (int) this.getKdNoDialysisMeds().getMaximum()));
+			} else {
+				this.setKdNoDialysisMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+						KidneyNoDialysis.getMintogenerateerrorval(), KidneyNoDialysis.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

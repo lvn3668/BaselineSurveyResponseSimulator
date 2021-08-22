@@ -9,7 +9,7 @@ package simulatedResponseRace;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author visu4
@@ -177,7 +177,7 @@ public class SimulatedResponseRace {
 	/**
 	 *
 	 */
-	private UniformDistribution uniformdistribution;
+	private RandomizingDistribution uniformdistribution;
 	/**
 	 *
 	 */
@@ -189,7 +189,7 @@ public class SimulatedResponseRace {
 	public SimulatedResponseRace() {
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(SimulatedResponseRace.minToGenerateErrorResponse,
+			this.setUniformdistribution(new RandomizingDistribution(SimulatedResponseRace.minToGenerateErrorResponse,
 					SimulatedResponseRace.maxToGenerateErrorResponse));
 			// set error response
 			setErrorresponse(this.getUtilities().randBetween(SimulatedResponseRace.getMinimumtogenerateerrorresponse(),
@@ -258,7 +258,7 @@ public class SimulatedResponseRace {
 		try {
 			// To be reworked
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution());
+			this.setUniformdistribution(new RandomizingDistribution());
 
 			this.setRaceWhiteValueRange(raceWhite);
 			this.setRaceWhitesimulatedresponse(racewhitesimulatedepicresponse);
@@ -596,7 +596,7 @@ public class SimulatedResponseRace {
 	/**
 	 * @return
 	 */
-	private UniformDistribution getUniformdistribution() {
+	private RandomizingDistribution getUniformdistribution() {
 		try {
 			return this.uniformdistribution;
 		} catch (Exception e) {
@@ -952,7 +952,7 @@ public class SimulatedResponseRace {
 	/**
 	 * @param uniformdistribution
 	 */
-	private void setUniformdistribution(UniformDistribution uniformdist) {
+	private void setUniformdistribution(RandomizingDistribution uniformdist) {
 		try {
 			this.uniformdistribution = uniformdist;
 		} catch (Exception e) {
@@ -1244,51 +1244,51 @@ public class SimulatedResponseRace {
 	@Override
 	public String toString() {
 		try {
-			return "SimulatedResponseRace [raceAfricanAmericansimulatedresponse="
-					+ this.raceAfricanAmericansimulatedresponse + ", raceAfricanAmericanValueRange="
-					+ this.raceAfricanAmericanValueRange + ", raceAmericanIndianValueRange="
-					+ this.raceAmericanIndianValueRange + ", raceAmericanIndiansimulatedresponse="
-					+ this.raceAmericanIndiansimulatedresponse + ", raceAsianFilipinoValueRange="
-					+ this.raceAsianFilipinoValueRange + ", raceAsianFilipinosimulatedresponse="
-					+ this.raceAsianFilipinosimulatedresponse + ", raceAsianIndianValueRange="
-					+ this.raceAsianIndianValueRange + ", raceAsianIndiansimulatedresponse="
-					+ this.raceAsianIndiansimulatedresponse + ", raceAsianJapanValueRange="
-					+ this.raceAsianJapanValueRange + ", raceAsianJapansimulatedresponse="
-					+ this.raceAsianJapansimulatedresponse + ", raceAsianOtherValueRange="
-					+ this.raceAsianOtherValueRange + ", raceAsianOthersimulatedresponse="
-					+ this.raceAsianOthersimulatedresponse + ", raceAsianPacificIslanderValueRange="
-					+ this.raceAsianPacificIslanderValueRange + ", raceAsianPacificIslandersimulatedresponse="
-					+ this.raceAsianPacificIslandersimulatedresponse + ", raceOtherValueRange="
-					+ this.raceOtherValueRange + ", raceOthersimulatedresponse=" + this.raceOthersimulatedresponse
-					+ ", racePacificIslanderValueRange=" + this.racePacificIslanderValueRange
-					+ ", racePacificIslandersimulatedresponse=" + this.racePacificIslandersimulatedresponse
-					+ ", raceWhiteValueRange=" + this.raceWhiteValueRange + ", raceWhitesimulatedresponse="
-					+ this.raceWhitesimulatedresponse + ", uniformdistribution=" + this.uniformdistribution
-					+ ", utilities=" + this.utilities + "]";
+			return Messages.getString("SimulatedResponseRace.0") //$NON-NLS-1$
+					+ this.raceAfricanAmericansimulatedresponse + Messages.getString("SimulatedResponseRace.1") //$NON-NLS-1$
+					+ this.raceAfricanAmericanValueRange + Messages.getString("SimulatedResponseRace.2") //$NON-NLS-1$
+					+ this.raceAmericanIndianValueRange + Messages.getString("SimulatedResponseRace.3") //$NON-NLS-1$
+					+ this.raceAmericanIndiansimulatedresponse + Messages.getString("SimulatedResponseRace.4") //$NON-NLS-1$
+					+ this.raceAsianFilipinoValueRange + Messages.getString("SimulatedResponseRace.5") //$NON-NLS-1$
+					+ this.raceAsianFilipinosimulatedresponse + Messages.getString("SimulatedResponseRace.6") //$NON-NLS-1$
+					+ this.raceAsianIndianValueRange + Messages.getString("SimulatedResponseRace.7") //$NON-NLS-1$
+					+ this.raceAsianIndiansimulatedresponse + Messages.getString("SimulatedResponseRace.8") //$NON-NLS-1$
+					+ this.raceAsianJapanValueRange + Messages.getString("SimulatedResponseRace.9") //$NON-NLS-1$
+					+ this.raceAsianJapansimulatedresponse + Messages.getString("SimulatedResponseRace.10") //$NON-NLS-1$
+					+ this.raceAsianOtherValueRange + Messages.getString("SimulatedResponseRace.11") //$NON-NLS-1$
+					+ this.raceAsianOthersimulatedresponse + Messages.getString("SimulatedResponseRace.12") //$NON-NLS-1$
+					+ this.raceAsianPacificIslanderValueRange + Messages.getString("SimulatedResponseRace.13") //$NON-NLS-1$
+					+ this.raceAsianPacificIslandersimulatedresponse + Messages.getString("SimulatedResponseRace.14") //$NON-NLS-1$
+					+ this.raceOtherValueRange + Messages.getString("SimulatedResponseRace.15") + this.raceOthersimulatedresponse //$NON-NLS-1$
+					+ Messages.getString("SimulatedResponseRace.16") + this.racePacificIslanderValueRange //$NON-NLS-1$
+					+ Messages.getString("SimulatedResponseRace.17") + this.racePacificIslandersimulatedresponse //$NON-NLS-1$
+					+ Messages.getString("SimulatedResponseRace.18") + this.raceWhiteValueRange + Messages.getString("SimulatedResponseRace.19") //$NON-NLS-1$ //$NON-NLS-2$
+					+ this.raceWhitesimulatedresponse + Messages.getString("SimulatedResponseRace.20") + this.uniformdistribution //$NON-NLS-1$
+					+ Messages.getString("SimulatedResponseRace.21") + this.utilities + Messages.getString("SimulatedResponseRace.22"); //$NON-NLS-1$ //$NON-NLS-2$
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return "SimulatedResponseRace [raceAfricanAmericansimulatedresponse="
-				+ this.raceAfricanAmericansimulatedresponse + ", raceAfricanAmericanValueRange="
-				+ this.raceAfricanAmericanValueRange + ", raceAmericanIndianValueRange="
-				+ this.raceAmericanIndianValueRange + ", raceAmericanIndiansimulatedresponse="
-				+ this.raceAmericanIndiansimulatedresponse + ", raceAsianFilipinoValueRange="
-				+ this.raceAsianFilipinoValueRange + ", raceAsianFilipinosimulatedresponse="
-				+ this.raceAsianFilipinosimulatedresponse + ", raceAsianIndianValueRange="
-				+ this.raceAsianIndianValueRange + ", raceAsianIndiansimulatedresponse="
-				+ this.raceAsianIndiansimulatedresponse + ", raceAsianJapanValueRange=" + this.raceAsianJapanValueRange
-				+ ", raceAsianJapansimulatedresponse=" + this.raceAsianJapansimulatedresponse
-				+ ", raceAsianOtherValueRange=" + this.raceAsianOtherValueRange + ", raceAsianOthersimulatedresponse="
-				+ this.raceAsianOthersimulatedresponse + ", raceAsianPacificIslanderValueRange="
-				+ this.raceAsianPacificIslanderValueRange + ", raceAsianPacificIslandersimulatedresponse="
-				+ this.raceAsianPacificIslandersimulatedresponse + ", raceOtherValueRange=" + this.raceOtherValueRange
-				+ ", raceOthersimulatedresponse=" + this.raceOthersimulatedresponse + ", racePacificIslanderValueRange="
-				+ this.racePacificIslanderValueRange + ", racePacificIslandersimulatedresponse="
-				+ this.racePacificIslandersimulatedresponse + ", raceWhiteValueRange=" + this.raceWhiteValueRange
-				+ ", raceWhitesimulatedresponse=" + this.raceWhitesimulatedresponse + ", uniformdistribution="
-				+ this.uniformdistribution + ", utilities=" + this.utilities + "]";
+		return Messages.getString("SimulatedResponseRace.23") //$NON-NLS-1$
+				+ this.raceAfricanAmericansimulatedresponse + Messages.getString("SimulatedResponseRace.24") //$NON-NLS-1$
+				+ this.raceAfricanAmericanValueRange + Messages.getString("SimulatedResponseRace.25") //$NON-NLS-1$
+				+ this.raceAmericanIndianValueRange + Messages.getString("SimulatedResponseRace.26") //$NON-NLS-1$
+				+ this.raceAmericanIndiansimulatedresponse + Messages.getString("SimulatedResponseRace.27") //$NON-NLS-1$
+				+ this.raceAsianFilipinoValueRange + Messages.getString("SimulatedResponseRace.28") //$NON-NLS-1$
+				+ this.raceAsianFilipinosimulatedresponse + Messages.getString("SimulatedResponseRace.29") //$NON-NLS-1$
+				+ this.raceAsianIndianValueRange + Messages.getString("SimulatedResponseRace.30") //$NON-NLS-1$
+				+ this.raceAsianIndiansimulatedresponse + Messages.getString("SimulatedResponseRace.31") + this.raceAsianJapanValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseRace.32") + this.raceAsianJapansimulatedresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseRace.33") + this.raceAsianOtherValueRange + Messages.getString("SimulatedResponseRace.34") //$NON-NLS-1$ //$NON-NLS-2$
+				+ this.raceAsianOthersimulatedresponse + Messages.getString("SimulatedResponseRace.35") //$NON-NLS-1$
+				+ this.raceAsianPacificIslanderValueRange + Messages.getString("SimulatedResponseRace.36") //$NON-NLS-1$
+				+ this.raceAsianPacificIslandersimulatedresponse + Messages.getString("SimulatedResponseRace.37") + this.raceOtherValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseRace.38") + this.raceOthersimulatedresponse + Messages.getString("SimulatedResponseRace.39") //$NON-NLS-1$ //$NON-NLS-2$
+				+ this.racePacificIslanderValueRange + Messages.getString("SimulatedResponseRace.40") //$NON-NLS-1$
+				+ this.racePacificIslandersimulatedresponse + Messages.getString("SimulatedResponseRace.41") + this.raceWhiteValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseRace.42") + this.raceWhitesimulatedresponse + Messages.getString("SimulatedResponseRace.43") //$NON-NLS-1$ //$NON-NLS-2$
+				+ this.uniformdistribution + Messages.getString("SimulatedResponseRace.44") + this.utilities + Messages.getString("SimulatedResponseRace.45"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	}
 

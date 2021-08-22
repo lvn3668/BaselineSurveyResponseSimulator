@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,23 +85,11 @@ public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
 					GIIrritableBowelSyndrome.getMaxtogenerateerrorval()));
 
 			this.setGI_IBS_Meds(ValueRange.of(0, 1));
 			this.setGIIBSMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
-									GIIrritableBowelSyndrome.getMaxtogenerateerrorval())))) {
-				this.setGIIBSMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getGI_IBS_Meds().getMinimum(), (int) this.getGI_IBS_Meds().getMaximum()));
-			} else {
-				this.setGIIBSMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
-								GIIrritableBowelSyndrome.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,29 +97,18 @@ public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
 
 	}
 
-	public GIIrritableBowelSyndrome(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public GIIrritableBowelSyndrome(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
 					GIIrritableBowelSyndrome.getMaxtogenerateerrorval()));
 
 			this.setGI_IBS_Meds(valuerange);
 			this.setGIIBSMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
-									GIIrritableBowelSyndrome.getMaxtogenerateerrorval())))) {
-				this.setGIIBSMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getGI_IBS_Meds().getMinimum(), (int) this.getGI_IBS_Meds().getMaximum()));
-			} else {
-				this.setGIIBSMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
-								GIIrritableBowelSyndrome.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -190,6 +167,26 @@ public class GIIrritableBowelSyndrome extends GastroIntestinalDiseaseResponse {
 	 */
 	private void setGIIBSMedsAdministeredEpicResponse(int gIIBSMedsAdministeredEpicResponse) throws Exception {
 		this.GIIBSMedsAdministeredEpicResponse = gIIBSMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
+								GIIrritableBowelSyndrome.getMaxtogenerateerrorval())))) {
+			this.setGIIBSMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween((int) this.getGI_IBS_Meds().getMinimum(), (int) this.getGI_IBS_Meds().getMaximum()));
+		} else {
+			this.setGIIBSMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween(GIIrritableBowelSyndrome.getMintogenerateerrorval(),
+							GIIrritableBowelSyndrome.getMaxtogenerateerrorval()));
+		}
 	}
 
 	@Override

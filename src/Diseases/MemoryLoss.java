@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,22 +85,12 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MemoryLoss.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MemoryLoss.getMintogenerateerrorval(),
 					MemoryLoss.getMaxtogenerateerrorval()));
 
 			this.setMemoryLossMedicines(ValueRange.of(0, 1));
 			this.setMemorylossmedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							MemoryLoss.getMintogenerateerrorval(), MemoryLoss.getMaxtogenerateerrorval())))) {
-				this.setMemorylossmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getMemoryLossMedicines().getMinimum(),
-								(int) this.getMemoryLossMedicines().getMaximum()));
-			} else {
-				this.setMemorylossmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(MemoryLoss.getMintogenerateerrorval(), MemoryLoss.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -113,22 +103,11 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MemoryLoss.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MemoryLoss.getMintogenerateerrorval(),
 					MemoryLoss.getMaxtogenerateerrorval()));
 
 			this.setMemoryLossMedicines(valuerange);
 			this.setMemorylossmedicinesadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							MemoryLoss.getMintogenerateerrorval(), MemoryLoss.getMaxtogenerateerrorval())))) {
-				this.setMemorylossmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getMemoryLossMedicines().getMinimum(),
-								(int) this.getMemoryLossMedicines().getMaximum()));
-			} else {
-				this.setMemorylossmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(MemoryLoss.getMintogenerateerrorval(), MemoryLoss.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -205,6 +184,32 @@ public class MemoryLoss extends NeuroStimulatoryDiseaseResponse {
 	private void setMemorylossmedicinesadministeredepicresponse(int migranemedicinesadministeredepicresponse) {
 		try {
 			this.memorylossmedicinesadministeredepicresponse = migranemedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							MemoryLoss.getMintogenerateerrorval(), MemoryLoss.getMaxtogenerateerrorval())))) {
+				this.setMemorylossmedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getMemoryLossMedicines().getMinimum(),
+								(int) this.getMemoryLossMedicines().getMaximum()));
+			} else {
+				this.setMemorylossmedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(MemoryLoss.getMintogenerateerrorval(), MemoryLoss.getMaxtogenerateerrorval()));
+			}
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

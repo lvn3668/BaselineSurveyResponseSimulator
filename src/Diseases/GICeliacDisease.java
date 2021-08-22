@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -86,22 +86,11 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GICeliacDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GICeliacDisease.getMintogenerateerrorval(),
 					GICeliacDisease.getMaxtogenerateerrorval()));
 
 			this.setGICeliacDiseaseMeds(ValueRange.of(0, 1));
 			this.setCeliacDiseaseMedAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval())))) {
-				this.setCeliacDiseaseMedAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getGICeliacDiseaseMeds().getMinimum(),
-								(int) this.getGICeliacDiseaseMeds().getMaximum()));
-			} else {
-				this.setCeliacDiseaseMedAdministeredEpicResponse(this.getUtilities().randBetween(
-						GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -113,22 +102,11 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GICeliacDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GICeliacDisease.getMintogenerateerrorval(),
 					GICeliacDisease.getMaxtogenerateerrorval()));
 
 			this.setGICeliacDiseaseMeds(valuerange);
 			this.setCeliacDiseaseMedAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval())))) {
-				this.setCeliacDiseaseMedAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getGICeliacDiseaseMeds().getMinimum(),
-								(int) this.getGICeliacDiseaseMeds().getMaximum()));
-			} else {
-				this.setCeliacDiseaseMedAdministeredEpicResponse(this.getUtilities().randBetween(
-						GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -181,6 +159,29 @@ public class GICeliacDisease extends GastroIntestinalDiseaseResponse {
 	private void setGICeliacDiseaseMeds(ValueRange gICeliacDiseaseMeds) throws Exception {
 		try {
 			this.GICeliacDiseaseMeds = gICeliacDiseaseMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval())))) {
+				this.setCeliacDiseaseMedAdministeredEpicResponse(
+						this.getUtilities().randBetween((int) this.getGICeliacDiseaseMeds().getMinimum(),
+								(int) this.getGICeliacDiseaseMeds().getMaximum()));
+			} else {
+				this.setCeliacDiseaseMedAdministeredEpicResponse(this.getUtilities().randBetween(
+						GICeliacDisease.getMintogenerateerrorval(), GICeliacDisease.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

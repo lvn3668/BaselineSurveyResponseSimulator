@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -79,24 +79,11 @@ public class Blindness extends HearingVisionDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Blindness.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(Blindness.getMintogenerateerrorval(),
 					Blindness.getMaxtogenerateerrorval()));
 
 			this.setBlindnessMedicines(ValueRange.of(0, 1));
 			this.setBlindnessmedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval())))) {
-				this.setBlindnessmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getBlindnessMedicines().getMinimum(),
-								(int) this.getBlindnessMedicines().getMaximum()));
-			} else {
-				this.setBlindnessmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,24 +98,12 @@ public class Blindness extends HearingVisionDiseaseResponse {
 
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Blindness.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(Blindness.getMintogenerateerrorval(),
 					Blindness.getMaxtogenerateerrorval()));
 
 			this.setBlindnessMedicines(valuerange);
 			this.setBlindnessmedicinesadministeredepicresponse(blindnessmedicinesadministeredepicresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval())))) {
-				this.setBlindnessmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getBlindnessMedicines().getMinimum(),
-								(int) this.getBlindnessMedicines().getMaximum()));
-			} else {
-				this.setBlindnessmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -209,6 +184,29 @@ public class Blindness extends HearingVisionDiseaseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	public void simulateResponses(VeteranCohort veterancohort) {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval())))) {
+				this.setBlindnessmedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getBlindnessMedicines().getMinimum(),
+								(int) this.getBlindnessMedicines().getMaximum()));
+			} else {
+				this.setBlindnessmedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(Blindness.getMintogenerateerrorval(), Blindness.getMaxtogenerateerrorval()));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,21 +85,11 @@ public class Hypertension extends MiscDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Hypertension.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(Hypertension.getMintogenerateerrorval(),
 					Hypertension.getMaxtogenerateerrorval()));
 
 			this.setHTNMeds(ValueRange.of(0, 1));
 			this.setHTNMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Hypertension.getMintogenerateerrorval(), Hypertension.getMaxtogenerateerrorval())))) {
-				this.setHTNMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getHTNMeds().getMinimum(), (int) this.getHTNMeds().getMaximum()));
-			} else {
-				this.setHTNMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Hypertension.getMintogenerateerrorval(), Hypertension.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -111,21 +101,11 @@ public class Hypertension extends MiscDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Hypertension.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(Hypertension.getMintogenerateerrorval(),
 					Hypertension.getMaxtogenerateerrorval()));
 
 			this.setHTNMeds(valuerange);
 			this.setHTNMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Hypertension.getMintogenerateerrorval(), Hypertension.getMaxtogenerateerrorval())))) {
-				this.setHTNMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getHTNMeds().getMinimum(), (int) this.getHTNMeds().getMaximum()));
-			} else {
-				this.setHTNMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Hypertension.getMintogenerateerrorval(), Hypertension.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -204,6 +184,23 @@ public class Hypertension extends MiscDiseaseResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+						Hypertension.getMintogenerateerrorval(), Hypertension.getMaxtogenerateerrorval())))) {
+			this.setHTNMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween((int) this.getHTNMeds().getMinimum(), (int) this.getHTNMeds().getMaximum()));
+		} else {
+			this.setHTNMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween(Hypertension.getMintogenerateerrorval(), Hypertension.getMaxtogenerateerrorval()));
 		}
 	}
 

@@ -7,7 +7,7 @@ package simulatedResponseChemicalExposure;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class SimulatedResponseChemicalExposure {
 
@@ -128,7 +128,7 @@ public class SimulatedResponseChemicalExposure {
 	/**
 	 *
 	 */
-	private UniformDistribution uniformDistribution;
+	private RandomizingDistribution randomizingDistribution;
 
 	/**
 	 *
@@ -142,7 +142,7 @@ public class SimulatedResponseChemicalExposure {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformDistribution(
-					new UniformDistribution(SimulatedResponseChemicalExposure.getMinToGenerateErrorVal(),
+					new RandomizingDistribution(SimulatedResponseChemicalExposure.getMinToGenerateErrorVal(),
 							SimulatedResponseChemicalExposure.getMaxToGenerateErrorVal()));
 			SimulatedResponseChemicalExposure.setErrorResponse(
 					this.getUtilities().randBetween(SimulatedResponseChemicalExposure.getMinToGenerateErrorVal(),
@@ -180,7 +180,7 @@ public class SimulatedResponseChemicalExposure {
 			int simulatedresponseanthrax, ValueRange valuerangepyrbr, int simulatedresponsepyrbr) throws Exception {
 		try {
 			this.utilities = new Utilities();
-			this.uniformDistribution = new UniformDistribution(
+			this.randomizingDistribution = new RandomizingDistribution(
 					SimulatedResponseChemicalExposure.getMinToGenerateErrorVal(),
 					SimulatedResponseChemicalExposure.getMaxToGenerateErrorVal());
 			SimulatedResponseChemicalExposure.errorResponse = this.getUtilities().randBetween(
@@ -195,7 +195,7 @@ public class SimulatedResponseChemicalExposure {
 			this.setExposurePyrBrValueRange(valuerangepyrbr);
 			this.setExposurePyrBrsimulatedresponse(simulatedresponsepyrbr);
 			this.utilities = new Utilities();
-			this.uniformDistribution = new UniformDistribution();
+			this.randomizingDistribution = new RandomizingDistribution();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -345,19 +345,19 @@ public class SimulatedResponseChemicalExposure {
 	}
 
 	/**
-	 * @return the uniformDistribution
+	 * @return the randomizingDistribution
 	 */
 	/**
 	 * @return
 	 */
-	private UniformDistribution getUniformDistribution() {
+	private RandomizingDistribution getUniformDistribution() {
 		try {
-			return this.uniformDistribution;
+			return this.randomizingDistribution;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return this.uniformDistribution;
+		return this.randomizingDistribution;
 
 	}
 
@@ -515,14 +515,14 @@ public class SimulatedResponseChemicalExposure {
 	}
 
 	/**
-	 * @param uniformDistribution the uniformDistribution to set
+	 * @param randomizingDistribution the randomizingDistribution to set
 	 */
 	/**
-	 * @param uniformDistribution
+	 * @param randomizingDistribution
 	 */
-	private void setUniformDistribution(UniformDistribution uniformDistribution) {
+	private void setUniformDistribution(RandomizingDistribution randomizingDistribution) {
 		try {
-			this.uniformDistribution = uniformDistribution;
+			this.randomizingDistribution = randomizingDistribution;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -681,15 +681,15 @@ public class SimulatedResponseChemicalExposure {
 	 */
 	@Override
 	public String toString() {
-		return "SimulatedResponseChemicalExposure [ExposureToAgentOValueRange=" + this.ExposureToAgentOValueRange
-				+ ", exposureToAgentOSimulatedResponse=" + this.exposureToAgentOSimulatedResponse
-				+ ", ExposureToChemBioAgentsValueRange=" + this.ExposureToChemBioAgentsValueRange
-				+ ", exposureToChemicalBioAgentssimulatedresponse=" + this.exposureToChemicalBioAgentssimulatedresponse
-				+ ", ExposureToAnthraxValueRange=" + this.ExposureToAnthraxValueRange
-				+ ", exposureToAnthraxsimulatedresponse=" + this.exposureToAnthraxsimulatedresponse
-				+ ", ExposurePyrBrValueRange=" + this.ExposurePyrBrValueRange + ", exposurePyrByrsimulatedresponse="
-				+ this.exposurePyrByrsimulatedresponse + ", utilities=" + this.utilities + ", uniformDistribution="
-				+ this.uniformDistribution + "]";
+		return Messages.getString("SimulatedResponseChemicalExposure.0") + this.ExposureToAgentOValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseChemicalExposure.1") + this.exposureToAgentOSimulatedResponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseChemicalExposure.2") + this.ExposureToChemBioAgentsValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseChemicalExposure.3") + this.exposureToChemicalBioAgentssimulatedresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseChemicalExposure.4") + this.ExposureToAnthraxValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseChemicalExposure.5") + this.exposureToAnthraxsimulatedresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseChemicalExposure.6") + this.ExposurePyrBrValueRange + Messages.getString("SimulatedResponseChemicalExposure.7") //$NON-NLS-1$ //$NON-NLS-2$
+				+ this.exposurePyrByrsimulatedresponse + Messages.getString("SimulatedResponseChemicalExposure.8") + this.utilities + Messages.getString("SimulatedResponseChemicalExposure.9") //$NON-NLS-1$ //$NON-NLS-2$
+				+ this.randomizingDistribution + Messages.getString("SimulatedResponseChemicalExposure.10"); //$NON-NLS-1$
 	}
 
 }

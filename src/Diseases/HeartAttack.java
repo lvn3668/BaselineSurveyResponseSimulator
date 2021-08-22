@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,22 +85,11 @@ public class HeartAttack extends MiscDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HeartAttack.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(HeartAttack.getMintogenerateerrorval(),
 					HeartAttack.getMaxtogenerateerrorval()));
 
 			this.setHeartAttackMedicines(ValueRange.of(0, 1));
 			this.setHeartAttackMedicinesAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							HeartAttack.getMintogenerateerrorval(), HeartAttack.getMaxtogenerateerrorval())))) {
-				this.setHeartAttackMedicinesAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getHeartAttackMedicines().getMinimum(),
-								(int) this.getHeartAttackMedicines().getMaximum()));
-			} else {
-				this.setHeartAttackMedicinesAdministeredEpicResponse(this.getUtilities()
-						.randBetween(HeartAttack.getMintogenerateerrorval(), HeartAttack.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,22 +101,11 @@ public class HeartAttack extends MiscDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HeartAttack.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(HeartAttack.getMintogenerateerrorval(),
 					HeartAttack.getMaxtogenerateerrorval()));
 
 			this.setHeartAttackMedicines(valuerange);
 			this.setHeartAttackMedicinesAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							HeartAttack.getMintogenerateerrorval(), HeartAttack.getMaxtogenerateerrorval())))) {
-				this.setHeartAttackMedicinesAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getHeartAttackMedicines().getMinimum(),
-								(int) this.getHeartAttackMedicines().getMaximum()));
-			} else {
-				this.setHeartAttackMedicinesAdministeredEpicResponse(this.getUtilities()
-						.randBetween(HeartAttack.getMintogenerateerrorval(), HeartAttack.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -199,6 +177,25 @@ public class HeartAttack extends MiscDiseaseResponse {
 		try {
 			this.HeartAttackMedicinesAdministeredEpicResponse = heartAttackMedicinesAdministeredEpicResponse;
 		} finally {
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+						HeartAttack.getMintogenerateerrorval(), HeartAttack.getMaxtogenerateerrorval())))) {
+			this.setHeartAttackMedicinesAdministeredEpicResponse(
+					this.getUtilities().randBetween((int) this.getHeartAttackMedicines().getMinimum(),
+							(int) this.getHeartAttackMedicines().getMaximum()));
+		} else {
+			this.setHeartAttackMedicinesAdministeredEpicResponse(this.getUtilities()
+					.randBetween(HeartAttack.getMintogenerateerrorval(), HeartAttack.getMaxtogenerateerrorval()));
 		}
 	}
 

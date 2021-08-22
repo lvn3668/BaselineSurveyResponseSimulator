@@ -11,7 +11,7 @@ import java.time.temporal.ValueRange;
 import java.util.Random;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class SimulatedResponseQ1_15 {
 
@@ -83,7 +83,7 @@ public class SimulatedResponseQ1_15 {
 	/**
 	*
 	*/
-	private UniformDistribution uniformdistribution;
+	private RandomizingDistribution uniformdistribution;
 	/**
 	*
 	*/
@@ -241,7 +241,7 @@ public class SimulatedResponseQ1_15 {
 							SimulatedResponseQ1_15.getMaxValToGenerateErrorResponse()));
 
 			this.setUniformdistribution(
-					new UniformDistribution(SimulatedResponseQ1_15.getMinValToGenerateErrorResponse(),
+					new RandomizingDistribution(SimulatedResponseQ1_15.getMinValToGenerateErrorResponse(),
 							SimulatedResponseQ1_15.getMaxValToGenerateErrorResponse()));
 			// TODO Auto-generated constructor stub
 			this.setVr12Q10ValueRange(ValueRange.of(1, 6));
@@ -286,7 +286,7 @@ public class SimulatedResponseQ1_15 {
 	/**
 	 * @return
 	 */
-	private UniformDistribution getUniformdistribution() {
+	private RandomizingDistribution getUniformdistribution() {
 		try {
 			return this.uniformdistribution;
 		} catch (Exception e) {
@@ -820,7 +820,7 @@ public class SimulatedResponseQ1_15 {
 	/**
 	 * @param uniformdistribution
 	 */
-	private void setUniformdistribution(UniformDistribution uniformdistribution) {
+	private void setUniformdistribution(RandomizingDistribution uniformdistribution) {
 		try {
 			this.uniformdistribution = uniformdistribution;
 		} catch (Exception e) {

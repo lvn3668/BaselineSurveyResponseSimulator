@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 
@@ -83,26 +83,12 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(BenignProstaticHyperplasia.getMintogenerateerrorval(),
-					BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(BenignProstaticHyperplasia.getMintogenerateerrorval(),
+							BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
 
 			this.setBPHMedicines(ValueRange.of(0, 1));
 			this.setBphmedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									BenignProstaticHyperplasia.getMintogenerateerrorval(),
-									BenignProstaticHyperplasia.getMaxtogenerateerrorval())))) {
-				this.setBphmedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getBPHMedicines().getMinimum(), (int) this.getBPHMedicines().getMaximum()));
-			} else {
-				this.setBphmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween(BenignProstaticHyperplasia.getMintogenerateerrorval(),
-								BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -116,32 +102,19 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 	 * @param bphmedicinesadministeredepicresponse
 	 * @throws Exception
 	 */
-	public BenignProstaticHyperplasia(VeteranCohort veteranCohort, ValueRange valuerange, int bphmedicinesadministeredepicresponse)
-			throws Exception {
+	public BenignProstaticHyperplasia(VeteranCohort veteranCohort, ValueRange valuerange,
+			int bphmedicinesadministeredepicresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, bphmedicinesadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(BenignProstaticHyperplasia.getMintogenerateerrorval(),
-					BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(BenignProstaticHyperplasia.getMintogenerateerrorval(),
+							BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
 
 			this.setBPHMedicines(valuerange);
 			this.setBphmedicinesadministeredepicresponse(bphmedicinesadministeredepicresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									BenignProstaticHyperplasia.getMintogenerateerrorval(),
-									BenignProstaticHyperplasia.getMaxtogenerateerrorval())))) {
-				this.setBphmedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getBPHMedicines().getMinimum(), (int) this.getBPHMedicines().getMaximum()));
-			} else {
-				this.setBphmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween(BenignProstaticHyperplasia.getMintogenerateerrorval(),
-								BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -242,6 +215,31 @@ public class BenignProstaticHyperplasia extends OsteopathicDiseaseResponse {
 			e.printStackTrace();
 			throw e;
 		}
+	}
+
+	public void simulateResponses(VeteranCohort veterancohort) {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformdistribution()
+							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+									BenignProstaticHyperplasia.getMintogenerateerrorval(),
+									BenignProstaticHyperplasia.getMaxtogenerateerrorval())))) {
+				this.setBphmedicinesadministeredepicresponse(this.getUtilities().randBetween(
+						(int) this.getBPHMedicines().getMinimum(), (int) this.getBPHMedicines().getMaximum()));
+			} else {
+				this.setBphmedicinesadministeredepicresponse(
+						this.getUtilities().randBetween(BenignProstaticHyperplasia.getMintogenerateerrorval(),
+								BenignProstaticHyperplasia.getMaxtogenerateerrorval()));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**

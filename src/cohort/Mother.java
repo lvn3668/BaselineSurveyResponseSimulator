@@ -63,28 +63,11 @@ public class Mother extends CohortUtilities {
 	 * @param latestDOBMother the latestDOBMother to set
 	 */
 	private static void setLatestDOBMother(LocalDate latestDOBMother) {
-		System.out.println("Latest dob mother " + latestDOBMother.toString());
 		Mother.latestDOBMother = latestDOBMother;
 	}
 
 	private simulatedDiseasePresenceAbsenceResponseForFamilyMembers simulatedDiseasePresenceAbsenceFamilyMembers;
 
-	protected void simulateResponseVariablesForMother(VeteranCohort veteranCohort) 
-	{
-
-		try {
-			this.setBirthDateSimulated(this.simulateDateOfBirth());
-			this.simulateYearOfBirth(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()));
-			this.simulateYearOfDeath();
-			this.setAliveSimulatedResponse(this.simulateAliveOrDead());
-			this.setSimulatedDiseasePresenceAbsenceFamilyMembers(
-					new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
-			this.getSimulatedDiseasePresenceAbsence().simulateResponseVariablesForFamilyMembers(this.getSexSimulatedResponse());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	public Mother(VeteranCohort veteranCohort) throws Exception {
 		// TODO Auto-generated constructor stub
 		// Set sex for mother to 2
@@ -93,10 +76,12 @@ public class Mother extends CohortUtilities {
 			super.setUtilities(new Utilities());
 			this.setSexSimulatedResponse(2);
 
-			Mother.setEarliestDOBMother(LocalDate
-					.of(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 40, 1, 1));
-			Mother.setLatestDOBMother(LocalDate
-					.of(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 20, 12, 31));
+			Mother.setEarliestDOBMother(LocalDate.of(
+					super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 40, 1,
+					1));
+			Mother.setLatestDOBMother(LocalDate.of(
+					super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 20, 12,
+					31));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,5 +133,21 @@ public class Mother extends CohortUtilities {
 		}
 		return this.getBirthDateSimulated();
 	}
-}
 
+	protected void simulateResponseVariablesForMother(VeteranCohort veteranCohort) {
+
+		try {
+			this.setBirthDateSimulated(this.simulateDateOfBirth());
+			this.simulateYearOfBirth(super.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()));
+			this.simulateYearOfDeath();
+			this.setAliveSimulatedResponse(this.simulateAliveOrDead());
+			this.setSimulatedDiseasePresenceAbsenceFamilyMembers(
+					new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
+			this.getSimulatedDiseasePresenceAbsence()
+					.simulateResponseVariablesForFamilyMembers(this.getSexSimulatedResponse());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

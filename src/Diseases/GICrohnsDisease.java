@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,22 +85,12 @@ public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GICrohnsDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GICrohnsDisease.getMintogenerateerrorval(),
 					GICrohnsDisease.getMaxtogenerateerrorval()));
 
 			this.setGICrohnsDiseaseMeds(ValueRange.of(0, 1));
 			this.setCrohnsDiseaseMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							GICrohnsDisease.getMintogenerateerrorval(), GICrohnsDisease.getMaxtogenerateerrorval())))) {
-				this.setCrohnsDiseaseMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getGICrohnsDiseaseMeds().getMinimum(),
-								(int) this.getGICrohnsDiseaseMeds().getMaximum()));
-			} else {
-				this.setCrohnsDiseaseMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						GICrohnsDisease.getMintogenerateerrorval(), GICrohnsDisease.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,22 +102,11 @@ public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GICrohnsDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GICrohnsDisease.getMintogenerateerrorval(),
 					GICrohnsDisease.getMaxtogenerateerrorval()));
 
 			this.setGICrohnsDiseaseMeds(valuerange);
 			this.setCrohnsDiseaseMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							GICrohnsDisease.getMintogenerateerrorval(), GICrohnsDisease.getMaxtogenerateerrorval())))) {
-				this.setCrohnsDiseaseMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getGICrohnsDiseaseMeds().getMinimum(),
-								(int) this.getGICrohnsDiseaseMeds().getMaximum()));
-			} else {
-				this.setCrohnsDiseaseMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						GICrohnsDisease.getMintogenerateerrorval(), GICrohnsDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -205,6 +184,29 @@ public class GICrohnsDisease extends GastroIntestinalDiseaseResponse {
 	private void setGICrohnsDiseaseMeds(ValueRange gICrohnsDiseaseMeds) throws Exception {
 		try {
 			this.GICrohnsDiseaseMeds = gICrohnsDiseaseMeds;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							GICrohnsDisease.getMintogenerateerrorval(), GICrohnsDisease.getMaxtogenerateerrorval())))) {
+				this.setCrohnsDiseaseMedsAdministeredEpicResponse(
+						this.getUtilities().randBetween((int) this.getGICrohnsDiseaseMeds().getMinimum(),
+								(int) this.getGICrohnsDiseaseMeds().getMaximum()));
+			} else {
+				this.setCrohnsDiseaseMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+						GICrohnsDisease.getMintogenerateerrorval(), GICrohnsDisease.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

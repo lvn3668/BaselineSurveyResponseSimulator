@@ -1,8 +1,5 @@
 package cohort;
 
-import java.time.Year;
-
-import Diseases.BreastCancer;
 import cohortUtils.CohortUtilities;
 import simulatedDiseaseResponse.simulatedDiseasePresenceAbsenceResponseForFamilyMembers;
 
@@ -20,8 +17,10 @@ public class MaternalFemaleGrandParent extends CohortUtilities {
 			// TODO Auto-generated constructor stub
 			// maternalGrandParentKdDisease = new
 			this.setSexSimulatedResponse(2);
-			this.setSimulatedDiseasePresenceAbsenceFamilyMembers(new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
-			this.getSimulatedDiseasePresenceAbsenceFamilyMembers().simulateResponseVariablesForFamilyMembers(this.getSexSimulatedResponse());
+			this.setSimulatedDiseasePresenceAbsenceFamilyMembers(
+					new simulatedDiseasePresenceAbsenceResponseForFamilyMembers(this.getSexSimulatedResponse()));
+			this.getSimulatedDiseasePresenceAbsenceFamilyMembers()
+					.simulateResponseVariablesForFamilyMembers(this.getSexSimulatedResponse());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

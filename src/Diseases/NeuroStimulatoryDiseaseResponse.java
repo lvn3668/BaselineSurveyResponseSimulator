@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -82,7 +82,7 @@ public class NeuroStimulatoryDiseaseResponse {
 
 	private ValueRange diseasepresenceorabsence;
 	private int diseasepresenceorabsencesimulatedepicresponse;
-	private UniformDistribution uniformdistribution;
+	private RandomizingDistribution uniformdistribution;
 	private Utilities utilities;
 	private Year yearDiagnosed = Year.parse(new StringBuilder("0000"));
 
@@ -94,41 +94,11 @@ public class NeuroStimulatoryDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
-					new UniformDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
+					new RandomizingDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
 							NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
 
 			this.setDiseasepresenceorabsence(ValueRange.of(0, 1));
 			this.setDiseasepresenceorabsencesimulatedepicresponse(2);
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(
-					this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
-							NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()))) {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
-								(int) this.getDiseasepresenceorabsence().getMaximum()));
-			} else {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
-								NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
-			}
-
-			// Use Noise to check if valid values of Year are to be generated
-			// If not to generate noise, then assign diagnoses year between 1900 and 2020
-			// TBD: Change seed years
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(
-					this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
-							NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()))) {
-				// this changes
-				// Minimum is SimulatedDiseaseResponse year of birth
-				// Maximum is Today
-
-				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
-			} else {
-				this.setYearDiagnosedSimulatedResponse(Year
-						.of(this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
-								NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval())));
-			}
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -140,7 +110,7 @@ public class NeuroStimulatoryDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
-					new UniformDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
+					new RandomizingDistribution(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
 							NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
 
 			// TODO Auto-generated constructor stub
@@ -168,8 +138,8 @@ public class NeuroStimulatoryDiseaseResponse {
 				// this changes
 				// Minimum is SimulatedDiseaseResponse year of birth
 				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
+				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities().randBetween(
+						veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
 			} else {
 				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
 						this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
@@ -215,7 +185,7 @@ public class NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @return the uniformdistribution
 	 */
-	protected UniformDistribution getUniformdistribution() {
+	protected RandomizingDistribution getUniformdistribution() {
 		try {
 			return this.uniformdistribution;
 		} catch (Exception e) {
@@ -288,7 +258,7 @@ public class NeuroStimulatoryDiseaseResponse {
 	/**
 	 * @param uniformdistribution the uniformdistribution to set
 	 */
-	protected void setUniformdistribution(UniformDistribution uniformdist) {
+	protected void setUniformdistribution(RandomizingDistribution uniformdist) {
 		try {
 			this.uniformdistribution = uniformdist;
 		} catch (Exception e) {
@@ -321,6 +291,24 @@ public class NeuroStimulatoryDiseaseResponse {
 	 */
 	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosed) {
 		this.yearDiagnosed = yearDiagnosed;
+	}
+
+	/**
+	 * @param veteranCohort
+	 * @throws RuntimeException
+	 */
+	public void simulateResponses(VeteranCohort veteranCohort) throws RuntimeException {
+		if (!this.getUniformdistribution().generatenoiseinresponsevariables(
+				this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
+						NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()))) {
+			this.setDiseasepresenceorabsencesimulatedepicresponse(
+					this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
+							(int) this.getDiseasepresenceorabsence().getMaximum()));
+		} else {
+			this.setDiseasepresenceorabsencesimulatedepicresponse(
+					this.getUtilities().randBetween(NeuroStimulatoryDiseaseResponse.getMintogenerateerrorval(),
+							NeuroStimulatoryDiseaseResponse.getMaxtogenerateerrorval()));
+		}
 	}
 
 }

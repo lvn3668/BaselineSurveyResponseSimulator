@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,54 +85,29 @@ public class PulmonaryVascularDisease extends MiscDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(PulmonaryVascularDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(PulmonaryVascularDisease.getMintogenerateerrorval(),
 					PulmonaryVascularDisease.getMaxtogenerateerrorval()));
 
 			this.setPulmonaryVascularDiseaseMedicines(ValueRange.of(0, 1));
 			this.setPulmonaryVascularDiseaseMedsEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(PulmonaryVascularDisease.getMintogenerateerrorval(),
-									PulmonaryVascularDisease.getMaxtogenerateerrorval())))) {
-				this.setPulmonaryVascularDiseaseMedsEpicResponse(
-						this.getUtilities().randBetween((int) this.getPulmonaryVascularDiseaseMedicines().getMinimum(),
-								(int) this.getPulmonaryVascularDiseaseMedicines().getMaximum()));
-			} else {
-				this.setPulmonaryVascularDiseaseMedsEpicResponse(
-						this.getUtilities().randBetween(PulmonaryVascularDisease.getMintogenerateerrorval(),
-								PulmonaryVascularDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
 
-	public PulmonaryVascularDisease(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public PulmonaryVascularDisease(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(PulmonaryVascularDisease.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(PulmonaryVascularDisease.getMintogenerateerrorval(),
 					PulmonaryVascularDisease.getMaxtogenerateerrorval()));
 
 			this.setPulmonaryVascularDiseaseMedicines(valuerange);
 			this.setPulmonaryVascularDiseaseMedsEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(PulmonaryVascularDisease.getMintogenerateerrorval(),
-									PulmonaryVascularDisease.getMaxtogenerateerrorval())))) {
-				this.setPulmonaryVascularDiseaseMedsEpicResponse(
-						this.getUtilities().randBetween((int) this.getPulmonaryVascularDiseaseMedicines().getMinimum(),
-								(int) this.getPulmonaryVascularDiseaseMedicines().getMaximum()));
-			} else {
-				this.setPulmonaryVascularDiseaseMedsEpicResponse(
-						this.getUtilities().randBetween(PulmonaryVascularDisease.getMintogenerateerrorval(),
-								PulmonaryVascularDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -214,6 +189,26 @@ public class PulmonaryVascularDisease extends MiscDiseaseResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(PulmonaryVascularDisease.getMintogenerateerrorval(),
+								PulmonaryVascularDisease.getMaxtogenerateerrorval())))) {
+			this.setPulmonaryVascularDiseaseMedsEpicResponse(
+					this.getUtilities().randBetween((int) this.getPulmonaryVascularDiseaseMedicines().getMinimum(),
+							(int) this.getPulmonaryVascularDiseaseMedicines().getMaximum()));
+		} else {
+			this.setPulmonaryVascularDiseaseMedsEpicResponse(
+					this.getUtilities().randBetween(PulmonaryVascularDisease.getMintogenerateerrorval(),
+							PulmonaryVascularDisease.getMaxtogenerateerrorval()));
 		}
 	}
 

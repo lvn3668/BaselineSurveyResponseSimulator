@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS /MAVERIC
@@ -86,22 +86,12 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GIAcidReflux.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GIAcidReflux.getMintogenerateerrorval(),
 					GIAcidReflux.getMaxtogenerateerrorval()));
 
 			this.setGIAcidRefluxMedicines(ValueRange.of(0, 1));
 			this.setAcidRefluxmedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							GIAcidReflux.getMintogenerateerrorval(), GIAcidReflux.getMaxtogenerateerrorval())))) {
-				this.setAcidRefluxmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getGIAcidRefluxMedicines().getMinimum(),
-								(int) this.getGIAcidRefluxMedicines().getMaximum()));
-			} else {
-				this.setAcidRefluxmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(GIAcidReflux.getMintogenerateerrorval(), GIAcidReflux.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -113,22 +103,11 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GIAcidReflux.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GIAcidReflux.getMintogenerateerrorval(),
 					GIAcidReflux.getMaxtogenerateerrorval()));
 
 			this.setGIAcidRefluxMedicines(valuerange);
 			this.setAcidRefluxmedicinesadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							GIAcidReflux.getMintogenerateerrorval(), GIAcidReflux.getMaxtogenerateerrorval())))) {
-				this.setAcidRefluxmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getGIAcidRefluxMedicines().getMinimum(),
-								(int) this.getGIAcidRefluxMedicines().getMaximum()));
-			} else {
-				this.setAcidRefluxmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(GIAcidReflux.getMintogenerateerrorval(), GIAcidReflux.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -209,6 +188,25 @@ public class GIAcidReflux extends GastroIntestinalDiseaseResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+						GIAcidReflux.getMintogenerateerrorval(), GIAcidReflux.getMaxtogenerateerrorval())))) {
+			this.setAcidRefluxmedicinesadministeredepicresponse(
+					this.getUtilities().randBetween((int) this.getGIAcidRefluxMedicines().getMinimum(),
+							(int) this.getGIAcidRefluxMedicines().getMaximum()));
+		} else {
+			this.setAcidRefluxmedicinesadministeredepicresponse(this.getUtilities()
+					.randBetween(GIAcidReflux.getMintogenerateerrorval(), GIAcidReflux.getMaxtogenerateerrorval()));
 		}
 	}
 

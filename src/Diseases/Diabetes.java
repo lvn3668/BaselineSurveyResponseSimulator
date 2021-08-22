@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -92,22 +92,11 @@ public class Diabetes extends OsteopathicDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Diabetes.getMintogenerateerrorval(),
+					Diabetes.getMaxtogenerateerrorval()));
 
 			this.setDiabetesMedicines(ValueRange.of(0, 1));
 			this.setDiabetesmedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval())))) {
-				this.setDiabetesmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getDiabetesMedicines().getMinimum(),
-								(int) this.getDiabetesMedicines().getMaximum()));
-			} else {
-				this.setDiabetesmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,22 +110,11 @@ public class Diabetes extends OsteopathicDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Diabetes.getMintogenerateerrorval(),
+					Diabetes.getMaxtogenerateerrorval()));
 
 			this.setDiabetesMedicines(valuerange);
 			this.setDiabetesmedicinesadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval())))) {
-				this.setDiabetesmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getDiabetesMedicines().getMinimum(),
-								(int) this.getDiabetesMedicines().getMaximum()));
-			} else {
-				this.setDiabetesmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -225,6 +203,30 @@ public class Diabetes extends OsteopathicDiseaseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+							.randBetween(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval())))) {
+				this.setDiabetesmedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getDiabetesMedicines().getMinimum(),
+								(int) this.getDiabetesMedicines().getMaximum()));
+			} else {
+				this.setDiabetesmedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(Diabetes.getMintogenerateerrorval(), Diabetes.getMaxtogenerateerrorval()));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

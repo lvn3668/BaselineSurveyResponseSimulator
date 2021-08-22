@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation MAVERIC / VABHS
@@ -98,22 +98,11 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Dementia.getMintogenerateerrorval(),
+					Dementia.getMaxtogenerateerrorval()));
 
 			this.setDementiaMedicines(ValueRange.of(0, 1));
 			this.setDementiamedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval())))) {
-				this.setDementiamedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getDementiaMedicines().getMinimum(),
-								(int) this.getDementiaMedicines().getMaximum()));
-			} else {
-				this.setDementiamedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,22 +115,11 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Dementia.getMintogenerateerrorval(),
+					Dementia.getMaxtogenerateerrorval()));
 
 			this.setDementiaMedicines(valuerange);
 			this.setDementiamedicinesadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval())))) {
-				this.setDementiamedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getDementiaMedicines().getMinimum(),
-								(int) this.getDementiaMedicines().getMaximum()));
-			} else {
-				this.setDementiamedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -228,6 +206,30 @@ public class Dementia extends NeuroStimulatoryDiseaseResponse {
 			throws Exception {
 		try {
 			this.dementiamedicinesadministeredepicresponse = dementiamedicinesadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+							.randBetween(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval())))) {
+				this.setDementiamedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getDementiaMedicines().getMinimum(),
+								(int) this.getDementiaMedicines().getMaximum()));
+			} else {
+				this.setDementiamedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(Dementia.getMintogenerateerrorval(), Dementia.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -160,95 +160,6 @@ public class SimulatedDiseaseResponse {
 	private TransientIschemicAttack tia;
 	private Tinitus tinitus;
 	private Tuberculosis tuberculosis;
-	
-	public void simulateResponses() 
-	{
-		try {
-			
-			this.getAcuteSpinalCordInjury().simulateResponses();
-			this.getAlzheimers().simulateResponses();
-			this.getAmytrophiclateralsclerosis().simulateResponses();
-			this.getArthritis().simulateResponses();
-			this.getAsthma().simulateResponses();
-			this.getBPH().simulateResponses();
-			this.getBlindness().simulateResponses();
-			this.getBloodclots().simulateResponses();
-			this.getBreastCancer().simulateResponses();
-			this.getCataract().simulateResponses();
-			this.getCad().simulateResponses();
-			this.getCholesterol().simulateResponses();
-			this.getCirculatorydiseaseother().simulateResponses();
-			this.getColonCancer().simulateResponses();
-			this.getCongestiveheartfailure().simulateResponses();
-			this.getCoronaryarterydisease().simulateResponses();
-			this.getDementia().simulateResponses();
-			this.getEpilepsy().simulateResponses();
-			this.getGIAcidReflux().simulateResponses();
-			this.getGICeliacDisease().simulateResponses();
-			this.getGICrohnsDisease().simulateResponses();
-			this.getGiOtherDisease().simulateResponses();
-			this.getGiIrritableBowelSyndrome().simulateResponses();
-			this.getGIObstruction().simulateResponses();
-			this.getGiPolyp().simulateResponses();
-			this.getGiUlceritiveColitis().simulateResponses();
-			this.getGiUlcer().simulateResponses();
-			this.getGlaucoma().simulateResponses();
-			this.getHearingLoss().simulateResponses();
-			this.getHeartAttack().simulateResponses();
-			this.getHepatisisC().simulateResponses();
-			this.getHiv().simulateResponses();
-			this.getHighBloodPressureDisease().simulateResponses();
-			this.getHypertension().simulateResponses();
-			this.getIDOther().simulateResponses();
-			this.getKidneyDialysis().simulateResponses();
-			this.getKidneyDiseaseAcute().simulateResponses();
-			this.getKidneyNoDialysis().simulateResponses();
-			this.getLiverDisease().simulateResponses();
-			this.getLossofconsciousness().simulateResponses();
-			this.getLungCancer().simulateResponses();
-			this.getLungDisease().simulateResponses();
-			this.getMaculardegeneration().simulateResponses();
-			this.getMemoryLoss().simulateResponses();
-			this.getMentalhealthADHD().simulateResponses();
-			this.getMentalhealthAnxietyPanic().simulateResponses();
-			this.getMentalhealthBipolarDisorder().simulateResponses();
-			this.getMentalhealthDepression().simulateResponses();
-			this.getMentalhealthEatingDisorder().simulateResponses();
-			this.getMentalhealthother().simulateResponses();
-			this.getMentalhealthpersonalitydisorder().simulateResponses();
-			this.getMentalhealthptsd().simulateResponses();
-			this.getMentalhealthschizophrenia().simulateResponses();
-			this.getMentalhealthsocph().simulateResponses();
-			this.getMigrane().simulateResponses();
-			this.getNeurostimulatorydiseaseother().simulateResponses();
-			this.getNSTBI().simulateResponses();
-			this.getOsteopathicdiseaseother().simulateResponses();
-			this.getOsteopathicdiseaseskin().simulateResponses();
-			this.getCancerOther().simulateResponses();
-			this.getParkinsons().simulateResponses();
-			this.getProstateCancer().simulateResponses();
-			this.getPulmonaryvasculardisease().simulateResponses();
-			this.getSkinCancer().simulateResponses();
-			this.getSkinMSGout().simulateResponses();
-			this.getSkinMSOA().simulateResponses();
-			this.getSkinMsRA().simulateResponses();
-			this.getSknMSOthr().simulateResponses();
-			this.getSleepApnea().simulateResponses();
-			this.getStroke().simulateResponses();
-			this.getThyroid().simulateResponses();
-			this.getTia().simulateResponses();
-			this.getTinitus().simulateResponses();
-			this.getTuberculosis().simulateResponses();
-			this.getMultiplesclerosis().simulateResponses();
-			this.getDiabetes().simulateResponses();
-
-			
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-			throw e;
-		}
-	}
 
 	public SimulatedDiseaseResponse(VeteranCohort veteranCohort) throws Exception {
 
@@ -336,8 +247,6 @@ public class SimulatedDiseaseResponse {
 		}
 	}
 
-
-	
 	/**
 	 * @return the nSSci
 	 */
@@ -1870,6 +1779,18 @@ public class SimulatedDiseaseResponse {
 	}
 
 	/**
+	 * @param lungCancer the lungCancer to set
+	 */
+	private void setLungCancer(LungCancer lungCancer) {
+		try {
+			this.lungCancer = lungCancer;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * For siblings asthma presence / absence Alzheimers presence / absence Bipolar
 	 * disorder presence / absence Breast cancer presence / absence Colon cancer
 	 * presence / absence Lung Cancer presence / absence Prostate Cancer presence /
@@ -1882,18 +1803,6 @@ public class SimulatedDiseaseResponse {
 	 */
 
 	// Which sibling
-
-	/**
-	 * @param lungCancer the lungCancer to set
-	 */
-	private void setLungCancer(LungCancer lungCancer) {
-		try {
-			this.lungCancer = lungCancer;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * @param lungDisease the lungDisease to set
@@ -2279,6 +2188,91 @@ public class SimulatedDiseaseResponse {
 			this.tuberculosis = tuberculosis;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void simulateResponses(VeteranCohort veterancohort) {
+		try {
+
+			this.getAcuteSpinalCordInjury().simulateResponses(veterancohort);
+			this.getAlzheimers().simulateResponses(veterancohort);
+			this.getAmytrophiclateralsclerosis().simulateResponses(veterancohort);
+			this.getArthritis().simulateResponses(veterancohort);
+			this.getAsthma().simulateResponses(veterancohort);
+			this.getBPH().simulateResponses(veterancohort);
+			this.getBlindness().simulateResponses(veterancohort);
+			this.getBloodclots().simulateResponses(veterancohort);
+			this.getBreastCancer().simulateResponses(veterancohort);
+			this.getCataract().simulateResponses(veterancohort);
+			this.getCad().simulateResponses(veterancohort);
+			this.getCholesterol().simulateResponses(veterancohort);
+			this.getCirculatorydiseaseother().simulateResponses(veterancohort);
+			this.getColonCancer().simulateResponses(veterancohort);
+			this.getCongestiveheartfailure().simulateResponses(veterancohort);
+			this.getCoronaryarterydisease().simulateResponses(veterancohort);
+			this.getDementia().simulateResponses(veterancohort);
+			this.getEpilepsy().simulateResponses(veterancohort);
+			this.getGiAcidReflux().simulateResponses(veterancohort);
+			this.getGiCeliacDisease().simulateResponses(veterancohort);
+			this.getGiCeliacDisease().simulateResponses(veterancohort);
+			this.getGiOtherDisease().simulateResponses(veterancohort);
+			this.getGiIrritableBowelSyndrome().simulateResponses(veterancohort);
+			this.getGiobstruction().simulateResponses(veterancohort);
+			this.getGiPolyp().simulateResponses(veterancohort);
+			this.getGiUlceritiveColitis().simulateResponses(veterancohort);
+			this.getGiUlcer().simulateResponses(veterancohort);
+			this.getGlaucoma().simulateResponses(veterancohort);
+			this.getHearingLoss().simulateResponses(veterancohort);
+			this.getHeartAttack().simulateResponses(veterancohort);
+			this.getHepatisisC().simulateResponses(veterancohort);
+			this.getHiv().simulateResponses(veterancohort);
+			this.getHighBloodPressureDisease().simulateResponses(veterancohort);
+			this.getHypertension().simulateResponses(veterancohort);
+			this.getIDOther().simulateResponses(veterancohort);
+			this.getKidneyDialysis().simulateResponses(veterancohort);
+			this.getKidneyDiseaseAcute().simulateResponses(veterancohort);
+			this.getKidneyNoDialysis().simulateResponses(veterancohort);
+			this.getLiverDisease().simulateResponses(veterancohort);
+			this.getLossofconsciousness().simulateResponses(veterancohort);
+			this.getLungCancer().simulateResponses(veterancohort);
+			this.getLungDisease().simulateResponses(veterancohort);
+			this.getMaculardegeneration().simulateResponses(veterancohort);
+			this.getMemoryLoss().simulateResponses(veterancohort);
+			this.getMentalhealthADHD().simulateResponses(veterancohort);
+			this.getMentalhealthAnxietyPanic().simulateResponses(veterancohort);
+			this.getMentalhealthBipolarDisorder().simulateResponses(veterancohort);
+			this.getMentalhealthDepression().simulateResponses(veterancohort);
+			this.getMentalhealthEatingDisorder().simulateResponses(veterancohort);
+			this.getMentalhealthother().simulateResponses(veterancohort);
+			this.getMentalhealthpersonalitydisorder().simulateResponses(veterancohort);
+			this.getMentalhealthptsd().simulateResponses(veterancohort);
+			this.getMentalhealthschizophrenia().simulateResponses(veterancohort);
+			this.getMentalhealthsocph().simulateResponses(veterancohort);
+			this.getMigrane().simulateResponses(veterancohort);
+			this.getNeurostimulatorydiseaseother().simulateResponses(veterancohort);
+			this.getNeurostimulatorydiseasetbi().simulateResponses(veterancohort);
+			this.getOsteopathicdiseaseother().simulateResponses(veterancohort);
+			this.getOsteopathicdiseaseskin().simulateResponses(veterancohort);
+			this.getOtherCancer().simulateResponses(veterancohort);
+			this.getParkinsons().simulateResponses(veterancohort);
+			this.getProstateCancer().simulateResponses(veterancohort);
+			this.getPulmonaryvasculardisease().simulateResponses(veterancohort);
+			this.getSkinCancer().simulateResponses(veterancohort);
+			this.getSkinMSGout().simulateResponses(veterancohort);
+			this.getSkinMSOA().simulateResponses(veterancohort);
+			this.getSkinMsRA().simulateResponses(veterancohort);
+			this.getSknMSOthr().simulateResponses(veterancohort);
+			this.getSleepApnea().simulateResponses(veterancohort);
+			this.getStroke().simulateResponses(veterancohort);
+			this.getThyroid().simulateResponses(veterancohort);
+			this.getTia().simulateResponses(veterancohort);
+			this.getTinitus().simulateResponses(veterancohort);
+			this.getTuberculosis().simulateResponses(veterancohort);
+			this.getMultiplesclerosis().simulateResponses(veterancohort);
+			this.getDiabetes().simulateResponses(veterancohort);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

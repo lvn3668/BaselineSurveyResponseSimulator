@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation MAVERIC / VABHS
@@ -76,7 +76,7 @@ public class CancerResponse {
 	private ValueRange diseasepresenceorabsence;
 	// error response
 	private int diseasepresenceorabsencesimulatedepicresponse;
-	private UniformDistribution uniformdistribution;
+	private RandomizingDistribution uniformdistribution;
 	private Utilities utilities;
 
 	private Year yearDiagnosedSimulatedResponse;
@@ -85,37 +85,12 @@ public class CancerResponse {
 		try {
 			this.setCohort(veteranCohort);
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(CancerResponse.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(CancerResponse.getMintogenerateerrorval(),
 					CancerResponse.getMaxtogenerateerrorval()));
 
 			// TODO Auto-generated constructor stub
 			this.setDiseasepresenceorabsence(ValueRange.of(0, 1));
 			this.setDiseasepresenceorabsencesimulatedepicresponse(2);
-			// If not to generate noise, generate value between 0 and 1
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-					CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))) {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
-								(int) this.getDiseasepresenceorabsence().getMaximum()));
-			} else {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(this.getUtilities().randBetween(
-						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()));
-			}
-
-			// Use Noise to check if valid values of Year are to be generated
-			// If not to generate noise, then assign diagnoses year between 1900 and 2020
-			// TBD: Change seed years
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-					CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))) {
-				// this changes
-				// Minimum is SimulatedDiseaseResponse year of birth
-				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
-			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(
-						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval())));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -128,37 +103,13 @@ public class CancerResponse {
 		try {
 			this.setCohort(veteranCohort);
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(CancerResponse.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(CancerResponse.getMintogenerateerrorval(),
 					CancerResponse.getMaxtogenerateerrorval()));
 
 			// TODO Auto-generated constructor stub
 			this.setDiseasepresenceorabsence(valuerange);
 			this.setDiseasepresenceorabsencesimulatedepicresponse(simulatedresponse);
 			// If not to generate noise, generate value between 0 and 1
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-					CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))) {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
-								(int) this.getDiseasepresenceorabsence().getMaximum()));
-			} else {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(this.getUtilities().randBetween(
-						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()));
-			}
-
-			// Use Noise to check if valid values of Year are to be generated
-			// If not to generate noise, then assign diagnoses year between 1900 and 2020
-			// TBD: Change seed years
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-					CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))) {
-				// this changes
-				// Minimum is SimulatedDiseaseResponse year of birth
-				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
-			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities().randBetween(
-						CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -203,7 +154,7 @@ public class CancerResponse {
 	/**
 	 * @return the uniformdistribution
 	 */
-	protected UniformDistribution getUniformdistribution() throws Exception {
+	protected RandomizingDistribution getUniformdistribution() throws Exception {
 		try {
 			return this.uniformdistribution;
 		} catch (Exception e) {
@@ -286,7 +237,7 @@ public class CancerResponse {
 	/**
 	 * @param uniformdistribution the uniformdistribution to set
 	 */
-	protected void setUniformdistribution(UniformDistribution uniformdist) throws Exception {
+	protected void setUniformdistribution(RandomizingDistribution uniformdist) throws Exception {
 		try {
 			this.uniformdistribution = uniformdist;
 		} catch (Exception e) {
@@ -316,6 +267,39 @@ public class CancerResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		if (!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+				.randBetween(CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))) {
+			this.setDiseasepresenceorabsencesimulatedepicresponse(
+					this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
+							(int) this.getDiseasepresenceorabsence().getMaximum()));
+		} else {
+			this.setDiseasepresenceorabsencesimulatedepicresponse(this.getUtilities()
+					.randBetween(CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()));
+		}
+
+		// Use Noise to check if valid values of Year are to be generated
+		// If not to generate noise, then assign diagnoses year between 1900 and 2020
+		// TBD: Change seed years
+		if (!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+				.randBetween(CancerResponse.getMintogenerateerrorval(), CancerResponse.getMaxtogenerateerrorval()))) {
+			// this changes
+			// Minimum is SimulatedDiseaseResponse year of birth
+			// Maximum is Today
+			// Error on line 2040 DateTimeFormatter.java
+			// ParsePosition pos = (position != null ? position : new ParsePosition(0));
+			this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(
+					veterancohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+		} else {
+			this.setYearDiagnosedSimulatedResponse(Year
+					.parse(new StringBuilder(this.getUtilities().randBetween(CancerResponse.getMintogenerateerrorval(),
+							CancerResponse.getMaxtogenerateerrorval()))));
 		}
 	}
 

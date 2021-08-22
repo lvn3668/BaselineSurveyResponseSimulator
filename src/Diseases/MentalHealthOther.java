@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,50 +85,29 @@ public class MentalHealthOther extends MentalHealthResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthOther.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MentalHealthOther.getMintogenerateerrorval(),
 					MentalHealthOther.getMaxtogenerateerrorval()));
 
 			this.setMHOtherMeds(ValueRange.of(0, 1));
 			this.setMHOtherMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(MentalHealthOther.getMintogenerateerrorval(),
-									MentalHealthOther.getMaxtogenerateerrorval())))) {
-				this.setMHOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getMHOtherMeds().getMinimum(), (int) this.getMHOtherMeds().getMaximum()));
-			} else {
-				this.setMHOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						MentalHealthOther.getMintogenerateerrorval(), MentalHealthOther.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
 	}
 
-	public MentalHealthOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MentalHealthOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthOther.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MentalHealthOther.getMintogenerateerrorval(),
 					MentalHealthOther.getMaxtogenerateerrorval()));
 
 			this.setMHOtherMeds(valuerange);
 			this.setMHOtherMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(MentalHealthOther.getMintogenerateerrorval(),
-									MentalHealthOther.getMaxtogenerateerrorval())))) {
-				this.setMHOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getMHOtherMeds().getMinimum(), (int) this.getMHOtherMeds().getMaximum()));
-			} else {
-				this.setMHOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						MentalHealthOther.getMintogenerateerrorval(), MentalHealthOther.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -209,6 +188,23 @@ public class MentalHealthOther extends MentalHealthResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+						MentalHealthOther.getMintogenerateerrorval(), MentalHealthOther.getMaxtogenerateerrorval())))) {
+			this.setMHOtherMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween((int) this.getMHOtherMeds().getMinimum(), (int) this.getMHOtherMeds().getMaximum()));
+		} else {
+			this.setMHOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					MentalHealthOther.getMintogenerateerrorval(), MentalHealthOther.getMaxtogenerateerrorval()));
 		}
 	}
 

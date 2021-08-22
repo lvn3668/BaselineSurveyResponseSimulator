@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,21 +85,11 @@ public class HepatitisC extends InfectiousDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HepatitisC.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(HepatitisC.getMintogenerateerrorval(),
 					HepatitisC.getMaxtogenerateerrorval()));
 
 			this.setHepCMedicines(ValueRange.of(0, 1));
 			this.setHepCMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							HepatitisC.getMintogenerateerrorval(), HepatitisC.getMaxtogenerateerrorval())))) {
-				this.setHepCMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getHepCMedicines().getMinimum(), (int) this.getHepCMedicines().getMaximum()));
-			} else {
-				this.setHepCMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(HepatitisC.getMintogenerateerrorval(), HepatitisC.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -112,21 +102,11 @@ public class HepatitisC extends InfectiousDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HepatitisC.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(HepatitisC.getMintogenerateerrorval(),
 					HepatitisC.getMaxtogenerateerrorval()));
 
 			this.setHepCMedicines(valuerange);
 			this.setHepCMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							HepatitisC.getMintogenerateerrorval(), HepatitisC.getMaxtogenerateerrorval())))) {
-				this.setHepCMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getHepCMedicines().getMinimum(), (int) this.getHepCMedicines().getMaximum()));
-			} else {
-				this.setHepCMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(HepatitisC.getMintogenerateerrorval(), HepatitisC.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -194,6 +174,23 @@ public class HepatitisC extends InfectiousDiseaseResponse {
 		try {
 			this.HepCMedsAdministeredEpicResponse = hepCMedsAdministeredEpicResponse;
 		} finally {
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+						.randBetween(HepatitisC.getMintogenerateerrorval(), HepatitisC.getMaxtogenerateerrorval())))) {
+			this.setHepCMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					(int) this.getHepCMedicines().getMinimum(), (int) this.getHepCMedicines().getMaximum()));
+		} else {
+			this.setHepCMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween(HepatitisC.getMintogenerateerrorval(), HepatitisC.getMaxtogenerateerrorval()));
 		}
 	}
 

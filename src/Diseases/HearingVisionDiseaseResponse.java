@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -83,7 +83,7 @@ public class HearingVisionDiseaseResponse {
 	private ValueRange diseasepresenceorabsence;
 	// error response
 	private int diseasepresenceorabsencesimulatedepicresponse;
-	private UniformDistribution uniformdistribution;
+	private RandomizingDistribution uniformdistribution;
 	private Utilities utilities;
 
 	private Year yearDiagnosed;
@@ -91,40 +91,12 @@ public class HearingVisionDiseaseResponse {
 	public HearingVisionDiseaseResponse(VeteranCohort veteranCohort) {
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-					HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
+							HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
 
 			this.setDiseasepresenceorabsence(ValueRange.of(0, 1));
 			this.setDiseasepresenceorabsencesimulatedepicresponse(2);
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(
-					this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-							HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))) {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
-								(int) this.getDiseasepresenceorabsence().getMaximum()));
-			} else {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-								HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
-			}
-
-			// Use Noise to check if valid values of Year are to be generated
-			// If not to generate noise, then assign diagnoses year between 1900 and 2020
-			// TBD: Change seed years
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(
-					this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-							HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))) {
-				// this changes
-				// Minimum is SimulatedDiseaseResponse year of birth
-				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities()
-						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
-			} else {
-				this.setYearDiagnosedSimulatedResponse(
-						Year.of(this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-								HearingVisionDiseaseResponse.getMaxtogenerateerrorval())));
-			}
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -135,41 +107,14 @@ public class HearingVisionDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-					HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
+							HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
 
 			// TODO Auto-generated constructor stub
 			this.setDiseasepresenceorabsence(valuerange);
 			this.setDiseasepresenceorabsencesimulatedepicresponse(simulatedresponse);
 			// If not to generate noise, generate value between 0 and 1
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(
-					this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-							HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))) {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
-								(int) this.getDiseasepresenceorabsence().getMaximum()));
-			} else {
-				this.setDiseasepresenceorabsencesimulatedepicresponse(
-						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-								HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
-			}
-
-			// Use Noise to check if valid values of Year are to be generated
-			// If not to generate noise, then assign diagnoses year between 1900 and 2020
-			// TBD: Change seed years
-			if (!this.getUniformdistribution().generatenoiseinresponsevariables(
-					this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-							HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))) {
-				// this changes
-				// Minimum is SimulatedDiseaseResponse year of birth
-				// Maximum is Today
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(this.getUtilities()
-						.randBetween(veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR)))));
-			} else {
-				this.setYearDiagnosedSimulatedResponse(Year.parse(new StringBuilder(
-						this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
-								HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -216,7 +161,7 @@ public class HearingVisionDiseaseResponse {
 	/**
 	 * @return the uniformdistribution
 	 */
-	protected UniformDistribution getUniformdistribution() throws Exception {
+	protected RandomizingDistribution getUniformdistribution() throws Exception {
 		try {
 			return this.uniformdistribution;
 		} catch (Exception e) {
@@ -289,7 +234,7 @@ public class HearingVisionDiseaseResponse {
 	/**
 	 * @param uniformdistribution the uniformdistribution to set
 	 */
-	protected void setUniformdistribution(UniformDistribution uniformdist) throws Exception {
+	protected void setUniformdistribution(RandomizingDistribution uniformdist) throws Exception {
 		try {
 			this.uniformdistribution = uniformdist;
 		} catch (Exception e) {
@@ -322,6 +267,41 @@ public class HearingVisionDiseaseResponse {
 	 */
 	private void setYearDiagnosedSimulatedResponse(Year yearDiagnosed) {
 		this.yearDiagnosed = yearDiagnosed;
+	}
+
+	/**
+	 * @param veteranCohort
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veteranCohort) throws Exception {
+		if (!this.getUniformdistribution().generatenoiseinresponsevariables(
+				this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
+						HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))) {
+			this.setDiseasepresenceorabsencesimulatedepicresponse(
+					this.getUtilities().randBetween((int) this.getDiseasepresenceorabsence().getMinimum(),
+							(int) this.getDiseasepresenceorabsence().getMaximum()));
+		} else {
+			this.setDiseasepresenceorabsencesimulatedepicresponse(
+					this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
+							HearingVisionDiseaseResponse.getMaxtogenerateerrorval()));
+		}
+
+		// Use Noise to check if valid values of Year are to be generated
+		// If not to generate noise, then assign diagnoses year between 1900 and 2020
+		// TBD: Change seed years
+		if (!this.getUniformdistribution().generatenoiseinresponsevariables(
+				this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
+						HearingVisionDiseaseResponse.getMaxtogenerateerrorval()))) {
+			// this changes
+			// Minimum is SimulatedDiseaseResponse year of birth
+			// Maximum is Today
+			this.setYearDiagnosedSimulatedResponse(Year.of(this.getUtilities().randBetween(
+					veteranCohort.getYearOfBirth().getValue(), Calendar.getInstance().get(Calendar.YEAR))));
+		} else {
+			this.setYearDiagnosedSimulatedResponse(
+					Year.of(this.getUtilities().randBetween(HearingVisionDiseaseResponse.getMintogenerateerrorval(),
+							HearingVisionDiseaseResponse.getMaxtogenerateerrorval())));
+		}
 	}
 
 	@Override

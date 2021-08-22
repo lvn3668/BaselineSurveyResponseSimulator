@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,24 +85,11 @@ public class SknMSOthr extends SkinDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformDistribution(new UniformDistribution(SknMSOthr.getMintogenerateerrorval(),
+			this.setUniformDistribution(new RandomizingDistribution(SknMSOthr.getMintogenerateerrorval(),
 					SknMSOthr.getMaxtogenerateerrorval()));
 
 			this.setSknMSOthrMedicines(ValueRange.of(0, 1));
 			this.setSknMSOtherMedsEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SknMSOthr.getMintogenerateerrorval(), SknMSOthr.getMaxtogenerateerrorval())))) {
-				this.setSknMSOtherMedsEpicResponse(
-						this.getUtilities().randBetween((int) this.getSknMSOthrMedicines().getMinimum(),
-								(int) this.getSknMSOthrMedicines().getMaximum()));
-			} else {
-				this.setSknMSOtherMedsEpicResponse(this.getUtilities().randBetween(SknMSOthr.getMintogenerateerrorval(),
-						SknMSOthr.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,30 +100,16 @@ public class SknMSOthr extends SkinDiseaseResponse {
 	public SknMSOthr(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformDistribution(
-				new UniformDistribution(SknMSOthr.getMintogenerateerrorval(), SknMSOthr.getMaxtogenerateerrorval()));
-
-		this.setSknMSOthrMedicines(valuerange);
-		this.setSknMSOtherMedsEpicResponse(simulatedresponse);
-		// if CancerResponse is positive, then generate values
-		// for whether medicines are being administered or not
-		// else set to 0
-
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SknMSOthr.getMintogenerateerrorval(), SknMSOthr.getMaxtogenerateerrorval())))) {
-				this.setSknMSOtherMedsEpicResponse(
-						this.getUtilities().randBetween((int) this.getSknMSOthrMedicines().getMinimum(),
-								(int) this.getSknMSOthrMedicines().getMaximum()));
-			} else {
-				this.setSknMSOtherMedsEpicResponse(this.getUtilities().randBetween(SknMSOthr.getMintogenerateerrorval(),
-						SknMSOthr.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformDistribution(new RandomizingDistribution(SknMSOthr.getMintogenerateerrorval(),
+					SknMSOthr.getMaxtogenerateerrorval()));
+
+			this.setSknMSOthrMedicines(valuerange);
+			this.setSknMSOtherMedsEpicResponse(simulatedresponse);
+			// if CancerResponse is positive, then generate values
+			// for whether medicines are being administered or not
+			// else set to 0
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -211,6 +184,24 @@ public class SknMSOthr extends SkinDiseaseResponse {
 	 */
 	private void setSknMSOthrMedicines(ValueRange sknMSOthrMedicines) {
 		this.SknMSOthrMedicines = sknMSOthrMedicines;
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses() throws Exception {
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities()
+						.randBetween(SknMSOthr.getMintogenerateerrorval(), SknMSOthr.getMaxtogenerateerrorval())))) {
+			this.setSknMSOtherMedsEpicResponse(this.getUtilities().randBetween(
+					(int) this.getSknMSOthrMedicines().getMinimum(), (int) this.getSknMSOthrMedicines().getMaximum()));
+		} else {
+			this.setSknMSOtherMedsEpicResponse(this.getUtilities().randBetween(SknMSOthr.getMintogenerateerrorval(),
+					SknMSOthr.getMaxtogenerateerrorval()));
+		}
 	}
 
 	@Override

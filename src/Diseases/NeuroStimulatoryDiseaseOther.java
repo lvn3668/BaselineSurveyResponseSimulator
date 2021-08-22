@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERRIC
@@ -84,53 +84,30 @@ public class NeuroStimulatoryDiseaseOther extends NeuroStimulatoryDiseaseRespons
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
-					NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
+							NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval()));
 
 			this.setNSOtherMed(ValueRange.of(0, 1));
 			this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
-									NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval())))) {
-				this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getNSOtherMed().getMinimum(), (int) this.getNSOtherMed().getMaximum()));
-			} else {
-				this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
-								NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public NeuroStimulatoryDiseaseOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public NeuroStimulatoryDiseaseOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
-					NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
+							NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval()));
 
 			this.setNSOtherMed(valuerange);
 			this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
-									NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval())))) {
-				this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getNSOtherMed().getMinimum(), (int) this.getNSOtherMed().getMaximum()));
-			} else {
-				this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
-								NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -183,6 +160,31 @@ public class NeuroStimulatoryDiseaseOther extends NeuroStimulatoryDiseaseRespons
 	private void setNSOtherMed(ValueRange nSOtherMed) {
 		try {
 			this.NSOtherMed = nSOtherMed;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution()
+							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+									NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
+									NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval())))) {
+				this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(this.getUtilities()
+						.randBetween((int) this.getNSOtherMed().getMinimum(), (int) this.getNSOtherMed().getMaximum()));
+			} else {
+				this.setNeuroStimulatoryOtherMedsAdministeredEpicResponse(
+						this.getUtilities().randBetween(NeuroStimulatoryDiseaseOther.getMintogenerateerrorval(),
+								NeuroStimulatoryDiseaseOther.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

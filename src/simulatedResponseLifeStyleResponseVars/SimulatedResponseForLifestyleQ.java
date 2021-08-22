@@ -8,7 +8,7 @@ package simulatedResponseLifeStyleResponseVars;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class SimulatedResponseForLifestyleQ {
 	// Move these to lifestyle package
@@ -109,7 +109,7 @@ public class SimulatedResponseForLifestyleQ {
 
 	private ValueRange SmokeNowValueRange;
 
-	private UniformDistribution uniformdistribution;
+	private RandomizingDistribution uniformdistribution;
 
 	private Utilities utilities;
 
@@ -126,7 +126,7 @@ public class SimulatedResponseForLifestyleQ {
 					this.getUtilities().randBetween(SimulatedResponseForLifestyleQ.getMinToGenerateErrorVal(),
 							SimulatedResponseForLifestyleQ.getMaxToGenerateErrorVal()));
 			this.setUniformdistribution(
-					new UniformDistribution(SimulatedResponseForLifestyleQ.getMinToGenerateErrorVal(),
+					new RandomizingDistribution(SimulatedResponseForLifestyleQ.getMinToGenerateErrorVal(),
 							SimulatedResponseForLifestyleQ.getMaxToGenerateErrorVal()));
 			this.setActiveWorkValueRange(ValueRange.of(1, 4));
 			this.setActiveWorksimulatedresponse(SimulatedResponseForLifestyleQ.getErrorResponse());
@@ -407,7 +407,7 @@ public class SimulatedResponseForLifestyleQ {
 	/**
 	 * @return the uniformdistribution
 	 */
-	private UniformDistribution getUniformdistribution() {
+	private RandomizingDistribution getUniformdistribution() {
 		try {
 			return this.uniformdistribution;
 		} catch (Exception e) {
@@ -656,7 +656,7 @@ public class SimulatedResponseForLifestyleQ {
 	/**
 	 * @param uniformdistribution the uniformdistribution to set
 	 */
-	private void setUniformdistribution(UniformDistribution uniformdistribution) {
+	private void setUniformdistribution(RandomizingDistribution uniformdistribution) {
 		try {
 			this.uniformdistribution = uniformdistribution;
 		} catch (Exception e) {

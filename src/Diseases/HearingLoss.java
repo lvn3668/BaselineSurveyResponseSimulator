@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class HearingLoss extends HearingVisionDiseaseResponse {
 
@@ -81,22 +81,12 @@ public class HearingLoss extends HearingVisionDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HearingLoss.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(HearingLoss.getMintogenerateerrorval(),
 					HearingLoss.getMaxtogenerateerrorval()));
 
 			this.setHearingLossMedicines(ValueRange.of(0, 1));
 			this.setHearinglossMedicinesAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							HearingLoss.getMintogenerateerrorval(), HearingLoss.getMaxtogenerateerrorval())))) {
-				this.setHearinglossMedicinesAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getHearingLossMedicines().getMinimum(),
-								(int) this.getHearingLossMedicines().getMaximum()));
-			} else {
-				this.setHearinglossMedicinesAdministeredEpicResponse(this.getUtilities()
-						.randBetween(HearingLoss.getMintogenerateerrorval(), HearingLoss.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -109,22 +99,11 @@ public class HearingLoss extends HearingVisionDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(HearingLoss.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(HearingLoss.getMintogenerateerrorval(),
 					HearingLoss.getMaxtogenerateerrorval()));
 
 			this.setHearingLossMedicines(valuerange);
 			this.setHearinglossMedicinesAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							HearingLoss.getMintogenerateerrorval(), HearingLoss.getMaxtogenerateerrorval())))) {
-				this.setHearinglossMedicinesAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getHearingLossMedicines().getMinimum(),
-								(int) this.getHearingLossMedicines().getMaximum()));
-			} else {
-				this.setHearinglossMedicinesAdministeredEpicResponse(this.getUtilities()
-						.randBetween(HearingLoss.getMintogenerateerrorval(), HearingLoss.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -192,6 +171,24 @@ public class HearingLoss extends HearingVisionDiseaseResponse {
 	 */
 	private void setHearinglossMedicinesAdministeredEpicResponse(int hearinglossMedicinesAdministeredEpicResponse) {
 		this.hearinglossMedicinesAdministeredEpicResponse = hearinglossMedicinesAdministeredEpicResponse;
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+						HearingLoss.getMintogenerateerrorval(), HearingLoss.getMaxtogenerateerrorval())))) {
+			this.setHearinglossMedicinesAdministeredEpicResponse(
+					this.getUtilities().randBetween((int) this.getHearingLossMedicines().getMinimum(),
+							(int) this.getHearingLossMedicines().getMaximum()));
+		} else {
+			this.setHearinglossMedicinesAdministeredEpicResponse(this.getUtilities()
+					.randBetween(HearingLoss.getMintogenerateerrorval(), HearingLoss.getMaxtogenerateerrorval()));
+		}
 	}
 
 	@Override

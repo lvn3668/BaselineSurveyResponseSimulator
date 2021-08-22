@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,52 +85,29 @@ public class MultipleSclerosis extends NeuroStimulatoryDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MultipleSclerosis.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MultipleSclerosis.getMintogenerateerrorval(),
 					MultipleSclerosis.getMaxtogenerateerrorval()));
 
 			this.setMultipleSclerosisMedicines(ValueRange.of(0, 1));
 			this.setMSMedsadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(MultipleSclerosis.getMintogenerateerrorval(),
-									MultipleSclerosis.getMaxtogenerateerrorval())))) {
-				this.setMSMedsadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getMultipleSclerosisMedicines().getMinimum(),
-								(int) this.getMultipleSclerosisMedicines().getMaximum()));
-			} else {
-				this.setMSMedsadministeredepicresponse(this.getUtilities().randBetween(
-						MultipleSclerosis.getMintogenerateerrorval(), MultipleSclerosis.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
 
-	public MultipleSclerosis(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MultipleSclerosis(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MultipleSclerosis.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MultipleSclerosis.getMintogenerateerrorval(),
 					MultipleSclerosis.getMaxtogenerateerrorval()));
 
 			this.setMultipleSclerosisMedicines(valuerange);
 			this.setMSMedsadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(MultipleSclerosis.getMintogenerateerrorval(),
-									MultipleSclerosis.getMaxtogenerateerrorval())))) {
-				this.setMSMedsadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getMultipleSclerosisMedicines().getMinimum(),
-								(int) this.getMultipleSclerosisMedicines().getMaximum()));
-			} else {
-				this.setMSMedsadministeredepicresponse(this.getUtilities().randBetween(
-						MultipleSclerosis.getMintogenerateerrorval(), MultipleSclerosis.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -205,6 +182,33 @@ public class MultipleSclerosis extends NeuroStimulatoryDiseaseResponse {
 	private void setMultipleSclerosisMedicines(ValueRange multipleSclerosisMedicines) throws Exception {
 		try {
 			this.MultipleSclerosisMedicines = multipleSclerosisMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(
+							this.getUtilities().randBetween(MultipleSclerosis.getMintogenerateerrorval(),
+									MultipleSclerosis.getMaxtogenerateerrorval())))) {
+				this.setMSMedsadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getMultipleSclerosisMedicines().getMinimum(),
+								(int) this.getMultipleSclerosisMedicines().getMaximum()));
+			} else {
+				this.setMSMedsadministeredepicresponse(this.getUtilities().randBetween(
+						MultipleSclerosis.getMintogenerateerrorval(), MultipleSclerosis.getMaxtogenerateerrorval()));
+			}
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

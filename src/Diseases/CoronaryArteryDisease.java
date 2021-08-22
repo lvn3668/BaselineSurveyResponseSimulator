@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -100,55 +100,29 @@ public class CoronaryArteryDisease extends CirculatoryDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdisttribution(new UniformDistribution(CoronaryArteryDisease.getMintogenerateerrorval(),
+			this.setUniformdisttribution(new RandomizingDistribution(CoronaryArteryDisease.getMintogenerateerrorval(),
 					CoronaryArteryDisease.getMaxtogenerateerrorval()));
 
 			this.setCoronaryArteryMedicines(ValueRange.of(0, 1));
 			this.setCadmedicinesadministeredepicresponse(2);
-
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdisttribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(CoronaryArteryDisease.getMintogenerateerrorval(),
-									CoronaryArteryDisease.getMaxtogenerateerrorval())))) {
-				this.setCadmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getCoronaryArteryMedicines().getMinimum(),
-								(int) this.getCoronaryArteryMedicines().getMaximum()));
-			} else {
-				this.setCadmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween(CoronaryArteryDisease.getMintogenerateerrorval(),
-								CoronaryArteryDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
 	}
 
-	public CoronaryArteryDisease(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public CoronaryArteryDisease(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		super(veteranCohort, valuerange, simulatedresponse);
 
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdisttribution(new UniformDistribution(CoronaryArteryDisease.getMintogenerateerrorval(),
+			this.setUniformdisttribution(new RandomizingDistribution(CoronaryArteryDisease.getMintogenerateerrorval(),
 					CoronaryArteryDisease.getMaxtogenerateerrorval()));
 
 			this.setCoronaryArteryMedicines(valuerange);
 			this.setCadmedicinesadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdisttribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(CoronaryArteryDisease.getMintogenerateerrorval(),
-									CoronaryArteryDisease.getMaxtogenerateerrorval())))) {
-				this.setCadmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getCoronaryArteryMedicines().getMinimum(),
-								(int) this.getCoronaryArteryMedicines().getMaximum()));
-			} else {
-				this.setCadmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween(CoronaryArteryDisease.getMintogenerateerrorval(),
-								CoronaryArteryDisease.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -241,6 +215,31 @@ public class CoronaryArteryDisease extends CirculatoryDiseaseResponse {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdisttribution().generatenoiseinresponsevariables(
+							this.getUtilities().randBetween(CoronaryArteryDisease.getMintogenerateerrorval(),
+									CoronaryArteryDisease.getMaxtogenerateerrorval())))) {
+				this.setCadmedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getCoronaryArteryMedicines().getMinimum(),
+								(int) this.getCoronaryArteryMedicines().getMaximum()));
+			} else {
+				this.setCadmedicinesadministeredepicresponse(
+						this.getUtilities().randBetween(CoronaryArteryDisease.getMintogenerateerrorval(),
+								CoronaryArteryDisease.getMaxtogenerateerrorval()));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

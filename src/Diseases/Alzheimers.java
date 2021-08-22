@@ -4,7 +4,7 @@ import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	/**
@@ -46,28 +46,6 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 	 *
 	 */
 	private int alzheimersmedsadministeredepicresponse;
-	
-	public void simulateResponses() 
-	{
-		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval())))) {
-				this.setAlzheimersmedsadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getAlzheimersMedicines().getMinimum(),
-								(int) this.getAlzheimersMedicines().getMaximum()));
-			} else {
-				this.setAlzheimersmedsadministeredepicresponse(this.getUtilities()
-						.randBetween(Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval()));
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * @throws Exception
@@ -76,11 +54,10 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Alzheimers.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(Alzheimers.getMintogenerateerrorval(),
 					Alzheimers.getMaxtogenerateerrorval()));
 			this.setAlzheimersMedicines(ValueRange.of(0, 1));
 			this.setAlzheimersmedsadministeredepicresponse(2);
-
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -99,7 +76,7 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 		super(veteranCohort, valuerange, alzheimersmedsadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(Alzheimers.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(Alzheimers.getMintogenerateerrorval(),
 					Alzheimers.getMaxtogenerateerrorval()));
 			this.setAlzheimersMedicines(valuerange);
 			this.setAlzheimersmedsadministeredepicresponse(alzheimersmedsadministeredepicresponse);
@@ -198,6 +175,28 @@ public class Alzheimers extends NeuroStimulatoryDiseaseResponse {
 			throws Exception {
 		try {
 			this.alzheimersmedsadministeredepicresponse = alzheimersmedsadministeredepicresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void simulateResponses(VeteranCohort veterancohort) {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval())))) {
+				this.setAlzheimersmedsadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getAlzheimersMedicines().getMinimum(),
+								(int) this.getAlzheimersMedicines().getMaximum()));
+			} else {
+				this.setAlzheimersmedsadministeredepicresponse(this.getUtilities()
+						.randBetween(Alzheimers.getMintogenerateerrorval(), Alzheimers.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

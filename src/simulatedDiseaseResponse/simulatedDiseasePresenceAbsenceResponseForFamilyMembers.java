@@ -3,7 +3,7 @@ package simulatedDiseaseResponse;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 
@@ -79,25 +79,25 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	private int prostatecancersimulatedresponse;
 
 	private ValueRange prostateCancerValueRange;
+	private RandomizingDistribution randomizingDistribution;
+
+	private int schizophreniapresenceabsencesimulatedresponse;
+
+	private ValueRange schizophreniaValueRange;
+
 	private int skincancersimulatedresponse;
 
 	private ValueRange skinCancerValueRange;
-
 	private int strokepresenceabsencesimulatedresponse;
 
 	private ValueRange strokeValueRange;
-
-	private UniformDistribution uniformDistribution;
 	private Utilities utilities;
 
-	private ValueRange schizophreniaValueRange;
-	private int schizophreniapresenceabsencesimulatedresponse;
-	
 	// If Sibling 1-8 exists, etc.
 	public simulatedDiseasePresenceAbsenceResponseForFamilyMembers(int cohortSex) {
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(
+			this.setUniformdistribution(new RandomizingDistribution(
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMintogenerateerrorval(),
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMaxtogenerateerrorval()));
 			simulatedDiseasePresenceAbsenceResponseForFamilyMembers.setErrorResponse(this.getUtilities().randBetween(
@@ -160,38 +160,12 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 			this.setDiabetesValueRange(ValueRange.of(0, 1));
 			this.setDiabetespresenceabsencesimulatedresponse(
 					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
+			this.setSchizophreniaValueRange(ValueRange.of(0, 1));
+			this.setSchizophreniapresenceabsencesimulatedresponse(
+					simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getErrorResponse());
 
-			
-			//this.printsimulatedresponses();
+			// this.printsimulatedresponses();
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void printsimulatedresponses() throws Exception
-	{
-		try {
-			System.out.println("Alzheimers " +this.getAlzheimerspresenceabsencesimulatedresponse());
-			System.out.println("Asthma " +this.getAsthmapresenceabsencesimulatedresponse());
-			System.out.println("Bipolar " +this.getBipolarpresenceabsencesimulatedresponse());
-			System.out.println("Breast Cancer " +this.getBreastcancersimulatedresponse());
-			System.out.println("Cholesterol " +this.getCholesterolpresenceabsencesimulatedresponse());
-			System.out.println("Colon Cancer " +this.getColoncancerpresenceabsencesimulatedresponse());
-			System.out.println("Coronary Artery Disease " +this.getCoronaryarterydiseasesimulatedresponse());
-			System.out.println("Depression " +this.getDepressionpresenceabsencesimulatedresponse());
-			System.out.println("Diabetes " +this.getDiabetespresenceabsencesimulatedresponse());
-			System.out.println("Hypertension " +this.getHypertensionpresenceabsencesimulatedresponse());
-			System.out.println("Kidney Disease " +this.getKidneynodialysispresenceabsencesimulatedresponse());
-			System.out.println("Liver Disease " +this.getLiverdiseasepresenceabsencesimulatedresponse());
-			System.out.println("Lung Cancer " +this.getLungcancerpresenceabsencesimulatedresponse());
-			System.out.println("Lung Disease " +this.getLungdiseasepresenceabsencesimulatedresponse());
-			System.out.println("Other Cancer " +this.getOthercancersimulatedresponse());
-			System.out.println("Prostate Cancer " +this.getProstatecancersimulatedresponse());
-			System.out.println("Skin Cancer " +this.getSkincancersimulatedresponse());
-			System.out.println("Stroke " +this.getStrokepresenceabsencesimulatedresponse());
-			System.out.println("Schizophrenia "+ this.getSchizophreniapresenceabsencesimulatedresponse());
-		} catch (Exception e)
-		{
 			e.printStackTrace();
 		}
 	}
@@ -421,6 +395,32 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	}
 
 	/**
+	 * @return the schizophreniapresenceabsencesimulatedresponse
+	 */
+	public int getSchizophreniapresenceabsencesimulatedresponse() {
+		try {
+			return this.schizophreniapresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.schizophreniapresenceabsencesimulatedresponse;
+	}
+
+	/**
+	 * @return the schizophreniaValueRange
+	 */
+	public ValueRange getSchizophreniaValueRange() {
+		try {
+			return this.schizophreniaValueRange;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this.schizophreniaValueRange;
+	}
+
+	/**
 	 * @return the skincancersimulatedresponse
 	 */
 	public int getSkincancersimulatedresponse() {
@@ -449,10 +449,10 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	}
 
 	/**
-	 * @return the uniformDistribution
+	 * @return the randomizingDistribution
 	 */
-	private UniformDistribution getUniformdistribution() {
-		return this.uniformDistribution;
+	private RandomizingDistribution getUniformdistribution() {
+		return this.randomizingDistribution;
 	}
 
 	/**
@@ -460,6 +460,32 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	 */
 	private Utilities getUtilities() {
 		return this.utilities;
+	}
+
+	public void printsimulatedresponses() throws Exception {
+		try {
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.0") + this.getAlzheimerspresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.1") + this.getAsthmapresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.2") + this.getBipolarpresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.3") + this.getBreastcancersimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.4") + this.getCholesterolpresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.5") + this.getColoncancerpresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.6") + this.getCoronaryarterydiseasesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.7") + this.getDepressionpresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.8") + this.getDiabetespresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.9") + this.getHypertensionpresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.10") + this.getKidneynodialysispresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.11") + this.getLiverdiseasepresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.12") + this.getLungcancerpresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.13") + this.getLungdiseasepresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.14") + this.getOthercancersimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.15") + this.getProstatecancersimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.16") + this.getSkincancersimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.17") + this.getStrokepresenceabsencesimulatedresponse()); //$NON-NLS-1$
+			System.out.println(Messages.getString("simulatedDiseasePresenceAbsenceResponseForFamilyMembers.18") + this.getSchizophreniapresenceabsencesimulatedresponse()); //$NON-NLS-1$
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -710,6 +736,32 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	}
 
 	/**
+	 * @param schizophreniapresenceabsencesimulatedresponse the
+	 *                                                      schizophreniapresenceabsencesimulatedresponse
+	 *                                                      to set
+	 */
+	private void setSchizophreniapresenceabsencesimulatedresponse(int schizophreniapresenceabsencesimulatedresponse) {
+		try {
+			this.schizophreniapresenceabsencesimulatedresponse = schizophreniapresenceabsencesimulatedresponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @param schizophreniaValueRange the schizophreniaValueRange to set
+	 */
+	private void setSchizophreniaValueRange(ValueRange schizophreniaValueRange) {
+		try {
+			this.schizophreniaValueRange = schizophreniaValueRange;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * @param skincancersimulatedresponse the skincancersimulatedresponse to set
 	 */
 	private void setSkincancersimulatedresponse(int skincancersimulatedresponse) {
@@ -740,10 +792,10 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 	}
 
 	/**
-	 * @param uniformDistribution the uniformDistribution to set
+	 * @param randomizingDistribution the randomizingDistribution to set
 	 */
-	private void setUniformdistribution(UniformDistribution uniformDistribution) {
-		this.uniformDistribution = uniformDistribution;
+	private void setUniformdistribution(RandomizingDistribution randomizingDistribution) {
+		this.randomizingDistribution = randomizingDistribution;
 	}
 
 	/**
@@ -1119,6 +1171,26 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 		}
 	}
 
+	private int simulateSchizophreniaResponse(ValueRange valuerange, int simulatedresponse) {
+		try {
+			this.setSchizophreniaValueRange(valuerange);
+			this.setSchizophreniapresenceabsencesimulatedresponse(simulatedresponse);
+			if ((!this.getUniformdistribution()
+					.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMintogenerateerrorval(),
+							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMaxtogenerateerrorval())))) {
+				this.setSchizophreniapresenceabsencesimulatedresponse(
+						this.getUtilities().randBetween((int) this.getSchizophreniaValueRange().getMinimum(),
+								(int) this.getSchizophreniaValueRange().getMaximum()));
+				return this.getSchizophreniapresenceabsencesimulatedresponse();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return this.getSchizophreniapresenceabsencesimulatedresponse();
+	}
+
 	public int simulateSkinCancerResponse(ValueRange valuerange, int simulatedresponse) {
 		try {
 			this.setSkinCancerValueRange(valuerange);
@@ -1137,94 +1209,6 @@ public class simulatedDiseasePresenceAbsenceResponseForFamilyMembers {
 			throw e;
 		}
 		return this.getSkincancersimulatedresponse();
-	}
-
-	private int simulateStrokeResponse(ValueRange valuerange, int simulatedresponse) {
-		try {
-			this.setStrokeValueRange(valuerange);
-			this.setStrokepresenceabsencesimulatedresponse(simulatedresponse);
-			if ((!this.getUniformdistribution()
-					.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMintogenerateerrorval(),
-							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMaxtogenerateerrorval())))) {
-				this.setStrokepresenceabsencesimulatedresponse(this.getUtilities().randBetween(
-						(int) this.getStrokeValueRange().getMinimum(), (int) this.getStrokeValueRange().getMaximum()));
-				return this.getStrokepresenceabsencesimulatedresponse();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-		return this.getStrokepresenceabsencesimulatedresponse();
-	}
-	
-	private int simulateSchizophreniaResponse(ValueRange valuerange, int simulatedresponse) {
-		try {
-			this.setSchizophreniaValueRange(valuerange);
-			this.setSchizophreniapresenceabsencesimulatedresponse(simulatedresponse);
-			if ((!this.getUniformdistribution()
-					.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMintogenerateerrorval(),
-							simulatedDiseasePresenceAbsenceResponseForFamilyMembers.getMaxtogenerateerrorval())))) {
-				this.setSchizophreniapresenceabsencesimulatedresponse(this.getUtilities().randBetween(
-						(int) this.getSchizophreniaValueRange().getMinimum(), (int) this.getSchizophreniaValueRange().getMaximum()));
-				return this.getSchizophreniapresenceabsencesimulatedresponse();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-		return this.getSchizophreniapresenceabsencesimulatedresponse();
-	}
-
-	/**
-	 * @return the schizophreniaValueRange
-	 */
-	public ValueRange getSchizophreniaValueRange() {
-		try {
-			return this.schizophreniaValueRange;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.schizophreniaValueRange;
-	}
-
-	/**
-	 * @param schizophreniaValueRange the schizophreniaValueRange to set
-	 */
-	public void setSchizophreniaValueRange(ValueRange schizophreniaValueRange) {
-		try {
-			this.schizophreniaValueRange = schizophreniaValueRange;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @return the schizophreniapresenceabsencesimulatedresponse
-	 */
-	public int getSchizophreniapresenceabsencesimulatedresponse() {
-		try {
-			return this.schizophreniapresenceabsencesimulatedresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.schizophreniapresenceabsencesimulatedresponse;
-	}
-
-	/**
-	 * @param schizophreniapresenceabsencesimulatedresponse the schizophreniapresenceabsencesimulatedresponse to set
-	 */
-	public void setSchizophreniapresenceabsencesimulatedresponse(int schizophreniapresenceabsencesimulatedresponse) {
-		try {
-			this.schizophreniapresenceabsencesimulatedresponse = schizophreniapresenceabsencesimulatedresponse;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -86,22 +86,10 @@ public class Stroke extends MiscDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
-					new UniformDistribution(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));
+					new RandomizingDistribution(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));
 
 			this.setStrokeMedicines(ValueRange.of(0, 1));
 			this.setStrokeMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval())))) {
-				this.setStrokeMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getStrokeMedicines().getMinimum(), (int) this.getStrokeMedicines().getMaximum()));
-			} else {
-				this.setStrokeMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,30 +99,16 @@ public class Stroke extends MiscDiseaseResponse {
 	public Stroke(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(
-				new UniformDistribution(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));
-
-		this.setStrokeMedicines(valuerange);
-		this.setStrokeMedsAdministeredEpicResponse(simulatedresponse);
-		// if CancerResponse is positive, then generate values
-		// for whether medicines are being administered or not
-		// else set to 0
-
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval())))) {
-				this.setStrokeMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getStrokeMedicines().getMinimum(), (int) this.getStrokeMedicines().getMaximum()));
-			} else {
-				this.setStrokeMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(
+					new RandomizingDistribution(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));
 
+			this.setStrokeMedicines(valuerange);
+			this.setStrokeMedsAdministeredEpicResponse(simulatedresponse);
+			// if CancerResponse is positive, then generate values
+			// for whether medicines are being administered or not
+			// else set to 0
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -214,6 +188,25 @@ public class Stroke extends MiscDiseaseResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+						.randBetween(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval())))) {
+			this.setStrokeMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					(int) this.getStrokeMedicines().getMinimum(), (int) this.getStrokeMedicines().getMaximum()));
+		} else {
+			this.setStrokeMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween(Stroke.getMintogenerateerrorval(), Stroke.getMaxtogenerateerrorval()));
 		}
 	}
 

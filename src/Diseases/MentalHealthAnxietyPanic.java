@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,24 +85,12 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
 					MentalHealthAnxietyPanic.getMaxtogenerateerrorval()));
 
 			this.setMHAnxietyPanicMeds(ValueRange.of(0, 1));
 			this.setMHAnxPanicMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
-									MentalHealthAnxietyPanic.getMaxtogenerateerrorval())))) {
-				this.setMHAnxPanicMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getMHAnxPancMedicines().getMinimum(),
-								(int) this.getMHAnxPancMedicines().getMaximum()));
-			} else {
-				this.setMHAnxPanicMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
-								MentalHealthAnxietyPanic.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -110,31 +98,19 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 		}
 	}
 
-	public MentalHealthAnxietyPanic(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public MentalHealthAnxietyPanic(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		// TODO Auto-generated constructor stub
 		super(veteranCohort);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
 					MentalHealthAnxietyPanic.getMaxtogenerateerrorval()));
 
 			this.setMHAnxietyPanicMeds(valuerange);
 			this.setMHAnxPanicMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
-									MentalHealthAnxietyPanic.getMaxtogenerateerrorval())))) {
-				this.setMHAnxPanicMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getMHAnxPancMedicines().getMinimum(),
-								(int) this.getMHAnxPancMedicines().getMaximum()));
-			} else {
-				this.setMHAnxPanicMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
-								MentalHealthAnxietyPanic.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -215,6 +191,25 @@ public class MentalHealthAnxietyPanic extends MentalHealthResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
+								MentalHealthAnxietyPanic.getMaxtogenerateerrorval())))) {
+			this.setMHAnxPanicMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					(int) this.getMHAnxPancMedicines().getMinimum(), (int) this.getMHAnxPancMedicines().getMaximum()));
+		} else {
+			this.setMHAnxPanicMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween(MentalHealthAnxietyPanic.getMintogenerateerrorval(),
+							MentalHealthAnxietyPanic.getMaxtogenerateerrorval()));
 		}
 	}
 

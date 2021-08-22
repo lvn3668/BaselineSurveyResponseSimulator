@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -67,24 +67,11 @@ public class BreastCancer extends CancerResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(BreastCancer.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(BreastCancer.getMintogenerateerrorval(),
 					BreastCancer.getMaxtogenerateerrorval()));
 
 			this.setBrstCancerMedicines(ValueRange.of(0, 1));
 			this.setBreastcancermedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							BreastCancer.getMintogenerateerrorval(), BreastCancer.getMaxtogenerateerrorval())))) {
-				this.setBreastcancermedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getBrstCancerMedicines().getMinimum(),
-								(int) this.getBrstCancerMedicines().getMaximum()));
-			} else {
-				this.setBreastcancermedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(BreastCancer.getMintogenerateerrorval(), BreastCancer.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -92,34 +79,20 @@ public class BreastCancer extends CancerResponse {
 		}
 	}
 
-	public BreastCancer(VeteranCohort veteranCohort, ValueRange valuerange, int breastcancermedicinesadministeredepicresponse)
-			throws Exception {
-		// TODO Auto-generated constructor stub
+	public BreastCancer(VeteranCohort veteranCohort, ValueRange valuerange,
+			int breastcancermedicinesadministeredepicresponse) throws Exception {
 		super(veteranCohort, valuerange, breastcancermedicinesadministeredepicresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(new UniformDistribution(BreastCancer.getMintogenerateerrorval(),
-				BreastCancer.getMaxtogenerateerrorval()));
-
-		this.setBrstCancerMedicines(valuerange);
-		this.setBreastcancermedicinesadministeredepicresponse(breastcancermedicinesadministeredepicresponse);
-		// if CancerResponse is positive, then generate values
-		// for whether medicines are being administered or not
-		// else set to 0
-
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							BreastCancer.getMintogenerateerrorval(), BreastCancer.getMaxtogenerateerrorval())))) {
-				this.setBreastcancermedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getBrstCancerMedicines().getMinimum(),
-								(int) this.getBrstCancerMedicines().getMaximum()));
-			} else {
-				this.setBreastcancermedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(BreastCancer.getMintogenerateerrorval(), BreastCancer.getMaxtogenerateerrorval()));
-			}
+			// TODO Auto-generated constructor stub
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new RandomizingDistribution(BreastCancer.getMintogenerateerrorval(),
+					BreastCancer.getMaxtogenerateerrorval()));
+
+			this.setBrstCancerMedicines(valuerange);
+			this.setBreastcancermedicinesadministeredepicresponse(breastcancermedicinesadministeredepicresponse);
+			// if CancerResponse is positive, then generate values
+			// for whether medicines are being administered or not
+			// else set to 0
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -195,6 +168,32 @@ public class BreastCancer extends CancerResponse {
 	private void setBrstCancerMedicines(ValueRange brstCancerMedicines) throws Exception {
 		try {
 			this.BrstCancerMedicines = brstCancerMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							BreastCancer.getMintogenerateerrorval(), BreastCancer.getMaxtogenerateerrorval())))) {
+				this.setBreastcancermedicinesadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getBrstCancerMedicines().getMinimum(),
+								(int) this.getBrstCancerMedicines().getMaximum()));
+			} else {
+				this.setBreastcancermedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(BreastCancer.getMintogenerateerrorval(), BreastCancer.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -101,25 +101,11 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 		try {
 			// TODO Auto-generated constructor stub
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(CirculatoryDiseaseOther.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(CirculatoryDiseaseOther.getMintogenerateerrorval(),
 					CirculatoryDiseaseOther.getMaxtogenerateerrorval()));
 
 			this.setCircDOtherMed(ValueRange.of(0, 1));
 			this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(CirculatoryDiseaseOther.getMintogenerateerrorval(),
-									CirculatoryDiseaseOther.getMaxtogenerateerrorval())))) {
-				this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getCircDOtherMed().getMinimum(), (int) this.getCircDOtherMed().getMaximum()));
-			} else {
-				this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(CirculatoryDiseaseOther.getMintogenerateerrorval(),
-								CirculatoryDiseaseOther.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,30 +113,18 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 		}
 	}
 
-	public CirculatoryDiseaseOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public CirculatoryDiseaseOther(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(new UniformDistribution(CirculatoryDiseaseOther.getMintogenerateerrorval(),
-				CirculatoryDiseaseOther.getMaxtogenerateerrorval()));
-
-		this.setCircDOtherMed(valuerange);
-		this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(simulatedresponse);
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(CirculatoryDiseaseOther.getMintogenerateerrorval(),
-									CirculatoryDiseaseOther.getMaxtogenerateerrorval())))) {
-				this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getCircDOtherMed().getMinimum(), (int) this.getCircDOtherMed().getMaximum()));
-			} else {
-				this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(CirculatoryDiseaseOther.getMintogenerateerrorval(),
-								CirculatoryDiseaseOther.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new RandomizingDistribution(CirculatoryDiseaseOther.getMintogenerateerrorval(),
+					CirculatoryDiseaseOther.getMaxtogenerateerrorval()));
+
+			this.setCircDOtherMed(valuerange);
+			this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(simulatedresponse);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -224,6 +198,28 @@ public class CirculatoryDiseaseOther extends InfectiousDiseaseResponse {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(CirculatoryDiseaseOther.getMintogenerateerrorval(),
+								CirculatoryDiseaseOther.getMaxtogenerateerrorval())))) {
+			this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					(int) this.getCircDOtherMed().getMinimum(), (int) this.getCircDOtherMed().getMaximum()));
+		} else {
+			this.setCirculatoryDiseasesOtherMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween(CirculatoryDiseaseOther.getMintogenerateerrorval(),
+							CirculatoryDiseaseOther.getMaxtogenerateerrorval()));
 		}
 	}
 

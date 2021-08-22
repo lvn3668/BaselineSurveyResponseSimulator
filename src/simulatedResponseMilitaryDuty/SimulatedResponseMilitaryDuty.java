@@ -7,7 +7,7 @@ package simulatedResponseMilitaryDuty;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class SimulatedResponseMilitaryDuty {
 
@@ -395,7 +395,7 @@ public class SimulatedResponseMilitaryDuty {
 	/**
 	*
 	*/
-	private UniformDistribution uniformdist;
+	private RandomizingDistribution uniformdist;
 
 	/**
 	 *
@@ -411,7 +411,7 @@ public class SimulatedResponseMilitaryDuty {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdist(
-					new UniformDistribution(SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
+					new RandomizingDistribution(SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
 							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse()));
 			SimulatedResponseMilitaryDuty.setErrorResponse(
 					this.getUtilities().randBetween(SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
@@ -1813,7 +1813,7 @@ public class SimulatedResponseMilitaryDuty {
 	/**
 	 * @return
 	 */
-	public UniformDistribution getUniformdist() {
+	public RandomizingDistribution getUniformdist() {
 		try {
 			return this.uniformdist;
 		} catch (Exception e) {
@@ -2906,7 +2906,7 @@ public class SimulatedResponseMilitaryDuty {
 	/**
 	 * @param uniformdist
 	 */
-	private void setUniformdist(UniformDistribution uniformdist) {
+	private void setUniformdist(RandomizingDistribution uniformdist) {
 		try {
 			this.uniformdist = uniformdist;
 		} catch (Exception e) {
@@ -3598,27 +3598,6 @@ public class SimulatedResponseMilitaryDuty {
 		return simulatederrorresponse;
 	}
 
-	private int simulateStationAsiaSouthPacificResponse(ValueRange valuerange, int simulatederrorresponse) {
-		try {
-			this.setStationAsiaSouthPacificValueRange(valuerange);
-			this.setStationAsiaSouthPacificsimulatedresponse(simulatederrorresponse);
-			if ((!this.getUniformdist()
-					.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
-							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse())))) {
-				this.setStationAsiaSouthPacificsimulatedresponse(
-						this.getUtilities().randBetween((int) this.getStationAsiaSouthPacificValueRange().getMinimum(),
-								(int) this.getStationAsiaSouthPacificValueRange().getMaximum()));
-				return this.getStationAsiaSouthPacificsimulatedresponse();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// return error response (default)
-		return simulatederrorresponse;
-	}
-
 	/**
 	 * @param valuerange
 	 * @param simulatederrorresponse
@@ -3754,32 +3733,6 @@ public class SimulatedResponseMilitaryDuty {
 	 * @param simulatederrorresponse
 	 * @return
 	 */
-	private int simulateStationOtherResponse(ValueRange valuerange, int simulatederrorresponse) {
-		try {
-			this.setStationOtherValueRange(valuerange);
-			this.setStationOthersimulatedresponse(simulatederrorresponse);
-			if ((!this.getUniformdist()
-					.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
-							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse())))) {
-				this.setStationOthersimulatedresponse(
-						this.getUtilities().randBetween((int) this.getStationOtherValueRange().getMinimum(),
-								(int) this.getStationOtherValueRange().getMaximum()));
-				return this.getStationOthersimulatedresponse();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// return error response (default)
-		return simulatederrorresponse;
-	}
-
-	/**
-	 * @param valuerange
-	 * @param simulatederrorresponse
-	 * @return
-	 */
 	private int simulateStationSouthCentralAmericanResponse(ValueRange valuerange, int simulatederrorresponse) {
 		try {
 			this.setStationSouthCentralAmericanValueRange(valuerange);
@@ -3792,32 +3745,6 @@ public class SimulatedResponseMilitaryDuty {
 						(int) this.getStationSouthCentralAmericanValueRange().getMinimum(),
 						(int) this.getStationSouthCentralAmericanValueRange().getMaximum()));
 				return this.getStationSouthCentralAmericansimulatedresponse();
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// return error response (default)
-		return simulatederrorresponse;
-	}
-
-	/**
-	 * @param valuerange
-	 * @param simulatederrorresponse
-	 * @return
-	 */
-	private int simulateStationSouthEuropeanMediterraneanResponse(ValueRange valuerange, int simulatederrorresponse) {
-		try {
-			this.setStationSouthEuropeanMediterraneanValueRange(valuerange);
-			this.setStationSouthEuropeanMediterraneansimulatedresponse(simulatederrorresponse);
-			if ((!this.getUniformdist()
-					.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SimulatedResponseMilitaryDuty.getMinimumtogenerateerrorresponse(),
-							SimulatedResponseMilitaryDuty.getMaximumtogenerateerrorresponse())))) {
-				this.setStationSouthEuropeanMediterraneansimulatedresponse(this.getUtilities().randBetween(
-						(int) this.getStationSouthEuropeanMediterraneanValueRange().getMinimum(),
-						(int) this.getStationSouthEuropeanMediterraneanValueRange().getMaximum()));
-				return this.getStationSouthEuropeanMediterraneansimulatedresponse();
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -3858,76 +3785,76 @@ public class SimulatedResponseMilitaryDuty {
 	 */
 	@Override
 	public String toString() {
-		return "SimulatedResponseMilitaryDuty [MilitaryBranchArmyValueRange=" + this.MilitaryBranchArmyValueRange
-				+ ", MilitaryBranchArmysimulatederrorresponse=" + this.MilitaryBranchArmysimulatederrorresponse
-				+ ", MilitaryBranchNavyValueRange=" + this.MilitaryBranchNavyValueRange
-				+ ", MilitaryBranchNavysimulatederrorresponse=" + this.MilitaryBranchNavysimulatederrorresponse
-				+ ", MilitaryBranchAirForceValueRange=" + this.MilitaryBranchAirForceValueRange
-				+ ", MilitaryBranchAirForcesimulatederrorresponse=" + this.MilitaryBranchAirForcesimulatederrorresponse
-				+ ", MilitaryBranchMilitaryCrossValueRange=" + this.MilitaryBranchMilitaryCrossValueRange
-				+ ", MilitaryBranchMilitaryCrosssimulatederrorresponse="
-				+ this.MilitaryBranchMilitaryCrosssimulatederrorresponse + ", MilitaryBranchCoastGuardValueRange="
-				+ this.MilitaryBranchCoastGuardValueRange + ", MilitaryBranchCoastGuardsimulatederrorresponse="
-				+ this.MilitaryBranchCoastGuardsimulatederrorresponse + ", MilitaryBranchMMValueRange="
-				+ this.MilitaryBranchMMValueRange + ", MilitaryBranchMMsimulatederrorresponse="
-				+ this.MilitaryBranchMMsimulatederrorresponse + ", MilitaryBranchNationalGuardValueRange="
-				+ this.MilitaryBranchNationalGuardValueRange + ", MilitaryBranchNationalGuardsimulatederrorresponse="
-				+ this.MilitaryBranchNationalGuardsimulatederrorresponse + ", MilitaryBranchNOAAValueRange="
-				+ this.MilitaryBranchNOAAValueRange + ", MilitaryBranchNOAAsimulatederrorresponse="
-				+ this.MilitaryBranchNOAAsimulatederrorresponse + ", MltyBranchPublicHealthServiceValueRange="
+		return Messages.getString("SimulatedResponseMilitaryDuty.0") + this.MilitaryBranchArmyValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.1") + this.MilitaryBranchArmysimulatederrorresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.2") + this.MilitaryBranchNavyValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.3") + this.MilitaryBranchNavysimulatederrorresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.4") + this.MilitaryBranchAirForceValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.5") + this.MilitaryBranchAirForcesimulatederrorresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.6") + this.MilitaryBranchMilitaryCrossValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.7") //$NON-NLS-1$
+				+ this.MilitaryBranchMilitaryCrosssimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.8") //$NON-NLS-1$
+				+ this.MilitaryBranchCoastGuardValueRange + Messages.getString("SimulatedResponseMilitaryDuty.9") //$NON-NLS-1$
+				+ this.MilitaryBranchCoastGuardsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.10") //$NON-NLS-1$
+				+ this.MilitaryBranchMMValueRange + Messages.getString("SimulatedResponseMilitaryDuty.11") //$NON-NLS-1$
+				+ this.MilitaryBranchMMsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.12") //$NON-NLS-1$
+				+ this.MilitaryBranchNationalGuardValueRange + Messages.getString("SimulatedResponseMilitaryDuty.13") //$NON-NLS-1$
+				+ this.MilitaryBranchNationalGuardsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.14") //$NON-NLS-1$
+				+ this.MilitaryBranchNOAAValueRange + Messages.getString("SimulatedResponseMilitaryDuty.15") //$NON-NLS-1$
+				+ this.MilitaryBranchNOAAsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.16") //$NON-NLS-1$
 				+ this.MltyBranchPublicHealthServiceValueRange
-				+ ", MilitaryBranchPublicHealthServicesimulatederrorresponse="
-				+ this.MilitaryBranchPublicHealthServicesimulatederrorresponse + ", MilitaryServiceTypeValueRange="
-				+ this.MilitaryServiceTypeValueRange + ", MilitaryServiceTypesimulatederrorresponse="
-				+ this.MilitaryServiceTypesimulatederrorresponse + ", MilitaryService1ValueRange="
-				+ this.MilitaryService1ValueRange + ", MilitaryService1simulatederrorresponse="
-				+ this.MilitaryService1simulatederrorresponse + ", MilitaryService2ValueRange="
-				+ this.MilitaryService2ValueRange + ", MilitaryService2simulatederrorresponse="
-				+ this.MilitaryService2simulatederrorresponse + ", MilitaryService4ValueRange="
-				+ this.MilitaryService4ValueRange + ", MilitaryService4simulatederrorresponse="
-				+ this.MilitaryService4simulatederrorresponse + ", MilitaryService3ValueRange="
-				+ this.MilitaryService3ValueRange + ", MilitaryService3simulatederrorresponse="
-				+ this.MilitaryService3simulatederrorresponse + ", MilitaryService5ValueRange="
-				+ this.MilitaryService5ValueRange + ", MilitaryService5simulatederrorresponse="
-				+ this.MilitaryService5simulatederrorresponse + ", MilitaryService6ValueRange="
-				+ this.MilitaryService6ValueRange + ", MilitaryService6simulatederrorresponse="
-				+ this.MilitaryService6simulatederrorresponse + ", MilitaryService8ValueRange="
-				+ this.MilitaryService8ValueRange + ", MilitaryService8simulatederrorresponse="
-				+ this.MilitaryService8simulatederrorresponse + ", MilitaryService7ValueRange="
-				+ this.MilitaryService7ValueRange + ", MilitaryService7simulatederrorresponse="
-				+ this.MilitaryService7simulatederrorresponse + ", MilitaryService9ValueRange="
-				+ this.MilitaryService9ValueRange + ", MilitaryService9simulatederrorresponse="
-				+ this.MilitaryService9simulatederrorresponse + ", ServiceOutsideUSValueRange="
-				+ this.ServiceOutsideUSValueRange + ", ServiceOutsideUSsimulatederrorresponse="
-				+ this.ServiceOutsideUSsimulatederrorresponse + ", StationAsiaFareastValueRange="
-				+ this.StationAsiaFareastValueRange + ", StationAsiaFareastsimulatederrorresponse="
-				+ this.StationAsiaFareastsimulatederrorresponse + ", StationCarribeanValueRange="
-				+ this.StationCarribeanValueRange + ", StationCarribeansimulatederrorresponse="
-				+ this.StationCarribeansimulatederrorresponse + ", StationEastEuropeanValueRange="
-				+ this.StationEastEuropeanValueRange + ", StationEastEuropeansimulatederrorresponse="
-				+ this.StationEastEuropeansimulatederrorresponse + ", StationAsiaSouthPacificValueRange="
-				+ this.StationAsiaSouthPacificValueRange + ", StationAsiaSouthPacificsimulatederrorresponse="
-				+ this.StationAsiaSouthPacificsimulatederrorresponse + ", StationMiddleEastValueRange="
-				+ this.StationMiddleEastValueRange + ", StationMiddleEastsimulatederrorresponse="
-				+ this.StationMiddleEastsimulatederrorresponse + ", StationNorthCentralEuropeanValueRange="
-				+ this.StationNorthCentralEuropeanValueRange + ", StationNortHCentralEuropeansimulatederrorresponse="
-				+ this.StationNortHCentralEuropeansimulatederrorresponse + ", StationMexicoValueRange="
-				+ this.StationMexicoValueRange + ", StationMexicosimulatederrorresponse="
-				+ this.StationMexicosimulatederrorresponse + ", StationSouthEuropeanMediterraneanValueRange="
+				+ Messages.getString("SimulatedResponseMilitaryDuty.17") //$NON-NLS-1$
+				+ this.MilitaryBranchPublicHealthServicesimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.18") //$NON-NLS-1$
+				+ this.MilitaryServiceTypeValueRange + Messages.getString("SimulatedResponseMilitaryDuty.19") //$NON-NLS-1$
+				+ this.MilitaryServiceTypesimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.20") //$NON-NLS-1$
+				+ this.MilitaryService1ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.21") //$NON-NLS-1$
+				+ this.MilitaryService1simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.22") //$NON-NLS-1$
+				+ this.MilitaryService2ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.23") //$NON-NLS-1$
+				+ this.MilitaryService2simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.24") //$NON-NLS-1$
+				+ this.MilitaryService4ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.25") //$NON-NLS-1$
+				+ this.MilitaryService4simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.26") //$NON-NLS-1$
+				+ this.MilitaryService3ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.27") //$NON-NLS-1$
+				+ this.MilitaryService3simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.28") //$NON-NLS-1$
+				+ this.MilitaryService5ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.29") //$NON-NLS-1$
+				+ this.MilitaryService5simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.30") //$NON-NLS-1$
+				+ this.MilitaryService6ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.31") //$NON-NLS-1$
+				+ this.MilitaryService6simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.32") //$NON-NLS-1$
+				+ this.MilitaryService8ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.33") //$NON-NLS-1$
+				+ this.MilitaryService8simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.34") //$NON-NLS-1$
+				+ this.MilitaryService7ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.35") //$NON-NLS-1$
+				+ this.MilitaryService7simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.36") //$NON-NLS-1$
+				+ this.MilitaryService9ValueRange + Messages.getString("SimulatedResponseMilitaryDuty.37") //$NON-NLS-1$
+				+ this.MilitaryService9simulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.38") //$NON-NLS-1$
+				+ this.ServiceOutsideUSValueRange + Messages.getString("SimulatedResponseMilitaryDuty.39") //$NON-NLS-1$
+				+ this.ServiceOutsideUSsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.40") //$NON-NLS-1$
+				+ this.StationAsiaFareastValueRange + Messages.getString("SimulatedResponseMilitaryDuty.41") //$NON-NLS-1$
+				+ this.StationAsiaFareastsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.42") //$NON-NLS-1$
+				+ this.StationCarribeanValueRange + Messages.getString("SimulatedResponseMilitaryDuty.43") //$NON-NLS-1$
+				+ this.StationCarribeansimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.44") //$NON-NLS-1$
+				+ this.StationEastEuropeanValueRange + Messages.getString("SimulatedResponseMilitaryDuty.45") //$NON-NLS-1$
+				+ this.StationEastEuropeansimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.46") //$NON-NLS-1$
+				+ this.StationAsiaSouthPacificValueRange + Messages.getString("SimulatedResponseMilitaryDuty.47") //$NON-NLS-1$
+				+ this.StationAsiaSouthPacificsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.48") //$NON-NLS-1$
+				+ this.StationMiddleEastValueRange + Messages.getString("SimulatedResponseMilitaryDuty.49") //$NON-NLS-1$
+				+ this.StationMiddleEastsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.50") //$NON-NLS-1$
+				+ this.StationNorthCentralEuropeanValueRange + Messages.getString("SimulatedResponseMilitaryDuty.51") //$NON-NLS-1$
+				+ this.StationNortHCentralEuropeansimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.52") //$NON-NLS-1$
+				+ this.StationMexicoValueRange + Messages.getString("SimulatedResponseMilitaryDuty.53") //$NON-NLS-1$
+				+ this.StationMexicosimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.54") //$NON-NLS-1$
 				+ this.StationSouthEuropeanMediterraneanValueRange
-				+ ", StationSouthEuropeanMediterraneansimulatederrorresponse="
+				+ Messages.getString("SimulatedResponseMilitaryDuty.55") //$NON-NLS-1$
 				+ this.StationSouthEuropeanMediterraneansimulatederrorresponse
-				+ ", StationSouthCentralAmericanValueRange=" + this.StationSouthCentralAmericanValueRange
-				+ ", StationSouthCentralAmericansimulatederrorresponse="
-				+ this.StationSouthCentralAmericansimulatederrorresponse + ", StationOtherValueRange="
-				+ this.StationOtherValueRange + ", StationOthersimulatederrorresponse="
-				+ this.StationOthersimulatederrorresponse + ", StationUSCanadaValueRange="
-				+ this.StationUSCanadaValueRange + ", StationUSCanadasimulatederrorresponse="
-				+ this.StationUSCanadasimulatederrorresponse + ", DeployGulfValueRange=" + this.DeployGulfValueRange
-				+ ", DeployGulfsimulatederrorresponse=" + this.DeployGulfsimulatederrorresponse
-				+ ", DeployOEFOIFValueRange=" + this.DeployOEFOIFValueRange + ", DeployOEFOIFsimulatederrorresponse="
-				+ this.DeployOEFOIFsimulatederrorresponse + ", utilities=" + this.utilities + ", uniformdist="
-				+ this.uniformdist + "]";
+				+ Messages.getString("SimulatedResponseMilitaryDuty.56") + this.StationSouthCentralAmericanValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.57") //$NON-NLS-1$
+				+ this.StationSouthCentralAmericansimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.58") //$NON-NLS-1$
+				+ this.StationOtherValueRange + Messages.getString("SimulatedResponseMilitaryDuty.59") //$NON-NLS-1$
+				+ this.StationOthersimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.60") //$NON-NLS-1$
+				+ this.StationUSCanadaValueRange + Messages.getString("SimulatedResponseMilitaryDuty.61") //$NON-NLS-1$
+				+ this.StationUSCanadasimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.62") + this.DeployGulfValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.63") + this.DeployGulfsimulatederrorresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseMilitaryDuty.64") + this.DeployOEFOIFValueRange + Messages.getString("SimulatedResponseMilitaryDuty.65") //$NON-NLS-1$ //$NON-NLS-2$
+				+ this.DeployOEFOIFsimulatederrorresponse + Messages.getString("SimulatedResponseMilitaryDuty.66") + this.utilities + Messages.getString("SimulatedResponseMilitaryDuty.67") //$NON-NLS-1$ //$NON-NLS-2$
+				+ this.uniformdist + Messages.getString("SimulatedResponseMilitaryDuty.68"); //$NON-NLS-1$
 	}
 
 }

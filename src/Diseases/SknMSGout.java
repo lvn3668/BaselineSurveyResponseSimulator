@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -86,24 +86,11 @@ public class SknMSGout extends SkinDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformDistribution(new UniformDistribution(SknMSGout.getMintogenerateerrorval(),
+			this.setUniformDistribution(new RandomizingDistribution(SknMSGout.getMintogenerateerrorval(),
 					SknMSGout.getMaxtogenerateerrorval()));
 
 			this.setSknMSGoutMedicines(ValueRange.of(0, 1));
 			this.setSknMSGoutMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SknMSGout.getMintogenerateerrorval(), SknMSGout.getMaxtogenerateerrorval())))) {
-				this.setSknMSGoutMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getSknMSGoutMedicines().getMinimum(),
-								(int) this.getSknMSGoutMedicines().getMaximum()));
-			} else {
-				this.setSknMSGoutMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(SknMSGout.getMintogenerateerrorval(), SknMSGout.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,31 +100,17 @@ public class SknMSGout extends SkinDiseaseResponse {
 	public SknMSGout(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformDistribution(
-				new UniformDistribution(SknMSGout.getMintogenerateerrorval(), SknMSGout.getMaxtogenerateerrorval()));
-
-		this.setSknMSGoutMedicines(valuerange);
-		this.setSknMSGoutMedsAdministeredEpicResponse(simulatedresponse);
-		// if CancerResponse is positive, then generate values
-		// for whether medicines are being administered or not
-		// else set to 0
 
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							SknMSGout.getMintogenerateerrorval(), SknMSGout.getMaxtogenerateerrorval())))) {
-				this.setSknMSGoutMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getSknMSGoutMedicines().getMinimum(),
-								(int) this.getSknMSGoutMedicines().getMaximum()));
-			} else {
-				this.setSknMSGoutMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(SknMSGout.getMintogenerateerrorval(), SknMSGout.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformDistribution(new RandomizingDistribution(SknMSGout.getMintogenerateerrorval(),
+					SknMSGout.getMaxtogenerateerrorval()));
 
+			this.setSknMSGoutMedicines(valuerange);
+			this.setSknMSGoutMedsAdministeredEpicResponse(simulatedresponse);
+			// if CancerResponse is positive, then generate values
+			// for whether medicines are being administered or not
+			// else set to 0
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -214,6 +187,31 @@ public class SknMSGout extends SkinDiseaseResponse {
 	private void setSknMSGoutMedsAdministeredEpicResponse(int sknMSGoutMedsAdministeredEpicResponse) {
 		try {
 			this.SknMSGoutMedsAdministeredEpicResponse = sknMSGoutMedsAdministeredEpicResponse;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformDistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+							SknMSGout.getMintogenerateerrorval(), SknMSGout.getMaxtogenerateerrorval())))) {
+				this.setSknMSGoutMedsAdministeredEpicResponse(
+						this.getUtilities().randBetween((int) this.getSknMSGoutMedicines().getMinimum(),
+								(int) this.getSknMSGoutMedicines().getMaximum()));
+			} else {
+				this.setSknMSGoutMedsAdministeredEpicResponse(this.getUtilities()
+						.randBetween(SknMSGout.getMintogenerateerrorval(), SknMSGout.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

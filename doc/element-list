@@ -1,11 +1,10 @@
 cohort
 cohortUtils
 Diseases
-Interfaces
 mvpBaselineSurveyResponseSimulator
 randomizer
 simulatedDiseaseResponse
-SimulatedResponseAncestry
+simulatedResponseAncestry
 simulatedResponseChemicalExposure
 simulatedResponseLifeStyleResponseVars
 simulatedResponseMilitaryDuty

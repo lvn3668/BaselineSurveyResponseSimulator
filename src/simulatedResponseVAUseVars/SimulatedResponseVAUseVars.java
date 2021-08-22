@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
 import javax.sql.rowset.serial.SerialBlob;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author visu4
@@ -150,15 +150,15 @@ public class SimulatedResponseVAUseVars {
 		 *
 		 */
 		private File output_FilenameDefaultSimulatedValue;
+		/**
+		 *
+		 */
+		private RandomizingDistribution randomizingDistribution;
 		// default empty
 		/**
 		*
 		*/
 		private Timestamp timestampFormCompletionDefaultSimulatedValue;
-		/**
-		 *
-		 */
-		private UniformDistribution uniformDistribution;
 		/**
 		 *
 		 */
@@ -209,7 +209,7 @@ public class SimulatedResponseVAUseVars {
 			this.setFormcompletionstatusDefaultSimulatedValue(
 					SimulatedResponseVAUseVars.isDefaultformcompletionstatus());
 			this.setUniformDistribution(
-					new UniformDistribution(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
+					new RandomizingDistribution(SimulatedResponseVAUseVars.getMinimumtogenerateerrorval(),
 							SimulatedResponseVAUseVars.getMaxtogenerateerrorval()));
 			this.setVAUseValueRange(SimulatedResponseVAUseVars.getVausevalsvaluerange());
 			// 5 VA drop off sites
@@ -758,19 +758,19 @@ public class SimulatedResponseVAUseVars {
 		}
 
 		/**
-		 * @return the uniformDistribution
+		 * @return the randomizingDistribution
 		 */
 		/**
 		 * @return
 		 */
-		private UniformDistribution getUniformDistribution() {
+		private RandomizingDistribution getUniformDistribution() {
 			try {
-				return this.uniformDistribution;
+				return this.randomizingDistribution;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return this.uniformDistribution;
+			return this.randomizingDistribution;
 
 		}
 
@@ -1360,14 +1360,14 @@ public class SimulatedResponseVAUseVars {
 		}
 
 		/**
-		 * @param uniformDistribution the uniformDistribution to set
+		 * @param randomizingDistribution the randomizingDistribution to set
 		 */
 		/**
-		 * @param uniformDistribution
+		 * @param randomizingDistribution
 		 */
-		private void setUniformDistribution(UniformDistribution uniformDistribution) {
+		private void setUniformDistribution(RandomizingDistribution randomizingDistribution) {
 			try {
-				this.uniformDistribution = uniformDistribution;
+				this.randomizingDistribution = randomizingDistribution;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -3027,7 +3027,7 @@ public class SimulatedResponseVAUseVars {
 					SimulatedResponseVAUseVars.getMaximumtogeneraterandomvalsfornumaGcompletion()));
 			setDefaultNumCompletedG(getUtilitiesstaticinstance().randBetween(0,
 					SimulatedResponseVAUseVars.getMaximumtogeneraterandomvalsfornumaGcompletion()));
-			setCSIDDefaultResponse("");
+			setCSIDDefaultResponse(Messages.getString("SimulatedResponseVAUseVars.0")); //$NON-NLS-1$
 			setDefaultVersionNumber(1);
 			setDefaultformEditStatus(false);
 			setDefaultformduplicationstatus(false);
@@ -3035,10 +3035,10 @@ public class SimulatedResponseVAUseVars {
 
 			setDefaultformobject(new SerialBlob(new byte[1]));
 			setImageFile(new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB));
-			setDefaultFormId(new File("null.txt"));
+			setDefaultFormId(new File(Messages.getString("SimulatedResponseVAUseVars.1"))); //$NON-NLS-1$
 			setDefaultFormLoadDate(SimulatedResponseVAUseVars.getCalendar().getTime());
 			setDefaultRecordStatus(false);
-			setDefaultOutputFile(new File("null.txt"));
+			setDefaultOutputFile(new File(Messages.getString("SimulatedResponseVAUseVars.2"))); //$NON-NLS-1$
 			this.setVauseresponses(new VAUseResponses());
 
 			this.getVauseresponses().simulateHelpCompletingFormsimulatedresponse(

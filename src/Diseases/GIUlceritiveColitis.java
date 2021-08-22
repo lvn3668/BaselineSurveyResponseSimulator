@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,51 +85,29 @@ public class GIUlceritiveColitis extends GastroIntestinalDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GIUlceritiveColitis.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GIUlceritiveColitis.getMintogenerateerrorval(),
 					GIUlceritiveColitis.getMaxtogenerateerrorval()));
 
 			this.setGIUCMeds(ValueRange.of(0, 1));
 			this.setGIUCMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(GIUlceritiveColitis.getMintogenerateerrorval(),
-									GIUlceritiveColitis.getMaxtogenerateerrorval())))) {
-				this.setGIUCMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getGIUCMeds().getMinimum(), (int) this.getGIUCMeds().getMaximum()));
-			} else {
-				this.setGIUCMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(GIUlceritiveColitis.getMintogenerateerrorval(),
-								GIUlceritiveColitis.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public GIUlceritiveColitis(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public GIUlceritiveColitis(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(GIUlceritiveColitis.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(GIUlceritiveColitis.getMintogenerateerrorval(),
 					GIUlceritiveColitis.getMaxtogenerateerrorval()));
 
 			this.setGIUCMeds(valuerange);
 			this.setGIUCMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(GIUlceritiveColitis.getMintogenerateerrorval(),
-									GIUlceritiveColitis.getMaxtogenerateerrorval())))) {
-				this.setGIUCMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween((int) this.getGIUCMeds().getMinimum(), (int) this.getGIUCMeds().getMaximum()));
-			} else {
-				this.setGIUCMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(GIUlceritiveColitis.getMintogenerateerrorval(),
-								GIUlceritiveColitis.getMaxtogenerateerrorval()));
-			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -187,6 +165,24 @@ public class GIUlceritiveColitis extends GastroIntestinalDiseaseResponse {
 	 */
 	private void setGIUCMedsAdministeredEpicResponse(int gIUCMedsAdministeredEpicResponse) {
 		this.GIUCMedsAdministeredEpicResponse = gIUCMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(GIUlceritiveColitis.getMintogenerateerrorval(),
+								GIUlceritiveColitis.getMaxtogenerateerrorval())))) {
+			this.setGIUCMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween((int) this.getGIUCMeds().getMinimum(), (int) this.getGIUCMeds().getMaximum()));
+		} else {
+			this.setGIUCMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					GIUlceritiveColitis.getMintogenerateerrorval(), GIUlceritiveColitis.getMaxtogenerateerrorval()));
+		}
 	}
 
 	@Override

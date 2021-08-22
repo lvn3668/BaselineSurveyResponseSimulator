@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class Asthma extends OsteopathicDiseaseResponse {
 
@@ -67,7 +67,7 @@ public class Asthma extends OsteopathicDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
-					new UniformDistribution(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
+					new RandomizingDistribution(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
 			this.setAsthmaMedicines(ValueRange.of(0, 1));
 			this.setAsthmamedicinesadministeredepicresponse(2);
 
@@ -76,40 +76,19 @@ public class Asthma extends OsteopathicDiseaseResponse {
 		}
 	}
 
-	public void simulateResponses()
-	{
-		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval())))) {
-				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getAsthmaMedicines().getMinimum(), (int) this.getAsthmaMedicines().getMaximum()));
-			} else {
-				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
-			}
-
-		} catch (Exception e)
-		{
-			
-		}
-		
-	}
 	/**
 	 * @param valuerange
 	 * @param asthmamedicinesadministeredepicresponse
 	 * @throws Exception
 	 */
-	public Asthma(VeteranCohort veteranCohort, ValueRange valuerange, int asthmamedicinesadministeredepicresponse) throws Exception {
+	public Asthma(VeteranCohort veteranCohort, ValueRange valuerange, int asthmamedicinesadministeredepicresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, asthmamedicinesadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformdistribution(
-					new UniformDistribution(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
+					new RandomizingDistribution(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
 			this.setAsthmaMedicines(valuerange);
 			this.setAsthmamedicinesadministeredepicresponse(asthmamedicinesadministeredepicresponse);
 		} catch (Exception e) {
@@ -203,6 +182,28 @@ public class Asthma extends OsteopathicDiseaseResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void simulateResponses(VeteranCohort veterancohort) {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+							.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval())))) {
+				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities().randBetween(
+						(int) this.getAsthmaMedicines().getMinimum(), (int) this.getAsthmaMedicines().getMaximum()));
+			} else {
+				this.setAsthmamedicinesadministeredepicresponse(this.getUtilities()
+						.randBetween(Asthma.getMintogenerateerrorval(), Asthma.getMaxtogenerateerrorval()));
+			}
+
+		} catch (Exception e) {
+
+		}
+
 	}
 
 	/**

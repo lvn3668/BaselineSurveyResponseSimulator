@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation MAVERIC / VABHS
@@ -86,24 +86,11 @@ public class Cataract extends HearingVisionDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Cataract.getMintogenerateerrorval(),
+					Cataract.getMaxtogenerateerrorval()));
 
 			this.setCataractMedicines(ValueRange.of(0, 1));
 			this.setCataractmedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval())))) {
-				this.setCataractmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getCataractMedicines().getMinimum(),
-								(int) this.getCataractMedicines().getMaximum()));
-			} else {
-				this.setCataractmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,26 +106,14 @@ public class Cataract extends HearingVisionDiseaseResponse {
 	public Cataract(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(
-				new UniformDistribution(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));
-
-		this.setCataractMedicines(valuerange);
-		this.setCataractmedicinesadministeredepicresponse(simulatedresponse);
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval())))) {
-				this.setCataractmedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getCataractMedicines().getMinimum(),
-								(int) this.getCataractMedicines().getMaximum()));
-			} else {
-				this.setCataractmedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new RandomizingDistribution(Cataract.getMintogenerateerrorval(),
+					Cataract.getMaxtogenerateerrorval()));
+
+			this.setCataractMedicines(valuerange);
+			this.setCataractmedicinesadministeredepicresponse(simulatedresponse);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -221,6 +196,26 @@ public class Cataract extends HearingVisionDiseaseResponse {
 			this.cataractmedicinesadministeredepicresponse = cataractmedicinesadministeredepicresponse;
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+						.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval())))) {
+			this.setCataractmedicinesadministeredepicresponse(this.getUtilities().randBetween(
+					(int) this.getCataractMedicines().getMinimum(), (int) this.getCataractMedicines().getMaximum()));
+		} else {
+			this.setCataractmedicinesadministeredepicresponse(this.getUtilities()
+					.randBetween(Cataract.getMintogenerateerrorval(), Cataract.getMaxtogenerateerrorval()));
 		}
 	}
 

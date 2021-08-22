@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -86,27 +86,11 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 
-			this.setUniformdistribution(
-					new UniformDistribution(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Tinitus.getMintogenerateerrorval(),
+					Tinitus.getMaxtogenerateerrorval()));
 
 			this.setTinitusMedicines(ValueRange.of(0, 1));
 			this.setTinitusMedsAdministeredEpicResponse(2);
-			// if CancerResponse is positive, then generate values
-			// for whether medicines are being administered or not
-			// else set to 0
-
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval())))) {
-				this.setTinitusMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getTinitusMedicines().getMinimum(), (int) this.getTinitusMedicines().getMaximum()));
-			} else {
-				this.setTinitusMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,27 +105,14 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 		try {
 			this.setUtilities(new Utilities());
 
-			this.setUniformdistribution(
-					new UniformDistribution(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Tinitus.getMintogenerateerrorval(),
+					Tinitus.getMaxtogenerateerrorval()));
 
 			this.setTinitusMedicines(valuerange);
 			this.setTinitusMedsAdministeredEpicResponse(simulatedresponse);
 			// if CancerResponse is positive, then generate values
 			// for whether medicines are being administered or not
 			// else set to 0
-
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval())))) {
-				this.setTinitusMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getTinitusMedicines().getMinimum(), (int) this.getTinitusMedicines().getMaximum()));
-			} else {
-				this.setTinitusMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval()));
-			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -222,6 +193,28 @@ public class Tinitus extends HearingVisionDiseaseResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		// if CancerResponse is positive, then generate values
+		// for whether medicines are being administered or not
+		// else set to 0
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+						.randBetween(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval())))) {
+			this.setTinitusMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					(int) this.getTinitusMedicines().getMinimum(), (int) this.getTinitusMedicines().getMaximum()));
+		} else {
+			this.setTinitusMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween(Tinitus.getMintogenerateerrorval(), Tinitus.getMaxtogenerateerrorval()));
 		}
 	}
 

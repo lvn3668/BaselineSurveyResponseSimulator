@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -103,24 +103,11 @@ public class ColonCancer extends CancerResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(ColonCancer.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(ColonCancer.getMintogenerateerrorval(),
 					ColonCancer.getMaxtogenerateerrorval()));
 
 			this.setColonCancerMedicines(ValueRange.of(0, 1));
 			this.setColoncancermedicinesadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							ColonCancer.getMintogenerateerrorval(), ColonCancer.getMaxtogenerateerrorval())))) {
-				this.setColoncancermedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getColonCancerMedicines().getMinimum(),
-								(int) this.getColonCancerMedicines().getMaximum()));
-			} else {
-				this.setColoncancermedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(ColonCancer.getMintogenerateerrorval(), ColonCancer.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -133,24 +120,11 @@ public class ColonCancer extends CancerResponse {
 
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(ColonCancer.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(ColonCancer.getMintogenerateerrorval(),
 					ColonCancer.getMaxtogenerateerrorval()));
 
 			this.setColonCancerMedicines(valuerange);
 			this.setColoncancermedicinesadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
-							ColonCancer.getMintogenerateerrorval(), ColonCancer.getMaxtogenerateerrorval())))) {
-				this.setColoncancermedicinesadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getColonCancerMedicines().getMinimum(),
-								(int) this.getColonCancerMedicines().getMaximum()));
-			} else {
-				this.setColoncancermedicinesadministeredepicresponse(this.getUtilities()
-						.randBetween(ColonCancer.getMintogenerateerrorval(), ColonCancer.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -234,6 +208,26 @@ public class ColonCancer extends CancerResponse {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities().randBetween(
+						ColonCancer.getMintogenerateerrorval(), ColonCancer.getMaxtogenerateerrorval())))) {
+			this.setColoncancermedicinesadministeredepicresponse(
+					this.getUtilities().randBetween((int) this.getColonCancerMedicines().getMinimum(),
+							(int) this.getColonCancerMedicines().getMaximum()));
+		} else {
+			this.setColoncancermedicinesadministeredepicresponse(this.getUtilities()
+					.randBetween(ColonCancer.getMintogenerateerrorval(), ColonCancer.getMaxtogenerateerrorval()));
 		}
 	}
 

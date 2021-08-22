@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse {
 
@@ -57,32 +57,6 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 	 *
 	 */
 	private int alsmedsadministeredepicresponse;
-	
-	public void simulateResponses() 
-	{
-		try 
-		{
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1 (Valid response)
-					(!this.getUniformdistribution()
-							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
-									AmytrophicLateralSclerosis.getMintogenerateerrorval(),
-									AmytrophicLateralSclerosis.getMaxtogenerateerrorval())))) {
-				this.setAlsmedsadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getALSMedicines().getMinimum(), (int) this.getALSMedicines().getMaximum()));
-			} else {
-				this.setAlsmedsadministeredepicresponse(
-						this.getUtilities().randBetween(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
-								AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
-			}
-			
-		} catch (Exception e)
-		{
-			
-		}
-	}
 
 	/**
 	 * @throws Exception
@@ -91,11 +65,11 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
-					AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
+							AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
 			this.setALSMedicines(ValueRange.of(0, 1));
 			this.setAlsmedsadministeredepicresponse(2);
-
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,14 +81,15 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 	 * @param alsmedsadministeredepicresponse
 	 * @throws Exception
 	 */
-	public AmytrophicLateralSclerosis(VeteranCohort veteranCohort, ValueRange valuerange, int alsmedsadministeredepicresponse)
-			throws Exception {
+	public AmytrophicLateralSclerosis(VeteranCohort veteranCohort, ValueRange valuerange,
+			int alsmedsadministeredepicresponse) throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, alsmedsadministeredepicresponse);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
-					AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(
+					new RandomizingDistribution(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
+							AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
 			this.setALSMedicines(valuerange);
 			this.setAlsmedsadministeredepicresponse(alsmedsadministeredepicresponse);
 
@@ -217,6 +192,30 @@ public class AmytrophicLateralSclerosis extends NeuroStimulatoryDiseaseResponse 
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
+		}
+	}
+
+	public void simulateResponses(VeteranCohort veterancohort) {
+		super.simulateResponses(veterancohort);
+		try {
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// generate uniform distribution between min and max error vals and pick a
+			// random number, check pdf value
+			// if less than 0.5 then generate 0 or 1 (Valid response)
+					(!this.getUniformdistribution()
+							.generatenoiseinresponsevariables(this.getUtilities().randBetween(
+									AmytrophicLateralSclerosis.getMintogenerateerrorval(),
+									AmytrophicLateralSclerosis.getMaxtogenerateerrorval())))) {
+				this.setAlsmedsadministeredepicresponse(this.getUtilities().randBetween(
+						(int) this.getALSMedicines().getMinimum(), (int) this.getALSMedicines().getMaximum()));
+			} else {
+				this.setAlsmedsadministeredepicresponse(
+						this.getUtilities().randBetween(AmytrophicLateralSclerosis.getMintogenerateerrorval(),
+								AmytrophicLateralSclerosis.getMaxtogenerateerrorval()));
+			}
+
+		} catch (Exception e) {
+
 		}
 	}
 

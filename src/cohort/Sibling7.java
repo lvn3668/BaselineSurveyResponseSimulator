@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 import simulatedDiseaseResponse.simulatedDiseasePresenceAbsenceResponseForFamilyMembers;
 
 /**
@@ -80,7 +80,7 @@ public class Sibling7 extends Sibling {
 		// TODO Auto-generated constructor stub
 		this.setUtilities(new Utilities());
 		this.setUniformdistribution(
-				new UniformDistribution(Sibling7.getMintogenerateerrorval(), Sibling7.getMaxtogenerateerrorval()));
+				new RandomizingDistribution(Sibling7.getMintogenerateerrorval(), Sibling7.getMaxtogenerateerrorval()));
 		Sibling7.setErrorResponse(this.getUtilities().randBetween(Sibling7.getMintogenerateerrorval(),
 				Sibling7.getMaxtogenerateerrorval()));
 		// Assign gender to Sibling
@@ -91,10 +91,12 @@ public class Sibling7 extends Sibling {
 			Sibling7.setEarliestDOBSibling(veteranCohort.getEarliestDOBForSimulation());
 			Sibling7.setLatestDOBSibling(veteranCohort.getLatestDOBForSimulation());
 		} else {
-			Sibling7.setEarliestDOBSibling(LocalDate
-					.of(this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 10, 1, 1));
+			Sibling7.setEarliestDOBSibling(LocalDate.of(
+					this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() - 10, 1,
+					1));
 			Sibling7.setLatestDOBSibling(LocalDate.of(
-					this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() + 10, 12, 31));
+					this.getUtilities().extractYearFromDate(veteranCohort.getBirthDateSimulated()).getValue() + 10, 12,
+					31));
 		}
 
 		this.setBirthDateSimulated(this.simulateDateOfBirth());
@@ -119,7 +121,6 @@ public class Sibling7 extends Sibling {
 					Date.from(Sibling7.getLatestDOBSibling().atStartOfDay(ZoneId.systemDefault()).toInstant())
 							.getTime()));
 			this.setBirthDateSimulated(simulatedDOB);
-			System.out.println("Sibling 7 DOB " + this.getBirthDateSimulated().toString());
 			return this.getBirthDateSimulated();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

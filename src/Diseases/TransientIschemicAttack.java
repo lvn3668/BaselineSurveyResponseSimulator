@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,59 +85,31 @@ public class TransientIschemicAttack extends MiscDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(TransientIschemicAttack.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(TransientIschemicAttack.getMintogenerateerrorval(),
 					TransientIschemicAttack.getMaxtogenerateerrorval()));
 
 			this.setTIAMedicines(ValueRange.of(0, 1));
 			this.setTIAMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(TransientIschemicAttack.getMintogenerateerrorval(),
-									TransientIschemicAttack.getMaxtogenerateerrorval())))) {
-				this.setTIAMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getTIAMedicines().getMinimum(), (int) this.getTIAMedicines().getMaximum()));
-			} else {
-				this.setTIAMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(TransientIschemicAttack.getMintogenerateerrorval(),
-								TransientIschemicAttack.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public TransientIschemicAttack(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public TransientIschemicAttack(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
-		this.setUtilities(new Utilities());
-		this.setUniformdistribution(new UniformDistribution(TransientIschemicAttack.getMintogenerateerrorval(),
-				TransientIschemicAttack.getMaxtogenerateerrorval()));
-
-		this.setTIAMedicines(valuerange);
-		this.setTIAMedsAdministeredEpicResponse(simulatedresponse);
-		// if CancerResponse is positive, then generate values
-		// for whether medicines are being administered or not
-		// else set to 0
-
 		try {
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// generate uniform distribution between min and max error vals and pick a
-			// random number, check pdf value
-			// if less than 0.5 then generate 0 or 1
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(TransientIschemicAttack.getMintogenerateerrorval(),
-									TransientIschemicAttack.getMaxtogenerateerrorval())))) {
-				this.setTIAMedsAdministeredEpicResponse(this.getUtilities().randBetween(
-						(int) this.getTIAMedicines().getMinimum(), (int) this.getTIAMedicines().getMaximum()));
-			} else {
-				this.setTIAMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween(TransientIschemicAttack.getMintogenerateerrorval(),
-								TransientIschemicAttack.getMaxtogenerateerrorval()));
-			}
+			this.setUtilities(new Utilities());
+			this.setUniformdistribution(new RandomizingDistribution(TransientIschemicAttack.getMintogenerateerrorval(),
+					TransientIschemicAttack.getMaxtogenerateerrorval()));
+
+			this.setTIAMedicines(valuerange);
+			this.setTIAMedsAdministeredEpicResponse(simulatedresponse);
+			// if CancerResponse is positive, then generate values
+			// for whether medicines are being administered or not
+			// else set to 0
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -217,6 +189,27 @@ public class TransientIschemicAttack extends MiscDiseaseResponse {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// generate uniform distribution between min and max error vals and pick a
+		// random number, check pdf value
+		// if less than 0.5 then generate 0 or 1
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(
+						this.getUtilities().randBetween(TransientIschemicAttack.getMintogenerateerrorval(),
+								TransientIschemicAttack.getMaxtogenerateerrorval())))) {
+			this.setTIAMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween((int) this.getTIAMedicines().getMinimum(), (int) this.getTIAMedicines().getMaximum()));
+		} else {
+			this.setTIAMedsAdministeredEpicResponse(
+					this.getUtilities().randBetween(TransientIschemicAttack.getMintogenerateerrorval(),
+							TransientIschemicAttack.getMaxtogenerateerrorval()));
 		}
 	}
 

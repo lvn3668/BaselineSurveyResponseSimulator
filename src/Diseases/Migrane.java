@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,21 +85,11 @@ public class Migrane extends NeuroStimulatoryDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Migrane.getMintogenerateerrorval(),
+					Migrane.getMaxtogenerateerrorval()));
 
 			this.setMigraneMedicines(ValueRange.of(0, 1));
 			this.setMigranemedsadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval())))) {
-				this.setMigranemedsadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getMigraneMedicines().getMinimum(), (int) this.getMigraneMedicines().getMaximum()));
-			} else {
-				this.setMigranemedsadministeredepicresponse(this.getUtilities()
-						.randBetween(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -113,21 +103,11 @@ public class Migrane extends NeuroStimulatoryDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Migrane.getMintogenerateerrorval(),
+					Migrane.getMaxtogenerateerrorval()));
 
 			this.setMigraneMedicines(valuerange);
 			this.setMigranemedsadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval())))) {
-				this.setMigranemedsadministeredepicresponse(this.getUtilities().randBetween(
-						(int) this.getMigraneMedicines().getMinimum(), (int) this.getMigraneMedicines().getMaximum()));
-			} else {
-				this.setMigranemedsadministeredepicresponse(this.getUtilities()
-						.randBetween(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -198,6 +178,31 @@ public class Migrane extends NeuroStimulatoryDiseaseResponse {
 	private void setMigranemedsadministeredepicresponse(int simulatedresponse) {
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+							.randBetween(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval())))) {
+				this.setMigranemedsadministeredepicresponse(this.getUtilities().randBetween(
+						(int) this.getMigraneMedicines().getMinimum(), (int) this.getMigraneMedicines().getMaximum()));
+			} else {
+				this.setMigranemedsadministeredepicresponse(this.getUtilities()
+						.randBetween(Migrane.getMintogenerateerrorval(), Migrane.getMaxtogenerateerrorval()));
+			}
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

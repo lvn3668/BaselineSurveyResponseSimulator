@@ -3,7 +3,7 @@ package simulatedResponseAncestry;
 import java.time.temporal.ValueRange;
 
 import Utilities.Utilities;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation: VABHS / MAVERIC
@@ -115,7 +115,7 @@ public class SimulatedResponseAncestry {
 
 	private ValueRange AncestrySouthWestAsianValueRange;
 
-	private randomizer.UniformDistribution uniformDistribution;
+	private randomizer.RandomizingDistribution randomizingDistribution;
 
 	private Utilities utilities;
 
@@ -124,7 +124,7 @@ public class SimulatedResponseAncestry {
 		try {
 			this.setUtilities(new Utilities());
 			this.setUniformDistribution(
-					new randomizer.UniformDistribution(SimulatedResponseAncestry.getMinValToGenerateErrorResponse(),
+					new randomizer.RandomizingDistribution(SimulatedResponseAncestry.getMinValToGenerateErrorResponse(),
 							SimulatedResponseAncestry.getMaxValToGenerateErrorResponse()));
 			SimulatedResponseAncestry.setErrorResponse(
 					this.getUtilities().randBetween(SimulatedResponseAncestry.getMinValToGenerateErrorResponse(),
@@ -146,7 +146,7 @@ public class SimulatedResponseAncestry {
 			this.setAncestrysoutheurasiansimulatedepicresponse(SimulatedResponseAncestry.getErrorResponse());
 			this.setAncestrySouthWestAsianValueRange(ValueRange.of(0, 1));
 			this.setAncestrysouthwestasiansimulatedepicresponse(SimulatedResponseAncestry.getErrorResponse());
-			this.setUniformDistribution(new randomizer.UniformDistribution());
+			this.setUniformDistribution(new randomizer.RandomizingDistribution());
 			this.setUtilities(new Utilities());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -163,7 +163,7 @@ public class SimulatedResponseAncestry {
 		try {
 			// TODO Auto-generated constructor stub
 			this.utilities = new Utilities();
-			this.uniformDistribution = new UniformDistribution(
+			this.randomizingDistribution = new RandomizingDistribution(
 					SimulatedResponseAncestry.getMinValToGenerateErrorResponse(),
 					SimulatedResponseAncestry.getMaxValToGenerateErrorResponse());
 			SimulatedResponseAncestry.errorResponse = this.getUtilities().randBetween(
@@ -415,16 +415,16 @@ public class SimulatedResponseAncestry {
 	}
 
 	/**
-	 * @return the uniformDistribution
+	 * @return the randomizingDistribution
 	 */
-	private UniformDistribution getUniformDistribution() {
+	private RandomizingDistribution getUniformDistribution() {
 		try {
-			return this.uniformDistribution;
+			return this.randomizingDistribution;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return this.uniformDistribution;
+		return this.randomizingDistribution;
 
 	}
 
@@ -651,11 +651,11 @@ public class SimulatedResponseAncestry {
 	}
 
 	/**
-	 * @param uniformdistribution the uniformDistribution to set
+	 * @param uniformdistribution the randomizingDistribution to set
 	 */
-	private void setUniformDistribution(UniformDistribution uniformdist) {
+	private void setUniformDistribution(RandomizingDistribution uniformdist) {
 		try {
-			this.uniformDistribution = uniformdist;
+			this.randomizingDistribution = uniformdist;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -870,23 +870,23 @@ public class SimulatedResponseAncestry {
 
 	@Override
 	public String toString() {
-		return "SimulatedResponseAncestry [AncestryEastAsianValueRange=" + this.AncestryEastAsianValueRange
-				+ ", ancestryeastasiansimulatedepicresponse=" + this.ancestryeastasiansimulatedepicresponse
-				+ ", AncestryAfricanValueRange=" + this.AncestryAfricanValueRange
-				+ ", ancestryafricansimulatedepicresponse=" + this.ancestryafricansimulatedepicresponse
-				+ ", AncestryMiddleEasternValueRange=" + this.AncestryMiddleEasternValueRange
-				+ ", ancestrymiddleeasternsimulatedepicresponse=" + this.ancestrymiddleeasternsimulatedepicresponse
-				+ ", AncestryNorthAmericanValueRange=" + this.AncestryNorthAmericanValueRange
-				+ ", ancestrynorthamericansimulatedepicresponse=" + this.ancestrynorthamericansimulatedepicresponse
-				+ ", AncestrySouthEurasianValueRange=" + this.AncestrySouthEurasianValueRange
-				+ ", ancestrysoutheurasiansimulatedepicresponse=" + this.ancestrysoutheurasiansimulatedepicresponse
-				+ ", AncestryNorthEuropeanValueRange=" + this.AncestryNorthEuropeanValueRange
-				+ ", ancestrynortheuropeansimulatedepicresponse=" + this.ancestrynortheuropeansimulatedepicresponse
-				+ ", AncestrySamoaAmericanValueRange=" + this.AncestrySamoaAmericanValueRange
-				+ ", ancestrysamoaamericansimulatedepicresponse=" + this.ancestrysamoaamericansimulatedepicresponse
-				+ ", AncestrySouthWestAsianValueRange=" + this.AncestrySouthWestAsianValueRange
-				+ ", ancestrysouthwestasiansimulatedepicresponse=" + this.ancestrysouthwestasiansimulatedepicresponse
-				+ ", uniformDistribution=" + this.uniformDistribution + ", utilities=" + this.utilities + "]";
+		return Messages.getString("SimulatedResponseAncestry.0") + this.AncestryEastAsianValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.1") + this.ancestryeastasiansimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.2") + this.AncestryAfricanValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.3") + this.ancestryafricansimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.4") + this.AncestryMiddleEasternValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.5") + this.ancestrymiddleeasternsimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.6") + this.AncestryNorthAmericanValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.7") + this.ancestrynorthamericansimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.8") + this.AncestrySouthEurasianValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.9") + this.ancestrysoutheurasiansimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.10") + this.AncestryNorthEuropeanValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.11") + this.ancestrynortheuropeansimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.12") + this.AncestrySamoaAmericanValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.13") + this.ancestrysamoaamericansimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.14") + this.AncestrySouthWestAsianValueRange //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.15") + this.ancestrysouthwestasiansimulatedepicresponse //$NON-NLS-1$
+				+ Messages.getString("SimulatedResponseAncestry.16") + this.randomizingDistribution + Messages.getString("SimulatedResponseAncestry.17") + this.utilities + Messages.getString("SimulatedResponseAncestry.18"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	}
 
 }

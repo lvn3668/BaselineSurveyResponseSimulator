@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,22 +85,11 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Glaucoma.getMintogenerateerrorval(),
+					Glaucoma.getMaxtogenerateerrorval()));
 
 			this.setGlaucomaMedicines(ValueRange.of(0, 1));
 			this.setGlaucomaMedsAdministeredEpicResponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval())))) {
-				this.setGlaucomaMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getGlaucomaMedicines().getMinimum(),
-								(int) this.getGlaucomaMedicines().getMaximum()));
-			} else {
-				this.setGlaucomaMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -113,22 +102,11 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 		// TODO Auto-generated constructor stub
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(
-					new UniformDistribution(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval()));
+			this.setUniformdistribution(new RandomizingDistribution(Glaucoma.getMintogenerateerrorval(),
+					Glaucoma.getMaxtogenerateerrorval()));
 
 			this.setGlaucomaMedicines(valuerange);
 			this.setGlaucomaMedsAdministeredEpicResponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
-							.randBetween(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval())))) {
-				this.setGlaucomaMedsAdministeredEpicResponse(
-						this.getUtilities().randBetween((int) this.getGlaucomaMedicines().getMinimum(),
-								(int) this.getGlaucomaMedicines().getMaximum()));
-			} else {
-				this.setGlaucomaMedsAdministeredEpicResponse(this.getUtilities()
-						.randBetween(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -198,6 +176,23 @@ public class Glaucoma extends HearingVisionDiseaseResponse {
 	 */
 	private void setGlaucomaMedsAdministeredEpicResponse(int glaucomaMedsAdministeredEpicResponse) {
 		this.GlaucomaMedsAdministeredEpicResponse = glaucomaMedsAdministeredEpicResponse;
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) throws Exception {
+		super.simulateResponses(veterancohort);
+		if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+		// add getters for uniform dist and random epic vars
+				(!this.getUniformdistribution().generatenoiseinresponsevariables(this.getUtilities()
+						.randBetween(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval())))) {
+			this.setGlaucomaMedsAdministeredEpicResponse(this.getUtilities().randBetween(
+					(int) this.getGlaucomaMedicines().getMinimum(), (int) this.getGlaucomaMedicines().getMaximum()));
+		} else {
+			this.setGlaucomaMedsAdministeredEpicResponse(this.getUtilities()
+					.randBetween(Glaucoma.getMintogenerateerrorval(), Glaucoma.getMaxtogenerateerrorval()));
+		}
 	}
 
 	@Override

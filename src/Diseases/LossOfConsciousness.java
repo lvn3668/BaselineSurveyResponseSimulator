@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import Utilities.Utilities;
 import cohort.VeteranCohort;
-import randomizer.UniformDistribution;
+import randomizer.RandomizingDistribution;
 
 /**
  * @author Lalitha Viswanathan Affiliation VABHS / MAVERIC
@@ -85,54 +85,30 @@ public class LossOfConsciousness extends NeuroStimulatoryDiseaseResponse {
 		super(veteranCohort);
 		try {
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(LossOfConsciousness.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(LossOfConsciousness.getMintogenerateerrorval(),
 					LossOfConsciousness.getMaxtogenerateerrorval()));
 
 			this.setLossOfConsciousnessMedicines(ValueRange.of(0, 1));
 			this.setLossofconsciousnesmedsadministeredepicresponse(2);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(LossOfConsciousness.getMintogenerateerrorval(),
-									LossOfConsciousness.getMaxtogenerateerrorval())))) {
-				this.setLossofconsciousnesmedsadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getLossOfConsciousnessMedicines().getMinimum(),
-								(int) this.getLossOfConsciousnessMedicines().getMaximum()));
-			} else {
-				this.setLossofconsciousnesmedsadministeredepicresponse(
-						this.getUtilities().randBetween(LossOfConsciousness.getMintogenerateerrorval(),
-								LossOfConsciousness.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
 	}
 
-	public LossOfConsciousness(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse) throws Exception {
+	public LossOfConsciousness(VeteranCohort veteranCohort, ValueRange valuerange, int simulatedresponse)
+			throws Exception {
 		// TODO Auto-generated constructor stub
 		super(veteranCohort, valuerange, simulatedresponse);
 		// TODO Auto-generated constructor stub
 		try {
+
 			this.setUtilities(new Utilities());
-			this.setUniformdistribution(new UniformDistribution(LossOfConsciousness.getMintogenerateerrorval(),
+			this.setUniformdistribution(new RandomizingDistribution(LossOfConsciousness.getMintogenerateerrorval(),
 					LossOfConsciousness.getMaxtogenerateerrorval()));
 
 			this.setLossOfConsciousnessMedicines(valuerange);
 			this.setLossofconsciousnesmedsadministeredepicresponse(simulatedresponse);
-			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
-			// add getters for uniform dist and random epic vars
-					(!this.getUniformdistribution().generatenoiseinresponsevariables(
-							this.getUtilities().randBetween(LossOfConsciousness.getMintogenerateerrorval(),
-									LossOfConsciousness.getMaxtogenerateerrorval())))) {
-				this.setLossofconsciousnesmedsadministeredepicresponse(
-						this.getUtilities().randBetween((int) this.getLossOfConsciousnessMedicines().getMinimum(),
-								(int) this.getLossOfConsciousnessMedicines().getMaximum()));
-			} else {
-				this.setLossofconsciousnesmedsadministeredepicresponse(
-						this.getUtilities().randBetween(LossOfConsciousness.getMintogenerateerrorval(),
-								LossOfConsciousness.getMaxtogenerateerrorval()));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -210,6 +186,32 @@ public class LossOfConsciousness extends NeuroStimulatoryDiseaseResponse {
 	private void setLossOfConsciousnessMedicines(ValueRange lossOfConsciousnessMedicines) throws Exception {
 		try {
 			this.LossOfConsciousnessMedicines = lossOfConsciousnessMedicines;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @throws Exception
+	 */
+	public void simulateResponses(VeteranCohort veterancohort) {
+
+		try {
+			super.simulateResponses(veterancohort);
+			if ((super.getDiseasepresenceorabsencesimulatedepicresponse() == 1) &&
+			// add getters for uniform dist and random epic vars
+					(!this.getUniformdistribution().generatenoiseinresponsevariables(
+							this.getUtilities().randBetween(LossOfConsciousness.getMintogenerateerrorval(),
+									LossOfConsciousness.getMaxtogenerateerrorval())))) {
+				this.setLossofconsciousnesmedsadministeredepicresponse(
+						this.getUtilities().randBetween((int) this.getLossOfConsciousnessMedicines().getMinimum(),
+								(int) this.getLossOfConsciousnessMedicines().getMaximum()));
+			} else {
+				this.setLossofconsciousnesmedsadministeredepicresponse(
+						this.getUtilities().randBetween(LossOfConsciousness.getMintogenerateerrorval(),
+								LossOfConsciousness.getMaxtogenerateerrorval()));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
