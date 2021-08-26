@@ -1,9 +1,12 @@
 package mvpBaselineSurveyResponseSimulator;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -61,9 +64,13 @@ public class mvpbaselinedatasimulator implements Callable<VeteranCohort>, AutoCl
 			int i = 1;
 			CohortUtilities cutilities = new CohortUtilities();
 			String destFilePath = "C:\\Users\\visu4\\eclipse-workspace\\BaselineSurveyResponseSimulator\\data\\dataresults.txt";
-			// FileChannel dest = FileChannel.open(Paths.get(destFilePath),
-			// StandardOpenOption.APPEND,StandardOpenOption.CREATE_NEW);
-			FileChannel dest = FileChannel.open(Paths.get(destFilePath), StandardOpenOption.APPEND, StandardOpenOption.CREATE_NEW);
+			FileChannel dest = null;
+			Path path = Paths.get(destFilePath);
+			if (Files.exists(path)) {
+				File file = new File(destFilePath);
+				if (file.delete())		
+					dest = FileChannel.open(Paths.get(destFilePath), StandardOpenOption.APPEND, StandardOpenOption.CREATE_NEW);
+			}
 			mvpbaselinedatasimulator tempobj;
 			while (i < numberOfCohorts) {
 				// executor.execute(new mvpbaselinedatasimulator());
@@ -122,9 +129,6 @@ public class mvpbaselinedatasimulator implements Callable<VeteranCohort>, AutoCl
 		//this.buildCohortResponseVariableValues(this.getCohortsimulated());
 		//this.writeToFile(fc);
 		if (this.getCohortsimulated() != null) {
-	//		System.out.println(
-	//				"Cohort Adoption Status " + this.getCohortsimulated().getAdoptionStatusSimulatedResponse() + COMMA_DELIMITER);
-		
 			return veteranCohort;
 		}
 		else 
